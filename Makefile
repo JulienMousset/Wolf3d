@@ -6,7 +6,7 @@
 #    By: jmousset <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 15:35:26 by jmousset          #+#    #+#              #
-#    Updated: 2019/10/17 15:53:10 by jmousset         ###   ########.fr        #
+#    Updated: 2019/10/21 12:47:57 by jmousset         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ MLX_PATH = ./minilibx/
 HDR = wolf3d.h
 
 SRCS = main.c\
-	   wolf3d.c
+	   wolf3d.c\
+	   parsing.c
 
 OBJS = $(SRCS:.c=.o)
 
