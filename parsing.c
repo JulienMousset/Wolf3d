@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 12:16:29 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/21 20:49:32 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/22 14:59:07 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,14 +86,14 @@ int		count_lines(t_map *map, char *file)
 	return (i);
 }
 
-int		check_digit(char *s)
+int		check_map(char *s)
 {
 	int		i;
 
 	i = 0;
 	while (s[i])
 	{
-		if (ft_isdigit(s[i]) || s[i] == ' ')
+		if (ft_isdigit(s[i]) || s[i] == ' ' || s[i] == 'X')
 			i++;
 		else
 			return (0);
@@ -117,7 +117,7 @@ int		check_file(t_map *map, char *file)
 	fd = open(file, O_RDONLY);
 	while ((read = get_next_line(fd, &map->line)))
 	{
-		if (map->line[1] == '\n' || !(check_digit(map->line)))
+		if (map->line[1] == '\n' || !(check_map(map->line)))
 			return (0);
 		ft_memdel((void **)&(map->line));
 	}
@@ -133,7 +133,6 @@ int		parsing(t_map *map, char *file)
 		return (0);
 	if (!(map->nb_lines = count_lines(map, file)))
 		return (0);
-	//J'ai nombre de lines et de columns.
 	if (!(map->board = (int **)malloc(sizeof(int *) * map->nb_lines)))
 		return (0);
 	fd = open(file, O_RDONLY);

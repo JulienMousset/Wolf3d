@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:37:26 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/21 17:34:34 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/22 14:28:16 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int				wolf3d(char *file);
 
 int				parsing(t_map *map, char *file);
 int				check_file(t_map *map, char *file);
-int				check_digit(char *s);
+int				check_map(char *s);
 int				count_lines(t_map *map, char *file);
 int				count_colums(t_map *map, char *file);
 int				fill_board(t_map *map, int fd);
