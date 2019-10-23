@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:32:43 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/21 18:12:37 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/23 18:57:49 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		init_structure(t_env *env, char *file)
 	else
 	{
 		ft_putstr("SUCCESS\n");
-		exit (EXIT_SUCCESS);
+		exit(EXIT_SUCCESS);
 	}
 	env->mlx_ptr = mlx_init();
 	env->win_ptr = mlx_new_window(env->mlx_ptr, WIDTH, HEIGHT, "Wolf3D");

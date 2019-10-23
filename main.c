@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:32:33 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/21 14:50:31 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/23 18:57:34 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	free_and_display_usage(t_env *env)
 void	display_usage(void)
 {
 	ft_putstr("Usage : ./wolf3d <map_file>\n");
-	exit (EXIT_FAILURE);
+	exit(EXIT_FAILURE);
 }
 
 int		main(int ac, char **av)
@@ -44,5 +44,5 @@ int		main(int ac, char **av)
 		wolf3d(av[1]);
 	else
 		display_usage();
-	exit (EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }

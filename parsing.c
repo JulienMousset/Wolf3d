@@ -6,11 +6,43 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 12:16:29 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/22 14:59:07 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/23 18:58:25 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+int		check_board(t_map *map, int **board)
+{
+	int		i;
+	int		j;
+	int		player;
+
+	i = 0;
+	player = 0;
+	while (i < map->nb_lines)
+	{
+		j = 0;
+		while (j < map->nb_columns)
+		{
+			if ((i == 0 || j == 0 || i == map->nb_lines - 1
+			|| j == map->nb_columns - 1) && board[i][j] == 0)
+				return (0);
+			if (board[i][j] == 9)
+			{
+				if (player > 0)
+					return (0);
+				else
+					player++;
+			}
+			j++;
+		}
+		i++;
+	}
+	if (player == 0)
+		return (0);
+	return (1);
+}
 
 int		fill_board(t_map *map, int fd)
 {
@@ -28,7 +60,11 @@ int		fill_board(t_map *map, int fd)
 		if (!(map->board[i] = (int *)malloc(sizeof(int) * map->nb_columns)))
 			return (0);
 		while (map->tmp[j])
+		{
 			map->board[i][j++] = ft_atoi(map->tmp[k++]);
+			printf("%d ", map->board[i][j - 1]);
+		}
+		printf("\n");
 		i++;
 		free_tmp_board(map->tmp);
 		ft_memdel((void **)&(map->line));
@@ -43,8 +79,6 @@ int		count_columns(char *s)
 
 	i = 0;
 	res = 0;
-	if (s[i] == '0')
-		return (0);
 	while (s[i])
 	{
 		while (s[i] && s[i] == ' ')
@@ -55,8 +89,6 @@ int		count_columns(char *s)
 			i++;
 		}
 	}
-	if (s[i - 1] == '0')
-		return (0);
 	return (res);
 }
 
@@ -93,7 +125,7 @@ int		check_map(char *s)
 	i = 0;
 	while (s[i])
 	{
-		if (ft_isdigit(s[i]) || s[i] == ' ' || s[i] == 'X')
+		if (ft_isdigit(s[i]) || s[i] == ' ')
 			i++;
 		else
 			return (0);
@@ -103,8 +135,8 @@ int		check_map(char *s)
 
 int		check_file(t_map *map, char *file)
 {
-	int		read;
-	int		fd;
+	int			read;
+	int			fd;
 
 	if ((fd = open(file, O_DIRECTORY)) != -1
 	|| (fd = open(file, O_RDONLY)) == -1)
@@ -138,5 +170,7 @@ int		parsing(t_map *map, char *file)
 	fd = open(file, O_RDONLY);
 	fill_board(map, fd);
 	close(fd);
+	if (!(check_board(map, map->board)))
+		return (0);
 	return (1);
 }
