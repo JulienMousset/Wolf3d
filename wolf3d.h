@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:37:26 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/23 18:50:58 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/24 12:26:21 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,17 @@ typedef struct	s_thread
 void			display_usage(void);
 void			free_and_display_usage(t_env *env);
 void			free_tmp_board(char **s);
+int				free_board(t_map *map);
 
 int				wolf3d(char *file);
+int				init_structure(t_env *env, char *file);
 
 int				parsing(t_map *map, char *file);
 int				check_file(t_map *map, char *file);
 int				check_map(char *s);
 int				count_lines(t_map *map, char *file);
 int				count_colums(t_map *map, char *file);
+
 int				fill_board(t_map *map, int fd);
 int				check_board(t_map *map, int **board);
 

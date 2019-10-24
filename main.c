@@ -6,11 +6,25 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:32:33 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/23 18:57:34 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/24 12:26:24 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+int		free_board(t_map *map)
+{
+	int		i;
+
+	i = 0;
+	while (i < map->nb_lines)
+	{
+		ft_memdel((void **)&(map->board[i]));
+		i++;
+	}
+	ft_memdel((void **)&(map->board));
+	return (0);
+}
 
 void	free_tmp_board(char **s)
 {
