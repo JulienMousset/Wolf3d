@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 12:16:29 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/24 12:27:21 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/24 12:57:01 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int		parsing(t_map *map, char *file)
 	fd = open(file, O_RDONLY);
 	fill_board(map, fd);
 	close(fd);
-	if (!(check_board(map, map->board)))
+	if (!(check_board(map)))
 		return (free_board(map));
 	return (1);
 }

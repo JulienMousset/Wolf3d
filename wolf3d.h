@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:37:26 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/24 12:26:21 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/24 12:56:35 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ int				count_lines(t_map *map, char *file);
 int				count_colums(t_map *map, char *file);
 
 int				fill_board(t_map *map, int fd);
-int				check_board(t_map *map, int **board);
+int				check_board(t_map *map);
 
 #endif

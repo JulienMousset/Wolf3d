@@ -6,13 +6,13 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 12:29:31 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/24 12:30:43 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/24 12:59:51 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int		parse_board(t_map *map, int **board)
+int		check_board(t_map *map)
 {
 	int		i;
 	int		j;
@@ -25,17 +25,12 @@ int		parse_board(t_map *map, int **board)
 		j = 0;
 		while (j < map->nb_columns)
 		{
-			if ((i == 0 || j == 0 || i == map->nb_lines - 1
-			|| j == map->nb_columns - 1) && (board[i][j] == 0
-			|| board[i][j] == 9))
+			if (((i == 0 || j == 0 || i == map->nb_lines - 1
+			|| j == map->nb_columns - 1) && (map->board[i][j] == 0
+			|| map->board[i][j] == 9)) || (map->board[i][j] == 9 && player > 0))
 				return (0);
-			if (board[i][j] == 9)
-			{
-				if (player > 0)
-					return (0);
-				else
-					player++;
-			}
+			if (map->board[i][j] == 9)
+				player++;
 			j++;
 		}
 		i++;
