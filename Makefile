@@ -6,7 +6,7 @@
 #    By: jmousset <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 15:35:26 by jmousset          #+#    #+#              #
-#    Updated: 2019/10/24 12:29:43 by jmousset         ###   ########.fr        #
+#    Updated: 2019/10/24 14:00:48 by jmousset         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ HDR = wolf3d.h
 SRCS = main.c\
 	   wolf3d.c\
 	   parsing.c\
-	   parsing_2.c
+	   parsing_2.c\
+	   keyboard_events.c
 
 OBJS = $(SRCS:.c=.o)
 

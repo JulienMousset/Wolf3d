@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:37:26 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/24 12:56:35 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/24 14:15:22 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # define WIDTH 800
 # define HEIGHT 600
 # define THREADS 8
+
+# define ESC 53
 
 typedef struct	s_map
 {
@@ -70,5 +72,7 @@ int				count_colums(t_map *map, char *file);
 
 int				fill_board(t_map *map, int fd);
 int				check_board(t_map *map);
+
+int				deal_key(int key, t_env *env);
 
 #endif

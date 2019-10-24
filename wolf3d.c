@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:32:43 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/24 11:32:53 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/24 13:59:55 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ int		init_structure(t_env *env, char *file)
 	if (!(parsing(env->map, file)))
 		free_and_display_usage(env);
 	else
-	{
 		ft_putstr("SUCCESS\n");
-		exit(EXIT_SUCCESS);
-	}
 	env->mlx_ptr = mlx_init();
 	env->win_ptr = mlx_new_window(env->mlx_ptr, WIDTH, HEIGHT, "Wolf3D");
 	env->img_ptr = mlx_new_image(env->mlx_ptr, WIDTH, HEIGHT);
@@ -38,5 +35,7 @@ int		wolf3d(char *file)
 	if (!(env = (t_env *)malloc(sizeof(t_env))))
 		return (0);
 	init_structure(env, file);
+	mlx_hook(env->win_ptr, 2, (1L << 0), deal_key, env);
+	mlx_loop(env->mlx_ptr);
 	return (1);
 }
