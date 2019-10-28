@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 12:33:38 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/28 15:51:42 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/10/28 16:13:35 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char				*ft_strchr(const char *s, int c);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strstr(const char *haystack, const char *needle);
 char				*ft_strnstr(const char *haystack, const char *needle,
-		size_t len);
+size_t len);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_atoi(const char *str);
@@ -93,12 +93,10 @@ int					ft_str_is_lowercase(char *str);
 int					ft_str_is_uppercase(char *str);
 int					get_next_line(const int fd, char **line);
 
-
 double				detorad(double d);
 void				ft_print_array(char **array);
 void				ft_print_tab(int **tab, int x, int y);
 void				end(char *message);
 int					per(int n, int per);
 int					rgb_to_int(int r, int g, int b);
-
 #endif

@@ -6,7 +6,7 @@
 #    By: jmousset <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/04 16:43:26 by jmousset          #+#    #+#              #
-#    Updated: 2019/10/28 15:49:30 by pasosa-s         ###   ########.fr        #
+#    Updated: 2019/10/28 16:12:41 by jmousset         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,12 +79,12 @@ SRCS = ft_memset.c\
 	   ft_strlcpy.c\
 	   ft_str_is_lowercase.c\
 	   ft_str_is_uppercase.c\
-	   get_next_line.c \
-	   detorad.c \
-	   ft_print_tab.c \
-	   ft_print_array.c \
-	   end.c \
-	   per.c \
+	   get_next_line.c\
+	   detorad.c\
+	   ft_print_tab.c\
+	   ft_print_array.c\
+	   end.c\
+	   per.c\
 	   rgb_to_int.c
 
 OBJS = $(SRCS:.c=.o)
