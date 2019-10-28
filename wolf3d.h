@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:37:26 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/24 14:15:22 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/28 16:07:46 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,26 @@
 # define HEIGHT 600
 # define THREADS 8
 
-# define ESC 53
+# define ERR_MALLOC "error trying to allocate memory"
+# define ERR_USAGE "Usage: ./wolf3d <filename>"
+# define ERR_DIR "Input is a directory"
+# define ERR_WRONG "Wrong input file"
+# define ERR_LENGTH "Found wrong line length. Exiting."
+# define ERR_EMPTY "No data found."
+# define ERR_NOFILE "File doesn't exit."
+# define ERR_FULL "Map without place for the player."
+
+typedef struct	s_coord
+{
+	int		x;
+	int		y;
+}				t_coord;
+
+typedef struct	s_complex
+{
+	double	x;
+	double	y;
+}				t_complex;
 
 typedef struct	s_map
 {
@@ -35,6 +54,24 @@ typedef struct	s_map
 	char		*line;
 	int			nb_lines;
 	int			nb_columns;
+
+	t_complex	pos;
+	t_complex	dir;
+	t_complex	plane;
+	t_complex	time;
+	t_complex	side;
+	double		sign;
+	t_complex	raydir;
+	t_complex	delta;
+	t_coord		block;
+	double		perp;
+	t_coord		step;
+	int			hit;
+	int			boo;
+	int			height;
+	t_coord		minmax;
+	int			color;
+
 }				t_map;
 
 typedef struct	s_env

@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 12:33:38 by jmousset          #+#    #+#             */
-/*   Updated: 2019/08/26 10:51:29 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/28 15:51:42 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,13 @@ unsigned int		ft_strlcpy(char *dest, char *src, unsigned int size);
 int					ft_str_is_lowercase(char *str);
 int					ft_str_is_uppercase(char *str);
 int					get_next_line(const int fd, char **line);
+
+
+double				detorad(double d);
+void				ft_print_array(char **array);
+void				ft_print_tab(int **tab, int x, int y);
+void				end(char *message);
+int					per(int n, int per);
+int					rgb_to_int(int r, int g, int b);
+
 #endif

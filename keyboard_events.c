@@ -6,11 +6,12 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 14:00:22 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/24 14:18:54 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/28 16:01:12 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+#include "controls.h"
 
 int		close_program(t_env *env)
 {
@@ -24,7 +25,7 @@ int		close_program(t_env *env)
 
 int		deal_key(int key, t_env *env)
 {
-	if (key == ESC)
+	if (key == KEY_ESC)
 		close_program(env);
 	return (0);
 }
