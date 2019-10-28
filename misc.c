@@ -6,11 +6,11 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 14:54:18 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/10/04 21:16:57 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/10/28 19:35:07 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf.h"
+#include "wolf3d.h"
 
 int		*ft_strint(int size)
 {
@@ -35,7 +35,7 @@ double	abso(double a)
 
 void	display_values(t_map *map)
 {
-	printf("map size [%d][%d]\n", map->size.x, map->size.y);
+	printf("map size [%d][%d]\n", map->nb_columns, map->nb_lines);
 	printf("player p [%f][%f]\n", map->pos.x, map->pos.y);
 	printf("player d [%f][%f]\n", map->dir.x, map->dir.y);
 	printf("sign = %f\n", map->sign);

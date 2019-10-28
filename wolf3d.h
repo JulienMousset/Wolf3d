@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:37:26 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/28 16:07:46 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/10/28 19:35:08 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,5 +111,8 @@ int				fill_board(t_map *map, int fd);
 int				check_board(t_map *map);
 
 int				deal_key(int key, t_env *env);
+
+double			abso(double a);
+void			ray(t_env *mlx);
 
 #endif

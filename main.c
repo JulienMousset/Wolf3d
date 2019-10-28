@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:32:33 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/24 12:26:24 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/28 19:29:33 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,20 +43,13 @@ void	free_and_display_usage(t_env *env)
 {
 	ft_memdel((void **)&(env->map));
 	ft_memdel((void **)&(env));
-	display_usage();
-}
-
-void	display_usage(void)
-{
-	ft_putstr("Usage : ./wolf3d <map_file>\n");
-	exit(EXIT_FAILURE);
+	end(ERR_USAGE);
 }
 
 int		main(int ac, char **av)
 {
-	if (ac == 2)
-		wolf3d(av[1]);
-	else
-		display_usage();
+	if (ac != 2)
+		end(ERR_USAGE);
+	wolf3d(av[1]);
 	exit(EXIT_SUCCESS);
 }

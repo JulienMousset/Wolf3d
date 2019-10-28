@@ -6,11 +6,11 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/04 17:26:29 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/10/04 21:16:56 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/10/28 19:35:05 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf.h"
+#include "wolf3d.h"
 
 int		choose_color(int ip, int boo)
 {
@@ -22,7 +22,6 @@ int		choose_color(int ip, int boo)
 		color = 0x00FF00;
 	else
 		color = 0x0000FF;
-	printf("ip = %d\n", ip);
 	if (boo == 1)
 		color = color / 2;
 	return (color);
@@ -58,9 +57,9 @@ void	casting(t_map *map)
 	int		i;
 
 	i = 0;
-	while (i < W)
+	while (i < WIDTH)
 	{
-		map->sign = 2 * i / (double)W - 1;
+		map->sign = 2 * i / (double)WIDTH - 1;
 		map->raydir.x = map->dir.x + map->plane.x * map->sign;
 		map->raydir.y = map->dir.y + map->plane.y * map->sign;
 		map->block.x = map->pos.x;
@@ -83,7 +82,7 @@ void	casting(t_map *map)
 				map->block.y += map->step.y;
 				map->boo = 1;
 			}
-			map->hit = (map->map[map->block.x][map->block.y] > 0) ? 1 : 0;
+			map->hit = (map->board[map->block.x][map->block.y] > 0) ? 1 : 0;
 		}
 //		printf("block[%d][%d]\n", map->block.x, map->block.y);
 		if (map->boo == 0)
@@ -92,17 +91,18 @@ void	casting(t_map *map)
 		else
 			map->perp = (map->block.y - map->pos.y +
 					(1 - map->step.y) / 2) / map->raydir.y;
-		map->height = (int)(H / map->perp);
-		map->minmax.x = -map->height / 2 + H / 2;
+	map->pos = (t_complex) {.x = 0, .y = 0};
+		map->height = (int)(HEIGHT / map->perp);
+		map->minmax.x = -map->height / 2 + HEIGHT / 2;
 		(map->minmax.x < 0) ? map->minmax.x = 0 : 0;
-		map->minmax.y = map->height / 2 + H / 2;
-		(map->minmax.y >= H) ? map->minmax.y = H - 1 : 0;
-		choose_color(map->map[map->block.x][map->block.y], map->boo);
+		map->minmax.y = map->height / 2 + HEIGHT / 2;
+		(map->minmax.y >= HEIGHT) ? map->minmax.y = HEIGHT - 1 : 0;
+		choose_color(map->board[map->block.x][map->block.y], map->boo);
 		i++;
 	}	
 }
 
-void	ray(t_mlx *mlx)
+void	ray(t_env *mlx)
 {
 	casting(mlx->map);
 }
