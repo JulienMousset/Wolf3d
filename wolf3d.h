@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:37:26 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/28 19:35:08 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/10/29 14:40:31 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include "mlx.h"
 # include "libft/libft.h"
 
-# define WIDTH 800
-# define HEIGHT 600
+# define WIDTH 640
+# define HEIGHT 480
 # define THREADS 8
 
 # define ERR_MALLOC "error trying to allocate memory"
