@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 12:29:31 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/28 18:36:32 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/10/30 21:19:36 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,7 @@ int		fill_board(t_map *map, int fd)
 		while (map->tmp[j])
 		{
 			map->board[i][j++] = ft_atoi(map->tmp[k++]);
-			printf("%d ", map->board[i][j - 1]);
 		}
-		printf("\n");
 		i++;
 		free_tmp_board(map->tmp);
 		ft_memdel((void **)&(map->line));
