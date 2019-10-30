@@ -6,7 +6,7 @@
 #    By: jmousset <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 15:35:26 by jmousset          #+#    #+#              #
-#    Updated: 2019/10/24 14:00:48 by jmousset         ###   ########.fr        #
+#    Updated: 2019/10/30 18:34:53 by jmousset         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,9 @@ SRCS = main.c\
 	   wolf3d.c\
 	   parsing.c\
 	   parsing_2.c\
-	   keyboard_events.c
+	   controls.c\
+	   misc.c\
+	   rayCasting.c
 
 OBJS = $(SRCS:.c=.o)
 
