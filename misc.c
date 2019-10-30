@@ -6,11 +6,21 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 14:54:18 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/10/28 19:35:07 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/10/30 18:05:17 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+int		close_program(t_env *env)
+{
+	mlx_destroy_image(env->mlx_ptr, env->img_ptr);
+	mlx_destroy_window(env->mlx_ptr, env->win_ptr);
+	free_board(env->map);
+	ft_memdel((void **)&(env->map));
+	ft_memdel((void **)&(env));
+	exit(EXIT_SUCCESS);
+}
 
 int		*ft_strint(int size)
 {
@@ -38,8 +48,8 @@ void	display_values(t_map *map)
 	printf("map size [%d][%d]\n", map->nb_columns, map->nb_lines);
 	printf("player p [%f][%f]\n", map->pos.x, map->pos.y);
 	printf("player d [%f][%f]\n", map->dir.x, map->dir.y);
-	printf("sign = %f\n", map->sign);
-	printf("rays dir [%f][%f]\n", map->raydir.x, map->raydir.y);
+	printf("sign = %f\n", map->cameraX);
+	printf("rays dir [%f][%f]\n", map->rayDir.x, map->rayDir.y);
 	printf("block c. [%d][%d]\n", map->block.x, map->block.y);
 	printf("delta xy [%f][%f]\n", map->delta.x, map->delta.y);
 	printf("boo = %d\n", map->boo);

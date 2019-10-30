@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:37:26 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/28 19:35:08 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/10/30 18:15:38 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include "mlx.h"
 # include "libft/libft.h"
 
-# define WIDTH 800
-# define HEIGHT 600
+# define W 800
+# define H 600
 # define THREADS 8
 
 # define ERR_MALLOC "error trying to allocate memory"
@@ -58,18 +58,20 @@ typedef struct	s_map
 	t_complex	pos;
 	t_complex	dir;
 	t_complex	plane;
+	double		cameraX;
+	t_complex	rayDir;
 	t_complex	time;
-	t_complex	side;
-	double		sign;
-	t_complex	raydir;
-	t_complex	delta;
+
 	t_coord		block;
+	t_complex	side;
+	t_complex	delta;
 	double		perp;
 	t_coord		step;
 	int			hit;
 	int			boo;
-	int			height;
-	t_coord		minmax;
+
+	int			wallHeight;
+	t_coord		minMax;
 	int			color;
 
 }				t_map;
@@ -79,7 +81,7 @@ typedef struct	s_env
 	void		*mlx_ptr;
 	void		*win_ptr;
 	void		*img_ptr;
-	char		*img_data_ptr;
+	char		*data_addr;
 	int			bpp;
 	int			s_l;
 	int			endian;
@@ -109,10 +111,11 @@ int				count_colums(t_map *map, char *file);
 
 int				fill_board(t_map *map, int fd);
 int				check_board(t_map *map);
+int				close_program(t_env *env);
 
-int				deal_key(int key, t_env *env);
+int				key_press(int key, void *param);
 
 double			abso(double a);
-void			ray(t_env *mlx);
+void			rayCasting(t_env *env, t_map *map);
 
 #endif
