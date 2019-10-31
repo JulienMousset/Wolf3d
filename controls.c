@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 18:02:20 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/10/31 18:01:41 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/10/31 18:15:06 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,13 @@ void	left_or_right(int key, t_map *map)
 	old_dir = map->dir.x;
 	old_plane = map->plane.x;
 	if (key == KEY_D)
-		rot_speed = -1;
+		rot_speed = 0.08 * -M_PI / 2;
 	else
-		rot_speed = 1;
+		rot_speed = 0.08 * M_PI / 2;
 	map->dir.x = map->dir.x * cos(rot_speed) - map->dir.y * sin(rot_speed);
 	map->dir.y = old_dir * sin(rot_speed) + map->dir.y * cos(rot_speed);
-	map->plane.x = map->plane.x * cos(rot_speed) - map->plane.y
-	* sin(rot_speed);
-	map->plane.y = old_plane * cos(rot_speed) + map->plane.y * cos(rot_speed);
+	map->plane.x = map->plane.x * cos(rot_speed) - map->plane.y * sin(rot_speed);
+	map->plane.y = old_plane * sin(rot_speed) + map->plane.y * cos(rot_speed);
 }
 
 void	up_or_down(int key, t_map *map, int **board, t_complex dir)
