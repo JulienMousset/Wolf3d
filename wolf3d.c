@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:32:43 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/31 12:52:25 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/31 14:15:49 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ void	set_values(t_map *map)
 {
 	map->dir = (t_complex) {.x = -1, .y = 0};
 	map->plane = (t_complex) {.x = 0, .y = 0.66};
-	/*Maybe put time and oldTime variables instead?*/
-	map->time = (t_complex) {.x = 0, .y = 0};
+	map->time = 0;
 }
 
 int		init_structure(t_env *env, char *file)

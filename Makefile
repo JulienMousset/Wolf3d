@@ -6,7 +6,7 @@
 #    By: jmousset <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 15:35:26 by jmousset          #+#    #+#              #
-#    Updated: 2019/10/31 11:25:40 by jmousset         ###   ########.fr        #
+#    Updated: 2019/10/31 14:25:23 by pasosa-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRCS = main.c\
 	   controls.c\
 	   misc.c\
 	   menu.c\
+	   get_time.c
 
 OBJS = $(SRCS:.c=.o)
 
