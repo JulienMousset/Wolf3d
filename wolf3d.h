@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/31 15:49:08 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/31 16:38:35 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ typedef struct	s_map
 	double		move_speed;
 	double		rot_speed;
 
-
 	t_coord		block;
 	t_complex	side;
 	t_complex	delta;
@@ -83,7 +82,6 @@ typedef struct	s_map
 	int			draw_start;
 	int			draw_end;
 	int			color;
-
 }				t_map;
 
 typedef struct	s_env
@@ -105,31 +103,44 @@ typedef struct	s_thread
 	t_env		*env;
 }				t_thread;
 
-void			display_usage(void);
 void			free_and_display_usage(t_env *env);
 void			free_tmp_board(char **s);
 int				free_board(t_map *map);
+
 int				wolf3d(char *file);
 int				init_structure(t_env *env, char *file);
+void			set_values(t_map *map);
+
 int				parsing(t_map *map, char *file);
 int				check_file(t_map *map, char *file);
 int				check_map(char *s);
 int				count_lines(t_map *map, char *file);
 int				count_colums(t_map *map, char *file);
-int				fill_board(t_map *map, int fd);
+
 int				check_board(t_map *map);
-int				close_program(t_env *env);
+int				fill_board(t_map *map, int fd);
 
-int				key_press(int key, void *param);
-
-double			abso(double a);
 void			ray_casting(t_env *env, t_map *map);
-
-void			menu(t_env *env);
+void			set_dda_values(t_map *map);
+void			dda(t_map *map);
+void			set_walls(t_map *map);
+void			display_result(t_env *env, t_map *map);
 
 void			choose_color(t_map *map, int ip, int ns_or_ew);
 void			draw_line(t_env *env, int i);
 void			put_pixel(t_env *env, int x, int y, int color);
+
+int				key_press(int key, void *param);
+int				close_program(t_env *env);
+void			up_or_down(int key, t_map *map, int **board, t_complex dir);
+void			left_or_right(int key, t_map *map);
+
 void			draw_background(t_env *env);
+int				*ft_strint(int size);
+void			display_values(t_map *map);
+
+void			menu(t_env *env);
+
 unsigned long	get_time(void);
+
 #endif

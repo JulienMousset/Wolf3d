@@ -1,17 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rayCasting.c                                       :+:      :+:    :+:   */
+/*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/30 17:57:05 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/10/31 15:49:51 by jmousset         ###   ########.fr       */
-/*   Updated: 2019/10/31 14:25:08 by pasosa-s         ###   ########.fr       */
+/*   Created: 2019/10/31 16:39:07 by jmousset          #+#    #+#             */
+/*   Updated: 2019/10/31 16:39:09 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+void	display_result(t_env *env, t_map *map)
+{
+	map->old_time = map->time;
+	map->time = get_time();
+	map->frame_time = (map->time - map->old_time) / 1000.0;
+	printf("fps : %f\n", map->frame_time);
+	map->move_speed = map->frame_time * 5.0;
+	map->rot_speed = map->frame_time * 3.0;
+	mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_ptr, 0, 0);
+	menu(env);
+}
 
 void	set_walls(t_map *map)
 {
@@ -73,19 +84,6 @@ void	set_dda_values(t_map *map)
 	}
 }
 
-void	display_result(t_env *env, t_map *map)
-{
-	map->old_time = map->time;
-	map->time = get_time();
-	map->frame_time = (map->time - map->old_time) / 1000.0;
-	printf("fps : %f\n", map->frame_time);
-	map->move_speed = map->frame_time * 5.0;
-	map->rot_speed = map->frame_time * 3.0;
-	mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_ptr, 0, 0);
-	menu(env);
-
-}
-
 void	ray_casting(t_env *env, t_map *map)
 {
 	int		i;
@@ -104,7 +102,8 @@ void	ray_casting(t_env *env, t_map *map)
 		set_dda_values(map);
 		dda(map);
 		set_walls(map);
-		choose_color(map, map->board[map->block.x][map->block.y], map->ns_or_ew);
+		choose_color(map, map->board[map->block.x][map->block.y],
+		map->ns_or_ew);
 		draw_line(env, i);
 		i++;
 	}

@@ -6,20 +6,29 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 18:02:20 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/10/31 15:53:58 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/31 16:34:34 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int		close_program(t_env *env)
+void	left_or_right(int key, t_map *map)
 {
-	mlx_destroy_image(env->mlx_ptr, env->img_ptr);
-	mlx_destroy_window(env->mlx_ptr, env->win_ptr);
-	free_board(env->map);
-	ft_memdel((void **)&(env->map));
-	ft_memdel((void **)&(env));
-	exit(EXIT_SUCCESS);
+	double	old_dir;
+	double	old_plane;
+	double	rot_speed;
+
+	old_dir = map->dir.x;
+	old_plane = map->plane.x;
+	if (key == KEY_D)
+		rot_speed = -1;
+	else
+		rot_speed = 1;
+	map->dir.x = map->dir.x * cos(rot_speed) - map->dir.y * sin(rot_speed);
+	map->dir.y = old_dir * sin(rot_speed) + map->dir.y * cos(rot_speed);
+	map->plane.x = map->plane.x * cos(rot_speed) - map->plane.y
+	* sin(rot_speed);
+	map->plane.y = old_plane * cos(rot_speed) + map->plane.y * cos(rot_speed);
 }
 
 void	up_or_down(int key, t_map *map, int **board, t_complex dir)
@@ -40,23 +49,14 @@ void	up_or_down(int key, t_map *map, int **board, t_complex dir)
 	}
 }
 
-void	left_or_right(int key, t_map *map)
+int		close_program(t_env *env)
 {
-	double	old_dir;
-	double	old_plane;
-	double	rot_speed;
-
-	old_dir = map->dir.x;
-	old_plane = map->plane.x;
-	if (key == KEY_D)
-		rot_speed = -1;
-	else
-		rot_speed = 1;
-	map->dir.x = map->dir.x * cos(rot_speed) - map->dir.y * sin(rot_speed);
-	map->dir.y = old_dir * sin(rot_speed) + map->dir.y * cos(rot_speed);
-	map->plane.x = map->plane.x * cos(rot_speed) - map->plane.y
-	* sin(rot_speed);
-	map->plane.y = old_plane * cos(rot_speed) + map->plane.y * cos(rot_speed);
+	mlx_destroy_image(env->mlx_ptr, env->img_ptr);
+	mlx_destroy_window(env->mlx_ptr, env->win_ptr);
+	free_board(env->map);
+	ft_memdel((void **)&(env->map));
+	ft_memdel((void **)&(env));
+	exit(EXIT_SUCCESS);
 }
 
 int		key_press(int key, void *param)
