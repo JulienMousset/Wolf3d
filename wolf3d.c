@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:32:43 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/31 18:23:13 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/10/31 21:07:08 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ void	set_values(t_map *map)
 {
 	map->dir = (t_complex) {.x = -1, .y = 0};
 	map->plane = (t_complex) {.x = 0, .y = 0.66};
+	map->move_coef = 0.1;
+	map->rot_coef = 0.08;
+	map->run = 0;
+	map->menu = 0;
+	map->mouse_pos = (t_coord) {.x = W / 2, .y = H / 2};
 }
 
 int		init_structure(t_env *env, char *file)
@@ -42,6 +47,7 @@ int		wolf3d(char *file)
 	init_structure(env, file);
 	ray_casting(env, env->map);
 	mlx_hook(env->win_ptr, 2, (1L << 0), key_press, env);
+	mlx_hook(env->win_ptr, 6, 0, mouse_move, env);
 	mlx_loop(env->mlx_ptr);
 	return (1);
 }

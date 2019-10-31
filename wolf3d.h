@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/31 18:23:29 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/10/31 21:08:48 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,11 @@ typedef struct	s_map
 	double		old_time;
 	double		frame_time;
 
-	double		move_speed;
+	double		move_coef;
+	double		rot_coef;
+
+	double		run;
+	int			menu;
 
 	t_coord		block;
 	t_complex	side;
@@ -83,6 +87,8 @@ typedef struct	s_map
 	int			draw_start;
 	int			draw_end;
 	int			color;
+
+	t_coord		mouse_pos;
 }				t_map;
 
 typedef struct	s_env
@@ -134,14 +140,17 @@ void			put_pixel(t_env *env, int x, int y, int color);
 int				key_press(int key, void *param);
 int				close_program(t_env *env);
 void			up_or_down(int key, t_map *map, int **board, t_complex dir);
-void			left_or_right(int key, t_map *map);
+void			left_or_right(int key, t_map *map, double rot_coef);
 
 void			draw_background(t_env *env);
 int				*ft_strint(int size);
 void			display_values(t_map *map);
 
+void			text_menu(t_env *env);
 void			menu(t_env *env);
 
 unsigned long	get_time(void);
+int				mouse_move(int x, int y, void *param);
+
 
 #endif
