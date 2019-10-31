@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:39:07 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/31 16:39:09 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/31 16:57:32 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	display_result(t_env *env, t_map *map)
 	map->old_time = map->time;
 	map->time = get_time();
 	map->frame_time = (map->time - map->old_time) / 1000.0;
-	printf("fps : %f\n", map->frame_time);
 	map->move_speed = map->frame_time * 5.0;
 	map->rot_speed = map->frame_time * 3.0;
 	mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_ptr, 0, 0);
