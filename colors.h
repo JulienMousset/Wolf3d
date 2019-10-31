@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 17:55:59 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/10/30 20:14:06 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/10/31 12:22:42 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 
 # define M 0xD7DCD4
 
-#define SKY 0x87ceeb;
-#define GROUND 0x807e78;
+# define SKY 0x87ceeb;
+# define GROUND 0x807e78;
 
 # define PASTEL1 0xffe0bd
 # define PASTEL2 0xffcd94

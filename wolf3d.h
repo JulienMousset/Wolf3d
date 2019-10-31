@@ -5,10 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/17 15:37:26 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/31 10:11:56 by jmousset         ###   ########.fr       */
-/*   Updated: 2019/10/30 21:19:48 by pasosa-s         ###   ########.fr       */
-/*   Updated: 2019/10/29 14:40:31 by jmousset         ###   ########.fr       */
+/*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
+/*   Updated: 2019/10/31 12:26:12 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +24,6 @@
 
 # define W 640
 # define H 480
-
-# define WIDTH 640
-# define HEIGHT 480
 # define THREADS 8
 
 # define ERR_MALLOC "error trying to allocate memory"
@@ -63,8 +58,8 @@ typedef struct	s_map
 	t_complex	pos;
 	t_complex	dir;
 	t_complex	plane;
-	double		cameraX;
-	t_complex	rayDir;
+	double		camera_x;
+	t_complex	ray_dir;
 	t_complex	time;
 
 	t_coord		block;
@@ -75,8 +70,8 @@ typedef struct	s_map
 	int			hit;
 	int			boo;
 
-	int			wallHeight;
-	t_coord		minMax;
+	int			wall_height;
+	t_coord		min_max;
 	int			color;
 
 }				t_map;
@@ -123,11 +118,7 @@ void			ray_casting(t_env *env, t_map *map);
 void			menu(t_env *env);
 
 void			choose_color(t_map *map, int ip, int boo);
-void			draw_line(t_env *env, int i, t_coord minMax, int color);
+void			draw_line(t_env *env, int i, t_coord min_max, int color);
 void			put_pixel(t_env *env, int x, int y, int color);
 void			draw_background(t_env *env);
-
-
-
-
 #endif

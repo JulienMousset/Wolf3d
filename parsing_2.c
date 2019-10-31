@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 12:29:31 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/30 21:19:36 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/10/31 12:52:00 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int		check_board(t_map *map)
 			|| j == map->nb_columns - 1) && (map->board[i][j] == 0
 			|| map->board[i][j] == 9)) || (map->board[i][j] == 9 && player > 0))
 				return (0);
-			if (map->board[i][j] == 9){
+			if (map->board[i][j] == 9)
+			{
 				map->pos = (t_complex) {.x = i, .y = j};
 				player++;
 			}
