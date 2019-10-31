@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 14:54:18 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/10/30 20:16:04 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/10/31 10:18:27 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,6 @@ void	draw_background(t_env *env)
 		}
 		i++;
 	}
-}
-
-int		close_program(t_env *env)
-{
-	mlx_destroy_image(env->mlx_ptr, env->img_ptr);
-	mlx_destroy_window(env->mlx_ptr, env->win_ptr);
-	free_board(env->map);
-	ft_memdel((void **)&(env->map));
-	ft_memdel((void **)&(env));
-	exit(EXIT_SUCCESS);
 }
 
 int		*ft_strint(int size)

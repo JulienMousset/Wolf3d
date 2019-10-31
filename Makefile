@@ -6,7 +6,7 @@
 #    By: jmousset <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 15:35:26 by jmousset          #+#    #+#              #
-#    Updated: 2019/10/30 18:34:53 by jmousset         ###   ########.fr        #
+#    Updated: 2019/10/31 10:17:53 by jmousset         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,9 @@ LIB = ./libft/libft.a
 
 MLX_PATH = ./minilibx/
 
-HDR = wolf3d.h
+HDR = wolf3d.h\
+	  colors.h\
+	  controls.h
 
 SRCS = main.c\
 	   wolf3d.c\
@@ -34,7 +36,10 @@ SRCS = main.c\
 	   parsing_2.c\
 	   controls.c\
 	   misc.c\
-	   rayCasting.c
+	   ray_casting.c\
+	   menu.c\
+	   keyboard_events.c\
+	   draw.c
 
 OBJS = $(SRCS:.c=.o)
 
