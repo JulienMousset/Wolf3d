@@ -6,7 +6,11 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:37:26 by jmousset          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/10/30 19:31:14 by jmousset         ###   ########.fr       */
+=======
+/*   Updated: 2019/10/30 21:19:48 by pasosa-s         ###   ########.fr       */
+>>>>>>> 997fec3316c6a149899f7b892a31811f52d30e53
 /*   Updated: 2019/10/29 14:40:31 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -103,16 +107,13 @@ void			display_usage(void);
 void			free_and_display_usage(t_env *env);
 void			free_tmp_board(char **s);
 int				free_board(t_map *map);
-
 int				wolf3d(char *file);
 int				init_structure(t_env *env, char *file);
-
 int				parsing(t_map *map, char *file);
 int				check_file(t_map *map, char *file);
 int				check_map(char *s);
 int				count_lines(t_map *map, char *file);
 int				count_colums(t_map *map, char *file);
-
 int				fill_board(t_map *map, int fd);
 int				check_board(t_map *map);
 int				close_program(t_env *env);
@@ -120,6 +121,16 @@ int				close_program(t_env *env);
 int				key_press(int key, void *param);
 
 double			abso(double a);
-void			rayCasting(t_env *env, t_map *map);
+void			ray_casting(t_env *env, t_map *map);
+
+void			menu(t_env *env);
+
+void			choose_color(t_map *map, int ip, int boo);
+void			draw_line(t_env *env, int i, t_coord minMax, int color);
+void			put_pixel(t_env *env, int x, int y, int color);
+void			draw_background(t_env *env);
+
+
+
 
 #endif

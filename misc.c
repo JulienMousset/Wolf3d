@@ -6,11 +6,34 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 14:54:18 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/10/30 18:05:17 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/10/30 20:16:04 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+#include "colors.h"
+
+void	draw_background(t_env *env)
+{
+	int		*image;
+	int		i;
+
+	i = 0;
+	image = (int *)env->data_addr;
+	i = 0;
+	while (i < W * H)
+	{
+		if (i < W * (H / 2))
+		{
+			image[i] = SKY;
+		}
+		else
+		{
+			image[i] = GROUND;
+		}
+		i++;
+	}
+}
 
 int		close_program(t_env *env)
 {

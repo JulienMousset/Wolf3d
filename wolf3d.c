@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:32:43 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/30 18:02:12 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/10/30 21:18:08 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	set_values(t_map *map)
 	map->dir = (t_complex) {.x = -1, .y = 0};
 	map->plane = (t_complex) {.x = 0, .y = 0.66};
 	map->time = (t_complex) {.x = 0, .y = 0};
-	map->hit = 0;
-	map->boo = 0;
 }
 
 int		init_structure(t_env *env, char *file)
@@ -27,7 +25,6 @@ int		init_structure(t_env *env, char *file)
 		return (0);
 	if (!(parsing(env->map, file)))
 		free_and_display_usage(env);
-	printf("player[%f][%f]\n", env->map->pos.x, env->map->pos.y);
 	set_values(env->map);
 	env->mlx_ptr = mlx_init();
 	env->win_ptr = mlx_new_window(env->mlx_ptr, W, H, "Wolf3D");
@@ -48,7 +45,7 @@ int		wolf3d(char *file)
 	if (!(env = (t_env *)malloc(sizeof(t_env))))
 		return (0);
 	init_structure(env, file);
-	rayCasting(env, env->map);
+	ray_casting(env, env->map);
 	mlx_hook(env->win_ptr, 2, 0, key_press, env);
 	mlx_loop(env->mlx_ptr);
 	return (1);
