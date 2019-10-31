@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:37:26 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/30 18:35:48 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/30 19:31:14 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/10/29 14:40:31 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -23,8 +23,8 @@
 # include "mlx.h"
 # include "libft/libft.h"
 
-# define W 800
-# define H 600
+# define W 640
+# define H 480
 
 # define WIDTH 640
 # define HEIGHT 480
