@@ -6,11 +6,49 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 17:57:05 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/10/31 12:27:58 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/31 13:20:52 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+void	walls(t_map *map)
+{
+	if (map->boo == 0)
+		map->perp = (map->block.x - map->pos.x +
+				(1 - map->step.x) / 2) / map->ray_dir.x;
+	else
+		map->perp = (map->block.y - map->pos.y +
+				(1 - map->step.y) / 2) / map->ray_dir.y;
+	map->wall_height = (int)(H / map->perp);
+	//Change min_max variable name?
+	map->min_max.x = -map->wall_height / 2 + H / 2;
+	(map->min_max.x < 0) ? map->min_max.x = 0 : 0;
+	map->min_max.y = map->wall_height / 2 + H / 2;
+	(map->min_max.y >= H) ? map->min_max.y = H - 1 : 0;
+}
+
+void	dda(t_map *map)
+{
+	map->hit = 0;
+	while (!map->hit)
+	{
+		if (map->side.x < map->side.y)
+		{
+			map->side.x += map->delta.x;
+			map->block.x += map->step.x;
+			//Let's change the boo variable name plz 😂
+			map->boo = 0;
+		}
+		else
+		{
+			map->side.y += map->delta.y;
+			map->block.y += map->step.y;
+			map->boo = 1;
+		}
+		map->hit = (map->board[map->block.x][map->block.y] > 0) ? 1 : 0;
+	}
+}
 
 void	dda_values(t_map *map)
 {
@@ -36,42 +74,6 @@ void	dda_values(t_map *map)
 	}
 }
 
-void	dda(t_map *map)
-{
-	map->hit = 0;
-	while (!map->hit)
-	{
-		if (map->side.x < map->side.y)
-		{
-			map->side.x += map->delta.x;
-			map->block.x += map->step.x;
-			map->boo = 0;
-		}
-		else
-		{
-			map->side.y += map->delta.y;
-			map->block.y += map->step.y;
-			map->boo = 1;
-		}
-		map->hit = (map->board[map->block.x][map->block.y] > 0) ? 1 : 0;
-	}
-}
-
-void	walls(t_map *map)
-{
-	if (map->boo == 0)
-		map->perp = (map->block.x - map->pos.x +
-				(1 - map->step.x) / 2) / map->ray_dir.x;
-	else
-		map->perp = (map->block.y - map->pos.y +
-				(1 - map->step.y) / 2) / map->ray_dir.y;
-	map->wall_height = (int)(H / map->perp);
-	map->min_max.x = -map->wall_height / 2 + H / 2;
-	(map->min_max.x < 0) ? map->min_max.x = 0 : 0;
-	map->min_max.y = map->wall_height / 2 + H / 2;
-	(map->min_max.y >= H) ? map->min_max.y = H - 1 : 0;
-}
-
 void	ray_casting(t_env *env, t_map *map)
 {
 	int		i;
@@ -85,6 +87,7 @@ void	ray_casting(t_env *env, t_map *map)
 		map->ray_dir.y = map->dir.y + map->plane.y * map->camera_x;
 		map->block.x = map->pos.x;
 		map->block.y = map->pos.y;
+		//Why not use the math lib function fabs?
 		map->delta.x = abso(1 / map->ray_dir.x);
 		map->delta.y = abso(1 / map->ray_dir.y);
 		dda_values(map);
