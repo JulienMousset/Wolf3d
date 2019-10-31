@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/31 18:01:45 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/10/31 18:23:29 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ typedef struct	s_map
 	double		frame_time;
 
 	double		move_speed;
-	double		rot_speed;
 
 	t_coord		block;
 	t_complex	side;

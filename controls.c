@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 18:02:20 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/10/31 18:01:41 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/10/31 18:23:03 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	left_or_right(int key, t_map *map)
 		rot_speed = 1;
 	map->dir.x = map->dir.x * cos(rot_speed) - map->dir.y * sin(rot_speed);
 	map->dir.y = old_dir * sin(rot_speed) + map->dir.y * cos(rot_speed);
-	map->plane.x = map->plane.x * cos(rot_speed) - map->plane.y
-	* sin(rot_speed);
+	map->plane.x = map->plane.x * cos(rot_speed)
+		- map->plane.y * sin(rot_speed);
 	map->plane.y = old_plane * cos(rot_speed) + map->plane.y * cos(rot_speed);
 }
 
@@ -36,16 +36,16 @@ void	up_or_down(int key, t_map *map, int **board, t_complex dir)
 	if (key == KEY_W)
 	{
 		map->pos.x = (board[(int)(map->pos.x + dir.x)][(int)map->pos.y] == 0) ?
-		map->pos.x += dir.x * MOVE_SPEED : map->pos.x;
+			map->pos.x += dir.x * MOVE_SPEED : map->pos.x;
 		map->pos.y = (board[(int)map->pos.x][(int)(map->pos.y + dir.y)] == 0) ?
-		map->pos.y += dir.y * MOVE_SPEED: map->pos.y;
+			map->pos.y += dir.y * MOVE_SPEED: map->pos.y;
 	}
 	else if (key == KEY_S)
 	{
 		map->pos.x = (board[(int)(map->pos.x - dir.x)][(int)map->pos.y] == 0) ?
-		map->pos.x -= dir.x * MOVE_SPEED : map->pos.x;
+			map->pos.x -= dir.x * MOVE_SPEED : map->pos.x;
 		map->pos.y = (board[(int)map->pos.x][(int)(map->pos.y - dir.y)] == 0) ?
-		map->pos.y -= dir.y * MOVE_SPEED : map->pos.y;
+			map->pos.y -= dir.y * MOVE_SPEED : map->pos.y;
 	}
 }
 
