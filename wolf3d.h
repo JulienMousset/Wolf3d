@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/31 12:26:12 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/31 14:25:10 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,14 @@ typedef struct	s_map
 	t_complex	plane;
 	double		camera_x;
 	t_complex	ray_dir;
-	t_complex	time;
+
+	double		time;
+	double		old_time;
+	double		frame_time;
+
+	double		move_speed;
+	double		rot_speed;
+
 
 	t_coord		block;
 	t_complex	side;
@@ -121,4 +128,5 @@ void			choose_color(t_map *map, int ip, int boo);
 void			draw_line(t_env *env, int i, t_coord min_max, int color);
 void			put_pixel(t_env *env, int x, int y, int color);
 void			draw_background(t_env *env);
+unsigned long	get_time(void);
 #endif
