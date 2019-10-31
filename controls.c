@@ -6,12 +6,11 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 18:02:20 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/10/31 15:08:58 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/31 15:53:58 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-#include "controls.h"
 
 int		close_program(t_env *env)
 {

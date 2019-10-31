@@ -6,12 +6,11 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 14:54:18 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/10/31 14:57:26 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/31 15:54:17 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-#include "colors.h"
 
 void	draw_background(t_env *env)
 {

@@ -6,14 +6,11 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:13:50 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/10/31 14:22:19 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/10/31 15:53:50 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-
-#include "controls.h"
-#include "colors.h"
 
 void	menu(t_env *env)
 {
