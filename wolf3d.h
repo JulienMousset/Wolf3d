@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/31 14:25:10 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/10/31 15:49:08 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <pthread.h>
 # include "mlx.h"
 # include "libft/libft.h"
+# include "colors.h"
+# include "controls.h"
 
 # define W 640
 # define H 480
@@ -75,10 +77,11 @@ typedef struct	s_map
 	double		perp;
 	t_coord		step;
 	int			hit;
-	int			boo;
+	int			ns_or_ew;
 
 	int			wall_height;
-	t_coord		min_max;
+	int			draw_start;
+	int			draw_end;
 	int			color;
 
 }				t_map;
@@ -124,8 +127,8 @@ void			ray_casting(t_env *env, t_map *map);
 
 void			menu(t_env *env);
 
-void			choose_color(t_map *map, int ip, int boo);
-void			draw_line(t_env *env, int i, t_coord min_max, int color);
+void			choose_color(t_map *map, int ip, int ns_or_ew);
+void			draw_line(t_env *env, int i);
 void			put_pixel(t_env *env, int x, int y, int color);
 void			draw_background(t_env *env);
 unsigned long	get_time(void);

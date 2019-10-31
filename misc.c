@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 14:54:18 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/10/31 12:52:56 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/10/31 14:57:26 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	display_values(t_map *map)
 	printf("rays dir [%f][%f]\n", map->ray_dir.x, map->ray_dir.y);
 	printf("block c. [%d][%d]\n", map->block.x, map->block.y);
 	printf("delta xy [%f][%f]\n", map->delta.x, map->delta.y);
-	printf("boo = %d\n", map->boo);
+	printf("ns_or_ew = %d\n", map->ns_or_ew);
 	printf("step xy  [%d][%d]\n", map->step.x, map->step.y);
 	printf("side xy [%f][%f]\n", map->side.x, map->side.y);
 }
