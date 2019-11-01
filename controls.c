@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 18:02:20 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/10/31 21:05:28 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/01 22:03:59 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/10/31 18:15:06 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -79,6 +79,8 @@ int		key_press(int key, void *param)
 		env->map->menu = env->map->menu ? 0 : 1;
 	else if (key == KEY_SPACE)
 		set_values(env->map);
+	else if (key == KEY_O)
+		env->map->mm_switch = env->map->mm_switch ? 0 : 1;
 	ray_casting(env, env->map);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:39:45 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/10/31 15:49:10 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/11/01 21:44:21 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,29 @@ void	draw_line(t_env *env, int i)
 	}
 }
 
-void	choose_color(t_map *map, int ip, int ns_or_ew)
+int		choose_color(int id, int ns_or_ew)
 {
-	if (ip == 1)
-		map->color = GR;
-	else if (ip == 2)
-		map->color = GG;
-	else if (ip == 3)
-		map->color = GB;
+	int color;
+
+	if (id == 1)
+		color = GR;
+	else if (id == 2)
+		color = GG;
+	else if (id == 3)
+		color = GB;
+	else if (id == 4)
+		color = GY;
+	else if (id == 5)
+		color = PURPLE4;
+	else if (id == 6)
+		color = TUR3;
+	else if (id == 7)
+		color = TAMARINDO;
+	else if (id == 8)
+		color = PASION2;
+	else if (id == 9)
+		color = SGREEN;
 	if (ns_or_ew == 1)
-		map->color = map->color / 2;
+		color = color / 2;
+	return (color);
 }

@@ -6,11 +6,23 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:32:43 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/31 21:07:08 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/01 22:03:18 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+void	set_mmmap_values(t_map *map)
+{
+	map->mm_switch = 1;
+	map->mm_size = per(W, 10); //size of the mmmap
+	map->mm_vis = 32; // visualization of 40 blocks around
+	map->mm_block_size = 4;  //size 4 -> 2x2 block
+	map->mm_start.x = map->pos.x - map->mm_vis / 2;
+	map->mm_start.y = map->pos.y - map->mm_vis / 2;
+	map->mm_end.x = map->pos.x + map->mm_vis / 2;
+	map->mm_end.y = map->pos.y + map->mm_vis / 2;
+}
 
 void	set_values(t_map *map)
 {
@@ -21,6 +33,8 @@ void	set_values(t_map *map)
 	map->run = 0;
 	map->menu = 0;
 	map->mouse_pos = (t_coord) {.x = W / 2, .y = H / 2};
+	place_player(map);
+	set_mmmap_values(map);
 }
 
 int		init_structure(t_env *env, char *file)

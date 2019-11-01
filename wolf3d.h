@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/31 21:08:48 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/01 22:03:05 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@
 # include "colors.h"
 # include "controls.h"
 
-# define W 640
-# define H 480
+# define W 1280
+# define H 720
+# define TEX_SIZE 64
 # define THREADS 8
 # define MOVE_SPEED 0.1
 # define ROT_SPEED 0.08
@@ -89,6 +90,15 @@ typedef struct	s_map
 	int			color;
 
 	t_coord		mouse_pos;
+
+	int			mm_switch;
+	t_coord		mm_start;
+	t_coord		mm_end;
+	int			mm_size;
+	t_coord		mm_coord;
+	int			mm_vis;
+	int			mm_block_size;
+
 }				t_map;
 
 typedef struct	s_env
@@ -133,7 +143,7 @@ void			dda(t_map *map);
 void			set_walls(t_map *map);
 void			display_result(t_env *env, t_map *map);
 
-void			choose_color(t_map *map, int ip, int ns_or_ew);
+int				choose_color(int id, int ns_or_ew);
 void			draw_line(t_env *env, int i);
 void			put_pixel(t_env *env, int x, int y, int color);
 
@@ -151,6 +161,9 @@ void			menu(t_env *env);
 
 unsigned long	get_time(void);
 int				mouse_move(int x, int y, void *param);
+int				place_player(t_map *map);
+void			draw_minimap(t_env *env, t_map *map);
 
 
 #endif
+

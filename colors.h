@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 17:55:59 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/10/31 12:22:42 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/11/01 22:09:47 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@
 # define MARBLE 0xD7DCD4
 # define GRIS 0xc2c4bf
 # define GRIS2 0xe3e6e1
+# define PINK 0xFFC0CB
 
 # define M 0xD7DCD4
 
-# define SKY 0x87ceeb;
-# define GROUND 0x807e78;
+# define SKY 0x87ceeb
+# define GROUND 0x807e78
 
 # define PASTEL1 0xffe0bd
 # define PASTEL2 0xffcd94
