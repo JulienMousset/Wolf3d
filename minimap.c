@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 19:10:56 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/01 22:14:55 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/02 20:29:14 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,13 @@ void	draw_mini_background(t_env *env, t_map *map)
 	}
 }
 
-void	put_n_pixel(t_env *env, int xx, int yy, int id)
+void	put_n_pixel(t_env *env, int xx, int yy, int id, t_coord c)
 {
 	t_map	*map;
 	int		color;
 	int		x;
 	int		y;
+	t_coord	coord;
 
 	map = env->map;
 	if (id == 0)
@@ -46,14 +47,16 @@ void	put_n_pixel(t_env *env, int xx, int yy, int id)
 		color = choose_color(id, 0);
 	xx *= map->mm_block_size;
 	yy *= map->mm_block_size;
+	coord.x = W - per(W, 7) - map->mm_size  + c.x * map->mm_block_size;
+	coord.y = per(H, 5) + c.y * map->mm_block_size;
 	y = 0;
 	while (y < map->mm_block_size)
 	{
 		x = 0;
 		while (x < map->mm_block_size)
 		{
-			if ((map->mm_coord.x + x + xx < W) && (map->mm_coord.y + y + yy < H))
-				put_pixel(env, map->mm_coord.x + x + xx, map->mm_coord.y + y + yy,
+			if ((coord.x + x + xx < W) && (coord.y + y + yy < H))
+				put_pixel(env, coord.x + x + xx, coord.y + y + yy,
 						color);
 			x++;
 		}
@@ -78,10 +81,10 @@ void	draw_minimap(t_env *env, t_map *map)
 		{
 			if((c.x + x >= 0) && (c.x + x < map->nb_columns) &&
 					(c.y + y >= 0) && (c.y + y < map->nb_lines) &&
-					map->board[c.x + x][c.y + y])
-				put_n_pixel(env, x, y, map->board[c.x + x][c.y + y]);
-			if (c.x + x == (int)map->pos.x && c.y + y == (int)map->pos.y)
-				put_n_pixel(env, x, y, 0);
+					map->board[c.y + y][c.x + x])
+				put_n_pixel(env, x, y, map->board[c.y + y][c.x + x], c);
+			if (c.x + x == (int)map->pos.y && c.y + y == (int)map->pos.x)
+				put_n_pixel(env, x, y, 0, c);
 			x++;
 		}
 		y++;

@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:32:43 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/01 22:03:18 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/02 20:50:02 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	set_values(t_map *map)
 	map->menu = 0;
 	map->mouse_pos = (t_coord) {.x = W / 2, .y = H / 2};
 	place_player(map);
+	map->pos.x -= map->dir.x * MOVE_SPEED;
 	set_mmmap_values(map);
 }
 
