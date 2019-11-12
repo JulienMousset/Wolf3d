@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:32:43 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/02 20:50:02 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/12 11:58:43 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int		wolf3d(char *file)
 	ray_casting(env, env->map);
 	mlx_hook(env->win_ptr, 2, (1L << 0), key_press, env);
 	mlx_hook(env->win_ptr, 6, 0, mouse_move, env);
+	mlx_hook(env->win_ptr, 17, 0, close_program, env);
 	mlx_loop(env->mlx_ptr);
 	return (1);
 }
