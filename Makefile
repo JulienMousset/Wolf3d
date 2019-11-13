@@ -6,7 +6,7 @@
 #    By: jmousset <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 15:35:26 by jmousset          #+#    #+#              #
-#    Updated: 2019/11/01 22:05:46 by pasosa-s         ###   ########.fr        #
+#    Updated: 2019/11/13 20:39:14 by pasosa-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,8 @@ SRCS = main.c\
 	   get_time.c\
 	   mouse.c\
 	   place_player.c\
-	   minimap.c
+	   minimap.c \
+	   load_textures.c
 
 OBJS = $(SRCS:.c=.o)
 

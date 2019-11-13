@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:39:07 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/01 22:04:22 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/13 21:53:19 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void	set_walls(t_map *map)
 	else
 		map->perp = (map->block.y - map->pos.y +
 				(1 - map->step.y) / 2) / map->ray_dir.y;
-	map->wall_height = (int)(H / map->perp);
-	map->draw_start = -map->wall_height / 2 + H / 2;
-	(map->draw_start < 0) ? map->draw_start = 0 : 0;
-	map->draw_end = map->wall_height / 2 + H / 2;
-	(map->draw_end >= H) ? map->draw_end = H - 1 : 0;
+	map->line_height = (int)(H / map->perp);
+	map->y_start = -map->line_height / 2 + H / 2;
+	(map->y_start < 0) ? map->y_start = 0 : 0;
+	map->y_end = map->line_height / 2 + H / 2;
+	(map->y_end >= H) ? map->y_end = H - 1 : 0;
 }
 
 void	dda(t_map *map)
@@ -74,13 +74,13 @@ void	set_dda_values(t_map *map)
 
 void	ray_casting(t_env *env, t_map *map)
 {
-	int		i;
+	int		x;
 
-	i = 0;
+	x = 0;
 	draw_background(env);
-	while (i < W)
+	while (x < W)
 	{
-		map->camera_x = 2 * i / (double)W - 1;
+		map->camera_x = 2 * x / (double)W - 1;
 		map->ray_dir.x = map->dir.x + map->plane.x * map->camera_x;
 		map->ray_dir.y = map->dir.y + map->plane.y * map->camera_x;
 		map->block.x = map->pos.x;
@@ -90,10 +90,10 @@ void	ray_casting(t_env *env, t_map *map)
 		set_dda_values(map);
 		dda(map);
 		set_walls(map);
-		map->color = choose_color(map->board[map->block.x][map->block.y],
-		map->ns_or_ew);
-		draw_line(env, i);
-		i++;
+		map->id = map->board[map->block.x][map->block.y] - 1;
+		map->color = choose_color(map->id, map->ns_or_ew);
+		draw_line(env, env->map, x, env->map->y_start);
+		x++;
 	}
 	map->mm_switch ? draw_minimap(env, env->map) : 0;
 	mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_ptr, 0, 0);

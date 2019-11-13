@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:32:43 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/12 11:58:43 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/11/13 20:59:09 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	set_values(t_map *map)
 	map->rot_coef = 0.08;
 	map->run = 0;
 	map->menu = 0;
+	map->boo = 0;
 	map->mouse_pos = (t_coord) {.x = W / 2, .y = H / 2};
 	place_player(map);
 	map->pos.x -= map->dir.x * MOVE_SPEED;
@@ -50,6 +51,7 @@ int		init_structure(t_env *env, char *file)
 	env->img_ptr = mlx_new_image(env->mlx_ptr, W, H);
 	env->data_addr = mlx_get_data_addr(env->img_ptr, &(env->bpp), &(env->s_l),
 	&(env->endian));
+	load_textures(env);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/02 20:40:55 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/13 21:53:20 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 
 # define W 1280
 # define H 720
-# define TEX_SIZE 64
+# define TS 64
 # define THREADS 8
 # define MOVE_SPEED 0.1
 # define ROT_SPEED 0.08
@@ -40,6 +40,18 @@
 # define ERR_NOFILE "File doesn't exit."
 # define ERR_FULL "Map without place for the player."
 
+# define BARREL "textures/barrel.XPM"
+# define BLUESTONE "textures/bluestone.XPM"
+# define COLORSTONE "textures/colorstone.XPM"
+# define EAGLE "textures/eagle.XPM"
+# define GREENLIGHT "textures/greenlight.XPM"
+# define GREYSTONE "textures/greystone.XPM"
+# define MOSSY "textures/mossy.XPM"
+# define PILLAR "textures/pillar.XPM"
+# define PURPLESTONE "textures/purplestone.XPM"
+# define REDBRICK "textures/redbrick.XPM"
+# define WOOD "textures/wood.XPM"
+
 typedef struct	s_coord
 {
 	int		x;
@@ -51,6 +63,15 @@ typedef struct	s_complex
 	double	x;
 	double	y;
 }				t_complex;
+
+typedef struct	s_img
+{
+	void		*img_ptr;
+	char		*data_addr;
+	int			bpp;
+	int			s_l;
+	int			endian;
+}				t_img;
 
 typedef struct	s_map
 {
@@ -84,10 +105,21 @@ typedef struct	s_map
 	int			hit;
 	int			ns_or_ew;
 
-	int			wall_height;
-	int			draw_start;
-	int			draw_end;
+	int			line_height;
+	int			y_start;
+	int			y_end;
 	int			color;
+
+	int			r;
+	int			g;
+	int			b;
+
+	double		wall_x;
+	int			tex_x;
+	int			tex_y;
+	int			d;
+	int			id;
+	int			boo;
 
 	t_coord		mouse_pos;
 
@@ -111,6 +143,7 @@ typedef struct	s_env
 	int			s_l;
 	int			endian;
 	t_map		*map;
+	t_img		t[8];
 }				t_env;
 
 typedef struct	s_thread
@@ -144,7 +177,7 @@ void			set_walls(t_map *map);
 void			display_result(t_env *env, t_map *map);
 
 int				choose_color(int id, int ns_or_ew);
-void			draw_line(t_env *env, int i);
+void			draw_line(t_env *env, t_map *map, int x, int y_start);
 void			put_pixel(t_env *env, int x, int y, int color);
 
 int				key_press(int key, void *param);
@@ -163,6 +196,9 @@ unsigned long	get_time(void);
 int				mouse_move(int x, int y, void *param);
 int				place_player(t_map *map);
 void			draw_minimap(t_env *env, t_map *map);
+
+void			load_textures(t_env *env);
+void			pick_color(t_env *env, t_map *map, int x, int y_start);
 
 
 #endif

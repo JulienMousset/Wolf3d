@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 18:02:20 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/02 20:50:03 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/13 21:21:36 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/10/31 18:15:06 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -101,6 +101,8 @@ int		key_press(int key, void *param)
 		set_values(env->map);
 	else if (key == KEY_O)
 		env->map->mm_switch = env->map->mm_switch ? 0 : 1;
+	else if (key == NUM_1)
+		env->map->boo = env->map->boo ? 0 : 1;
 	else if (key == ARROW_LEFT || key == ARROW_RIGHT)
 		change_vis(key, env->map);
 	else if (key == ARROW_UP || key == ARROW_DOWN)
