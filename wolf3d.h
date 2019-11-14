@@ -6,11 +6,8 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/11/12 12:04:44 by jmousset         ###   ########.fr       */
-=======
+/*   Updated: 2019/11/14 14:59:49 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/13 21:53:20 by pasosa-s         ###   ########.fr       */
->>>>>>> 89d398646202d421c32f786de66da89b4366985a
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +25,9 @@
 # include "colors.h"
 # include "controls.h"
 
-<<<<<<< HEAD
 # define W 640
 # define H 480
-# define TEX_SIZE 64
-=======
-# define W 1280
-# define H 720
 # define TS 64
->>>>>>> 89d398646202d421c32f786de66da89b4366985a
 # define THREADS 8
 # define MOVE_SPEED 0.1
 # define ROT_SPEED 0.08
