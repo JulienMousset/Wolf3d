@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/02 20:40:55 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/12 12:04:44 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include "colors.h"
 # include "controls.h"
 
-# define W 1280
-# define H 720
+# define W 640
+# define H 480
 # define TEX_SIZE 64
 # define THREADS 8
 # define MOVE_SPEED 0.1
