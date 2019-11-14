@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:39:45 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/13 21:54:37 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/14 15:24:12 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	draw_line(t_env *env, t_map *map, int x, int y_start)
 			map->wall_x = map->pos.y + map->perp * map->ray_dir.y;
 		else
 			map->wall_x = map->pos.x + map->perp * map->ray_dir.x;
+		map->wall_x -= floor((map->wall_x));
 		map->tex_x = (int)(map->wall_x * (double)TS);
 		if (map->ns_or_ew == 0 && map->ray_dir.x > 0)
 			map->tex_x = TS - map->tex_x - 1;
