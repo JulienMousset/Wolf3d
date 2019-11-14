@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:39:45 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/14 15:24:12 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/14 15:44:44 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,17 @@ void	put_pixel(t_env *env, int x, int y, int color)
 void	pick_color(t_env *env, t_map *map, int x, int y_start)
 {
 	int		i;
+	int		j;
 	if (map->boo == 1)
 	{
 		map->d = y_start * 256 - H * 128 + map->line_height * 128;
 		map->tex_y = ((map->d * TS) / map->line_height) / 256;
-		i = ((map->tex_x * (env->t[map->id].bpp / 8)) +
-				(map->tex_y * env->t[map->id].s_l));
-		map->b = env->t[map->id].data_addr[i];
-		map->g = env->t[map->id].data_addr[++i];
-		map->r = env->t[map->id].data_addr[++i];
-		map->color = rgb_to_int(map->r, map->g, map->b);
+		i = ((x * (env->bpp / 8)) + (y_start * env->s_l));
+		j = ((map->tex_x * (env->t[map->id].bpp / 8)) + (map->tex_y * env->t[map->id].s_l));
+		ft_memcpy(&env->data_addr[i], &env->t[map->id].data_addr[j], sizeof(int));
 	}
-	put_pixel(env, x, y_start, map->color);
+	else
+		put_pixel(env, x, y_start, map->color);
 }
 
 void	draw_line(t_env *env, t_map *map, int x, int y_start)
@@ -55,7 +54,7 @@ void	draw_line(t_env *env, t_map *map, int x, int y_start)
 		map->tex_x = (int)(map->wall_x * (double)TS);
 		if (map->ns_or_ew == 0 && map->ray_dir.x > 0)
 			map->tex_x = TS - map->tex_x - 1;
-		if (map->ns_or_ew == 1 && map->ray_dir.x < 0)
+		if (map->ns_or_ew == 1 && map->ray_dir.y < 0)
 			map->tex_x = TS - map->tex_x - 1;
 	}
 	while (y_start <= map->y_end)
