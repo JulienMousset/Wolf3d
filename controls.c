@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 18:02:20 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/13 21:21:36 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/15 10:21:17 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/10/31 18:15:06 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -66,9 +66,30 @@ void	up_or_down(int key, t_map *map, int **board, t_complex dir)
 	else if (key == KEY_S)
 	{
 		map->pos.x = (board[(int)(map->pos.x - dir.x)][(int)map->pos.y] == 0) ?
-			map->pos.x -= dir.x * MOVE_SPEED : map->pos.x;
+			map->pos.x -= dir.x * move_speed : map->pos.x;
 		map->pos.y = (board[(int)map->pos.x][(int)(map->pos.y - dir.y)] == 0) ?
-			map->pos.y -= dir.y * MOVE_SPEED : map->pos.y;
+			map->pos.y -= dir.y * move_speed : map->pos.y;
+	}
+}
+
+void	strafe(int key, t_map *map, int **board, t_complex dir)
+{
+	double	move_speed;
+
+	move_speed = (map->run == 1) ? map->move_coef * 2 : map->move_coef;
+	if (key == KEY_Q)
+	{
+		map->pos.x = (board[(int)(map->pos.x - dir.y)][(int)map->pos.y] == 0) ?
+			map->pos.x -= dir.y * move_speed : map->pos.x;
+		map->pos.y = (board[(int)map->pos.x][(int)(map->pos.y - dir.x)] == 0) ?
+			map->pos.y += dir.x * move_speed : map->pos.y;
+	}
+	else if (key == KEY_E)
+	{
+		map->pos.x = (board[(int)(map->pos.x + dir.y)][(int)map->pos.y] == 0) ?
+			map->pos.x += dir.y * move_speed : map->pos.x;
+		map->pos.y = (board[(int)map->pos.x][(int)(map->pos.y + dir.x)] == 0) ?
+			map->pos.y -= dir.x * move_speed : map->pos.y;
 	}
 }
 
@@ -93,6 +114,8 @@ int		key_press(int key, void *param)
 		up_or_down(key, env->map, env->map->board, env->map->dir);
 	else if (key == KEY_A || key == KEY_D)
 		left_or_right(key, env->map, env->map->rot_coef);
+	else if (key == KEY_Q || key == KEY_E)
+		strafe(key, env->map, env->map->board, env->map->dir);
 	else if (key == KEY_SHIFT)
 		env->map->run = env->map->run ? 0 : 1;
 	else if (key == KEY_M)

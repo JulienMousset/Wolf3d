@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/14 15:27:31 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/13 21:53:20 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -185,6 +185,7 @@ int				key_press(int key, void *param);
 int				close_program(t_env *env);
 void			up_or_down(int key, t_map *map, int **board, t_complex dir);
 void			left_or_right(int key, t_map *map, double rot_coef);
+void			strafe(int key, t_map *map, int **board, t_complex dir);
 
 void			draw_background(t_env *env);
 int				*ft_strint(int size);
