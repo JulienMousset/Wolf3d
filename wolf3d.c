@@ -6,22 +6,25 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:32:43 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/14 20:32:53 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/15 19:19:20 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void	set_mmmap_values(t_map *map)
+void	set_mmmap_values(t_map *map, int opt)
 {
 	map->mm_switch = 1;
-	map->mm_size = per(W, 10); //size of the mmmap
-	map->mm_vis = 32; // visualization of 40 blocks around
-	map->mm_block_size = 4;  //size 4 -> 2x2 block
-	map->mm_start.x = map->pos.x - map->mm_vis / 2;
-	map->mm_start.y = map->pos.y - map->mm_vis / 2;
-	map->mm_end.x = map->pos.x + map->mm_vis / 2;
-	map->mm_end.y = map->pos.y + map->mm_vis / 2;
+	map->mm_size = per(W, 11) * opt; //size of the mmmap
+	map->mm_margin = (t_coord) {.x = per(W, 7), .y = per(H, 5)};
+	map->mm_vis = 16; // visualization of 40 blocks around
+	map->mm_block_size = (W / 64 / 3) * opt;  //size 4 -> 2x2 block
+	map->mm_start.x = W - map->mm_margin.x - map->mm_size;
+	map->mm_start.y = map->mm_margin.y;
+	map->mm_center.x =  W - map->mm_margin.x - map->mm_size / 2;
+	map->mm_center.y = map->mm_margin.y + map->mm_size / 2;
+	map->mm_end.x = W - map->mm_margin.x;
+	map->mm_end.y = map->mm_margin.y + map->mm_size;
 }
 
 void	set_values(t_map *map)
@@ -33,10 +36,13 @@ void	set_values(t_map *map)
 	map->run = 0;
 	map->menu = 0;
 	map->boo = 1;
+	map->opt = 1; //minimap size x1 or x2
+	map->h2 = H / 2;
 	map->mouse_pos = (t_coord) {.x = W / 2, .y = H / 2};
 	place_player(map);
+	map->pos = (t_complex) {.x = 10, .y = 10};
 	map->pos.x -= map->dir.x * MOVE_SPEED;
-	set_mmmap_values(map);
+	set_mmmap_values(map, map->opt);
 }
 
 int		init_structure(t_env *env, char *file)

@@ -6,11 +6,8 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/11/14 18:44:07 by pasosa-s         ###   ########.fr       */
-=======
+/*   Updated: 2019/11/15 20:55:04 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
->>>>>>> 9e0d848552380bdbd485bc99956985676fa97c89
 /*   Updated: 2019/11/13 21:53:20 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -65,6 +62,22 @@ typedef struct	s_coord
 	int		y;
 }				t_coord;
 
+typedef struct	s_card
+{
+	char	*str;
+	int		x;
+	int		y;
+}				t_card;
+
+typedef struct	s_cards
+{
+	t_card	e;
+	t_card	w;
+	t_card	n;
+	t_card	s;
+
+}				t_cards;
+
 typedef struct	s_complex
 {
 	double	x;
@@ -87,16 +100,13 @@ typedef struct	s_map
 	char		*line;
 	int			nb_lines;
 	int			nb_columns;
+	int			h2;
 
 	t_complex	pos;
 	t_complex	dir;
 	t_complex	plane;
 	double		camera_x;
 	t_complex	ray_dir;
-
-	double		time;
-	double		old_time;
-	double		frame_time;
 
 	double		move_coef;
 	double		rot_coef;
@@ -117,10 +127,6 @@ typedef struct	s_map
 	int			y_end;
 	int			color;
 
-	int			r;
-	int			g;
-	int			b;
-
 	double		wall_x;
 	int			tex_x;
 	int			tex_y;
@@ -130,13 +136,15 @@ typedef struct	s_map
 
 	t_coord		mouse_pos;
 
+	int			opt;
 	int			mm_switch;
 	t_coord		mm_start;
+	t_coord		mm_center;
 	t_coord		mm_end;
 	int			mm_size;
-	t_coord		mm_coord;
 	int			mm_vis;
 	int			mm_block_size;
+	t_coord		mm_margin;
 
 }				t_map;
 
@@ -200,6 +208,7 @@ void			display_values(t_map *map);
 
 void			text_menu(t_env *env);
 void			menu(t_env *env);
+void			set_mmmap_values(t_map *map, int opt);
 
 unsigned long	get_time(void);
 int				mouse_move(int x, int y, void *param);
@@ -210,6 +219,7 @@ void			load_textures(t_env *env);
 void			pick_color(t_env *env, t_map *map, int x, int y_start);
 
 void			draw_sky(t_env *env, t_map *map);
+void			look_up_down(int key, t_map *map);
 
 
 #endif

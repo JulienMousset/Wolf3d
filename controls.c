@@ -6,32 +6,12 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 18:02:20 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/15 10:21:17 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/11/15 19:29:48 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/10/31 18:15:06 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-
-void	change_vis(int key, t_map *map)
-{
-	if (key == ARROW_RIGHT)
-		map->mm_vis++;
-	else
-		map->mm_vis--;
-	if (map->mm_vis < 0)
-		map->mm_vis = 0;
-}
-
-void	change_block_size(int key, t_map *map)
-{
-	if (key == ARROW_UP)
-		map->mm_block_size += 2;
-	else
-		map->mm_block_size -= 2;
-	if (map->mm_block_size < 0)
-		map->mm_block_size = 0;
-}
 
 void	left_or_right(int key, t_map *map, double rot_coef)
 {
@@ -126,10 +106,13 @@ int		key_press(int key, void *param)
 		env->map->mm_switch = env->map->mm_switch ? 0 : 1;
 	else if (key == NUM_1)
 		env->map->boo = env->map->boo ? 0 : 1;
-	else if (key == ARROW_LEFT || key == ARROW_RIGHT)
-		change_vis(key, env->map);
+	else if (key == NUM_2)
+	{
+		env->map->opt = env->map->opt == 1 ? 2 : 1;
+		set_mmmap_values(env->map, env->map->opt);
+	}
 	else if (key == ARROW_UP || key == ARROW_DOWN)
-		change_block_size(key, env->map);
+		look_up_down(key, env->map);
 	ray_casting(env, env->map);
 	return (0);
 }

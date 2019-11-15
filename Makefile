@@ -6,7 +6,7 @@
 #    By: jmousset <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 15:35:26 by jmousset          #+#    #+#              #
-#    Updated: 2019/11/14 18:15:52 by pasosa-s         ###   ########.fr        #
+#    Updated: 2019/11/15 19:30:09 by pasosa-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,8 @@ SRCS = main.c\
 	   place_player.c\
 	   minimap.c \
 	   load_textures.c \
-	   draw_sky.c
+	   draw_sky.c \
+	   controls2.c
 
 OBJS = $(SRCS:.c=.o)
 

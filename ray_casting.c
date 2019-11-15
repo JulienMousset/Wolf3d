@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:39:07 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/14 20:32:50 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/15 19:26:02 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	set_walls(t_map *map)
 		map->perp = (map->block.y - map->pos.y +
 				(1 - map->step.y) / 2) / map->ray_dir.y;
 	map->line_height = (int)(H / map->perp);
-	map->y_start = -map->line_height / 2 + H / 2;
+	map->y_start = -map->line_height / 2 + map->h2;
 	(map->y_start < 0) ? map->y_start = 0 : 0;
-	map->y_end = map->line_height / 2 + H / 2;
+	map->y_end = map->line_height / 2 + map->h2;
 	(map->y_end >= H) ? map->y_end = H - 1 : 0;
 }
 
