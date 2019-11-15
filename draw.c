@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:39:45 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/14 15:44:44 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/14 20:05:46 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,21 @@ void	pick_color(t_env *env, t_map *map, int x, int y_start)
 {
 	int		i;
 	int		j;
+	char	*color_str;
 	if (map->boo == 1)
 	{
 		map->d = y_start * 256 - H * 128 + map->line_height * 128;
 		map->tex_y = ((map->d * TS) / map->line_height) / 256;
 		i = ((x * (env->bpp / 8)) + (y_start * env->s_l));
 		j = ((map->tex_x * (env->t[map->id].bpp / 8)) + (map->tex_y * env->t[map->id].s_l));
-		ft_memcpy(&env->data_addr[i], &env->t[map->id].data_addr[j], sizeof(int));
+		ft_memcpy(&color_str, &env->t[map->id].data_addr[j], sizeof(int));
+		map->color = (int)color_str;
+		if (map->ns_or_ew == 1)
+			map->color = (map->color >> 1) & 8355711;
 	}
 	else
-		put_pixel(env, x, y_start, map->color);
+		map->color = choose_color(map->id, map->ns_or_ew);
+	put_pixel(env, x, y_start, map->color);
 }
 
 void	draw_line(t_env *env, t_map *map, int x, int y_start)

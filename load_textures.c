@@ -6,11 +6,24 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 20:32:17 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/13 21:53:21 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/14 20:32:55 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+void	and_more(t_env *env, int a, int b)
+{
+	env->t[6].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, REDBRICK, &a, &b);
+	env->t[6].data_addr = mlx_get_data_addr(env->t[6].img_ptr, &env->t[6].bpp,
+			&env->t[6].s_l, &env->t[6].endian);
+	env->t[7].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, WOOD, &a, &b);
+	env->t[7].data_addr = mlx_get_data_addr(env->t[7].img_ptr, &env->t[7].bpp,
+			&env->t[7].s_l, &env->t[7].endian);
+	env->sky.img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, SKYBOX, &a, &b);
+	env->sky.data_addr = mlx_get_data_addr(env->sky.img_ptr, &env->sky.bpp,
+			&env->sky.s_l, &env->sky.endian);
+}
 
 void	load_textures(t_env *env)
 {
@@ -34,13 +47,8 @@ void	load_textures(t_env *env)
 	env->t[4].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, MOSSY, &a, &b);
 	env->t[4].data_addr = mlx_get_data_addr(env->t[4].img_ptr, &env->t[4].bpp,
 			&env->t[4].s_l, &env->t[4].endian);
-	env->t[5].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, PURPLESTONE, &a, &b);
+	env->t[5].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, PSTONE, &a, &b);
 	env->t[5].data_addr = mlx_get_data_addr(env->t[5].img_ptr, &env->t[5].bpp,
 			&env->t[5].s_l, &env->t[5].endian);
-	env->t[6].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, REDBRICK, &a, &b);
-	env->t[6].data_addr = mlx_get_data_addr(env->t[6].img_ptr, &env->t[6].bpp,
-			&env->t[6].s_l, &env->t[6].endian);
-	env->t[7].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, WOOD, &a, &b);
-	env->t[7].data_addr = mlx_get_data_addr(env->t[7].img_ptr, &env->t[7].bpp,
-			&env->t[7].s_l, &env->t[7].endian);
+	and_more(env, a, b);
 }

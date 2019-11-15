@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:39:07 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/13 21:53:19 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/14 20:32:50 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	ray_casting(t_env *env, t_map *map)
 
 	x = 0;
 	draw_background(env);
+	draw_sky(env, env->map);
 	while (x < W)
 	{
 		map->camera_x = 2 * x / (double)W - 1;
@@ -91,7 +92,6 @@ void	ray_casting(t_env *env, t_map *map)
 		dda(map);
 		set_walls(map);
 		map->id = map->board[map->block.x][map->block.y] - 1;
-		map->color = choose_color(map->id, map->ns_or_ew);
 		draw_line(env, env->map, x, env->map->y_start);
 		x++;
 	}

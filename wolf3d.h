@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/14 15:27:31 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/14 18:44:07 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/13 21:53:20 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -49,9 +49,11 @@
 # define GREYSTONE "textures/greystone.XPM"
 # define MOSSY "textures/mossy.XPM"
 # define PILLAR "textures/pillar.XPM"
-# define PURPLESTONE "textures/purplestone.XPM"
+# define PSTONE "textures/purplestone.XPM"
 # define REDBRICK "textures/redbrick.XPM"
 # define WOOD "textures/wood.XPM"
+
+# define SKYBOX "textures/blue_sky.XPM"
 
 typedef struct	s_coord
 {
@@ -145,6 +147,7 @@ typedef struct	s_env
 	int			endian;
 	t_map		*map;
 	t_img		t[8];
+	t_img		sky;
 }				t_env;
 
 typedef struct	s_thread
@@ -200,6 +203,8 @@ void			draw_minimap(t_env *env, t_map *map);
 
 void			load_textures(t_env *env);
 void			pick_color(t_env *env, t_map *map, int x, int y_start);
+
+void			draw_sky(t_env *env, t_map *map);
 
 
 #endif
