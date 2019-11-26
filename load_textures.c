@@ -6,12 +6,31 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 20:32:17 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/14 20:32:55 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/26 16:55:34 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
+t_sprite	add_sprite(double x, double y, int i)
+{
+	t_sprite	new;
+
+	new.x = x;
+	new.y = y;
+	new.i = i;
+	return (new);
+}
+
+void	create_sprites_array(t_map *map)
+{
+	map->s[0] = add_sprite(5.5, 2.5, 8);
+	map->s[1] = add_sprite(3.5, 3.5, 9);
+	map->s[2] = add_sprite(10.5, 3.5, 8);
+	map->s[3] = add_sprite(3.5, 4.5, 9);
+	map->s[4] = add_sprite(2.5, 12.5, 8);
+}
+	
 void	and_more(t_env *env, int a, int b)
 {
 	env->t[6].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, REDBRICK, &a, &b);
@@ -20,9 +39,16 @@ void	and_more(t_env *env, int a, int b)
 	env->t[7].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, WOOD, &a, &b);
 	env->t[7].data_addr = mlx_get_data_addr(env->t[7].img_ptr, &env->t[7].bpp,
 			&env->t[7].s_l, &env->t[7].endian);
+	env->t[8].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, BARREL, &a, &b);
+	env->t[8].data_addr = mlx_get_data_addr(env->t[8].img_ptr, &env->t[8].bpp,
+			&env->t[8].s_l, &env->t[8].endian);
+	env->t[9].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, PILLAR, &a, &b);
+	env->t[9].data_addr = mlx_get_data_addr(env->t[9].img_ptr, &env->t[9].bpp,
+			&env->t[9].s_l, &env->t[9].endian);
 	env->sky.img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, SKYBOX, &a, &b);
 	env->sky.data_addr = mlx_get_data_addr(env->sky.img_ptr, &env->sky.bpp,
 			&env->sky.s_l, &env->sky.endian);
+	create_sprites_array(env->map);
 }
 
 void	load_textures(t_env *env)

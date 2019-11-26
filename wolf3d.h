@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/26 15:03:49 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/11/26 17:23:39 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/13 21:53:20 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
@@ -32,6 +32,9 @@
 # define THREADS 8
 # define MOVE_SPEED 0.1
 # define ROT_SPEED 0.08
+
+#define NUM_TEX	10
+# define NUM_SPR 5
 
 # define ERR_MALLOC "error trying to allocate memory"
 # define ERR_USAGE "Usage: ./wolf3d <filename>"
@@ -62,6 +65,13 @@ typedef struct	s_coord
 	int		y;
 }				t_coord;
 
+typedef struct	s_complex
+{
+	double	x;
+	double	y;
+}				t_complex;
+
+
 typedef struct	s_card
 {
 	char	*str;
@@ -78,12 +88,6 @@ typedef struct	s_cards
 
 }				t_cards;
 
-typedef struct	s_complex
-{
-	double	x;
-	double	y;
-}				t_complex;
-
 typedef struct	s_img
 {
 	void		*img_ptr;
@@ -92,6 +96,21 @@ typedef struct	s_img
 	int			s_l;
 	int			endian;
 }				t_img;
+
+typedef struct	s_spr
+{
+	int		x;
+	int		y;
+	int		width;
+	int		height;
+}				t_spr;
+
+typedef struct	s_sprite
+{
+	double	x;
+	double	y;
+	int		i;
+}				t_sprite;
 
 typedef struct	s_map
 {
@@ -136,6 +155,19 @@ typedef struct	s_map
 	int			id;
 	int			boo;
 
+	double		z_buffer[W];
+	t_sprite	s[NUM_SPR];
+	int			spr_order[NUM_SPR];
+	double		spr_dist[NUM_SPR];
+	t_spr		spr;
+	double		inv_det;
+	t_complex	transform;
+	int			ssx;
+	int			x_start;
+	int			x_end;
+	int			boo_spr;
+	char		*color_str;
+
 	t_coord		mouse_pos;
 
 	int			opt;
@@ -148,30 +180,30 @@ typedef struct	s_map
 	int			mm_block_size;
 	t_coord		mm_margin;
 
-	int	esc;
-	int	up;
-	int	down;
-	int	left;
-	int	right;
-	int	strafe_left;
-	int	strafe_right;
-	int	run_mode;
-	int	open_map;
-	int	respawn;
-	int	hide_map;
-	int	texture_mode;
-	int	map_zoom;
-	int	look_up;
-	int	look_down;
-	int	mouse_left;
-	int	mouse_right;
-	int	old_x;
-	double	old_dir_x;
+	int			esc;
+	int			up;
+	int			down;
+	int			left;
+	int			right;
+	int			strafe_left;
+	int			strafe_right;
+	int			run_mode;
+	int			open_map;
+	int			respawn;
+	int			hide_map;
+	int			texture_mode;
+	int			map_zoom;
+	int			look_up;
+	int			look_down;
+	int			mouse_left;
+	int			mouse_right;
+	int			old_x;
+	double		old_dir_x;
 
-	int	camera_w;
-	int	camera_h;
+	int			camera_w;
+	int			camera_h;
 
-	t_coord	prev;
+	t_coord		prev;
 
 	t_complex	floor;
 	double		dist_wall;
@@ -180,7 +212,7 @@ typedef struct	s_map
 	t_complex	current_floor;
 	t_complex	floor_tex;
 
-	int		var;
+	int			var;
 }				t_map;
 
 typedef struct	s_env
@@ -193,7 +225,7 @@ typedef struct	s_env
 	int			s_l;
 	int			endian;
 	t_map		*map;
-	t_img		t[8];
+	t_img		t[NUM_TEX];
 	t_img		sky;
 }				t_env;
 
@@ -256,11 +288,15 @@ void			pick_color(t_env *env, t_map *map, int x, int y_start);
 void			draw_sky(t_env *env, t_map *map);
 void			look_up_down(t_map *map);
 
-int			mouse_move(int x, int y, t_env *env);
+int				mouse_move(int x, int y, t_env *env);
 double			convert(int old, double min, double max, int length);
-int			multiple_events(t_env *env);
+int				multiple_events(t_env *env);
 void			look_left_right(t_map *map);
 
-unsigned int		add_smog(unsigned int c, double d);
+unsigned int	add_smog(unsigned int c, double d);
+
+void			sprites(t_env *env, t_map *map);
+void			bubble_sort(int	*order, double *dist, int amount);
+
 #endif
 

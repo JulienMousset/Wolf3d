@@ -6,7 +6,7 @@
 #    By: jmousset <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/04 16:43:26 by jmousset          #+#    #+#              #
-#    Updated: 2019/10/28 16:12:41 by jmousset         ###   ########.fr        #
+#    Updated: 2019/11/26 17:24:50 by pasosa-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,8 @@ SRCS = ft_memset.c\
 	   ft_print_array.c\
 	   end.c\
 	   per.c\
-	   rgb_to_int.c
+	   rgb_to_int.c\
+	   ft_swap_double.c
 
 OBJS = $(SRCS:.c=.o)
 

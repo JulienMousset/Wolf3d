@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:39:07 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/26 16:36:42 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/11/26 17:22:44 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,7 @@ void	ray_casting(t_env *env, t_map *map)
 		set_dda_values(map);
 		dda(map);
 		set_walls(map);
+		map->z_buffer[x] = map->perp;
 		map->id = map->board[map->block.x][map->block.y] - 1;
 		draw_line(env, env->map, x, env->map->y_start);
 		if (map->boo == 1)
@@ -165,6 +166,8 @@ void	ray_casting(t_env *env, t_map *map)
 		}
 		x++;
 	}
+	if (map->boo_spr == 1)
+		sprites(env, env->map);
 	map->mm_switch ? draw_minimap(env, env->map) : 0;
 	mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_ptr, 0, 0);
 	text_menu(env);

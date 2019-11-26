@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 14:54:18 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/15 19:20:15 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/26 17:24:01 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,34 @@ void	draw_background(t_env *env)
 	}
 }
 
-int		*ft_strint(int size)
+void	bubble_sort(int	*order, double *dist, int amount)
 {
-	int		*str;
 	int		i;
+	int		j;
+	int		gap;
+	int		swapped;
 
-	if (!(str = (int *)malloc(sizeof(int) * size)))
-		end(ERR_MALLOC);
+	gap = amount;
+	swapped = 0;
 	i = 0;
-	while (i < size)
+	while (gap > 1 || swapped)
 	{
-		str[i] = 0;
-		i++;
+		gap = (gap * 10) / 13;
+		if (gap == 9 || gap == 10)
+			gap = 11;
+		if (gap < 1)
+			gap = 1;
+		swapped = 0;
+		while (i < amount - gap)
+		{
+			j = i + gap;
+			if (dist[i] < dist[j])
+			{
+				ft_swap_double(&dist[i], &dist[j]);
+				ft_swap(&order[i], &order[j]);
+				swapped = 1;
+			}
+			i++;
+		}
 	}
-	return (str);
 }
