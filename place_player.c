@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/30 18:55:58 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/01 17:24:46 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/20 11:57:47 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		place_player(t_map *map)
 		{
 			if (map->board[y][x] == 0)
 			{
-				map->pos = (t_complex) {.x = y, .y = x};
+				map->pos = (t_complex) {.x = y + 0.1, .y = x + 0.1};
 				return (1);
 			}
 			x++;

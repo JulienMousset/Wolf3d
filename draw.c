@@ -6,11 +6,32 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:39:45 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/15 19:52:59 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/26 13:04:28 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+unsigned int	add_smog(unsigned int c, double d)
+{
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+
+	r = c;
+	g = c >> 8;
+	b = c >> 16;
+	d = 5 / (100 / d);
+	if (d > 0.9)
+		d = 0.9;
+	if (r > 0)
+		r = r - (r * d);
+	if (g > 0)
+		g = g - (g * d);
+	if (b > 0)
+		b = b - (b * d);
+	return ((r << 16) + (g << 8) + b);
+}
 
 void	put_pixel(t_env *env, int x, int y, int color)
 {
@@ -44,7 +65,9 @@ void	pick_color(t_env *env, t_map *map, int x, int y_start)
 	}
 	else
 		map->color = choose_color(map->id, map->ns_or_ew);
+	map->color = add_smog(map->color, map->perp);
 	put_pixel(env, x, y_start, map->color);
+	put_pixel(env, x, y_start, add_smog(map->color, abs(y_start - map->h2) * 0.005));
 }
 
 void	draw_line(t_env *env, t_map *map, int x, int y_start)

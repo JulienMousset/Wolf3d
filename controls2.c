@@ -6,20 +6,21 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 19:26:27 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/15 20:03:20 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/26 16:14:56 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void	look_up_down(int key, t_map *map)
+void	look_up_down(t_map *map)
 {
-	if (key == ARROW_UP)
-		map->h2 += 20;
-	if (key == ARROW_DOWN)
-		map->h2 -= 20;
-	if (map->h2 > 950)
-		map->h2 = 950;
+	if (map->look_up == 1)
+		map->var += 5;
+	if (map->look_down == 1)
+		map->var -= 5;
+	map->h2 += map->var;
+	if (map->h2 > 960)
+		map->h2 = 960;
 	if (map->h2 < 0)
 		map->h2 = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/15 20:55:04 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/26 15:03:49 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/13 21:53:20 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
@@ -103,7 +103,9 @@ typedef struct	s_map
 	int			h2;
 
 	t_complex	pos;
+	t_complex	old_dir;
 	t_complex	dir;
+	t_complex	old_plane;
 	t_complex	plane;
 	double		camera_x;
 	t_complex	ray_dir;
@@ -146,6 +148,39 @@ typedef struct	s_map
 	int			mm_block_size;
 	t_coord		mm_margin;
 
+	int	esc;
+	int	up;
+	int	down;
+	int	left;
+	int	right;
+	int	strafe_left;
+	int	strafe_right;
+	int	run_mode;
+	int	open_map;
+	int	respawn;
+	int	hide_map;
+	int	texture_mode;
+	int	map_zoom;
+	int	look_up;
+	int	look_down;
+	int	mouse_left;
+	int	mouse_right;
+	int	old_x;
+	double	old_dir_x;
+
+	int	camera_w;
+	int	camera_h;
+
+	t_coord	prev;
+
+	t_complex	floor;
+	double		dist_wall;
+	double		dist_player;
+	double		dist_current;
+	t_complex	current_floor;
+	t_complex	floor_tex;
+
+	int		var;
 }				t_map;
 
 typedef struct	s_env
@@ -196,11 +231,12 @@ int				choose_color(int id, int ns_or_ew);
 void			draw_line(t_env *env, t_map *map, int x, int y_start);
 void			put_pixel(t_env *env, int x, int y, int color);
 
-int				key_press(int key, void *param);
+int				key_press(int key, t_env *env);
+int				key_release(int key, t_env *env);
 int				close_program(t_env *env);
-void			up_or_down(int key, t_map *map, int **board, t_complex dir);
-void			left_or_right(int key, t_map *map, double rot_coef);
-void			strafe(int key, t_map *map, int **board, t_complex dir);
+void			up_or_down(t_map *map, int **board, t_complex dir);
+void			left_or_right(t_map *map, double rot_coef);
+void			strafe(t_map *map, int **board, t_complex dir);
 
 void			draw_background(t_env *env);
 int				*ft_strint(int size);
@@ -211,7 +247,6 @@ void			menu(t_env *env);
 void			set_mmmap_values(t_map *map, int opt);
 
 unsigned long	get_time(void);
-int				mouse_move(int x, int y, void *param);
 int				place_player(t_map *map);
 void			draw_minimap(t_env *env, t_map *map);
 
@@ -219,8 +254,13 @@ void			load_textures(t_env *env);
 void			pick_color(t_env *env, t_map *map, int x, int y_start);
 
 void			draw_sky(t_env *env, t_map *map);
-void			look_up_down(int key, t_map *map);
+void			look_up_down(t_map *map);
 
+int			mouse_move(int x, int y, t_env *env);
+double			convert(int old, double min, double max, int length);
+int			multiple_events(t_env *env);
+void			look_left_right(t_map *map);
 
+unsigned int		add_smog(unsigned int c, double d);
 #endif
 

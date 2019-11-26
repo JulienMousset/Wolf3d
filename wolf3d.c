@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:32:43 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/15 19:19:20 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/26 16:01:52 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,36 @@ void	set_values(t_map *map)
 	map->boo = 1;
 	map->opt = 1; //minimap size x1 or x2
 	map->h2 = H / 2;
+	map->var = 0;
 	map->mouse_pos = (t_coord) {.x = W / 2, .y = H / 2};
 	place_player(map);
-	map->pos = (t_complex) {.x = 10, .y = 10};
+	//map->pos = (t_complex) {.x = 10, .y = 10};
 	map->pos.x -= map->dir.x * MOVE_SPEED;
 	set_mmmap_values(map, map->opt);
+}
+
+void	init_keys(t_map *map)
+{
+	map->esc = 0;
+	map->up = 0;
+	map->down = 0;
+	map->left = 0;
+	map->right = 0;
+	map->strafe_left = 0;
+	map->strafe_right = 0;
+	map->run_mode = 0;
+	map->open_map = 0;
+	map->respawn = 0;
+	map->hide_map = 0;
+	map->texture_mode = 0;
+	map->map_zoom = 0;
+	map->look_up = 0;
+	map->look_down = 0;
+	map->mouse_left = 0;
+	map->mouse_right = 0;
+	map->camera_w = 0;
+	map->camera_h = 0;
+	map->prev = (t_coord) {.x = 0, .y = 0};
 }
 
 int		init_structure(t_env *env, char *file)
@@ -51,6 +76,7 @@ int		init_structure(t_env *env, char *file)
 		return (0);
 	if (!(parsing(env->map, file)))
 		free_and_display_usage(env);
+	init_keys(env->map);
 	set_values(env->map);
 	env->mlx_ptr = mlx_init();
 	env->win_ptr = mlx_new_window(env->mlx_ptr, W, H, "Wolf3D");
@@ -71,8 +97,10 @@ int		wolf3d(char *file)
 	init_structure(env, file);
 	ray_casting(env, env->map);
 	mlx_hook(env->win_ptr, 2, (1L << 0), key_press, env);
+	mlx_hook(env->win_ptr, 3, (1L << 1), key_release, env);
 	mlx_hook(env->win_ptr, 6, 0, mouse_move, env);
 	mlx_hook(env->win_ptr, 17, 0, close_program, env);
+	mlx_loop_hook(env->mlx_ptr, multiple_events, env);
 	mlx_loop(env->mlx_ptr);
 	return (1);
 }
