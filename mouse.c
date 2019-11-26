@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 19:23:52 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/21 17:42:59 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/11/26 20:07:02 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	look_left_right(t_map *map)
 	map->plane.x = map->plane.x * cos(angle) - map->plane.y * sin(angle);
 	map->plane.y = map->old_plane.x * sin(angle) + map->plane.y * cos(angle);
 };
-
 int	mouse_move(int x, int y, t_env *env)
 {
 	t_coord	coord;

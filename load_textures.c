@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 20:32:17 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/26 16:55:34 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/26 17:41:15 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,7 @@ void	create_sprites_array(t_map *map)
 {
 	map->s[0] = add_sprite(5.5, 2.5, 8);
 	map->s[1] = add_sprite(3.5, 3.5, 9);
-	map->s[2] = add_sprite(10.5, 3.5, 8);
-	map->s[3] = add_sprite(3.5, 4.5, 9);
-	map->s[4] = add_sprite(2.5, 12.5, 8);
+	map->s[2] = add_sprite(2.5, 12.5, 8);
 }
 	
 void	and_more(t_env *env, int a, int b)

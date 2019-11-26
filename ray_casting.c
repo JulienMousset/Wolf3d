@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:39:07 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/26 17:22:44 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/26 21:07:37 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,10 +98,7 @@ void	set_floor_casting(t_map *map)
 
 void	floor_casting(t_env *env, t_map *map, int x)
 {
-	int	i;
 	int	j;
-	char	*color_str;
-
 	int	y;
 	double	weight;
 
@@ -112,26 +109,44 @@ void	floor_casting(t_env *env, t_map *map, int x)
 	y = map->y_end + 1;
 	while (y < H)
 	{
-		map->dist_current = H / (2.0 * y - H);
+		map->dist_current = H / (2.0 * y - map->h2 * 2);
 		weight = (map->dist_current - map->dist_player) / (map->dist_wall - map->dist_player);
 		map->current_floor.x = weight * map->floor.x + (1.0 - weight) * map->pos.x;
 		map->current_floor.y = weight * map->floor.y + (1.0 - weight) * map->pos.y;
 		map->floor_tex.x = (int)(map->current_floor.x * TS) % TS;
 		map->floor_tex.y = (int)(map->current_floor.y * TS) % TS;
-		map->d = y - map->h2 + map->line_height / 2;
-		map->tex_y = ((map->d * TS) / map->line_height);
-		i = ((x * (env->bpp / 8)) + (y * env->s_l));
+
 		j = ((map->floor_tex.x * (env->t[map->id].bpp / 8)) + (map->floor_tex.y * env->t[map->id].s_l));
-		ft_memcpy(&color_str, &env->t[4].data_addr[j], sizeof(int));
-		map->color = (int)color_str;
+		ft_memcpy(&map->color_str, &env->t[4].data_addr[j], sizeof(int));
+		map->color = (int)map->color_str;
 		map->color = (map->color >> 1) & 8355711;
 		put_pixel(env, x, y, map->color);
-		ft_memcpy(&color_str, &env->t[7].data_addr[j], sizeof(int));
-		map->color = (int)color_str;
+		ft_memcpy(&map->color_str, &env->t[7].data_addr[j], sizeof(int));
+		map->color = (int)map->color_str;
 		map->color = (map->color >> 1) & 8355711;
-		put_pixel(env, x, H - y, map->color);
+		put_pixel(env, x, map->h2 * 2 - y, map->color);
 		y++;
 	}
+	/*
+	y = 0;
+	while (y < map->y_start)
+	{
+		map->dist_current = H / (2.0 * y - map->h2 * 2);
+		weight = (map->dist_current - map->dist_player) / (map->dist_wall - map->dist_player);
+		map->current_floor.x = weight * map->floor.x + (1.0 - weight) * map->pos.x;
+		map->current_floor.y = weight * map->floor.y + (1.0 - weight) * map->pos.y;
+		map->floor_tex.x = (int)(map->current_floor.x * TS) % TS;
+		map->floor_tex.y = (int)(map->current_floor.y * TS) % TS;
+
+		j = ((map->floor_tex.x * (env->t[map->id].bpp / 8)) + (map->floor_tex.y * env->t[map->id].s_l));
+		ft_memcpy(&map->color_str, &env->t[7].data_addr[j], sizeof(int));
+		map->color = (int)map->color_str;
+		map->color = (map->color >> 1) & 8355711;
+		put_pixel(env, x, y, map->color);
+
+		y++;
+	}
+	*/
 }
 
 void	ray_casting(t_env *env, t_map *map)
@@ -139,11 +154,15 @@ void	ray_casting(t_env *env, t_map *map)
 	int		x;
 
 	x = 0;
+	/*
 	if (map->boo == 0)
 	{
 		draw_background(env);
 		draw_sky(env, env->map);
 	}
+	*/
+	draw_background(env);
+	draw_sky(env, env->map);
 	while (x < W)
 	{
 		map->camera_x = 2 * x / (double)W - 1;

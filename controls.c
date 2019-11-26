@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 18:02:20 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/25 18:44:20 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/11/26 17:39:09 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/10/31 18:15:06 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -131,6 +131,8 @@ int		key_press(int key, t_env *env)
 		else
 			env->map->map_zoom = 0;
 	}
+	if (key == NUM_3)
+		env->map->boo_spr = env->map->boo_spr ? 0 : 1;
 	if (key == ARROW_UP)
 		env->map->look_up = 1;
 	if (key == ARROW_DOWN)
