@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 17:01:08 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/27 12:50:38 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/27 13:35:17 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	set_sprite_values(t_map *map, int i)
 		(map->dir.y * map->spr.x - map->dir.x * map->spr.y);
 	map->transform.y = map->inv_det *
 		(-map->plane.y * map->spr.x + map->plane.x * map->spr.y);
-	map->ssx = (int)((map->h2) * (1 + map->transform.x / map->transform.y));
+	map->ssx = (int)((W / 2) * (1 + map->transform.x / map->transform.y));
 	map->spr.height = abs((int)(H / map->transform.y));
 	map->y_start = -map->spr.height / 2 + map->h2;
 	(map->y_start < 0) ? map->y_start = 0 : 0;
