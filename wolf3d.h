@@ -6,11 +6,8 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/11/27 11:23:29 by jmousset         ###   ########.fr       */
-=======
+/*   Updated: 2019/11/27 15:12:58 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/27 12:47:03 by pasosa-s         ###   ########.fr       */
->>>>>>> 929ff711a8a69da92c4a978048874da6560f8a42
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/13 21:53:20 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
@@ -61,7 +58,7 @@
 # define REDBRICK "textures/redbrick.XPM"
 # define WOOD "textures/wood.XPM"
 
-# define SKYBOX "textures/blue_sky.XPM"
+# define SKYBOX "textures/pixel_sky.XPM"
 
 typedef struct	s_coord
 {

@@ -6,11 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:39:07 by jmousset          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/11/27 12:26:19 by jmousset         ###   ########.fr       */
-=======
-/*   Updated: 2019/11/27 12:42:53 by pasosa-s         ###   ########.fr       */
->>>>>>> 929ff711a8a69da92c4a978048874da6560f8a42
+/*   Updated: 2019/11/27 12:56:07 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +127,7 @@ void	floor_casting(t_env *env, t_map *map, int x)
 		//put_pixel(env, x, map->h2 * 2 - y, map->color);
 		y++;
 	}
+	/*
 	y = 0;
 	while (y <= map->y_start)
 	{
@@ -149,6 +146,7 @@ void	floor_casting(t_env *env, t_map *map, int x)
 
 		y++;
 	}
+	*/
 }
 
 void	ray_casting(t_env *env, t_map *map)
@@ -177,9 +175,9 @@ void	ray_casting(t_env *env, t_map *map)
 		set_dda_values(map);
 		dda(map);
 		set_walls(map);
+		map->z_buffer[x] = map->perp;
 		map->id = map->board[map->block.x][map->block.y] - 1;
 		draw_line(env, env->map, x, env->map->y_start);
-		map->z_buffer[x] = map->perp;
 		if (map->boo == 1)
 		{
 			set_floor_casting(map);
