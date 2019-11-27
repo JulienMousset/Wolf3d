@@ -6,7 +6,11 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/11/27 19:54:32 by pasosa-s         ###   ########.fr       */
+=======
+/*   Updated: 2019/11/27 19:34:28 by jmousset         ###   ########.fr       */
+>>>>>>> a90029b3670977e8bc9a06096d33ff625b81dc69
 /*   Updated: 2019/11/27 12:47:03 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/13 21:53:20 by pasosa-s         ###   ########.fr       */
@@ -35,7 +39,7 @@
 # define ROT_SPEED 0.08
 
 #define NUM_TEX	9
-# define NUM_SPR 5
+# define NUM_SPR 3
 
 # define ERR_MALLOC "error trying to allocate memory"
 # define ERR_USAGE "Usage: ./wolf3d <filename>"
@@ -60,9 +64,9 @@
 
 # define SKYBOX "textures/pixel_sky.XPM"
 
-# define KEY "textures/key.XPM"
-# define GOLDEN "textures/key_golden.XPM"
-# define MAP "textures/treasure_map.XPM"
+# define KEY "textures/boi/key.XPM"
+# define GOLDEN "textures/boi/key_golden.XPM"
+# define MAP "textures/boi/treasure_map.XPM"
 
 
 typedef struct	s_coord
@@ -164,9 +168,8 @@ typedef struct	s_map
 
 	double		z_buffer[W];
 	t_sprite	*s;
-	int			nb_sprites;
-	int			*spr_order;
-	double		*spr_dist;
+	int			spr_order[NUM_SPR];
+	double		spr_dist[NUM_SPR];
 	t_spr		spr;
 	double		inv_det;
 	t_complex	transform;
@@ -175,10 +178,6 @@ typedef struct	s_map
 	int			x_end;
 	int			boo_spr;
 	char		*color_str;
-
-	int			item_key;
-	int			item_golden;
-	int			item_map;
 
 	t_coord		mouse_pos;
 
