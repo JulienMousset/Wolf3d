@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/26 17:40:15 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/27 12:47:03 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/13 21:53:20 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
@@ -99,10 +99,10 @@ typedef struct	s_img
 
 typedef struct	s_spr
 {
-	int		x;
-	int		y;
-	int		width;
-	int		height;
+	double		x;
+	double		y;
+	int			width;
+	int			height;
 }				t_spr;
 
 typedef struct	s_sprite
@@ -166,6 +166,7 @@ typedef struct	s_map
 	int			x_start;
 	int			x_end;
 	int			boo_spr;
+	int			boo_print;
 	char		*color_str;
 
 	t_coord		mouse_pos;
