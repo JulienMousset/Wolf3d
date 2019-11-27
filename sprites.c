@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 15:23:27 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/27 15:23:38 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/27 17:57:15 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	sprites(t_env *env, t_map *map)
 
 	i = 0;
 	y = 0;
-	while (i < NUM_SPR)
+	while (i < map->nb_sprites)
 	{
 		map->spr_order[i] = i;
 		map->spr_dist[i] = (
@@ -82,9 +82,9 @@ void	sprites(t_env *env, t_map *map)
 				(map->pos.y - map->s[i].y));
 		i++;
 	}
-	bubble_sort(map->spr_order, map->spr_dist, NUM_SPR);
+	bubble_sort(map->spr_order, map->spr_dist, map->nb_sprites);
 	i = 0;
-	while (i < NUM_SPR)
+	while (i < map->nb_sprites)
 	{
 		set_sprite_values(map, i);
 		double_loop(env, env->map, y);

@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/27 17:30:32 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/27 17:57:38 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 12:47:03 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/13 21:53:20 by pasosa-s         ###   ########.fr       */
@@ -35,7 +35,7 @@
 # define ROT_SPEED 0.08
 
 #define NUM_TEX	9
-# define NUM_SPR 3
+# define NUM_SPR 5
 
 # define ERR_MALLOC "error trying to allocate memory"
 # define ERR_USAGE "Usage: ./wolf3d <filename>"
@@ -164,8 +164,9 @@ typedef struct	s_map
 
 	double		z_buffer[W];
 	t_sprite	*s;
-	int			spr_order[NUM_SPR];
-	double		spr_dist[NUM_SPR];
+	int			nb_sprites;
+	int			*spr_order;
+	double		*spr_dist;
 	t_spr		spr;
 	double		inv_det;
 	t_complex	transform;
@@ -174,7 +175,6 @@ typedef struct	s_map
 	int			x_end;
 	int			boo_spr;
 	char		*color_str;
-	int			nb_sprites;
 
 	int			item_key;
 	int			item_golden;

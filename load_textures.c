@@ -6,11 +6,8 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 20:32:17 by pasosa-s          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/11/27 17:35:31 by pasosa-s         ###   ########.fr       */
-=======
+/*   Updated: 2019/11/27 17:58:45 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 17:32:10 by jmousset         ###   ########.fr       */
->>>>>>> 6e51bbfc8b85baec7c1abf3649b67cef969347f6
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +23,16 @@ void		realloc_array(t_map *map)
 
 }
 */
+
+void		alloc_arrays(t_map *map)
+{
+	if (!(map->s = (t_sprite *)malloc(sizeof(t_sprite) * map->nb_sprites)))
+		end(ERR_MALLOC);
+	if (!(map->spr_order = (int *)malloc(sizeof(int) * map->nb_sprites)))
+		end(ERR_MALLOC);
+	if (!(map->spr_dist = (double *)malloc(sizeof(double) * map->nb_sprites)))
+		end(ERR_MALLOC);
+}
 t_sprite	add_sprite(double x, double y, int i, int index)
 {
 	t_sprite	new;
@@ -66,8 +73,7 @@ void	create_sprites_array(t_map *map)
 	int			i;
 
 	map->nb_sprites = nb_sprites(map);
-	if (!(map->s = (t_sprite *)malloc(sizeof(t_sprite) * map->nb_sprites)))
-		end(ERR_MALLOC);
+	alloc_arrays(map);
 	i = 0;
 	y = 0;
 	while (y < map->nb_lines)

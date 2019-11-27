@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:32:43 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/27 17:31:18 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/27 17:43:08 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 12:16:41 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -40,6 +40,7 @@ void	set_values(t_map *map)
 	map->opt = 1; //minimap size x1 or x2
 	map->h2 = H / 2;
 	map->boo_spr = 0;
+	map->nb_sprites = 0;
 
 	map->item_key = 0;
 	map->item_golden = 0;
