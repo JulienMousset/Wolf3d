@@ -6,23 +6,48 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 20:32:17 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/27 17:58:45 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/27 19:54:28 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 17:32:10 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-/*
-void		realloc_array(t_map *map)
+int			get_index(t_map *map, int x, int y)
+{
+	int		i;
+
+	i = 0;
+	while (i < map->nb_sprites)
+	{
+		if (map->s[i].x == x + 0.5 && map->s[i].y == y + 0.5)
+			return (map->s[i].index);
+		i++;
+	}
+	return (0);
+}
+
+void		realloc_array(t_map *map, int x, int y)
 {
 	t_sprite	*new;
+	int			i;
+	int			j;
 
+	if (!(new = (t_sprite *)malloc(sizeof(t_sprite) * map->nb_sprites - 1)))
+		end(ERR_MALLOC);
+	i = 0;
+	j = 0;
+	while (i <  map->nb_sprites)
+	{
+		if (get_index(map, x, y) == map->s[i + j].index)
+			j++;
+		new[i] = map->s[i + j];
+		i++;
+	}
 	map->nb_sprites--;
-	new = ()
-
+	free(map->s);
+	map->s = new;
 }
-*/
 
 void		alloc_arrays(t_map *map)
 {

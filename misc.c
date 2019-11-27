@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 14:54:18 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/27 16:32:48 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/27 19:54:30 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ void	draw_background(t_env *env)
 	}
 }
 
-int		is_walkable(int i)
+int		is_walkable(t_map *map, int i, int x, int y)
 {
+	if (i == 9 && get_index(map, x, y))
+		realloc_array(map, x, y);
 	return ((i == 0 || i > 8) ? 1 : 0);
 }
 

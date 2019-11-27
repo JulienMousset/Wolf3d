@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/27 17:57:38 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/27 19:54:32 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 12:47:03 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/13 21:53:20 by pasosa-s         ###   ########.fr       */
@@ -308,7 +308,10 @@ unsigned int	add_smog(unsigned int c, double d);
 void			sprites(t_env *env, t_map *map);
 void			bubble_sort(int	*order, double *dist, int amount);
 
-int				is_walkable(int i);
+int				is_walkable(t_map *map, int i, int x, int y);
+
+void			realloc_array(t_map *map, int x, int y);
+int				get_index(t_map *map, int x, int y);
 
 #endif
 
