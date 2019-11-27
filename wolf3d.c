@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:32:43 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/27 12:53:40 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/11/27 15:22:39 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 12:16:41 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -40,7 +40,6 @@ void	set_values(t_map *map)
 	map->opt = 1; //minimap size x1 or x2
 	map->h2 = H / 2;
 	map->boo_spr = 0;
-	map->boo_print = 0;
 	map->mouse_pos = (t_coord) {.x = W / 2, .y = H / 2};
 	place_player(map);
 	//map->pos = (t_complex) {.x = 10, .y = 10};

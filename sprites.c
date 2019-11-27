@@ -5,13 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/20 17:01:08 by pasosa-s          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/11/27 13:35:17 by pasosa-s         ###   ########.fr       */
-=======
-/*   Updated: 2019/11/27 12:54:02 by jmousset         ###   ########.fr       */
-/*   Updated: 2019/11/27 12:50:38 by pasosa-s         ###   ########.fr       */
->>>>>>> 8481bc011d2673c659fbb8ffbb0ecaafc0fd6b21
+/*   Created: 2019/11/27 15:23:27 by pasosa-s          #+#    #+#             */
+/*   Updated: 2019/11/27 15:23:38 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,18 +65,6 @@ void	set_sprite_values(t_map *map, int i)
 	(map->x_end >= W) ? map->x_end = W - 1 : 0;
 }
 
-void	print_values(int *order, double *dist)
-{
-	int		i;
-
-	i = 0;
-	while (i < NUM_SPR)
-	{
-		printf("dist[%d] = %f\n", order[i], dist[i]);
-		i++;
-	}
-}
-
 void	sprites(t_env *env, t_map *map)
 {
 	int		i;
@@ -99,12 +82,7 @@ void	sprites(t_env *env, t_map *map)
 				(map->pos.y - map->s[i].y));
 		i++;
 	}
-	if (map->boo_print == 0)
-		print_values(map->spr_order, map->spr_dist);
 	bubble_sort(map->spr_order, map->spr_dist, NUM_SPR);
-	if (map->boo_print == 0)
-		print_values(map->spr_order, map->spr_dist);
-	map->boo_print = 1;
 	i = 0;
 	while (i < NUM_SPR)
 	{
