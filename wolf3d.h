@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/26 17:40:15 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/27 11:23:29 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/13 21:53:20 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
@@ -211,8 +211,6 @@ typedef struct	s_map
 	double		dist_current;
 	t_complex	current_floor;
 	t_complex	floor_tex;
-
-	int			var;
 }				t_map;
 
 typedef struct	s_env
