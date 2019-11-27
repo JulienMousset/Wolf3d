@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 18:02:20 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/26 17:39:09 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/27 15:59:17 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/10/31 18:15:06 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -38,16 +38,16 @@ void	up_or_down(t_map *map, int **board, t_complex dir)
 	move_speed = (map->run == 1) ? map->move_coef * 2 : map->move_coef;
 	if (map->up == 1)
 	{
-		map->pos.x = (board[(int)(map->pos.x + dir.x)][(int)map->pos.y] == 0) ?
+		map->pos.x = is_walkable(board[(int)(map->pos.x + dir.x)][(int)map->pos.y]) ?
 			map->pos.x += dir.x * move_speed : map->pos.x;
-		map->pos.y = (board[(int)map->pos.x][(int)(map->pos.y + dir.y)] == 0) ?
+		map->pos.y = is_walkable(board[(int)map->pos.x][(int)(map->pos.y + dir.y)]) ?
 			map->pos.y += dir.y * move_speed : map->pos.y;
 	}
 	if (map->down == 1)
 	{
-		map->pos.x = (board[(int)(map->pos.x - dir.x)][(int)map->pos.y] == 0) ?
+		map->pos.x = is_walkable(board[(int)(map->pos.x - dir.x)][(int)map->pos.y]) ?
 			map->pos.x -= dir.x * move_speed : map->pos.x;
-		map->pos.y = (board[(int)map->pos.x][(int)(map->pos.y - dir.y)] == 0) ?
+		map->pos.y = is_walkable(board[(int)map->pos.x][(int)(map->pos.y - dir.y)]) ?
 			map->pos.y -= dir.y * move_speed : map->pos.y;
 	}
 }
@@ -59,16 +59,16 @@ void	strafe(t_map *map, int **board, t_complex dir)
 	move_speed = (map->run == 1) ? map->move_coef * 2 : map->move_coef;
 	if (map->strafe_left)
 	{
-		map->pos.x = (board[(int)(map->pos.x - dir.y)][(int)map->pos.y] == 0) ?
+		map->pos.x = is_walkable(board[(int)(map->pos.x - dir.y)][(int)map->pos.y]) ?
 			map->pos.x -= dir.y * move_speed : map->pos.x;
-		map->pos.y = (board[(int)map->pos.x][(int)(map->pos.y + dir.x)] == 0) ?
+		map->pos.y = is_walkable(board[(int)map->pos.x][(int)(map->pos.y + dir.x)]) ?
 			map->pos.y += dir.x * move_speed : map->pos.y;
 	}
 	if (map->strafe_right)
 	{
-		map->pos.x = (board[(int)(map->pos.x + dir.y)][(int)map->pos.y] == 0) ?
+		map->pos.x = is_walkable(board[(int)(map->pos.x + dir.y)][(int)map->pos.y]) ?
 			map->pos.x += dir.y * move_speed : map->pos.x;
-		map->pos.y = (board[(int)map->pos.x][(int)(map->pos.y - dir.x)] == 0) ?
+		map->pos.y = is_walkable(board[(int)map->pos.x][(int)(map->pos.y - dir.x)]) ?
 			map->pos.y -= dir.x * move_speed : map->pos.y;
 	}
 }

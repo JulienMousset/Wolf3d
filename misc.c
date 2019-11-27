@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 14:54:18 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/27 11:58:22 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/27 16:32:48 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ void	draw_background(t_env *env)
 		}
 		i++;
 	}
+}
+
+int		is_walkable(int i)
+{
+	return ((i == 0 || i > 8) ? 1 : 0);
 }
 
 void	bubble_sort(int	*order, double *dist, int amount)

@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:39:07 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/27 12:56:07 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/11/27 15:51:57 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@ void	dda(t_map *map)
 			map->block.y += map->step.y;
 			map->ns_or_ew = 1;
 		}
-		map->hit = (map->board[map->block.x][map->block.y] > 0) ? 1 : 0;
+		map->hit = ((map->board[map->block.x][map->block.y] > 0) &&
+				(map->board[map->block.x][map->block.y] < 7) ) ? 1 : 0;
 	}
 }
 
@@ -117,7 +118,7 @@ void	floor_casting(t_env *env, t_map *map, int x)
 		map->floor_tex.y = (int)(map->current_floor.y * TS) % TS;
 
 		j = ((map->floor_tex.x * (env->t[map->id].bpp / 8)) + (map->floor_tex.y * env->t[map->id].s_l));
-		ft_memcpy(&map->color_str, &env->t[4].data_addr[j], sizeof(int));
+		ft_memcpy(&map->color_str, &env->t[5].data_addr[j], sizeof(int));
 		map->color = (int)map->color_str;
 		map->color = (map->color >> 1) & 8355711;
 		put_pixel(env, x, y, map->color);

@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/27 15:24:40 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/27 17:06:57 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 12:47:03 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/13 21:53:20 by pasosa-s         ###   ########.fr       */
@@ -34,7 +34,7 @@
 # define MOVE_SPEED 0.1
 # define ROT_SPEED 0.08
 
-#define NUM_TEX	10
+#define NUM_TEX	9
 # define NUM_SPR 3
 
 # define ERR_MALLOC "error trying to allocate memory"
@@ -59,6 +59,11 @@
 # define WOOD "textures/wood.XPM"
 
 # define SKYBOX "textures/pixel_sky.XPM"
+
+# define KEY "textures/key.XPM"
+# define GOLDEN "textures/key_golden.XPM"
+# define MAP "textures/treasure_map.XPM"
+
 
 typedef struct	s_coord
 {
@@ -111,6 +116,7 @@ typedef struct	s_sprite
 	double	x;
 	double	y;
 	int		i;
+	int		index;
 }				t_sprite;
 
 typedef struct	s_map
@@ -157,7 +163,7 @@ typedef struct	s_map
 	int			boo;
 
 	double		z_buffer[W];
-	t_sprite	s[NUM_SPR];
+	t_sprite	*s;
 	int			spr_order[NUM_SPR];
 	double		spr_dist[NUM_SPR];
 	t_spr		spr;
@@ -296,6 +302,8 @@ unsigned int	add_smog(unsigned int c, double d);
 
 void			sprites(t_env *env, t_map *map);
 void			bubble_sort(int	*order, double *dist, int amount);
+
+int				is_walkable(int i);
 
 #endif
 
