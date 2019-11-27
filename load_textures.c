@@ -6,12 +6,22 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 20:32:17 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/27 17:18:29 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/27 17:35:31 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
+/*
+void		realloc_array(t_map *map)
+{
+	t_sprite	*new;
+
+	map->nb_sprites--;
+	new = ()
+
+}
+*/
 t_sprite	add_sprite(double x, double y, int i, int index)
 {
 	t_sprite	new;
@@ -51,7 +61,8 @@ void	create_sprites_array(t_map *map)
 	int			x;
 	int			i;
 
-	if (!(map->s = (t_sprite *)malloc(sizeof(t_sprite) * nb_sprites(map))))
+	map->nb_sprites = nb_sprites(map);
+	if (!(map->s = (t_sprite *)malloc(sizeof(t_sprite) * map->nb_sprites)))
 		end(ERR_MALLOC);
 	i = 0;
 	y = 0;
