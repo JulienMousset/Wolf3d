@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 19:26:27 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/26 16:14:56 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/11/27 11:13:21 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 void	look_up_down(t_map *map)
 {
 	if (map->look_up == 1)
-		map->var += 5;
+		map->h2 += 25;
 	if (map->look_down == 1)
-		map->var -= 5;
-	map->h2 += map->var;
+		map->h2 -= 25;
 	if (map->h2 > 960)
 		map->h2 = 960;
 	if (map->h2 < 0)

@@ -6,6 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
+/*   Updated: 2019/11/27 15:12:58 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/27 12:47:03 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/13 21:53:20 by pasosa-s         ###   ########.fr       */
@@ -57,7 +58,7 @@
 # define REDBRICK "textures/redbrick.XPM"
 # define WOOD "textures/wood.XPM"
 
-# define SKYBOX "textures/blue_sky.XPM"
+# define SKYBOX "textures/pixel_sky.XPM"
 
 typedef struct	s_coord
 {
@@ -212,8 +213,6 @@ typedef struct	s_map
 	double		dist_current;
 	t_complex	current_floor;
 	t_complex	floor_tex;
-
-	int			var;
 }				t_map;
 
 typedef struct	s_env

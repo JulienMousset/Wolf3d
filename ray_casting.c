@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:39:07 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/27 12:42:53 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/27 12:56:07 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	floor_casting(t_env *env, t_map *map, int x)
 	y = map->y_end + 1;
 	while (y < H)
 	{
-		map->dist_current = H / (2.0 * y - map->h2 * 2);
+		map->dist_current = H / (2.0 * y - map->h2 * 2.0);
 		weight = (map->dist_current - map->dist_player) / (map->dist_wall - map->dist_player);
 		map->current_floor.x = weight * map->floor.x + (1.0 - weight) * map->pos.x;
 		map->current_floor.y = weight * map->floor.y + (1.0 - weight) * map->pos.y;
@@ -121,17 +121,17 @@ void	floor_casting(t_env *env, t_map *map, int x)
 		map->color = (int)map->color_str;
 		map->color = (map->color >> 1) & 8355711;
 		put_pixel(env, x, y, map->color);
-		ft_memcpy(&map->color_str, &env->t[7].data_addr[j], sizeof(int));
-		map->color = (int)map->color_str;
-		map->color = (map->color >> 1) & 8355711;
-		put_pixel(env, x, map->h2 * 2 - y, map->color);
+		//ft_memcpy(&map->color_str, &env->t[7].data_addr[j], sizeof(int));
+		//map->color = (int)map->color_str;
+		//map->color = (map->color >> 1) & 8355711;
+		//put_pixel(env, x, map->h2 * 2 - y, map->color);
 		y++;
 	}
 	/*
 	y = 0;
-	while (y < map->y_start)
+	while (y <= map->y_start)
 	{
-		map->dist_current = H / (2.0 * y - map->h2 * 2);
+		map->dist_current = H / (2.0 * y - map->h2 * 2.0);
 		weight = (map->dist_current - map->dist_player) / (map->dist_wall - map->dist_player);
 		map->current_floor.x = weight * map->floor.x + (1.0 - weight) * map->pos.x;
 		map->current_floor.y = weight * map->floor.y + (1.0 - weight) * map->pos.y;
@@ -175,9 +175,9 @@ void	ray_casting(t_env *env, t_map *map)
 		set_dda_values(map);
 		dda(map);
 		set_walls(map);
+		map->z_buffer[x] = map->perp;
 		map->id = map->board[map->block.x][map->block.y] - 1;
 		draw_line(env, env->map, x, env->map->y_start);
-		map->z_buffer[x] = map->perp;
 		if (map->boo == 1)
 		{
 			set_floor_casting(map);
