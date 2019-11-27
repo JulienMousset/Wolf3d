@@ -6,11 +6,8 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/11/27 19:54:32 by pasosa-s         ###   ########.fr       */
-=======
+/*   Updated: 2019/11/27 19:57:39 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 19:34:28 by jmousset         ###   ########.fr       */
->>>>>>> a90029b3670977e8bc9a06096d33ff625b81dc69
 /*   Updated: 2019/11/27 12:47:03 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/13 21:53:20 by pasosa-s         ###   ########.fr       */
@@ -168,8 +165,8 @@ typedef struct	s_map
 
 	double		z_buffer[W];
 	t_sprite	*s;
-	int			spr_order[NUM_SPR];
-	double		spr_dist[NUM_SPR];
+	int			*spr_order;
+	double		*spr_dist;
 	t_spr		spr;
 	double		inv_det;
 	t_complex	transform;
@@ -178,6 +175,12 @@ typedef struct	s_map
 	int			x_end;
 	int			boo_spr;
 	char		*color_str;
+	int			nb_sprites;
+
+	int			item_key;
+	int			item_golden;
+	int			item_map;
+	
 
 	t_coord		mouse_pos;
 
