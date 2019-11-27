@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 20:32:17 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/27 17:18:29 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/27 17:32:10 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	and_more(t_env *env, int a, int b)
 	env->t[7].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, BARREL, &a, &b);
 	env->t[7].data_addr = mlx_get_data_addr(env->t[7].img_ptr, &env->t[7].bpp,
 			&env->t[7].s_l, &env->t[7].endian);
-	env->t[8].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, KEY, &a, &b);
+	env->t[8].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, MAP, &a, &b);
 	env->t[8].data_addr = mlx_get_data_addr(env->t[8].img_ptr, &env->t[8].bpp,
 			&env->t[8].s_l, &env->t[8].endian);
 	env->sky.img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, SKYBOX, &a, &b);
