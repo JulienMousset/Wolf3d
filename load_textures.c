@@ -144,7 +144,7 @@ void	and_more(t_env *env, int a, int b)
 	env->t[8].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, HEELS, &a, &b);
 	env->t[8].data_addr = mlx_get_data_addr(env->t[8].img_ptr, &env->t[8].bpp,
 			&env->t[8].s_l, &env->t[8].endian);
-	env->t[9].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, MOSSY, &a, &b);
+	env->t[9].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, FLOOR, &a, &b);
 	env->t[9].data_addr = mlx_get_data_addr(env->t[9].img_ptr, &env->t[9].bpp,
 			&env->t[9].s_l, &env->t[9].endian);
 	env->t[10].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, WOOD, &a, &b);
@@ -163,7 +163,7 @@ void	load_textures(t_env *env)
 
 	a = TS;
 	b = TS;
-	env->t[0].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, REDBRICK, &a, &b);
+	env->t[0].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, WALL, &a, &b);
 	env->t[0].data_addr = mlx_get_data_addr(env->t[0].img_ptr, &env->t[0].bpp,
 			&env->t[0].s_l, &env->t[0].endian);
 	env->t[1].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, GREYSTONE, &a, &b);
@@ -172,10 +172,10 @@ void	load_textures(t_env *env)
 	env->t[2].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, PSTONE, &a, &b);
 	env->t[2].data_addr = mlx_get_data_addr(env->t[2].img_ptr, &env->t[2].bpp,
 			&env->t[2].s_l, &env->t[2].endian);
-	env->t[3].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, COLORSTONE, &a, &b);
+	env->t[3].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, DOOR_C, &a, &b);
 	env->t[3].data_addr = mlx_get_data_addr(env->t[3].img_ptr, &env->t[3].bpp,
 			&env->t[3].s_l, &env->t[3].endian);
-	env->t[4].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, EAGLE, &a, &b);
+	env->t[4].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, DOOR_O, &a, &b);
 	env->t[4].data_addr = mlx_get_data_addr(env->t[4].img_ptr, &env->t[4].bpp,
 			&env->t[4].s_l, &env->t[4].endian);
 	env->t[5].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, KEY, &a, &b);

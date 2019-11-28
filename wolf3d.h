@@ -57,15 +57,18 @@
 # define PILLAR "textures/pillar.XPM"
 # define PSTONE "textures/purplestone.XPM"
 # define REDBRICK "textures/redbrick.XPM"
-# define DOOR "textures/boi/door_open.XPM"
 # define WOOD "textures/wood.XPM"
+# define DOOR_O "textures/boi/door_open.XPM"
+# define DOOR_C "textures/boi/door_closed.XPM"
+# define WALL "textures/boi/wall.XPM"
+# define FLOOR "textures/boi/floor.XPM"
 
 # define SKYBOX "textures/pixel_sky.XPM"
 
 # define KEY "textures/boi/key.XPM"
 # define GOLDEN "textures/boi/key_golden.XPM"
 # define MAP "textures/boi/treasure_map.XPM"
-# define HEELS "textures/boi/rock.XPM"
+# define HEELS "textures/boi/heels.XPM"
 
 
 typedef struct	s_coord

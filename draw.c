@@ -21,7 +21,7 @@ unsigned int	add_smog(unsigned int c, double d)
 	r = c;
 	g = c >> 8;
 	b = c >> 16;
-	d = 5 / (100 / d);
+	d = 7 / (100 / d);
 	if (d > 0.9)
 		d = 0.9;
 	if (r > 0)

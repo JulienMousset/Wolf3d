@@ -121,12 +121,12 @@ void	floor_casting(t_env *env, t_map *map, int x)
 					env->t[9].s_l));
 		ft_memcpy(&map->color_str, &env->t[9].data_addr[j], sizeof(int));
 		map->color = (int)map->color_str;
-		map->color = (map->color >> 1) & 8355711;
-		put_pixel(env, x, y, map->color);
-		//ft_memcpy(&map->color_str, &env->t[7].data_addr[j], sizeof(int));
-		//map->color = (int)map->color_str;
 		//map->color = (map->color >> 1) & 8355711;
-		//put_pixel(env, x, map->h2 * 2 - y, map->color);
+		put_pixel(env, x, y, map->color);
+		ft_memcpy(&map->color_str, &env->t[9].data_addr[j], sizeof(int));
+		map->color = (int)map->color_str;
+		map->color = (map->color >> 1) & 8355711;
+		put_pixel(env, x, map->h2 * 2 - y, map->color);
 		y++;
 	}
 	/*
