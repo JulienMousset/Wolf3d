@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 13:57:07 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/28 18:06:51 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/28 21:05:52 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	set_values(t_map *map)
 	map->plane = (t_complex) {.x = 0, .y = 0.66};
 	map->camera_x = 0;
 	map->ray_dir = (t_complex) {.x = 0, .y = 0};
-	map->move_coef = 0.1;
-	map->rot_coef = 0.08;
+	map->move_coef = MOVE_SPEED;
+	map->rot_coef = ROT_SPEED;
 	map->run = 0;
 	map->opt = 1; //minimap size x1 or x2
 	map->h2 = H / 2;
@@ -56,6 +56,7 @@ void	set_values(t_map *map)
 	map->mouse_pos = (t_coord) {.x = W / 1, .y = H / 1};
 	map->pos.x -= map->dir.x * MOVE_SPEED;
 	set_mmmap_values(map, map->opt);
+	//map->copy = ft_tabcpy(map->board, map->nb_lines, map->nb_columns);
 }
 
 void	set_keys(t_map *map)

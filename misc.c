@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 14:54:18 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/28 17:52:16 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/28 21:05:44 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,13 @@ int		is_walkable(t_map *map, int i, int x, int y)
 {
 	if (i > 5 && in_array(map, x, y))
 		realloc_array(map, x, y, i);
-	return ((i == 0 || i > 5) ? 1 : 0);
+	if (i == 4 && map->item_key)
+	{
+		map->board[x][y] = 5;
+		map->item_key--;
+		i = 5;
+	}
+	return ((i == 0 || i > 4) ? 1 : 0);
 }
 
 void	bubble_sort(int	*order, double *dist, int amount)
@@ -71,4 +77,25 @@ void	bubble_sort(int	*order, double *dist, int amount)
 			i++;
 		}
 	}
+}
+
+void	copy_board(t_map *map)
+{
+	ft_tabdel(map->board, map->nb_lines);
+	map->board = ft_tabcpy(map->copy, map->nb_lines, map->nb_columns);
+}
+
+int		**ft_tabcpy(int **src, int nb_lines, int nb_columns)
+{
+	int		**dst;
+	int		i;
+
+	i = 0;
+	dst = (int **)malloc(sizeof(int *) * nb_lines);
+	while (i < nb_lines)
+	{
+		ft_memcpy(&dst[i], &src[i], nb_columns);
+		i++;
+	}
+	return dst;
 }

@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/28 18:31:10 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/28 21:06:27 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 19:34:28 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/27 12:47:03 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
@@ -32,7 +32,7 @@
 # define H 960
 # define TS 64
 # define THREADS 8
-# define MOVE_SPEED 0.1
+# define MOVE_SPEED 0.15
 # define ROT_SPEED 0.08
 
 #define NUM_TEX	11
@@ -127,6 +127,7 @@ typedef struct	s_sprite
 typedef struct	s_map
 {
 	int			**board;
+	int			**copy;
 	char		**tmp;
 	char		*line;
 	int			nb_lines;
@@ -326,5 +327,8 @@ void			set_mmap_values(t_map *map, int opt);
 void			print_mini_sprite(t_env *env, t_map *map, int id, int margin_y);
 
 void			create_sprites_array(t_map *map);
+int				**ft_tabcpy(int **src, int nb_lines, int nb_columns);
+void			ft_tabdel(int **tab, int lines);
+void			copy_board(t_map *map);
 #endif
 

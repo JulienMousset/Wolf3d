@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:13:50 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/28 18:18:14 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/28 20:19:47 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,14 @@ void	text_gui(t_env *env)
 	win = env->win_ptr;
 	x = 10;
 	y = H - 30;
-	str = env->map->run ? "on" : "off";
+	str = env->map->run ? ">>" : "";
 
 	if (env->map->bool_sprint)
 	{
-		mlx_string_put(mlx, win, x, y, M, "run:");
-		mlx_string_put(mlx, win, x += 45, y, M, str);
+		mlx_string_put(mlx, win, x, y, M, "SHIFT");
+		mlx_string_put(mlx, win, x += 60, y, M, str);
 	}
-	mlx_string_put(mlx, win, x += 501, y, M, "map = M");
-
+	//mlx_string_put(mlx, win, x += 501, y, M, "map = M");
 	x = TS + 30;
 	y = TS + 25;
 	env->map->gui_str = ft_itoa(env->map->item_key);

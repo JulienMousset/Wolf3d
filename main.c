@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:32:33 by jmousset          #+#    #+#             */
-/*   Updated: 2019/10/28 19:29:33 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/28 20:55:51 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,20 @@ void	free_tmp_board(char **s)
 	}
 	ft_memdel((void **)&(s));
 }
+
+void	ft_tabdel(int **tab, int lines)
+{
+	int		i;
+
+	i = 0;
+	while (i < lines)
+	{
+		ft_memdel((void **)&(tab[i]));
+		i++;
+	}
+	ft_memdel((void **)&(tab));
+}
+
 
 void	free_and_display_usage(t_env *env)
 {

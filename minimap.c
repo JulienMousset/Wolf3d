@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 19:10:56 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/28 18:31:08 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/28 20:32:08 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,23 @@
 
 void	draw_mini_background(t_env *env, t_map *map)
 {
+	int			block;
 	int			x;
 	int			y;
 
 	y = 0;
+
+	block = map->mm_block_size;
 	while (y < map->mm_size)
 	{
 		x = 0;
 		while (x < map->mm_size)
 		{
-			put_pixel(env, map->mm_start.x + x, map->mm_start.y + y, GREY4);
+			if (y < block || y > map->mm_size - block ||
+					x < block || x > map->mm_size - block)
+				put_pixel(env, map->mm_start.x + x, map->mm_start.y + y, 0);
+			else
+				put_pixel(env, map->mm_start.x + x, map->mm_start.y + y, GREY4);
 			x++;
 		}
 		y++;
