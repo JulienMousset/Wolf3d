@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:39:07 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/28 14:28:06 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/28 17:53:40 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	dda(t_map *map)
 			map->ns_or_ew = 1;
 		}
 		map->hit = ((map->board[map->block.x][map->block.y] > 0) &&
-				(map->board[map->block.x][map->block.y] < 7) ) ? 1 : 0;
+				(map->board[map->block.x][map->block.y] < 6) ) ? 1 : 0;
 	}
 }
 
@@ -117,8 +117,9 @@ void	floor_casting(t_env *env, t_map *map, int x)
 		map->floor_tex.x = (int)(map->current_floor.x * TS) % TS;
 		map->floor_tex.y = (int)(map->current_floor.y * TS) % TS;
 
-		j = ((map->floor_tex.x * (env->t[map->id].bpp / 8)) + (map->floor_tex.y * env->t[map->id].s_l));
-		ft_memcpy(&map->color_str, &env->t[5].data_addr[j], sizeof(int));
+		j = ((map->floor_tex.x * (env->t[9].bpp / 8)) + (map->floor_tex.y *
+					env->t[9].s_l));
+		ft_memcpy(&map->color_str, &env->t[9].data_addr[j], sizeof(int));
 		map->color = (int)map->color_str;
 		map->color = (map->color >> 1) & 8355711;
 		put_pixel(env, x, y, map->color);
@@ -189,6 +190,7 @@ void	ray_casting(t_env *env, t_map *map)
 	if (map->bool_spr == 1)
 		sprites(env, env->map);
 	map->bool_mm ? draw_minimap(env, env->map) : 0;
+	gui(env, env->map);
 	mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_ptr, 0, 0);
 	text_gui(env);
 	map->bool_menu ? menu(env) : 0;

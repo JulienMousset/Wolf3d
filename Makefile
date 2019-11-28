@@ -6,7 +6,7 @@
 #    By: jmousset <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 15:35:26 by jmousset          #+#    #+#              #
-#    Updated: 2019/11/26 17:23:12 by pasosa-s         ###   ########.fr        #
+#    Updated: 2019/11/28 15:38:32 by pasosa-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,14 +38,16 @@ SRCS = main.c\
 	   draw.c\
 	   controls.c\
 	   misc.c\
+	   text_gui.c\
+	   gui.c\
 	   menu.c\
 	   get_time.c\
 	   mouse.c\
 	   place_player.c\
-	   minimap.c \
-	   load_textures.c \
-	   draw_sky.c \
-	   controls2.c \
+	   minimap.c\
+	   load_textures.c\
+	   draw_sky.c\
+	   controls2.c\
 	   sprites.c
 
 OBJS = $(SRCS:.c=.o)

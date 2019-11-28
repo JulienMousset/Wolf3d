@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 18:02:20 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/28 14:29:53 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/28 18:27:27 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/10/31 18:15:06 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -111,10 +111,13 @@ int		key_press(int key, t_env *env)
 		env->map->strafe_left = 1;
 	if (key == KEY_E)
 		env->map->strafe_right = 1;
-	if (key == KEY_SHIFT)
+	if (key == KEY_SHIFT && env->map->bool_sprint)
 		env->map->run = 1;
 	if (key == KEY_SPACE)
-		env->map->respawn = 1;
+	{
+		set_values(env->map);
+		create_sprites_array(env->map);
+	}
 	if (key == KEY_M)
 	{
 		if (env->map->open_map == 0)
@@ -179,8 +182,6 @@ int	multiple_events(t_env *env)
 	}
 	if (env->map->strafe_left == 1 || env->map->strafe_right == 1)
 		strafe(env->map, env->map->board, env->map->dir);
-	if (env->map->respawn == 1)
-		set_values(env->map);
 	if (env->map->open_map == 1)
 		env->map->bool_menu = 1;
 	else if (env->map->open_map == 0)

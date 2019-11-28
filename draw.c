@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:39:45 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/28 13:50:19 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/28 16:14:03 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ void	pick_color(t_env *env, t_map *map, int x, int y_start)
 	if (map->bool_tex == 1)
 	{
 		map->d = y_start - map->h2 + map->line_height / 2;
-		map->tex_y = ((map->d * TS) / map->line_height);
+		map->tex.y = ((map->d * TS) / map->line_height);
 		i = ((x * (env->bpp / 8)) + (y_start * env->s_l));
-		j = ((map->tex_x * (env->t[map->id].bpp / 8)) + (map->tex_y * env->t[map->id].s_l));
+		j = ((map->tex.x * (env->t[map->id].bpp / 8)) + (map->tex.y * env->t[map->id].s_l));
 		ft_memcpy(&color_str, &env->t[map->id].data_addr[j], sizeof(int));
 		map->color = (int)color_str;
 		if (map->ns_or_ew == 1)
@@ -79,11 +79,11 @@ void	draw_line(t_env *env, t_map *map, int x, int y_start)
 		else
 			map->wall_x = map->pos.x + map->perp * map->ray_dir.x;
 		map->wall_x -= floor((map->wall_x));
-		map->tex_x = (int)(map->wall_x * (double)TS);
+		map->tex.x = (int)(map->wall_x * (double)TS);
 		if (map->ns_or_ew == 0 && map->ray_dir.x > 0)
-			map->tex_x = TS - map->tex_x - 1;
+			map->tex.x = TS - map->tex.x - 1;
 		if (map->ns_or_ew == 1 && map->ray_dir.y < 0)
-			map->tex_x = TS - map->tex_x - 1;
+			map->tex.x = TS - map->tex.x - 1;
 	}
 	while (y_start <= map->y_end)
 	{

@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 19:10:56 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/15 16:10:16 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/28 18:31:08 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	draw_mini_background(t_env *env, t_map *map)
 	}
 }
 
-void	put_n_pixel(t_env *env, int xx, int yy, int id, t_coord c)
+void	put_n_pixel(t_env *env, int xx, int yy, int id)
 {
 	t_map	*map;
 	int		color;
@@ -38,7 +38,6 @@ void	put_n_pixel(t_env *env, int xx, int yy, int id, t_coord c)
 	int		y;
 	t_coord	coord;
 
-	(void)c;
 	map = env->map;
 	color = (id == 0) ? PINK : choose_color(id, 0);
 	xx *= map->mm_block_size;
@@ -80,10 +79,11 @@ void	draw_minimap(t_env *env, t_map *map)
 		{
 			if((c.x + x >= 0) && (c.x + x < map->nb_columns) &&
 					(c.y + y >= 0) && (c.y + y < map->nb_lines) &&
-					map->board[c.y + y][c.x + x])
-				put_n_pixel(env, x, y, map->board[c.y + y][c.x + x], c);
+					map->board[c.y + y][c.x + x] &&
+					map->board[c.y + y][c.x + x] < 6)
+				put_n_pixel(env, x, y, map->board[c.y + y][c.x + x]);
 			if (c.x + x == (int)map->pos.y && c.y + y == (int)map->pos.x)
-				put_n_pixel(env, x, y, 0, c);
+				put_n_pixel(env, x, y, 0);
 			x++;
 		}
 		y++;

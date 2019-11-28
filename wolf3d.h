@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/28 14:29:55 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/28 18:31:10 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 19:34:28 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/27 12:47:03 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
@@ -35,7 +35,7 @@
 # define MOVE_SPEED 0.1
 # define ROT_SPEED 0.08
 
-#define NUM_TEX	9
+#define NUM_TEX	11
 # define NUM_SPR 3
 
 # define ERR_MALLOC "error trying to allocate memory"
@@ -57,6 +57,7 @@
 # define PILLAR "textures/pillar.XPM"
 # define PSTONE "textures/purplestone.XPM"
 # define REDBRICK "textures/redbrick.XPM"
+# define DOOR "textures/boi/door_open.XPM"
 # define WOOD "textures/wood.XPM"
 
 # define SKYBOX "textures/pixel_sky.XPM"
@@ -64,6 +65,7 @@
 # define KEY "textures/boi/key.XPM"
 # define GOLDEN "textures/boi/key_golden.XPM"
 # define MAP "textures/boi/treasure_map.XPM"
+# define HEELS "textures/boi/rock.XPM"
 
 
 typedef struct	s_coord
@@ -155,8 +157,7 @@ typedef struct	s_map
 	int			color;
 
 	double		wall_x;
-	int			tex_x;
-	int			tex_y;
+	t_coord		tex;
 	int			d;
 	int			id;
 
@@ -175,8 +176,6 @@ typedef struct	s_map
 
 	int			item_key;
 	int			item_golden;
-	int			item_map;
-	int			item_boots;
 
 	t_coord		mouse_pos;
 
@@ -189,10 +188,16 @@ typedef struct	s_map
 	int			mm_block_size;
 	t_coord		mm_margin;
 
+	t_coord		gui_margin;
+	int			gui_scale;
+	int			gui_size;
+	char		*gui_str;
+
 	int			bool_tex;
 	int			bool_spr;
 	int			bool_menu;
 	int			bool_mm;
+	int			bool_sprint;
 
 
 	int			esc;
@@ -285,6 +290,7 @@ int				*ft_strint(int size);
 void			display_values(t_map *map);
 
 void			text_gui(t_env *env);
+void			gui(t_env *env, t_map *map);
 void			menu(t_env *env);
 void			set_mmmap_values(t_map *map, int opt);
 
@@ -314,6 +320,8 @@ void			realloc_array(t_map *map, int x, int y, int id);
 int				in_array(t_map *map, int x, int y);
 
 void			set_mmap_values(t_map *map, int opt);
+void			print_mini_sprite(t_env *env, t_map *map, int id, int margin_y);
 
+void			create_sprites_array(t_map *map);
 #endif
 

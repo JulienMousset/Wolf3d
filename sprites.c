@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 15:23:27 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/27 17:57:15 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/28 16:14:36 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	double_loop(t_env *env, t_map *map, int y)
 
 	while (map->x_start < map->x_end)
 	{
-		map->tex_x = (int)(256 * (map->x_start - (-map->spr.width / 2 +
+		map->tex.x = (int)(256 * (map->x_start - (-map->spr.width / 2 +
 						map->ssx)) * TS / map->spr.width) / 256;
 		if (map->transform.y > 0 && map->x_start > 0 && map->x_start < W &&
 				map->transform.y < map->z_buffer[map->x_start])
@@ -27,8 +27,8 @@ void	double_loop(t_env *env, t_map *map, int y)
 			while (y < map->y_end)
 			{
 				map->d = y - map->h2 + map->spr.height / 2;
-				map->tex_y = ((map->d * TS) / map->spr.height);
-				j = (map->tex_x * 4 + (map->tex_y * env->t[map->id].s_l));
+				map->tex.y = ((map->d * TS) / map->spr.height);
+				j = (map->tex.x * 4 + (map->tex.y * env->t[map->id].s_l));
 				ft_memcpy(&map->color_str, &env->t[map->id].data_addr[j],
 						sizeof(int));
 				map->color = (int)map->color_str;
