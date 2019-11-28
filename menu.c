@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:13:50 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/15 20:55:03 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/28 14:28:50 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	text_minimap(t_env *env)
 	mlx_string_put(mlx, win, c.s.x, c.s.y, M, c.s.str);
 }
 
-void	text_menu(t_env *env)
+void	text_gui(t_env *env)
 {
 	void	*mlx;
 	void	*win;
@@ -72,7 +72,8 @@ void	text_menu(t_env *env)
 	mlx_string_put(mlx, win, x, y, M, "run:");
 	mlx_string_put(mlx, win, x += 45, y, M, str);
 	mlx_string_put(mlx, win, x += 501, y, M, "map = M");
-	text_minimap(env);
+	if (env->map->bool_mm)
+		text_minimap(env);
 }
 
 void	menu(t_env *env)

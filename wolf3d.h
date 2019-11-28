@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/27 19:57:39 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/28 14:29:55 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 19:34:28 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/27 12:47:03 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
@@ -117,7 +117,6 @@ typedef struct	s_sprite
 	double	x;
 	double	y;
 	int		i;
-	int		index;
 }				t_sprite;
 
 typedef struct	s_map
@@ -141,7 +140,6 @@ typedef struct	s_map
 	double		rot_coef;
 
 	double		run;
-	int			menu;
 
 	t_coord		block;
 	t_complex	side;
@@ -161,7 +159,6 @@ typedef struct	s_map
 	int			tex_y;
 	int			d;
 	int			id;
-	int			boo;
 
 	double		z_buffer[W];
 	t_sprite	*s;
@@ -173,19 +170,17 @@ typedef struct	s_map
 	int			ssx;
 	int			x_start;
 	int			x_end;
-	int			boo_spr;
 	char		*color_str;
 	int			nb_sprites;
 
 	int			item_key;
 	int			item_golden;
 	int			item_map;
-	
+	int			item_boots;
 
 	t_coord		mouse_pos;
 
 	int			opt;
-	int			mm_switch;
 	t_coord		mm_start;
 	t_coord		mm_center;
 	t_coord		mm_end;
@@ -193,6 +188,12 @@ typedef struct	s_map
 	int			mm_vis;
 	int			mm_block_size;
 	t_coord		mm_margin;
+
+	int			bool_tex;
+	int			bool_spr;
+	int			bool_menu;
+	int			bool_mm;
+
 
 	int			esc;
 	int			up;
@@ -204,9 +205,6 @@ typedef struct	s_map
 	int			run_mode;
 	int			open_map;
 	int			respawn;
-	int			hide_map;
-	int			texture_mode;
-	int			map_zoom;
 	int			look_up;
 	int			look_down;
 	int			mouse_left;
@@ -286,7 +284,7 @@ void			draw_background(t_env *env);
 int				*ft_strint(int size);
 void			display_values(t_map *map);
 
-void			text_menu(t_env *env);
+void			text_gui(t_env *env);
 void			menu(t_env *env);
 void			set_mmmap_values(t_map *map, int opt);
 
@@ -312,8 +310,10 @@ void			bubble_sort(int	*order, double *dist, int amount);
 
 int				is_walkable(t_map *map, int i, int x, int y);
 
-void			realloc_array(t_map *map, int x, int y);
-int				get_index(t_map *map, int x, int y);
+void			realloc_array(t_map *map, int x, int y, int id);
+int				in_array(t_map *map, int x, int y);
+
+void			set_mmap_values(t_map *map, int opt);
 
 #endif
 

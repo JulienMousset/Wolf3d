@@ -6,14 +6,14 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 20:32:17 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/27 19:54:28 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/28 13:51:18 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 17:32:10 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int			get_index(t_map *map, int x, int y)
+int			in_array(t_map *map, int x, int y)
 {
 	int		i;
 
@@ -21,13 +21,19 @@ int			get_index(t_map *map, int x, int y)
 	while (i < map->nb_sprites)
 	{
 		if (map->s[i].x == x + 0.5 && map->s[i].y == y + 0.5)
-			return (map->s[i].index);
+			return (1);
 		i++;
 	}
 	return (0);
 }
 
-void		realloc_array(t_map *map, int x, int y)
+void		gain_item(t_map *map, int id)
+{
+	if (id == 9)
+		map->bool_mm = 1;
+}
+
+void		realloc_array(t_map *map, int x, int y, int id)
 {
 	t_sprite	*new;
 	int			i;
@@ -39,8 +45,11 @@ void		realloc_array(t_map *map, int x, int y)
 	j = 0;
 	while (i <  map->nb_sprites)
 	{
-		if (get_index(map, x, y) == map->s[i + j].index)
+		if (map->s[i].x == x + 0.5 && map->s[i].y == y + 0.5)
+		{
+			gain_item(map, id);
 			j++;
+		}
 		new[i] = map->s[i + j];
 		i++;
 	}
@@ -58,14 +67,13 @@ void		alloc_arrays(t_map *map)
 	if (!(map->spr_dist = (double *)malloc(sizeof(double) * map->nb_sprites)))
 		end(ERR_MALLOC);
 }
-t_sprite	add_sprite(double x, double y, int i, int index)
+t_sprite	add_sprite(double x, double y, int i)
 {
 	t_sprite	new;
 
 	new.x = x + 0.5;
 	new.y = y + 0.5;
 	new.i = i - 1;
-	new.index = index;
 	return (new);
 }
 
@@ -97,6 +105,8 @@ void	create_sprites_array(t_map *map)
 	int			x;
 	int			i;
 
+	if (map->s != NULL)
+		ft_memdel((void **)&(map->s));
 	map->nb_sprites = nb_sprites(map);
 	alloc_arrays(map);
 	i = 0;
@@ -108,7 +118,7 @@ void	create_sprites_array(t_map *map)
 		{
 			if (map->board[y][x] > 6)
 			{
-				map->s[i] = add_sprite(y, x, map->board[y][x], i);
+				map->s[i] = add_sprite(y, x, map->board[y][x]);
 				i++;
 			}
 			x++;

@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 14:54:18 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/27 19:54:30 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/28 13:54:39 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void	draw_background(t_env *env)
 
 int		is_walkable(t_map *map, int i, int x, int y)
 {
-	if (i == 9 && get_index(map, x, y))
-		realloc_array(map, x, y);
-	return ((i == 0 || i > 8) ? 1 : 0);
+	if (i == 9 && in_array(map, x, y))
+		realloc_array(map, x, y, i);
+	return ((i == 0 || i > 8 || (i > 6 && map->bool_spr == 0)) ? 1 : 0);
 }
 
 void	bubble_sort(int	*order, double *dist, int amount)

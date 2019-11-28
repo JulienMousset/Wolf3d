@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:39:45 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/26 13:04:28 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/11/28 13:50:19 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	pick_color(t_env *env, t_map *map, int x, int y_start)
 	int		i;
 	int		j;
 	char	*color_str;
-	if (map->boo == 1)
+	if (map->bool_tex == 1)
 	{
 		map->d = y_start - map->h2 + map->line_height / 2;
 		map->tex_y = ((map->d * TS) / map->line_height);
@@ -72,7 +72,7 @@ void	pick_color(t_env *env, t_map *map, int x, int y_start)
 
 void	draw_line(t_env *env, t_map *map, int x, int y_start)
 {
-	if (map->boo == 1)
+	if (map->bool_tex == 1)
 	{
 		if (map->ns_or_ew == 0)
 			map->wall_x = map->pos.y + map->perp * map->ray_dir.y;

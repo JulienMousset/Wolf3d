@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 18:02:20 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/27 19:25:37 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/28 14:29:53 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/10/31 18:15:06 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -122,29 +122,15 @@ int		key_press(int key, t_env *env)
 		else
 			env->map->open_map = 0;
 	}
-	if (key == KEY_O)
-	{
-		if (env->map->hide_map == 0)
-			env->map->hide_map = 1;
-		else
-			env->map->hide_map = 0;
-	}
 	if (key == NUM_1)
+		env->map->bool_tex = env->map->bool_tex ? 0 : 1;
+	if (key == NUM_2 && env->map->bool_mm)
 	{
-		if (env->map->texture_mode == 0)
-			env->map->texture_mode = 1;
-		else
-			env->map->texture_mode = 0;
-	}
-	if (key == NUM_2)
-	{
-		if (env->map->map_zoom == 0)
-			env->map->map_zoom = 1;
-		else
-			env->map->map_zoom = 0;
+		env->map->opt = env->map->opt == 1 ? 2 : 1;
+		set_mmmap_values(env->map, env->map->opt);
 	}
 	if (key == NUM_3)
-		env->map->boo_spr = env->map->boo_spr ? 0 : 1;
+		env->map->bool_spr = env->map->bool_spr ? 0 : 1;
 	if (key == ARROW_UP)
 		env->map->look_up = 1;
 	if (key == ARROW_DOWN)
@@ -196,27 +182,9 @@ int	multiple_events(t_env *env)
 	if (env->map->respawn == 1)
 		set_values(env->map);
 	if (env->map->open_map == 1)
-		env->map->menu = 1;
+		env->map->bool_menu = 1;
 	else if (env->map->open_map == 0)
-		env->map->menu = 0;
-	if (env->map->hide_map == 1)
-		env->map->mm_switch = 1;
-	else if (env->map->hide_map == 0)
-		env->map->mm_switch = 0;
-	if (env->map->texture_mode == 1)
-		env->map->boo = 1;
-	else if (env->map->texture_mode == 0)
-		env->map->boo = 0;
-	if (env->map->map_zoom == 1)
-	{
-		env->map->opt = 2;
-		set_mmmap_values(env->map, env->map->opt);
-	}
-	else if (env->map->map_zoom == 0)
-	{
-		env->map->opt = 1;
-		set_mmmap_values(env->map, env->map->opt);
-	}
+		env->map->bool_menu = 0;
 	if (env->map->look_up == 1 || env->map->look_down == 1)
 		look_up_down(env->map);
 	if (env->map->mouse_left == 1 || env->map->mouse_right == 1)

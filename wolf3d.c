@@ -3,11 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf3d.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/17 15:32:43 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/27 17:43:08 by pasosa-s         ###   ########.fr       */
-/*   Updated: 2019/11/27 12:16:41 by pasosa-s         ###   ########.fr       */
+/*   Created: 2019/11/28 13:57:07 by pasosa-s          #+#    #+#             */
+/*   Updated: 2019/11/28 14:05:07 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +14,6 @@
 
 void	set_mmmap_values(t_map *map, int opt)
 {
-	map->mm_switch = 1;
 	map->mm_size = per(W, 11) * opt; //size of the mmmap
 	map->mm_margin = (t_coord) {.x = per(W, 7), .y = per(H, 5)};
 	map->mm_vis = 16; // visualization of 40 blocks around
@@ -30,30 +28,33 @@ void	set_mmmap_values(t_map *map, int opt)
 
 void	set_values(t_map *map)
 {
+	place_player(map);
+	//map->pos = (t_complex) {.x = 10, .y = 10};
 	map->dir = (t_complex) {.x = -1, .y = 0};
 	map->plane = (t_complex) {.x = 0, .y = 0.66};
+	map->camera_x = 0;
+	map->ray_dir = (t_complex) {.x = 0, .y = 0};
 	map->move_coef = 0.1;
 	map->rot_coef = 0.08;
 	map->run = 0;
-	map->menu = 0;
-	map->boo = 1;
 	map->opt = 1; //minimap size x1 or x2
 	map->h2 = H / 2;
-	map->boo_spr = 0;
 	map->nb_sprites = 0;
-
+	map->bool_tex = 1;
+	map->bool_spr = 1;
+	map->bool_menu = 0;
+	map->bool_mm = 0;
 	map->item_key = 0;
 	map->item_golden = 0;
 	map->item_map = 0;
-
+	map->item_boots = 0;
+	map->s = NULL;
 	map->mouse_pos = (t_coord) {.x = W / 2, .y = H / 2};
-	place_player(map);
-	//map->pos = (t_complex) {.x = 10, .y = 10};
 	map->pos.x -= map->dir.x * MOVE_SPEED;
 	set_mmmap_values(map, map->opt);
 }
 
-void	init_keys(t_map *map)
+void	set_keys(t_map *map)
 {
 	map->esc = 0;
 	map->up = 0;
@@ -65,9 +66,6 @@ void	init_keys(t_map *map)
 	map->run_mode = 0;
 	map->open_map = 0;
 	map->respawn = 0;
-	map->hide_map = 0;
-	map->texture_mode = 0;
-	map->map_zoom = 0;
 	map->look_up = 0;
 	map->look_down = 0;
 	map->mouse_left = 0;
@@ -83,7 +81,7 @@ int		init_structure(t_env *env, char *file)
 		return (0);
 	if (!(parsing(env->map, file)))
 		free_and_display_usage(env);
-	init_keys(env->map);
+	set_keys(env->map);
 	set_values(env->map);
 	env->mlx_ptr = mlx_init();
 	env->win_ptr = mlx_new_window(env->mlx_ptr, W, H, "Wolf3D");
