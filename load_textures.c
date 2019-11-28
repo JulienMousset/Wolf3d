@@ -119,7 +119,7 @@ void	create_sprites_array(t_map *map)
 	
 void	and_more(t_env *env, int a, int b)
 {
-	env->t[6].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, PILLAR, &a, &b);
+	env->t[6].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, DOOR, &a, &b);
 	env->t[6].data_addr = mlx_get_data_addr(env->t[6].img_ptr, &env->t[6].bpp,
 			&env->t[6].s_l, &env->t[6].endian);
 	env->t[7].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, BARREL, &a, &b);
@@ -150,7 +150,7 @@ void	load_textures(t_env *env)
 	env->t[2].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, PSTONE, &a, &b);
 	env->t[2].data_addr = mlx_get_data_addr(env->t[2].img_ptr, &env->t[2].bpp,
 			&env->t[2].s_l, &env->t[2].endian);
-	env->t[3].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, REDBRICK, &a, &b);
+	env->t[3].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, PILLAR, &a, &b);
 	env->t[3].data_addr = mlx_get_data_addr(env->t[3].img_ptr, &env->t[3].bpp,
 			&env->t[3].s_l, &env->t[3].endian);
 	env->t[4].img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, WOOD, &a, &b);

@@ -38,7 +38,7 @@ int		is_walkable(t_map *map, int i, int x, int y)
 {
 	if (i == 9 && get_index(map, x, y))
 		realloc_array(map, x, y);
-	return ((i == 0 || i > 8) ? 1 : 0);
+	return ((i == 0 || i == 7 || i > 8) ? 1 : 0);
 }
 
 void	bubble_sort(int	*order, double *dist, int amount)

@@ -57,6 +57,7 @@
 # define PILLAR "textures/pillar.XPM"
 # define PSTONE "textures/purplestone.XPM"
 # define REDBRICK "textures/redbrick.XPM"
+# define DOOR "textures/boi/door_open.XPM"
 # define WOOD "textures/wood.XPM"
 
 # define SKYBOX "textures/pixel_sky.XPM"
