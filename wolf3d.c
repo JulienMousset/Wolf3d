@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 13:57:07 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/29 19:44:51 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/29 19:55:29 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ void	set_values(t_map *map)
 	map->run = 0;
 	map->opt = 1; //minimap size x1 or x2
 	map->h2 = H / 2;
+
+	map->walk = 0;
+
 	map->nb_sprites = 0;
 	map->bool_tex = 1;
 	map->bool_spr = 1;

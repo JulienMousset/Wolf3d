@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 14:54:18 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/29 17:50:19 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/29 20:09:19 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,31 @@ void	draw_background(t_env *env)
 	}
 }
 
-int		is_walkable(t_map *map, int i, int x, int y)
+int		is_walkable(t_map *map, int id, int x, int y)
 {
-	if (i >= FIRST_SPR && in_array(map, x, y))
-		realloc_array(map, x, y, i);
-	if (i == ID_DOOR_C && map->item_key)
+	/*
+	if (id >= FIRST_WALK || id == 0 || map->walk == 1)
+		map->walk = 0;
+	else if (id < FIRST_WALK && id >= FIRST_TEX)
+	{
+		if (map->walk < 1)
+		{
+		map->walk++;
+		return (1);
+		}
+		else
+			return (0);
+	}
+*/
+	if (id >= FIRST_SPR && in_array(map, x, y))
+		realloc_array(map, x, y, id);
+	if (id == ID_DOOR_C && map->item_key)
 	{
 		map->board[x][y] = ID_DOOR_O;
 		map->item_key--;
-		i = ID_DOOR_O;
+		id = ID_DOOR_O;
 	}
-	return ((i == 0 || i >= FIRST_WALK) ? 1 : 0);
+	return ((id == 0 || id >= FIRST_WALK) ? 1 : 0);
 }
 
 void	bubble_sort(int	*order, double *dist, int amount)

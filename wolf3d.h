@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/29 19:53:25 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/29 19:55:43 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 19:34:28 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/27 12:47:03 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
@@ -107,6 +107,8 @@ typedef struct	s_map
 	int			nb_lines;
 	int			nb_columns;
 	int			h2;
+
+	int			walk;
 
 	t_complex	pos;
 	t_complex	old_dir;
