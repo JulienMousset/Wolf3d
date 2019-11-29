@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 15:19:23 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/29 17:52:50 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/29 19:53:27 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,17 @@ void	print_mini_sprite(t_env *env, t_map *map, int id, int margin_y)
 void	gui(t_env *env, t_map *map)
 {
 	int		size;
+	int		n;
 
+	n = map->gui_counter;
 	size = map->gui_size;
-	//if (map->item_key)
-		print_mini_sprite(env, map, ID_KEY - 1, map->gui_margin.y);
-	//if (map->item_golden)
-		print_mini_sprite(env, map, ID_GOLDEN - 1, map->gui_margin.y + TS);
+	print_mini_sprite(env, map, ID_COIN - 1, map->gui_margin.y);
+	print_mini_sprite(env, map, ID_KEY - 1, map->gui_margin.y + TS);
+	print_mini_sprite(env, map, ID_GOLDEN - 1, map->gui_margin.y + TS * n++);
 	if (map->bool_mm)
-		print_mini_sprite(env, map, ID_MAP - 1, map->gui_margin.y + TS * 2);
+		print_mini_sprite(env, map, ID_MAP - 1, map->gui_margin.y + TS * n++);
 	if (map->bool_sprint)
-		print_mini_sprite(env, map, ID_HEELS - 1, map->gui_margin.y + TS * 3);
+		print_mini_sprite(env, map, ID_HEELS - 1, map->gui_margin.y + TS * n++);
+	if (map->bool_poly)
+		print_mini_sprite(env, map, ID_POLY - 1, map->gui_margin.y + TS * n++);
 }

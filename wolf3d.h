@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/29 18:08:46 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/29 19:53:25 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 19:34:28 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/27 12:47:03 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
@@ -36,8 +36,6 @@
 # define MOVE_SPEED 0.15
 # define ROT_SPEED 0.08
 
-#define NUM_TEX	13
-
 # define ERR_MALLOC "error trying to allocate memory"
 # define ERR_USAGE "Usage: ./wolf3d <filename>"
 # define ERR_DIR "Input is a directory"
@@ -46,30 +44,6 @@
 # define ERR_EMPTY "No data found."
 # define ERR_NOFILE "File doesn't exit."
 # define ERR_FULL "Map without place for the player."
-
-# define BARREL "textures/barrel.XPM"
-# define BLUESTONE "textures/bluestone.XPM"
-# define COLORSTONE "textures/colorstone.XPM"
-# define EAGLE "textures/eagle.XPM"
-# define GREENLIGHT "textures/greenlight.XPM"
-# define GREYSTONE "textures/greystone.XPM"
-# define MOSSY "textures/mossy.XPM"
-# define PILLAR "textures/pillar.XPM"
-# define PSTONE "textures/purplestone.XPM"
-# define REDBRICK "textures/redbrick.XPM"
-# define WOOD "textures/wood.XPM"
-# define DOOR_O "textures/boi/door_open.XPM"
-# define DOOR_C "textures/boi/door_closed.XPM"
-# define WALL "textures/boi/wall.XPM"
-# define FLOOR "textures/boi/floor.XPM"
-
-# define SKYBOX "textures/pixel_sky.XPM"
-
-# define KEY "textures/boi/key.XPM"
-# define GOLDEN "textures/boi/key_golden.XPM"
-# define MAP "textures/boi/treasure_map.XPM"
-# define HEELS "textures/boi/heels.XPM"
-
 
 typedef struct	s_coord
 {
@@ -180,6 +154,7 @@ typedef struct	s_map
 
 	int			item_key;
 	int			item_golden;
+	int			item_coin;
 
 	t_coord		mouse_pos;
 
@@ -195,6 +170,7 @@ typedef struct	s_map
 	t_coord		gui_margin;
 	int			gui_scale;
 	int			gui_size;
+	int			gui_counter;
 	char		*gui_str;
 
 	int			bool_tex;
@@ -202,6 +178,7 @@ typedef struct	s_map
 	int			bool_menu;
 	int			bool_mm;
 	int			bool_sprint;
+	int			bool_poly;
 
 
 	int			esc;
