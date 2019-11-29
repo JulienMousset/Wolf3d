@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 13:57:07 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/28 21:05:52 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/29 13:22:35 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	set_values(t_map *map)
 	map->mouse_pos = (t_coord) {.x = W / 1, .y = H / 1};
 	map->pos.x -= map->dir.x * MOVE_SPEED;
 	set_mmmap_values(map, map->opt);
-	//map->copy = ft_tabcpy(map->board, map->nb_lines, map->nb_columns);
 }
 
 void	set_keys(t_map *map)
@@ -88,6 +87,8 @@ int		init_structure(t_env *env, char *file)
 		free_and_display_usage(env);
 	set_keys(env->map);
 	set_values(env->map);
+	env->map->copy = ft_tabcpy(env->map->board, env->map->nb_lines,
+			env->map->nb_columns);
 	env->mlx_ptr = mlx_init();
 	env->win_ptr = mlx_new_window(env->mlx_ptr, W, H, "Wolf3D");
 	env->img_ptr = mlx_new_image(env->mlx_ptr, W, H);

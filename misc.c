@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 14:54:18 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/28 21:05:44 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/29 14:37:20 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,32 @@ void	bubble_sort(int	*order, double *dist, int amount)
 	}
 }
 
-void	copy_board(t_map *map)
+void	ft_tabdel(int **tab, int lines)
 {
-	ft_tabdel(map->board, map->nb_lines);
-	map->board = ft_tabcpy(map->copy, map->nb_lines, map->nb_columns);
+	int		i;
+
+	i = 0;
+	while (i < lines)
+	{
+		ft_memdel((void **)&(tab[i]));
+		i++;
+	}
+	ft_memdel((void **)&(tab));
+}
+
+int		*ft_arraycpy(int *src, int size)
+{
+	int	*dst;
+	int		i;
+
+	dst = (int *)malloc(sizeof(int) * size);
+	i = 0;
+	while (i < size)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	return dst;
 }
 
 int		**ft_tabcpy(int **src, int nb_lines, int nb_columns)
@@ -94,8 +116,14 @@ int		**ft_tabcpy(int **src, int nb_lines, int nb_columns)
 	dst = (int **)malloc(sizeof(int *) * nb_lines);
 	while (i < nb_lines)
 	{
-		ft_memcpy(&dst[i], &src[i], nb_columns);
+		dst[i] = ft_arraycpy(src[i], nb_columns);
 		i++;
 	}
 	return dst;
+}
+
+void	copy_board(t_map *map)
+{
+	ft_tabdel(map->board, map->nb_lines);
+	map->board = ft_tabcpy(map->copy, map->nb_lines, map->nb_columns);
 }

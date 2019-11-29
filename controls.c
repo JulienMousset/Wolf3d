@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 18:02:20 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/28 21:05:54 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/29 13:25:26 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/10/31 18:15:06 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -90,7 +90,7 @@ int		close_program(t_env *env)
 	mlx_destroy_image(env->mlx_ptr, env->img_ptr);
 	mlx_destroy_window(env->mlx_ptr, env->win_ptr);
 	ft_tabdel(env->map->board, env->map->nb_lines);
-	//ft_tabdel(env->map->copy, env->map->nb_lines);
+	ft_tabdel(env->map->copy, env->map->nb_lines);
 	ft_memdel((void **)&(env->map));
 	ft_memdel((void **)&(env));
 	exit(EXIT_SUCCESS);
@@ -117,7 +117,7 @@ int		key_press(int key, t_env *env)
 	if (key == KEY_SPACE)
 	{
 		set_values(env->map);
-		//copy_board(env->map)
+		copy_board(env->map);
 		create_sprites_array(env->map);
 	}
 	if (key == KEY_M)
