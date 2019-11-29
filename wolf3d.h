@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/28 21:06:27 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/29 18:08:46 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 19:34:28 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/27 12:47:03 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
@@ -27,6 +27,7 @@
 # include "libft/libft.h"
 # include "colors.h"
 # include "controls.h"
+#include "sprites.h"
 
 # define W 1280
 # define H 960
@@ -35,8 +36,7 @@
 # define MOVE_SPEED 0.15
 # define ROT_SPEED 0.08
 
-#define NUM_TEX	11
-# define NUM_SPR 3
+#define NUM_TEX	13
 
 # define ERR_MALLOC "error trying to allocate memory"
 # define ERR_USAGE "Usage: ./wolf3d <filename>"

@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 12:29:31 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/28 20:41:42 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/29 16:42:25 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int		check_board(t_map *map)
 		while (j < map->nb_columns)
 		{
 			if ((i == 0 || j == 0 || i == map->nb_lines - 1
-			|| j == map->nb_columns - 1) && (map->board[i][j] == 0))
+			|| j == map->nb_columns - 1) && ((map->board[i][j] == 0) ||
+				map->board[i][j] > 9))
 				return (0);
 			j++;
 		}
@@ -38,23 +39,37 @@ int		fill_board(t_map *map, int fd)
 	int		read;
 	int		i;
 	int		j;
-	int		k;
+	int		player;
 
+	player = 0;
 	i = 0;
 	while ((read = get_next_line(fd, &map->line)))
 	{
 		map->tmp = ft_strsplit(map->line, ' ');
-		j = 0;
-		k = 0;
 		if (!(map->board[i] = (int *)malloc(sizeof(int) * map->nb_columns)))
 			return (0);
+		j = 0;
 		while (map->tmp[j])
 		{
-			map->board[i][j++] = ft_atoi(map->tmp[k++]);
+			if (!ft_strcmp(map->tmp[j], "X"))
+			{
+				player++;
+				if (player > 1)
+					return (0);
+				map->board[i][j] = 0;
+				map->pos = (t_complex) {.x = i, .y = j};
+			}
+			else if (ft_isdigit(map->tmp[j][0]))
+				map->board[i][j] = ft_atoi(map->tmp[j]);
+			else if (ft_islower(map->tmp[j][0]))
+				map->board[i][j] = map->tmp[j][0] - 87;
+			j++;
 		}
 		i++;
 		free_tmp_board(map->tmp);
 		ft_memdel((void **)&(map->line));
 	}
+	if (player == 0)
+		return (0);
 	return (1);
 }

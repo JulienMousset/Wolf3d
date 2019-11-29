@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:39:07 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/29 13:23:09 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/11/29 17:48:25 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	dda(t_map *map)
 			map->ns_or_ew = 1;
 		}
 		map->hit = ((map->board[map->block.x][map->block.y] > 0) &&
-				(map->board[map->block.x][map->block.y] < 6) ) ? 1 : 0;
+				(map->board[map->block.x][map->block.y] < FIRST_SPR) ) ? 1 : 0;
 	}
 }
 
@@ -119,11 +119,11 @@ void	floor_casting(t_env *env, t_map *map, int x)
 
 		j = ((map->floor_tex.x * (env->t[9].bpp / 8)) + (map->floor_tex.y *
 					env->t[9].s_l));
-		ft_memcpy(&map->color_str, &env->t[9].data_addr[j], sizeof(int));
+		ft_memcpy(&map->color_str, &env->t[2].data_addr[j], sizeof(int));
 		map->color = (int)map->color_str;
 		//map->color = (map->color >> 1) & 8355711;
 		put_pixel(env, x, y, map->color);
-		ft_memcpy(&map->color_str, &env->t[9].data_addr[j], sizeof(int));
+		ft_memcpy(&map->color_str, &env->t[2].data_addr[j], sizeof(int));
 		map->color = (int)map->color_str;
 		map->color = (map->color >> 1) & 8355711;
 		put_pixel(env, x, map->h2 * 2 - y, map->color);

@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 15:19:23 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/28 18:17:30 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/29 17:52:50 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ void	gui(t_env *env, t_map *map)
 
 	size = map->gui_size;
 	//if (map->item_key)
-		print_mini_sprite(env, map, 5, map->gui_margin.y);
+		print_mini_sprite(env, map, ID_KEY - 1, map->gui_margin.y);
 	//if (map->item_golden)
-		print_mini_sprite(env, map, 6, map->gui_margin.y + TS);
+		print_mini_sprite(env, map, ID_GOLDEN - 1, map->gui_margin.y + TS);
 	if (map->bool_mm)
-		print_mini_sprite(env, map, 7, map->gui_margin.y + TS * 2);
+		print_mini_sprite(env, map, ID_MAP - 1, map->gui_margin.y + TS * 2);
 	if (map->bool_sprint)
-		print_mini_sprite(env, map, 8, map->gui_margin.y + TS * 3);
+		print_mini_sprite(env, map, ID_HEELS - 1, map->gui_margin.y + TS * 3);
 }

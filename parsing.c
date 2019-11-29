@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 12:16:29 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/29 13:54:09 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/11/29 16:45:09 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,19 +70,29 @@ int		count_lines(t_map *map, char *file)
 	return (1);
 }*/
 
-int	check_map(char *s)
+int		is_valid(char *s, int i)
+{
+	if (((ft_isdigit(s[i]) || ft_islower(s[i]) || s[i] == 'X') &&
+				((s[i + 1] == ' ') || s[i + 1] == '\0')) ||
+			((s[i] == ' ') &&
+			 (ft_isdigit(s[i + 1]) || ft_islower(s[i + 1]) ||
+			  s[i + 1] == 'X')))
+		return (1);
+	return (0);
+}
+
+int		check_map(char *s)
 {
 	int	i;
 
 	i = 0;
 	while (s[i])
 	{
-		if  ((ft_isalnum(s[i]) && (s[i + 1] == ' ' || s[i + 1] == '\0')) || (s[i] == ' ' && ft_isalnum(s[i + 1])))
+		if (is_valid(s, i))
 			i++;
 		else
 			return (0);
 	}
-	end("good\n");
 	return (1);
 }
 
@@ -123,6 +133,7 @@ int		parsing(t_map *map, char *file)
 	fd = open(file, O_RDONLY);
 	fill_board(map, fd);
 	close(fd);
+	//ft_print_tab(map->board, map->nb_lines, map->nb_columns);
 	if (!(check_board(map)))
 		return (free_board(map));
 	return (1);
