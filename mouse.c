@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 19:23:52 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/26 20:07:02 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/29 13:26:28 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ int	mouse_move(int x, int y, t_env *env)
 		env->map->mouse_right = 1;
 	else if (x < env->map->mouse_pos.x)
 		env->map->mouse_left = 1;
-	if (y > env->map->mouse_pos.y)
+	/*if (y > env->map->mouse_pos.y)
 		env->map->look_down = 1;
 	else if (y < env->map->mouse_pos.y)
-		env->map->look_up = 1;
+		env->map->look_up = 1;*/
 	env->map->mouse_pos.x = x;
 	env->map->mouse_pos.y = y;
 	return (0);
