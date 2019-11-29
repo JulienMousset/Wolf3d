@@ -6,7 +6,11 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 18:02:20 by pasosa-s          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/11/29 13:25:26 by pasosa-s         ###   ########.fr       */
+=======
+/*   Updated: 2019/11/29 13:15:35 by jmousset         ###   ########.fr       */
+>>>>>>> f08c0e8fcc48388037c8b2949271ac0cc3cb9508
 /*   Updated: 2019/10/31 18:15:06 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -191,7 +195,7 @@ int	multiple_events(t_env *env)
 	if (env->map->look_up == 1 || env->map->look_down == 1)
 		look_up_down(env->map);
 	if (env->map->mouse_left == 1 || env->map->mouse_right == 1)
-		left_or_right(env->map, env->map->rot_coef / 1.5);
+		left_or_right(env->map, env->map->rot_coef / 1);
 	if (env->map->camera_h == 5)
 	{
 		env->map->look_up = 0;
