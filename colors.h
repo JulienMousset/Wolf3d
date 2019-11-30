@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 17:55:59 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/01 22:09:47 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/30 16:09:39 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define GRIS 0xc2c4bf
 # define GRIS2 0xe3e6e1
 # define PINK 0xFFC0CB
+# define BOI 0x636564
 
 # define M 0xD7DCD4
 

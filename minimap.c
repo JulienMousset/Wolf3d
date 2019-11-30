@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 19:10:56 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/28 20:32:08 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/30 16:11:04 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,19 @@ void	draw_mini_background(t_env *env, t_map *map)
 					x < block || x > map->mm_size - block)
 				put_pixel(env, map->mm_start.x + x, map->mm_start.y + y, 0);
 			else
-				put_pixel(env, map->mm_start.x + x, map->mm_start.y + y, GREY4);
+				put_pixel(env, map->mm_start.x + x, map->mm_start.y + y, BOI);
 			x++;
 		}
 		y++;
 	}
+}
+
+int		mm_color(t_map *map, int id, int i)
+{
+	if (map->mm_color)
+		return (choose_color(id, i));
+	else
+		return (0);
 }
 
 void	put_n_pixel(t_env *env, int xx, int yy, int id)
@@ -46,7 +54,7 @@ void	put_n_pixel(t_env *env, int xx, int yy, int id)
 	t_coord	coord;
 
 	map = env->map;
-	color = (id == 0) ? PINK : choose_color(id, 0);
+	color = (id == 0) ? PINK : mm_color(env->map, id, 0);
 	xx *= map->mm_block_size;
 	yy *= map->mm_block_size;
 	coord.x = map->mm_center.x - map->mm_vis / 2 * map->mm_block_size;

@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:13:50 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/28 20:19:47 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/30 20:51:55 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	text_gui(t_env *env)
 	y = H - 30;
 	str = env->map->run ? ">>" : "";
 
-	if (env->map->bool_sprint)
+	if (env->map->item_heels)
 	{
 		mlx_string_put(mlx, win, x, y, M, "SHIFT");
 		mlx_string_put(mlx, win, x += 60, y, M, str);
@@ -77,13 +77,23 @@ void	text_gui(t_env *env)
 	//mlx_string_put(mlx, win, x += 501, y, M, "map = M");
 	x = TS + 30;
 	y = TS + 25;
-	env->map->gui_str = ft_itoa(env->map->item_key);
-	mlx_string_put(mlx, win, x, y, M, "x");
+	env->map->gui_str = ft_itoa(env->map->pick_coin);
+	mlx_string_put(mlx, win, x, y += 8, M, "x");
 	mlx_string_put(mlx, win, x += 15, y, M, env->map->gui_str);
 	ft_memdel((void **)&(env->map->gui_str));
-	env->map->gui_str = ft_itoa(env->map->item_golden);
+	env->map->gui_str = ft_itoa(env->map->pick_key);
+	mlx_string_put(mlx, win, x -= 15, y += 56, M, "x");
+	mlx_string_put(mlx, win, x += 15, y, M, env->map->gui_str);
+	ft_memdel((void **)&(env->map->gui_str));
+	env->map->gui_str = ft_itoa(env->map->pick_golden);
 	mlx_string_put(mlx, win, x -= 15, y += 64, M, "x");
 	mlx_string_put(mlx, win, x += 15, y, M, env->map->gui_str);
-	if (env->map->bool_mm)
+	if (env->map->item_map)
 		text_minimap(env);
+	if (env->map->bool_print_price)
+	{
+		x = W / 2 - 100;
+		y = H / 2;
+		mlx_string_put(mlx, win, x, y, M, "THE PRICE FOR THE ITEM IS 15 COINS");
+	}
 }

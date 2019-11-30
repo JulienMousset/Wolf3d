@@ -6,7 +6,7 @@
 #    By: jmousset <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 15:35:26 by jmousset          #+#    #+#              #
-#    Updated: 2019/11/29 18:27:00 by pasosa-s         ###   ########.fr        #
+#    Updated: 2019/11/30 16:25:15 by pasosa-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRCS = main.c\
 	   parsing.c\
 	   parsing_2.c\
 	   ray_casting.c\
+	   floor_and_ceiling.c\
 	   draw.c\
 	   controls.c\
 	   controls_2.c\
@@ -42,9 +43,7 @@ SRCS = main.c\
 	   text_gui.c\
 	   gui.c\
 	   menu.c\
-	   get_time.c\
 	   mouse.c\
-	   place_player.c\
 	   minimap.c\
 	   load_textures.c\
 	   load_sprites.c\

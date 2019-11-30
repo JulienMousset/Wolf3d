@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 18:23:25 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/29 19:52:11 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/30 19:37:06 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,39 @@ int			in_array(t_map *map, int x, int y)
 
 void		gain_item(t_map *map, int id)
 {
-	if (id == ID_KEY)
-		map->item_key++;
+	if (id == ID_COIN)
+		map->pick_coin++;
+	else if (id == ID_RHEART)
+		map->pick_heart += 2;
+	else if (id == ID_RHEART_HALF)
+		map->pick_heart++;
+	else if (id == ID_KEY)
+		map->pick_key++;
 	else if (id == ID_GOLDEN)
-		map->item_golden++;
-	else if (id == ID_COIN)
-		map->item_coin++;
+		map->pick_golden++;
 	else if (id == ID_MAP)
-		map->bool_mm = 1;
+		map->item_map = 1;
 	else if (id == ID_HEELS)
-		map->bool_sprint = 1;
+		map->item_heels = 1;
 	else if (id == ID_POLY)
-		map->bool_poly = 1;
+		map->item_poly = 1;
+	else if (id == ID_IPECAC)
+		map->item_ipecac = 1;
+	else if (id == ID_GODHEAD)
+	{
+		map->item_godhead = 1;
+		map->pick_coin = 99;
+		map->pick_key = 99;
+		map->pick_golden = 99;
+	}
+	if (map->pick_coin > 99)
+		map->pick_coin = 99;
+	if (map->pick_key > 99)
+		map->pick_key = 99;
+	if (map->pick_golden > 99)
+		map->pick_golden = 99;
+
+
 }
 
 void		realloc_array(t_map *map, int x, int y, int id)
@@ -57,6 +78,7 @@ void		realloc_array(t_map *map, int x, int y, int id)
 		if (map->s[i].x == x + 0.5 && map->s[i].y == y + 0.5)
 		{
 			gain_item(map, id);
+			map->board[x][y] = 0;
 			j++;
 		}
 		new[i] = map->s[i + j];

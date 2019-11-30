@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/29 19:55:43 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/30 20:54:23 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 19:34:28 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/27 12:47:03 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
@@ -33,8 +33,12 @@
 # define H 960
 # define TS 64
 # define THREADS 8
+
 # define MOVE_SPEED 0.15
 # define ROT_SPEED 0.08
+# define SCALE_MS 5
+
+#define NUM_TEX	22
 
 # define ERR_MALLOC "error trying to allocate memory"
 # define ERR_USAGE "Usage: ./wolf3d <filename>"
@@ -101,7 +105,7 @@ typedef struct	s_sprite
 typedef struct	s_map
 {
 	int			**board;
-	int			**copy;
+	int			**board_cpy;
 	char		**tmp;
 	char		*line;
 	int			nb_lines;
@@ -111,6 +115,7 @@ typedef struct	s_map
 	int			walk;
 
 	t_complex	pos;
+	t_complex	pos_cpy;
 	t_complex	old_dir;
 	t_complex	dir;
 	t_complex	old_plane;
@@ -154,9 +159,16 @@ typedef struct	s_map
 	char		*color_str;
 	int			nb_sprites;
 
-	int			item_key;
-	int			item_golden;
-	int			item_coin;
+	int			pick_coin;
+	int			pick_heart;
+	int			pick_key;
+	int			pick_golden;
+
+	int			item_map;
+	int			item_heels;
+	int			item_poly;
+	int			item_ipecac;
+	int			item_godhead;
 
 	t_coord		mouse_pos;
 
@@ -168,6 +180,7 @@ typedef struct	s_map
 	int			mm_vis;
 	int			mm_block_size;
 	t_coord		mm_margin;
+	int			mm_color;
 
 	t_coord		gui_margin;
 	int			gui_scale;
@@ -178,9 +191,7 @@ typedef struct	s_map
 	int			bool_tex;
 	int			bool_spr;
 	int			bool_menu;
-	int			bool_mm;
-	int			bool_sprint;
-	int			bool_poly;
+	int			bool_print_price;
 
 
 	int			esc;
@@ -224,6 +235,7 @@ typedef struct	s_env
 	int			endian;
 	t_map		*map;
 	t_img		t[NUM_TEX];
+	char		*path[NUM_TEX];
 	t_img		sky;
 }				t_env;
 
@@ -275,20 +287,17 @@ void			display_values(t_map *map);
 void			text_gui(t_env *env);
 void			gui(t_env *env, t_map *map);
 void			menu(t_env *env);
-void			set_mmmap_values(t_map *map, int opt);
+void			set_mmap_values(t_map *map, int opt);
 
-unsigned long	get_time(void);
-int				place_player(t_map *map);
 void			draw_minimap(t_env *env, t_map *map);
 
-void			load_textures(t_env *env);
+void			load_textures(t_env *env, t_img *t, char **path);
 void			pick_color(t_env *env, t_map *map, int x, int y_start);
 
 void			draw_sky(t_env *env, t_map *map);
 void			look_up_down(t_map *map);
 
 int				mouse_move(int x, int y, t_env *env);
-double			convert(int old, double min, double max, int length);
 int				multiple_events(t_env *env);
 void			look_left_right(t_map *map);
 
@@ -302,12 +311,18 @@ int				is_walkable(t_map *map, int i, int x, int y);
 void			realloc_array(t_map *map, int x, int y, int id);
 int				in_array(t_map *map, int x, int y);
 
-void			set_mmap_values(t_map *map, int opt);
 void			print_mini_sprite(t_env *env, t_map *map, int id, int margin_y);
 
 void			create_sprites_array(t_map *map);
 int				**ft_tabcpy(int **src, int nb_lines, int nb_columns);
 void			ft_tabdel(int **tab, int lines);
 void			copy_board(t_map *map);
+
+int				close_program(t_env *env);
+void			set_floor_casting(t_map *map);
+void			set_ceil_casting(t_map *map);
+void			floor_casting(t_env *env, t_map *map, int x);
+void			ceil_casting(t_env *env, t_map *map, int x);
+
 #endif
 

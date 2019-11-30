@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 15:19:23 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/29 19:53:27 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/30 19:38:21 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,16 @@ void	gui(t_env *env, t_map *map)
 	size = map->gui_size;
 	print_mini_sprite(env, map, ID_COIN - 1, map->gui_margin.y);
 	print_mini_sprite(env, map, ID_KEY - 1, map->gui_margin.y + TS);
-	print_mini_sprite(env, map, ID_GOLDEN - 1, map->gui_margin.y + TS * n++);
-	if (map->bool_mm)
+	print_mini_sprite(env, map, ID_GOLDEN - 1, map->gui_margin.y + TS * n);
+	n += 2;
+	if (map->item_map)
 		print_mini_sprite(env, map, ID_MAP - 1, map->gui_margin.y + TS * n++);
-	if (map->bool_sprint)
+	if (map->item_heels)
 		print_mini_sprite(env, map, ID_HEELS - 1, map->gui_margin.y + TS * n++);
-	if (map->bool_poly)
+	if (map->item_poly)
 		print_mini_sprite(env, map, ID_POLY - 1, map->gui_margin.y + TS * n++);
+	if (map->item_ipecac)
+		print_mini_sprite(env, map, ID_IPECAC - 1, map->gui_margin.y + TS * n++);
+	if (map->item_godhead)
+		print_mini_sprite(env, map, ID_GODHEAD - 1, map->gui_margin.y + TS * n++);
 }

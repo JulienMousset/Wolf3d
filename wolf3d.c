@@ -6,13 +6,13 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 13:57:07 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/29 19:55:29 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/30 20:35:14 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void	set_mmmap_values(t_map *map, int opt)
+void	set_mmap_values(t_map *map, int opt)
 {
 	map->mm_size = per(W, 11) * opt; //size of the mmmap
 	map->mm_margin = (t_coord) {.x = per(W, 7), .y = per(H, 5)};
@@ -24,12 +24,12 @@ void	set_mmmap_values(t_map *map, int opt)
 	map->mm_center.y = map->mm_margin.y + map->mm_size / 2;
 	map->mm_end.x = W - map->mm_margin.x;
 	map->mm_end.y = map->mm_margin.y + map->mm_size;
+	map->mm_color = 0;
 }
 
 void	set_values(t_map *map)
 {
-	place_player(map);
-	//map->pos = (t_complex) {.x = 10, .y = 10};
+	map->pos = map->pos_cpy;
 	map->dir = (t_complex) {.x = -1, .y = 0};
 	map->plane = (t_complex) {.x = 0, .y = 0.66};
 	map->camera_x = 0;
@@ -46,12 +46,16 @@ void	set_values(t_map *map)
 	map->bool_tex = 1;
 	map->bool_spr = 1;
 	map->bool_menu = 0;
-	map->bool_mm = 0;
-	map->bool_sprint = 0;
-	map->bool_poly = 0;
-	map->item_key = 0;
-	map->item_golden = 0;
-	map->item_coin = 0;
+	map->bool_print_price = 0;
+	map->pick_coin = 2;
+	map->pick_heart = 6;
+	map->pick_key = 0;
+	map->pick_golden = 0;
+	map->item_map = 0;
+	map->item_heels = 0;
+	map->item_poly = 0;
+	map->item_ipecac = 0;
+	map->item_godhead = 0;
 	map->s = NULL;
 	map->spr_order = NULL;
 	map->spr_dist = NULL;
@@ -61,12 +65,11 @@ void	set_values(t_map *map)
 	map->gui_margin = (t_coord) {.x = - TS / 2, .y = - TS};
 	map->mouse_pos = (t_coord) {.x = W / 1, .y = H / 1};
 	map->pos.x -= map->dir.x * MOVE_SPEED;
-	set_mmmap_values(map, map->opt);
+	set_mmap_values(map, map->opt);
 }
 
 void	set_keys(t_map *map)
 {
-	map->esc = 0;
 	map->up = 0;
 	map->down = 0;
 	map->left = 0;
@@ -75,7 +78,6 @@ void	set_keys(t_map *map)
 	map->strafe_right = 0;
 	map->run_mode = 0;
 	map->open_map = 0;
-	map->respawn = 0;
 	map->look_up = 0;
 	map->look_down = 0;
 	map->mouse_left = 0;
@@ -93,7 +95,7 @@ int		init_structure(t_env *env, char *file)
 		free_and_display_usage(env);
 	set_keys(env->map);
 	set_values(env->map);
-	env->map->copy = ft_tabcpy(env->map->board, env->map->nb_lines,
+	env->map->board_cpy = ft_tabcpy(env->map->board, env->map->nb_lines,
 			env->map->nb_columns);
 	env->mlx_ptr = mlx_init();
 	env->win_ptr = mlx_new_window(env->mlx_ptr, W, H, "Wolf3D");
@@ -101,7 +103,7 @@ int		init_structure(t_env *env, char *file)
 	env->data_addr = mlx_get_data_addr(env->img_ptr, &(env->bpp), &(env->s_l),
 	&(env->endian));
 	ft_bzero(env->data_addr, W * H * 4);
-	load_textures(env);
+	load_textures(env, env->t, env->path);
 	return (1);
 }
 

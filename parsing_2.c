@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 12:29:31 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/29 16:42:25 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/11/30 15:02:24 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ int		fill_board(t_map *map, int fd)
 			{
 				player++;
 				if (player > 1)
-					return (0);
+					end("more than one player");
 				map->board[i][j] = 0;
-				map->pos = (t_complex) {.x = i, .y = j};
+				map->pos_cpy = (t_complex) {.x = i, .y = j};
 			}
 			else if (ft_isdigit(map->tmp[j][0]))
 				map->board[i][j] = ft_atoi(map->tmp[j]);
@@ -70,6 +70,6 @@ int		fill_board(t_map *map, int fd)
 		ft_memdel((void **)&(map->line));
 	}
 	if (player == 0)
-		return (0);
+		end("no player placed");
 	return (1);
 }
