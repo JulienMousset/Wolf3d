@@ -6,11 +6,8 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:43:56 by pasosa-s          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2019/12/02 18:37:08 by jmousset         ###   ########.fr       */
-=======
+/*   Updated: 2019/12/02 18:44:07 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/02 18:34:03 by pasosa-s         ###   ########.fr       */
->>>>>>> 54d494e9132f83a7da4940c1bc1aee9220842ed6
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +29,7 @@
 # define LAST_SHOP 19
 
 # define FIRST_SPR 10
-# define LAST_SPR 22
+# define LAST_SPR 25
 
 # define SKYBOX "textures/skybox_pixel.XPM"
 
@@ -160,15 +157,19 @@
 
 //esthetic spr
 # define ID_WEB 20
+# define ID_CONTAINER_RED 21
+# define ID_CONTAINER_RED_HALF 22
+# define ID_CONTAINER_EMPTY 23
+
 
 //*end not solid sprites*
 
 //*start solid sprites*
 
 //esthetic spr
-# define ID_ROCK 21
+# define ID_ROCK 24
 //interact spr
-# define ID_SHOPKEEPER 22
+# define ID_SHOPKEEPER 25
 
 //*end solid sprites*
 

@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/02 18:34:02 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/02 19:31:56 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 19:34:28 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/27 12:47:03 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
@@ -38,7 +38,7 @@
 # define ROT_SPEED 0.08
 # define SCALE_MS 5
 
-#define NUM_TEX	22
+#define NUM_TEX	25
 
 # define ERR_MALLOC "error trying to allocate memory"
 # define ERR_USAGE "Usage: ./wolf3d <filename>"
@@ -161,6 +161,7 @@ typedef struct	s_map
 
 	int			pick_coin;
 	int			pick_heart;
+	int			container;
 	int			pick_key;
 
 	int			item_map;

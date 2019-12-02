@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 15:29:42 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/02 18:07:05 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/02 19:14:49 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,18 @@ void	more_keys(int key, t_env *env)
 		env->map->pick_coin++;
 	if (key == NUM_6)
 		env->map->pick_key++;
+	if (key == NUM_7)
+		env->map->pick_heart--;
+	if (key == NUM_8)
+		env->map->pick_heart++;
 	if (key == ARROW_UP)
 		env->map->look_up = 1;
 	if (key == ARROW_DOWN)
 		env->map->look_down = 1;
+	if (env->map->pick_heart < 1)
+		env->map->pick_heart = 1;
+	if (env->map->pick_heart > env->map->container * 2)
+		env->map->pick_heart = env->map->container * 2;
 }
 
 int		key_press(int key, t_env *env)

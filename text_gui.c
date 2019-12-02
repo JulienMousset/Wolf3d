@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:13:50 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/02 18:05:40 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/02 19:31:55 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,13 @@ void	text_gui(t_env *env)
 		y = H / 2;
 		mlx_string_put(mlx, win, x, y, M, "THE PRICE FOR THE ITEM IS 15 COINS");
 	}
+	if (env->map->board[(int)env->map->pos.x][(int)env->map->pos.y] >= FIRST_SHOP &&
+			env->map->board[(int)env->map->pos.x][(int)env->map->pos.y] <= LAST_SHOP &&
+			env->map->pick_coin < 15)
+	{
+		x = W / 2 - 100;
+		y = H / 2;
+		mlx_string_put(mlx, win, x, y, M, "NOT ENOUGH COINS");
+	}
+
 }

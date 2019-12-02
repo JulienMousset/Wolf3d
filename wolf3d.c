@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 13:57:07 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/02 18:32:15 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/02 19:09:01 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	set_values(t_map *map)
 	map->bool_menu = 0;
 	map->bool_print_price = 0;
 	map->pick_coin = 2;
+	map->container = 3;
 	map->pick_heart = 1;
 	map->pick_key = 0;
 	map->item_map = 0;

@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 15:19:23 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/02 18:34:00 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/02 19:09:40 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	print_mini_sprite(t_env *env, t_map *map, int id, int margin_y)
 	int			size;
 
 	p = (t_coord) {.x = 0, .y = 0};
-	size = (id == ID_RHEART - 1 || id == ID_RHEART_HALF - 1) ? TS * 3 : TS * 2;
+	size = (id == ID_CONTAINER_RED - 1 || id == ID_CONTAINER_RED_HALF - 1 ||
+			id == ID_CONTAINER_EMPTY - 1) ? TS * 3 : TS * 2;
 	while (p.y < size)
 	{
 		tex.y = p.y * TS / size;
@@ -48,13 +49,19 @@ void	print_hearts(t_env *env, t_map *map)
 	i = -1;
 	while (++i <  map->pick_heart / 2)
 	{
-	print_mini_sprite(env, map, ID_RHEART - 1, map->gui_margin.y);
+	print_mini_sprite(env, map, ID_CONTAINER_RED - 1, map->gui_margin.y);
 	map->gui_margin.x += TS + 20;
 	}
 	i = -1;
 	while (++i <  map->pick_heart % 2)
 	{
-	print_mini_sprite(env, map, ID_RHEART_HALF - 1, map->gui_margin.y);
+	print_mini_sprite(env, map, ID_CONTAINER_RED_HALF - 1, map->gui_margin.y);
+	map->gui_margin.x += TS + 20;
+	}
+	i = -1;
+	while (++i <  map->container - (map->pick_heart / 2 + map->pick_heart % 2))
+	{
+	print_mini_sprite(env, map, ID_CONTAINER_EMPTY - 1, map->gui_margin.y);
 	map->gui_margin.x += TS + 20;
 	}
 	map->gui_margin.x = - TS / 2;
