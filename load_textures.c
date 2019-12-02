@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 20:32:17 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/02 16:03:21 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/02 16:31:35 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/27 17:32:10 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -28,7 +28,7 @@ void	load_paths(char **path)
 	path[10] = HEART_RED;
 	path[11] = HEART_RED_HALF;
 	path[12] = KEY;
-	path[13] = KEY_GOLDEN;
+	path[13] = HEART_SOUL;
 	path[14] = TREASURE_MAP;
 	path[15] = HEELS;
 	path[16] = POLYPHEMUS;

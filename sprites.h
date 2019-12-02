@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:43:56 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/02 16:02:51 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/02 16:30:53 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@
 # define HEART_SOUL "textures/pickup_heart_soul.XPM"
 # define HEART_SOUL_HALF "textures/pickup_heart_soul_half.XPM"
 # define KEY "textures/pickup_key.XPM"
-# define KEY_GOLDEN "textures/pickup_key_golden.XPM"
 
 # define BEGGAR "textures/npc_beggar.XPM"
 # define BEGGAR_DEVIL "textures/npc_beggar_devil.XPM"
