@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 18:23:25 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/30 19:37:06 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/02 17:06:57 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,20 @@ void		gain_item(t_map *map, int id)
 		map->item_map = 1;
 	else if (id == ID_HEELS)
 		map->item_heels = 1;
-	else if (id == ID_POLY)
-		map->item_poly = 1;
-	else if (id == ID_IPECAC)
-		map->item_ipecac = 1;
-	else if (id == ID_GODHEAD)
+	else if (id >= FIRST_SHOP && id <= LAST_SHOP)
 	{
-		map->item_godhead = 1;
-		map->pick_coin = 99;
-		map->pick_key = 99;
-		map->pick_golden = 99;
+		map->pick_coin -= 15;
+		if (id == ID_POLY)
+			map->item_poly = 1;
+		else if (id == ID_IPECAC)
+			map->item_ipecac = 1;
+		else if (id == ID_GODHEAD)
+		{
+			map->item_godhead = 1;
+			map->pick_coin = 99;
+			map->pick_key = 99;
+			map->pick_golden = 99;
+		}
 	}
 	if (map->pick_coin > 99)
 		map->pick_coin = 99;
