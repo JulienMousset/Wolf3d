@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 14:54:18 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/30 20:41:48 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/02 17:16:07 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	draw_background(t_env *env)
 	}
 }
 
-int		is_pick_free(int id)
+int		is_pickable(int id)
 {
 	return ((id >= FIRST_FREE && id <= LAST_FREE) ? 1 : 0);
 }
@@ -45,21 +45,21 @@ int		is_walk(int id)
 				|| (id >= FIRST_WALK && id <= LAST_WALK)) ? 1 : 0);
 }
 
+int		is_shop(int id, int coin)
+{
+	return ((id >= FIRST_SHOP && id <= LAST_SHOP && coin >= 15) ? 1 : 0);
+}
+
 int		is_walkable(t_map *map, int id, int x, int y)
 {
 	map->bool_print_price = 0;
-	if (is_pick_free(id) && in_array(map, x, y))
+	if (is_pickable(id) || is_shop(id, map->pick_coin))
 		realloc_array(map, x, y, id);
 	else if (id == ID_DOOR_C && map->pick_key)
 	{
 		map->board[x][y] = ID_DOOR_O;
 		map->pick_key--;
 		id = ID_DOOR_O;
-	}
-	else if (id >= FIRST_SHOP && id <= LAST_SHOP && map->pick_coin >= 15)
-	{
-		realloc_array(map, x, y, id);
-		map->pick_coin -= 15;
 	}
 	if (id == ID_SHOPKEEPER)
 		map->bool_print_price = 1;

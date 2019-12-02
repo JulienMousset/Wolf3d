@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/02 15:33:15 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/02 18:34:02 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 19:34:28 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/27 12:47:03 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
@@ -162,7 +162,6 @@ typedef struct	s_map
 	int			pick_coin;
 	int			pick_heart;
 	int			pick_key;
-	int			pick_golden;
 
 	int			item_map;
 	int			item_heels;

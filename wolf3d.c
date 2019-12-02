@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 13:57:07 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/30 20:35:14 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/02 18:32:15 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,8 @@ void	set_values(t_map *map)
 	map->bool_menu = 0;
 	map->bool_print_price = 0;
 	map->pick_coin = 2;
-	map->pick_heart = 6;
+	map->pick_heart = 1;
 	map->pick_key = 0;
-	map->pick_golden = 0;
 	map->item_map = 0;
 	map->item_heels = 0;
 	map->item_poly = 0;
@@ -59,10 +58,10 @@ void	set_values(t_map *map)
 	map->s = NULL;
 	map->spr_order = NULL;
 	map->spr_dist = NULL;
-	map->gui_scale = 3;
+	map->gui_scale = 2;
 	map->gui_counter = 2;
 	map->gui_size = TS * map->gui_scale;
-	map->gui_margin = (t_coord) {.x = - TS / 2, .y = - TS};
+	map->gui_margin = (t_coord) {.x = - TS / 2, .y = - TS * 1.5};
 	map->mouse_pos = (t_coord) {.x = W / 1, .y = H / 1};
 	map->pos.x -= map->dir.x * MOVE_SPEED;
 	set_mmap_values(map, map->opt);
