@@ -6,7 +6,7 @@
 #    By: jmousset <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 15:35:26 by jmousset          #+#    #+#              #
-#    Updated: 2019/11/30 16:25:15 by pasosa-s         ###   ########.fr        #
+#    Updated: 2019/12/02 13:23:04 by jmousset         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,19 +50,25 @@ SRCS = main.c\
 	   draw_sky.c\
 	   sprites.c\
 
+OBJ_DIR = ./obj
+
 OBJS = $(SRCS:.c=.o)
 
 DEPS = $(SRCS:.c=.d)
 
+OBJ = $(addprefix $(OBJ_DIR)/,$(OBJS))
+
+DEP = $(addprefix $(OBJ_DIR)/,$(DEPS))
+
 all: $(NAME)
 
-$(NAME): $(LIB) $(OBJS) Makefile $(HDR)
-	@gcc $(FLAGS) $(OBJS) -o $(NAME) $(LIB) -L $(MLX_PATH) $(MLX_FLAGS)
+$(NAME): $(LIB) $(OBJ) Makefile $(HDR)
+	@gcc $(FLAGS) $(OBJ) -o $(NAME) $(LIB) -L $(MLX_PATH) $(MLX_FLAGS)
 	@echo "$(YELLOW)./$(NAME)  $(GREEN)ready   ✅ "
 
--include $(DEPS)
+-include $(DEP)
 
-./%.o : ./%.c Makefile $(HDR)
+$(OBJ_DIR)/%.o : ./%.c Makefile $(HDR)
 	@gcc $(FLAGS) -I $(LIB_PATH) -MMD -MP -c $< -o $@
 
 $(LIB) : force
@@ -71,9 +77,9 @@ $(LIB) : force
 force :
 
 clean:
-	@rm -f $(OBJS)
+	@rm -f $(OBJ)
 	@echo "$(YELLOW).o        $(RED)deleted 💯 "
-	@rm -f $(DEPS)
+	@rm -f $(DEP)
 	@echo "$(YELLOW).d        $(RED)deleted 💯 "
 	@make clean -C $(LIB_PATH)
 

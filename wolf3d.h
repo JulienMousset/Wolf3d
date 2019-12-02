@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/30 20:54:23 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/02 15:33:15 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/27 19:34:28 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/27 12:47:03 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
@@ -27,7 +27,7 @@
 # include "libft/libft.h"
 # include "colors.h"
 # include "controls.h"
-#include "sprites.h"
+# include "sprites.h"
 
 # define W 1280
 # define H 960

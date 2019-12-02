@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:43:56 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/30 19:18:34 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/02 16:30:53 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,42 +27,84 @@
 # define FIRST_SHOP 17
 # define LAST_SHOP 19
 
-
-
-
 # define FIRST_SPR 10
 # define LAST_SPR 22
 
-# define WALL1 "textures/boi/wall.XPM"
-# define WALL2 "textures/boi/shop_floor.XPM"
-# define FLOOR1 "textures/boi/floor.XPM"
-# define SECRET "textures/boi/wall_secret.XPM"
-# define DOOR_C "textures/boi/door_closed.XPM"
-# define GDOOR_C "textures/greystone.XPM"
-# define DOOR_O "textures/boi/door_open.XPM"
-# define GDOOR_O "textures/colorstone.XPM"
-# define CDOOR "textures/eagle.XPM"
+# define SKYBOX "textures/skybox_pixel.XPM"
 
-# define SKYBOX "textures/pixel_sky.XPM"
+# define DOOR_CLOSED "textures/texture_door_closed.XPM"
+# define DOOR_OPEN "textures/texture_door_open.XPM"
+# define DOOR_GOLDEN_CLOSED "textures/texture_door_closed.XPM"
+# define DOOR_GOLDEN_OPEN "textures/texture_door_open.XPM"
+# define DOOR_SACRIFICE "textures/texture_door_open.XPM"
+# define FLOOR "textures/texture_floor.XPM"
+# define FLOOR_SHOP "textures/texture_floor_shop.XPM"
+# define WALL "textures/texture_wall.XPM"
+# define WALL_SECRET "textures/texture_wall_secret.XPM"
 
-# define COIN "textures/boi/coin.XPM"
-# define RHEART "textures/boi/heart_red.XPM"
-# define RHEART_HALF "textures/boi/heart_red_half.XPM"
-# define KEY "textures/boi/key.XPM"
-# define GOLDEN "textures/boi/key_golden.XPM"
+# define GODHEAD "textures/item_godhead.XPM"
+# define HEELS "textures/item_heels.XPM"
+# define IPECAC "textures/item_ipecac.XPM"
+# define POLYPHEMUS "textures/item_polyphemus.XPM"
+# define TREASURE_MAP "textures/item_treasure_map.XPM"
 
-# define MAP "textures/boi/treasure_map.XPM"
-# define HEELS "textures/boi/heels.XPM"
+# define COIN "textures/pickup_coin.XPM"
+# define HEART_RED "textures/pickup_heart_red.XPM"
+# define HEART_RED_HALF "textures/pickup_heart_red_half.XPM"
+# define HEART_SOUL "textures/pickup_heart_soul.XPM"
+# define HEART_SOUL_HALF "textures/pickup_heart_soul_half.XPM"
+# define KEY "textures/pickup_key.XPM"
 
-# define POLY "textures/boi/polyphemus.XPM"
-# define IPECAC "textures/boi/Ipecac.XPM"
-# define GODHEAD "textures/boi/godhead.XPM"
+# define BEGGAR "textures/npc_beggar.XPM"
+# define BEGGAR_DEVIL "textures/npc_beggar_devil.XPM"
+# define BEGGAR_KEY "textures/npc_beggar_key.XPM"
+# define ERROR "textures/npc_error.XPM"
+# define GUPPY "textures/npc_guppy.XPM"
+# define HANGING_SHOPKEEPER "textures/npc_hanging_shopkeeper.XPM"
+# define SHOPKEEPER "textures/npc_shopkeeper.XPM"
 
-# define WEB "textures/boi/cobweb.XPM"
-
-# define ROCK "textures/boi/rock.XPM"
-# define SHOPKEEPER "textures/boi/shopkeeper.XPM"
-
+# define TNT "textures/barrel_tnt.XPM"
+# define TNT2 "textures/barrel_tnt2.XPM"
+# define CHEST "textures/chest.XPM"
+# define CHEST_ANGEL "textures/chest_angel.XPM"
+# define CHEST_FINAL "textures/chest_final.XPM"
+# define CHEST_GOLDEN "textures/chest_golden.XPM"
+# define CHEST_MIMIC "textures/chest_mimic.XPM"
+# define CHEST_SPIKED "textures/chest_spiked.XPM"
+# define COBWEB "textures/cobweb.XPM"
+# define DONATION_MACHINE "textures/donation_machine.XPM"
+# define DONATION_MACHINE_BLOOD "textures/donation_machine_blood.XPM"
+# define DONATION_MACHINE_RANDOM "textures/donation_machine_random.XPM"
+# define FIREPLACE "textures/fireplace.XPM"
+# define FIREPLACE_BLUE "textures/fireplace_blue.XPM"
+# define FIREPLACE_PURPLE "textures/fireplace_purple.XPM"
+# define FIREPLACE_RED "textures/fireplace_red.XPM"
+# define MUSHROOM "textures/mushroom.XPM"
+# define MUSHROOM2 "textures/mushroom2.XPM"
+# define POOP "textures/poop.XPM"
+# define POOP_BLACK "textures/poop_black.XPM"
+# define POOP_CORN "textures/poop_corn.XPM"
+# define POOP_GOLD "textures/poop_gold.XPM"
+# define POOP_RAINBOW "textures/poop_rainbow.XPM"
+# define POOP_RED "textures/poop_red.XPM"
+# define POOP_WHITE "textures/poop_white.XPM"
+# define ROCK "textures/rock.XPM"
+# define ROCK_BLACK_TINTED "textures/rock_black_tinted.XPM"
+# define ROCK_BLUE "textures/rock_blue.XPM"
+# define ROCK_BRIGHT "textures/rock_bright.XPM"
+# define ROCK_BLACK "textures/rock_black.XPM"
+# define ROCK_POLYP "textures/rock_polyp.XPM"
+# define ROCK_POLYP2 "textures/rock_polyp2.XPM"
+# define ROCK_RED_TINTED "textures/rock_red_tinted.XPM"
+# define ROCK_SPECIAL "textures/rock_special.XPM"
+# define ROCK_SPECIAL_BLACK "textures/rock_special_black.XPM"
+# define ROCK_SPECIAL_BLACK2 "textures/rock_special_black2.XPM"
+# define ROCK_SPECIAL_BROWN "textures/rock_special_brown.XPM"
+# define ROCK_SPECIAL_RED "textures/rock_special_red.XPM"
+# define ROCK_TINTED "textures/rock_tinted.XPM"
+# define SKULL "textures/skull.XPM"
+# define URN "textures/urn.XPM"
+# define URN2 "textures/urn2.XPM"
 
 //**start textures**
 
@@ -120,12 +162,5 @@
 //*end solid sprites*
 
 //**end sprites**
-
-
-
-
-
-
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 20:32:17 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/30 18:41:20 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/02 16:31:35 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/27 17:32:10 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -15,26 +15,26 @@
 
 void	load_paths(char **path)
 {
-	path[0] = WALL1;
-	path[1] = WALL2;
-	path[2] = FLOOR1;
-	path[3] = SECRET;
-	path[4] = DOOR_C;
-	path[5] = GDOOR_C;
-	path[6] = DOOR_O;
-	path[7] = GDOOR_O;
-	path[8] = CDOOR;
+	path[0] = WALL;
+	path[1] = FLOOR_SHOP;
+	path[2] = FLOOR;
+	path[3] = WALL_SECRET;
+	path[4] = DOOR_CLOSED;
+	path[5] = DOOR_GOLDEN_CLOSED;
+	path[6] = DOOR_OPEN;
+	path[7] = DOOR_GOLDEN_OPEN;
+	path[8] = DOOR_SACRIFICE;
 	path[9] = COIN;
-	path[10] = RHEART;
-	path[11] = RHEART_HALF;
+	path[10] = HEART_RED;
+	path[11] = HEART_RED_HALF;
 	path[12] = KEY;
-	path[13] = GOLDEN;
-	path[14] = MAP;
+	path[13] = HEART_SOUL;
+	path[14] = TREASURE_MAP;
 	path[15] = HEELS;
-	path[16] = POLY;
+	path[16] = POLYPHEMUS;
 	path[17] = IPECAC;
 	path[18] = GODHEAD;
-	path[19] = WEB;
+	path[19] = COBWEB;
 	path[20] = ROCK;
 	path[21] = SHOPKEEPER;
 }
