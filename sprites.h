@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:43:56 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/02 19:48:04 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/02 21:15:46 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/02 18:34:03 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -29,7 +29,7 @@
 # define LAST_SHOP 19
 
 # define FIRST_SPR 10
-# define LAST_SPR 25
+# define LAST_SPR 29
 
 # define SKYBOX "textures/skybox_pixel.XPM"
 
@@ -149,22 +149,18 @@
 # define ID_RHEART 11
 # define ID_RHEART_HALF 12
 # define ID_KEY 13
-# define ID_GOLDEN 14
 
 //free items
-# define ID_MAP 15
-# define ID_HEELS 16
+# define ID_MAP 14
+# define ID_HEELS 15
 
 //shop items
-# define ID_POLY 17
-# define ID_IPECAC 18
-# define ID_GODHEAD 19
+# define ID_POLY 16
+# define ID_IPECAC 17
+# define ID_GODHEAD 18
 
 //esthetic spr
-# define ID_WEB 20
-# define ID_CONTAINER_RED 21
-# define ID_CONTAINER_RED_HALF 22
-# define ID_CONTAINER_EMPTY 23
+# define ID_WEB 19
 
 
 //*end not solid sprites*
@@ -172,11 +168,20 @@
 //*start solid sprites*
 
 //esthetic spr
-# define ID_ROCK 24
+# define ID_ROCK 20
 //interact spr
-# define ID_SHOPKEEPER 25
+# define ID_SHOPKEEPER 21
 
 //*end solid sprites*
+
+//**sprites for the gui**
+# define ID_CONTAINER_RED 22
+# define ID_CONTAINER_RED_HALF 23
+# define ID_CONTAINER_EMPTY 24
+# define ID_SHIFT_ON 25
+# define ID_SHIFT_OFF 26
+# define ID_PRICE_TAG_15 27
+# define ID_PRICE_TAG_5 28
 
 //**end sprites**
 

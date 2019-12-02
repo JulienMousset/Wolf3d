@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 20:32:17 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/02 19:31:58 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/02 20:34:47 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 17:32:10 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -28,18 +28,21 @@ void	load_paths(char **path)
 	path[10] = HEART_RED;
 	path[11] = HEART_RED_HALF;
 	path[12] = KEY;
-	path[13] = HEART_SOUL;
-	path[14] = TREASURE_MAP;
-	path[15] = HEELS;
-	path[16] = POLYPHEMUS;
-	path[17] = IPECAC;
-	path[18] = GODHEAD;
-	path[19] = COBWEB;
-	path[20] = CONTAINER_HEART_RED;
-	path[21] = CONTAINER_HEART_RED_HALF;
-	path[22] = CONTAINER_HEART_EMPTY;
-	path[23] = ROCK;
-	path[24] = SHOPKEEPER;
+	path[13] = TREASURE_MAP;
+	path[14] = HEELS;
+	path[15] = POLYPHEMUS;
+	path[16] = IPECAC;
+	path[17] = GODHEAD;
+	path[18] = COBWEB;
+	path[19] = ROCK;
+	path[20] = SHOPKEEPER;
+	path[21] = CONTAINER_HEART_RED;
+	path[22] = CONTAINER_HEART_RED_HALF;
+	path[23] = CONTAINER_HEART_EMPTY;
+	path[24] = SHIFT_ON;
+	path[25] = SHIFT_OFF;
+	path[26] = PRICE_TAG_15;
+	path[27] = PRICE_TAG_5;
 }
 
 void	load_textures(t_env *env, t_img *t, char **path)

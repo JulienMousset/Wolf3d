@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:13:50 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/02 19:31:55 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/02 21:11:39 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,20 +61,9 @@ void	text_gui(t_env *env)
 	void	*win;
 	int		x;
 	int		y;
-	char	*str;
 
 	mlx = env->mlx_ptr;
 	win = env->win_ptr;
-	x = 10;
-	y = H - 30;
-	str = env->map->run ? ">>" : "";
-
-	if (env->map->item_heels)
-	{
-		mlx_string_put(mlx, win, x, y, M, "SHIFT");
-		mlx_string_put(mlx, win, x += 60, y, M, str);
-	}
-	//mlx_string_put(mlx, win, x += 501, y, M, "map = M");
 	x = TS - 5;
 	y = TS + 47;
 	env->map->gui_str = ft_itoa(env->map->pick_coin);

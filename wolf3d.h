@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/02 19:31:56 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/02 21:15:43 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 19:34:28 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/27 12:47:03 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
@@ -38,7 +38,7 @@
 # define ROT_SPEED 0.08
 # define SCALE_MS 5
 
-#define NUM_TEX	25
+#define NUM_TEX	28
 
 # define ERR_MALLOC "error trying to allocate memory"
 # define ERR_USAGE "Usage: ./wolf3d <filename>"
@@ -311,7 +311,7 @@ int				is_walkable(t_map *map, int i, int x, int y);
 void			realloc_array(t_map *map, int x, int y, int id);
 int				in_array(t_map *map, int x, int y);
 
-void			print_mini_sprite(t_env *env, t_map *map, int id, int margin_y);
+void			print_mini_sprite(t_env *env, t_map *map, int id, t_coord margin);
 
 void			create_sprites_array(t_map *map);
 int				**ft_tabcpy(int **src, int nb_lines, int nb_columns);
