@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 15:29:42 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/02 16:42:19 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/02 18:07:05 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ void	more_keys(int key, t_env *env)
 		env->map->pick_coin++;
 	if (key == NUM_6)
 		env->map->pick_key++;
-	if (key == NUM_7)
-		env->map->pick_golden++;
 	if (key == ARROW_UP)
 		env->map->look_up = 1;
 	if (key == ARROW_DOWN)

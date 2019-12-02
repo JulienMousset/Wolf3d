@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 18:23:25 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/02 17:18:39 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/02 18:06:39 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/02 16:01:21 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -37,8 +37,6 @@ void		gain_item(t_map *map, int id)
 		map->pick_heart++;
 	else if (id == ID_KEY)
 		map->pick_key++;
-	else if (id == ID_GOLDEN)
-		map->pick_golden++;
 	else if (id == ID_MAP)
 		map->item_map = 1;
 	else if (id == ID_HEELS)
@@ -55,15 +53,12 @@ void		gain_item(t_map *map, int id)
 			map->item_godhead = 1;
 			map->pick_coin = 99;
 			map->pick_key = 99;
-			map->pick_golden = 99;
 		}
 	}
 	if (map->pick_coin > 99)
 		map->pick_coin = 99;
 	if (map->pick_key > 99)
 		map->pick_key = 99;
-	if (map->pick_golden > 99)
-		map->pick_golden = 99;
 
 
 }
