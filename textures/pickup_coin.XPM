@@ -1,14 +1,14 @@
 /* XPM */
-static char *_575047497012[] = {
+static char *_575303247800[] = {
 /* columns rows colors chars-per-pixel */
 "64 64 7 1 ",
 "  c black",
-". c #272727",
-"X c #7E5516",
-"o c #A97601",
-"O c #CD9002",
-"+ c #F4AB02",
-"@ c #F8CA60",
+". c #080000",
+"X c #775422",
+"o c #9E712E",
+"O c #C68F3C",
+"+ c gray75",
+"@ c white",
 /* pixels */
 "                                                                ",
 "                                                                ",
@@ -62,16 +62,16 @@ static char *_575047497012[] = {
 "                                                                ",
 "                                                                ",
 "                                                                ",
-"                              .....                             ",
-"                            ..XO++o..                           ",
-"                           .XOOo.O+@X.                          ",
-"                           .oOo...O+@.                          ",
-"                          .XOO.OOOOO+X.                         ",
-"                          .oOO.OOOOOOo.                         ",
-"                          .oOOo...OOOo.                         ",
-"                          .XOOOo.OOOOX.                         ",
-"                           .oOOOOOOO@.                          ",
-"                           .XoOOOO++X.                          ",
-"                            ..XoOOX..                           ",
-"                              .....                             "
+"                             ......                             ",
+"                          ............                          ",
+"                         ....oO.OOo....                         ",
+"                        ..oOOo...oO+@@..                        ",
+"                       ..oOOO.oOOO+@@Oo..                       ",
+"                       ..oOOOo...+@@OOo..                       ",
+"                       ...oOOOo.+@@OOo...                       ",
+"                       ..X...oo+@@o...X..                       ",
+"                        ..Xoo......ooX..                        ",
+"                         ....XooooX....                         ",
+"                          ............                          ",
+"                             ......                             "
 };

@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:43:56 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/02 16:30:53 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/02 18:37:08 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,25 @@
 # define WALL "textures/texture_wall.XPM"
 # define WALL_SECRET "textures/texture_wall_secret.XPM"
 
+# define CONTAINER_HEART_EMPTY "textures/container_heart_empty.XPM"
+# define CONTAINER_HEART_RED "textures/container_heart_red.XPM"
+# define CONTAINER_HEART_RED_HALF "textures/container_heart_red_half.XPM"
+# define CONTAINER_HEART_SOUL "textures/container_heart_soul.XPM"
+# define CONTAINER_HEART_SOUL_HALF "textures/container_heart_soul_half.XPM"
+
+# define COIN "textures/pickup_coin.XPM"
+# define HEART_RED "textures/pickup_heart_red.XPM"
+# define HEART_RED_DOUBLE "textures/pickup_heart_red_double.XPM"
+# define HEART_RED_HALF "textures/pickup_heart_red_half.XPM"
+# define HEART_SOUL "textures/pickup_heart_soul.XPM"
+# define HEART_SOUL_HALF "textures/pickup_heart_soul_half.XPM"
+# define KEY "textures/pickup_key.XPM"
+
 # define GODHEAD "textures/item_godhead.XPM"
 # define HEELS "textures/item_heels.XPM"
 # define IPECAC "textures/item_ipecac.XPM"
 # define POLYPHEMUS "textures/item_polyphemus.XPM"
 # define TREASURE_MAP "textures/item_treasure_map.XPM"
-
-# define COIN "textures/pickup_coin.XPM"
-# define HEART_RED "textures/pickup_heart_red.XPM"
-# define HEART_RED_HALF "textures/pickup_heart_red_half.XPM"
-# define HEART_SOUL "textures/pickup_heart_soul.XPM"
-# define HEART_SOUL_HALF "textures/pickup_heart_soul_half.XPM"
-# define KEY "textures/pickup_key.XPM"
 
 # define BEGGAR "textures/npc_beggar.XPM"
 # define BEGGAR_DEVIL "textures/npc_beggar_devil.XPM"
