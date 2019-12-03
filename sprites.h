@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:43:56 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/02 21:15:46 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/03 20:59:06 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/02 18:34:03 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -44,9 +44,16 @@
 # define DOOR_GOLDEN_OPEN "textures/texture_door_open.XPM"
 # define DOOR_SACRIFICE "textures/texture_door_open.XPM"
 # define FLOOR "textures/texture_floor.XPM"
+# define FLOOR2 "textures/texture_floor2.XPM"
+# define FLOOR3 "textures/texture_floor3.XPM"
 # define FLOOR_SHOP "textures/texture_floor_shop.XPM"
 # define WALL "textures/texture_wall.XPM"
+# define WALL2 "textures/texture_wall2.XPM"
+# define WALL2_SECRET "textures/texture_wall2_secret.XPM"
+# define WALL3 "textures/texture_wall3.XPM"
+# define WALL3_SECRET "textures/texture_wall3_secret.XPM"
 # define WALL_SECRET "textures/texture_wall_secret.XPM"
+# define WALL_SHOP "textures/texture_wall_shop.XPM"
 
 # define CONTAINER_HEART_EMPTY "textures/container_heart_empty.XPM"
 # define CONTAINER_HEART_RED "textures/container_heart_red.XPM"
