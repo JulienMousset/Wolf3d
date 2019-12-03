@@ -6,13 +6,14 @@
 #    By: jmousset <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 15:35:26 by jmousset          #+#    #+#              #
-#    Updated: 2019/12/02 13:23:04 by jmousset         ###   ########.fr        #
+#    Updated: 2019/12/03 10:47:21 by jmousset         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 RED = \033[31m
 GREEN = \033[32m
 YELLOW = \033[33m
+RESET = \033[0m
 
 NAME = wolf3d
 
@@ -20,11 +21,11 @@ FLAGS = -Wall -Wextra -Werror
 
 MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
 
+MLX_PATH = ./minilibx/
+
 LIB_PATH = ./libft/
 
 LIB = ./libft/libft.a
-
-MLX_PATH = ./minilibx/
 
 HDR = wolf3d.h\
 	  colors.h\
@@ -60,11 +61,14 @@ OBJ = $(addprefix $(OBJ_DIR)/,$(OBJS))
 
 DEP = $(addprefix $(OBJ_DIR)/,$(DEPS))
 
-all: $(NAME)
+all: mkdir $(NAME)
+
+mkdir:
+	@mkdir -p $(OBJ_DIR)
 
 $(NAME): $(LIB) $(OBJ) Makefile $(HDR)
 	@gcc $(FLAGS) $(OBJ) -o $(NAME) $(LIB) -L $(MLX_PATH) $(MLX_FLAGS)
-	@echo "$(YELLOW)./$(NAME)  $(GREEN)ready   ✅ "
+	@echo "$(YELLOW)./$(NAME)  $(GREEN)ready   ✅ $(RESET)"
 
 -include $(DEP)
 
@@ -78,18 +82,19 @@ force :
 
 clean:
 	@rm -f $(OBJ)
-	@echo "$(YELLOW).o        $(RED)deleted 💯 "
+	@echo "$(YELLOW).o        $(RED)deleted 💯 $(RESET)"
 	@rm -f $(DEP)
-	@echo "$(YELLOW).d        $(RED)deleted 💯 "
+	@echo "$(YELLOW).d        $(RED)deleted 💯 $(RESET)"
+	@rm -rf $(OBJ_DIR)
 	@make clean -C $(LIB_PATH)
 
 fclean: clean
 	@rm -f $(NAME)
 	@make fclean -C $(LIB_PATH)
-	@echo "$(YELLOW)./$(NAME)  $(RED)deleted 💯 "
+	@echo "$(YELLOW)./$(NAME)  $(RED)deleted 💯 $(RESET)"
 
 re: fclean all
 
 .SILENT:
 
-.PHONY: all clean fclean re
+.PHONY: all mkdir force clean fclean re
