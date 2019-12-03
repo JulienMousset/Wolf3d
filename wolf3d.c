@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 13:57:07 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/02 20:23:48 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/03 22:20:34 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ void	set_values(t_map *map)
 	map->bool_spr = 1;
 	map->bool_menu = 0;
 	map->bool_print_price = 0;
-	map->pick_coin = 20;
+	map->pick_coin = 0;
 	map->container = 3;
 	map->pick_heart = 1;
-	map->pick_key = 11;
+	map->pick_key = 0;
 	map->item_map = 1;
 	map->item_heels = 1;
 	map->item_poly = 0;
@@ -114,6 +114,7 @@ int		wolf3d(char *file)
 	if (!(env = (t_env *)malloc(sizeof(t_env))))
 		return (0);
 	init_structure(env, file);
+	//create_threads(env, env->map);
 	ray_casting(env, env->map);
 	mlx_hook(env->win_ptr, 2, (1L << 0), key_press, env);
 	mlx_hook(env->win_ptr, 3, (1L << 1), key_release, env);

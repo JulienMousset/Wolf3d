@@ -5,20 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/02 21:14:12 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/02 21:15:42 by pasosa-s         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   gui.c                                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/28 15:19:23 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/02 21:14:11 by pasosa-s         ###   ########.fr       */
+/*   Created: 2019/12/03 21:13:59 by pasosa-s          #+#    #+#             */
+/*   Updated: 2019/12/03 21:22:55 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +16,7 @@ int		is_large_spr(int id)
 {
 	return ((id == ID_CONTAINER_RED - 1 || id == ID_CONTAINER_RED_HALF - 1 ||
 				id == ID_CONTAINER_EMPTY - 1 || id == ID_PRICE_TAG_15 - 1 ||
-				id == ID_PRICE_TAG_5 - 1) ? 1 : 0);
+				id == ID_PRICE_TAG_5 - 1 || id == ID_SHIFT_ON - 1) ? 1 : 0);
 }
 
 void	print_mini_sprite(t_env *env, t_map *map, int id, t_coord margin)
@@ -75,6 +63,11 @@ t_coord		size(t_map *map, int id, int n)
 	if (id == 3)
 	{
 		c.x = 10;
+		c.y = per(H, 95);
+	}
+	if (id == 4)
+	{
+		c.x = 20;
 		c.y = per(H, 96);
 	}
 	return (c);
@@ -128,5 +121,5 @@ void	gui(t_env *env, t_map *map)
 	if (map->item_heels && map->run)
 		print_mini_sprite(env, map, ID_SHIFT_ON - 1, size(map, 3, 0));
 	else if (map->item_heels)
-		print_mini_sprite(env, map, ID_SHIFT_OFF - 1, size(map, 3, 0));
+		print_mini_sprite(env, map, ID_SHIFT_OFF - 1, size(map, 4, 0));
 }

@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/02 21:15:43 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/03 22:20:21 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 19:34:28 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/27 12:47:03 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
@@ -32,7 +32,7 @@
 # define W 1280
 # define H 960
 # define TS 64
-# define THREADS 8
+# define THREADS 4
 
 # define MOVE_SPEED 0.15
 # define ROT_SPEED 0.08
@@ -323,6 +323,10 @@ void			set_floor_casting(t_map *map);
 void			set_ceil_casting(t_map *map);
 void			floor_casting(t_env *env, t_map *map, int x);
 void			ceil_casting(t_env *env, t_map *map, int x);
+
+
+
+void			create_threads(t_env *env, t_map *map);
 
 #endif
 
