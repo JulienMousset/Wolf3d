@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:43:56 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/04 14:26:25 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/04 16:23:49 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/02 18:34:03 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -42,6 +42,7 @@
 # define DOOR_CURSE "textures/texture_door_curse.XPM"
 # define DOOR_GOLDEN_CLOSED "textures/texture_door_golden_closed.XPM"
 # define DOOR_GOLDEN_OPEN "textures/texture_door_golden_open.XPM"
+# define DOOR_HEART "textures/texture_door_heart.XPM"
 # define DOOR_OPEN "textures/texture_door_open.XPM"
 # define FLOOR "textures/texture_floor.XPM"
 # define FLOOR2 "textures/texture_floor2.XPM"
