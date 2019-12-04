@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 20:32:17 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/04 15:52:24 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/04 17:15:59 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 17:32:10 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -24,9 +24,9 @@ void	load_paths(char **path)
 	path[6] = DOOR_OPEN;
 	path[7] = DOOR_GOLDEN_OPEN;
 	path[8] = DOOR_CURSE;
-	path[9] = COIN;
-	path[10] = HEART_RED;
-	path[11] = HEART_RED_HALF;
+	path[9] = HEART_RED;
+	path[10] = HEART_RED_HALF;
+	path[11] = COIN;
 	path[12] = KEY;
 	path[13] = TREASURE_MAP;
 	path[14] = HEELS;

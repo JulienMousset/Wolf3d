@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 14:54:18 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/02 20:24:22 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/04 17:22:31 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,11 @@ void	draw_background(t_env *env)
 	}
 }
 
-int		is_pickable(int id)
+int		is_pickable(t_map *map, int id)
 {
-	return ((id >= FIRST_FREE && id <= LAST_FREE) ? 1 : 0);
+	return (((id >= FIRST_FREE && id <= LAST_FREE) ||
+		   ((id == ID_RHEART || id == ID_RHEART_HALF) && 
+		   map->pick_heart < map->container * 2))? 1 : 0);
 }
 
 int		is_walk(int id)
@@ -53,7 +55,7 @@ int		is_shop(int id, int coin)
 int		is_walkable(t_map *map, int id, int x, int y)
 {
 	map->bool_print_price = 0;
-	if (is_pickable(id) || is_shop(id, map->pick_coin))
+	if (is_pickable(map, id) || is_shop(id, map->pick_coin))
 		realloc_array(map, x, y, id);
 	else if (id == ID_DOOR_C && map->pick_key)
 	{

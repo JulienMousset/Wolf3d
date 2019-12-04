@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:43:56 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/04 14:26:25 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/04 17:16:25 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/02 18:34:03 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -22,7 +22,7 @@
 # define FIRST_WALK 7
 # define LAST_WALK 20
 
-# define FIRST_FREE 10
+# define FIRST_FREE 12
 # define LAST_FREE 16
 
 # define FIRST_SHOP 17
@@ -155,9 +155,9 @@
 //*start not solid sprites*
 
 //free pickables
-# define ID_COIN 10
-# define ID_RHEART 11
-# define ID_RHEART_HALF 12
+# define ID_RHEART 10
+# define ID_RHEART_HALF 11
+# define ID_COIN 12
 # define ID_KEY 13
 
 //free items
