@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:43:56 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/04 19:54:58 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/04 20:01:16 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/04 16:23:49 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/02 18:34:03 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
@@ -71,14 +71,25 @@
 # define HEART_SOUL_HALF "textures/pickup_heart_soul_half.XPM"
 # define KEY "textures/pickup_key.XPM"
 
+# define A_QUARTER "textures/item_a_quarter.XPM"
+# define A_QUARTER_PRICE_TAG "textures/item_a_quarter_price_tag.XPM"
+# define DINNER "textures/item_dinner.XPM"
+# define DINNER_PRICE_TAG "textures/item_dinner_price_tag.XPM"
 # define GODHEAD "textures/item_godhead.XPM"
 # define GODHEAD_PRICE_TAG "textures/item_godhead_price_tag.XPM"
+# define HOLY_MANTLE "textures/item_holy_mantle.XPM"
+# define HOLY_MANTLE_PRICE_TAG "textures/item_holy_mantle_price_tag.XPM"
 # define HEELS "textures/item_heels.XPM"
 # define IPECAC "textures/item_ipecac.XPM"
 # define IPECAC_PRICE_TAG "textures/item_ipecac_price_tag.XPM"
-# define POLY "textures/item_polyphemus.XPM"
+# define NOTCHED_AXE "textures/item_notched_axe.XPM"
+# define NOTCHED_AXE_PRICE_TAG "textures/item_notched_axe_price_tag.XPM"
+# define POLYPHEMUS "textures/item_polyphemus.XPM"
 # define POLYPHEMUS_PRICE_TAG "textures/item_polyphemus_price_tag.XPM"
-# define MAP "textures/item_treasure_map.XPM"
+# define RED_CANDLE "textures/item_red_candle.XPM"
+# define TREASURE_MAP "textures/item_treasure_map.XPM"
+# define XRAY_VISION "textures/item_x-ray_vision.XPM"
+# define XRAY_VISION_PRICE_TAG "textures/item_x-ray_vision_price_tag.XPM"
 
 # define BEGGAR "textures/npc_beggar.XPM"
 # define BEGGAR_DEVIL "textures/npc_beggar_devil.XPM"
