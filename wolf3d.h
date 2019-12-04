@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/04 17:22:33 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/04 21:21:13 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 19:34:28 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/27 12:47:03 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
@@ -38,7 +38,7 @@
 # define ROT_SPEED 0.08
 # define SCALE_MS 5
 
-#define NUM_TEX	28
+#define NUM_TEX	59
 
 # define ERR_MALLOC "error trying to allocate memory"
 # define ERR_USAGE "Usage: ./wolf3d <filename>"
@@ -345,6 +345,8 @@ int				west(t_map *map, int y);
 int				east(t_map *map, int y);
 
 void			*ray_casting(void *vt);
+
+int				ft_ishupper(int i);
 
 
 

@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 20:32:17 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/04 19:55:00 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/04 21:00:10 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 17:32:10 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -28,32 +28,65 @@ void	load_paths(char **path)
 	path[8] = DOOR_GOLDEN_OPEN;
 	path[9] = DOOR_CURSE;
 
-	path[10] = HEART_RED;
-	path[11] = HEART_RED_HALF;
+	path[10] = WALL1_SECRET;
+	path[11] = WALL2_SECRET;
+	path[12] = WALL3_SECRET;
 
-	path[12] = COIN;
-	path[13] = KEY;
+	path[13] = HEART_RED;
+	path[14] = HEART_RED_HALF;
 
-	path[14] = MAP;
-	path[15] = HEELS;
-	path[15] = CANDLE;
+	path[15] = COIN;
+	path[16] = KEY;
 
-	path[15] = POLY;
-	path[16] = IPECAC;
-	path[17] = GODHEAD;
-	path[15] = AXE;
-	path[16] = MANTLE;
-	path[17] = QUARTER;
-	path[18] = GLASSES;
-	path[19] = DINNER;
-	path[20] = SHOPKEEPER;
-	path[21] = CONTAINER_HEART_RED;
-	path[22] = CONTAINER_HEART_RED_HALF;
-	path[23] = CONTAINER_HEART_EMPTY;
-	path[24] = SHIFT_ON;
-	path[25] = SHIFT_OFF;
-	path[26] = PRICE_TAG_15;
-	path[27] = PRICE_TAG_5;
+	path[17] = MAP;
+	path[18] = HEELS;
+	path[19] = RED_CANDLE;
+
+	path[20] = POLY;
+	path[21] = IPECAC;
+	path[22] = GODHEAD;
+	path[23] = AXE;
+	path[24] = HOLY_MANTLE;
+	path[25] = QUARTER;
+	path[26] = XRAY_VISION;
+	path[27] = DINNER;
+
+	path[28] = COBWEB;
+
+	path[29] = ROCK1;
+	path[30] = ROCK2;
+	path[31] = ROCK3;
+	path[32] = URN1;
+	path[33] = URN2;
+	path[34] = MUSHROOM1;
+	path[35] = MUSHROOM2;
+	path[36] = SKULL;
+	path[37] = POOP;
+
+	path[38] = TNT;
+	path[39] = CAMPFIRE;
+	path[40] = DONATION_MACHINE;
+	path[41] = CHEST_FINAL;
+
+	path[42] = SHOPKEEPER;
+	path[43] = ERROR;
+	path[44] = GUPPY;
+	path[45] = HANGING;
+	path[46] = BEGGAR_COIN;
+	path[47] = BEGGAR_DEVIL;
+	path[48] = BEGGAR_KEY;
+	path[49] = DONATION_MACHINE_BLOOD;
+
+	path[50] = CONTAINER_HEART_RED;
+	path[51] = CONTAINER_HEART_RED_HALF;
+	path[52] = CONTAINER_HEART_EMPTY;
+	path[53] = SHIFT_ON;
+	path[54] = SHIFT_OFF;
+
+	path[55] = FLOOR1;
+	path[56] = FLOOR2;
+	path[57] = FLOOR3;
+	path[58] = FLOOR_SHOP;
 }
 
 void	load_textures(t_env *env, t_img *t, char **path)

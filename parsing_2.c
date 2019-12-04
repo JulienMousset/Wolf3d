@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 12:29:31 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/30 15:02:24 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/04 20:26:34 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int		fill_board(t_map *map, int fd)
 				map->board[i][j] = ft_atoi(map->tmp[j]);
 			else if (ft_islower(map->tmp[j][0]))
 				map->board[i][j] = map->tmp[j][0] - 87;
+			else if (ft_ishupper(map->tmp[j][0]))
+				map->board[i][j] = map->tmp[j][0] - 29;
 			j++;
 		}
 		i++;

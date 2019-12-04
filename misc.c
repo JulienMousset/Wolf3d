@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 14:54:18 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/04 17:22:31 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/04 20:52:48 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int		is_pickable(t_map *map, int id)
 
 int		is_walk(int id)
 {
-	return ((id == 0 || id == ID_SECRET
-				|| (id >= FIRST_WALK && id <= LAST_WALK)) ? 1 : 0);
+	return ((id == 0 || id == ID_SECRET1 ||
+				(id >= FIRST_WALK && id <= LAST_WALK)) ? 1 : 0);
 }
 
 int		is_shop(int id, int coin)

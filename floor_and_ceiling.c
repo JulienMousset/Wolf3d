@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 16:22:32 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/04 16:09:11 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/04 21:02:17 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ void	floor_casting(t_env *env, t_map *map, t_thread *t, int x)
 		t->floor_tex.x = (int)(t->current_floor.x * TS) % TS;
 		t->floor_tex.y = (int)(t->current_floor.y * TS) % TS;
 		j = ((t->floor_tex.x * (env->t[9].bpp / 8)) + (t->floor_tex.y * env->t[9].s_l));
-		ft_memcpy(&t->color_str, &env->t[2].data_addr[j], sizeof(int));
+		ft_memcpy(&t->color_str, &env->t[55].data_addr[j], sizeof(int));
 		t->color = (int)t->color_str;
 		//map->color = (map->color >> 1) & 8355711;
 		put_pixel(env, x, y, t->color);
-		ft_memcpy(&t->color_str, &env->t[1].data_addr[j], sizeof(int));
+		ft_memcpy(&t->color_str, &env->t[58].data_addr[j], sizeof(int));
 		t->color = (int)t->color_str;
 		t->color = (t->color >> 1) & 8355711;
 		put_pixel(env, x, map->h2 * 2 - y, t->color);
