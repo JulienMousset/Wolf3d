@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:43:56 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/03 20:59:06 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/04 11:47:36 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/02 18:34:03 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -70,9 +70,12 @@
 # define KEY "textures/pickup_key.XPM"
 
 # define GODHEAD "textures/item_godhead.XPM"
+# define GODHEAD_PRICE_TAG "textures/item_godhead_price_tag.XPM"
 # define HEELS "textures/item_heels.XPM"
 # define IPECAC "textures/item_ipecac.XPM"
+# define IPECAC_PRICE_TAG "textures/item_ipecac_price_tag.XPM"
 # define POLYPHEMUS "textures/item_polyphemus.XPM"
+# define POLYPHEMUS_PRICE_TAG "textures/item_polyphemus_price_tag.XPM"
 # define TREASURE_MAP "textures/item_treasure_map.XPM"
 
 # define BEGGAR "textures/npc_beggar.XPM"
