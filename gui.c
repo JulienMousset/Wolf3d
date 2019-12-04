@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 21:13:59 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/03 21:22:55 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/04 11:22:18 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int		is_large_spr(int id)
 {
 	return ((id == ID_CONTAINER_RED - 1 || id == ID_CONTAINER_RED_HALF - 1 ||
 				id == ID_CONTAINER_EMPTY - 1 || id == ID_PRICE_TAG_15 - 1 ||
-				id == ID_PRICE_TAG_5 - 1 || id == ID_SHIFT_ON - 1) ? 1 : 0);
+				id == ID_PRICE_TAG_5 - 1 || id == ID_SHIFT_ON - 1 ||
+				id == ID_PRICE_TAG_15) ? 1 : 0);
 }
 
 void	print_mini_sprite(t_env *env, t_map *map, int id, t_coord margin)
@@ -102,6 +103,7 @@ void	print_hearts(t_env *env, t_map *map)
 void	gui(t_env *env, t_map *map)
 {
 	int		n;
+	t_coord c;
 
 	n = 2;
 	print_hearts(env, env->map);
@@ -122,4 +124,13 @@ void	gui(t_env *env, t_map *map)
 		print_mini_sprite(env, map, ID_SHIFT_ON - 1, size(map, 3, 0));
 	else if (map->item_heels)
 		print_mini_sprite(env, map, ID_SHIFT_OFF - 1, size(map, 4, 0));
+	if (map->board[(int)map->pos.x][(int)map->pos.y] >= FIRST_SHOP &&
+			map->board[(int)map->pos.x][(int)map->pos.y] <= LAST_SHOP &&
+			map->pick_coin < 15)
+	{
+		c.x = W / 2;
+		c.y = H / 2;
+		print_mini_sprite(env, env->map, ID_PRICE_TAG_15 - 1, c);
+		//mlx_string_put(mlx, win, c.x, c.y, M, "NOT ENOUGH COINS");
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:39:07 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/03 21:42:53 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/04 14:52:02 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	dda(t_map *map)
 			map->ns_or_ew = 1;
 		}
 		map->hit = ((map->board[map->block.x][map->block.y] > 0) &&
-				(map->board[map->block.x][map->block.y] < FIRST_SPR) ) ? 1 : 0;
+				(map->board[map->block.x][map->block.y] < FIRST_SPR)) ? 1 : 0;
 	}
 }
 

@@ -6,13 +6,45 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 19:10:56 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/03 10:50:27 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/04 12:36:25 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
 void	draw_mini_background(t_env *env, t_map *map)
+{
+	int			block;
+	int			x;
+	int			y;
+	int			color;
+
+	y = 0;
+
+	color = BOI;
+	block = map->mm_block_size;
+	while (y < map->mm_size)
+	{
+		x = 0;
+		while (x < map->mm_size)
+		{
+			color = BOI;
+			if (y < block)
+				color = north(env->map, x);
+			if (y > map->mm_size - block)
+				color = south(env->map, x);
+			if (x < block)
+				color = west(env->map, y);
+			if (x > map->mm_size - block)
+				color = east(env->map, y);
+			put_pixel(env, map->mm_start.x + x, map->mm_start.y + y, color);
+			x++;
+		}
+		y++;
+	}
+}
+
+void	draw_mini_background2(t_env *env, t_map *map)
 {
 	int			block;
 	int			x;
@@ -54,7 +86,7 @@ void	put_n_pixel(t_env *env, int xx, int yy, int id)
 	t_coord	coord;
 
 	map = env->map;
-	color = (id == 0) ? PINK : mm_color(env->map, id, 0);
+	color = (id == 0) ? MARBLE : mm_color(env->map, id, 0);
 	xx *= map->mm_block_size;
 	yy *= map->mm_block_size;
 	coord.x = map->mm_center.x - map->mm_vis / 2 * map->mm_block_size;

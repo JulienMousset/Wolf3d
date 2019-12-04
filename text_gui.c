@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:13:50 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/02 21:11:39 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/04 12:34:52 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,34 +59,34 @@ void	text_gui(t_env *env)
 {
 	void	*mlx;
 	void	*win;
-	int		x;
-	int		y;
+	t_coord	c;
 
 	mlx = env->mlx_ptr;
 	win = env->win_ptr;
-	x = TS - 5;
-	y = TS + 47;
+	c.x = TS - 5;
+	c.y = TS + 47;
 	env->map->gui_str = ft_itoa(env->map->pick_coin);
-	mlx_string_put(mlx, win, x, y, M, env->map->gui_str);
+	mlx_string_put(mlx, win, c.x, c.y, M, env->map->gui_str);
 	ft_memdel((void **)&(env->map->gui_str));
 	env->map->gui_str = ft_itoa(env->map->pick_key);
-	mlx_string_put(mlx, win, x, y += 40, M, env->map->gui_str);
+	mlx_string_put(mlx, win, c.x, c.y += 40, M, env->map->gui_str);
 	ft_memdel((void **)&(env->map->gui_str));
-	if (env->map->item_map)
-		text_minimap(env);
+	//if (env->map->item_map)
+	//	text_minimap(env);
 	if (env->map->bool_print_price)
 	{
-		x = W / 2 - 100;
-		y = H / 2;
-		mlx_string_put(mlx, win, x, y, M, "THE PRICE FOR THE ITEM IS 15 COINS");
+		c.x = W / 2 - 100;
+		c.y = H / 2;
+		mlx_string_put(mlx, win, c.x, c.y, M, "THE PRICE FOR THE ITEM IS 15 COINS");
 	}
 	if (env->map->board[(int)env->map->pos.x][(int)env->map->pos.y] >= FIRST_SHOP &&
 			env->map->board[(int)env->map->pos.x][(int)env->map->pos.y] <= LAST_SHOP &&
 			env->map->pick_coin < 15)
 	{
-		x = W / 2 - 100;
-		y = H / 2;
-		mlx_string_put(mlx, win, x, y, M, "NOT ENOUGH COINS");
+		c.x = W / 2 - 100;
+		c.y = H / 2;
+		print_mini_sprite(env, env->map, ID_PRICE_TAG_15 - 1, c);
+		//mlx_string_put(mlx, win, c.x, c.y, M, "NOT ENOUGH COINS");
 	}
 
 }

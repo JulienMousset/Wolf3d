@@ -6,7 +6,7 @@
 #    By: jmousset <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 15:35:26 by jmousset          #+#    #+#              #
-#    Updated: 2019/12/03 21:53:36 by pasosa-s         ###   ########.fr        #
+#    Updated: 2019/12/04 12:03:18 by pasosa-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRCS = main.c\
 	   menu.c\
 	   mouse.c\
 	   minimap.c\
+	   compass.c\
 	   load_textures.c\
 	   load_sprites.c\
 	   draw_sky.c\
