@@ -6,7 +6,7 @@
 #    By: jmousset <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 15:35:26 by jmousset          #+#    #+#              #
-#    Updated: 2019/12/04 12:03:18 by pasosa-s         ###   ########.fr        #
+#    Updated: 2019/12/04 16:06:21 by pasosa-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,8 @@ SRCS = main.c\
 	   parsing.c\
 	   parsing_2.c\
 	   ray_casting.c\
-	   floor_and_ceiling.c\
 	   draw.c\
+	   floor_and_ceiling.c\
 	   controls.c\
 	   controls_2.c\
 	   misc.c\

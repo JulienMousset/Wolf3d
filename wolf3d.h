@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/04 13:31:57 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/04 16:18:17 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 19:34:28 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/27 12:47:03 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
@@ -32,7 +32,7 @@
 # define W 1280
 # define H 960
 # define TS 64
-# define THREADS 2
+# define THREADS 4
 
 # define MOVE_SPEED 0.15
 # define ROT_SPEED 0.08
@@ -120,31 +120,18 @@ typedef struct	s_map
 	t_complex	dir;
 	t_complex	old_plane;
 	t_complex	plane;
-	double		camera_x;
-	t_complex	ray_dir;
 
 	double		move_coef;
 	double		rot_coef;
 
 	double		run;
 
-	t_coord		block;
-	t_complex	side;
-	t_complex	delta;
-	double		perp;
-	t_coord		step;
-	int			hit;
-	int			ns_or_ew;
-
-	int			line_height;
 	int			y_start;
 	int			y_end;
-	int			color;
-
-	double		wall_x;
 	t_coord		tex;
-	int			d;
 	int			id;
+	int			d;
+	int			color;
 
 	double		z_buffer[W];
 	t_sprite	*s;
@@ -193,7 +180,6 @@ typedef struct	s_map
 	int			bool_menu;
 	int			bool_print_price;
 
-
 	int			esc;
 	int			up;
 	int			down;
@@ -215,13 +201,6 @@ typedef struct	s_map
 	int			camera_h;
 
 	t_coord		prev;
-
-	t_complex	floor;
-	double		dist_wall;
-	double		dist_player;
-	double		dist_current;
-	t_complex	current_floor;
-	t_complex	floor_tex;
 }				t_map;
 
 typedef struct	s_env
@@ -244,6 +223,38 @@ typedef struct	s_thread
 	pthread_t	t;
 	int			n;
 	t_env		*env;
+
+
+	double		camera_x;
+	t_complex	ray_dir;
+
+	t_coord		block;
+	t_complex	side;
+	t_complex	delta;
+
+	double		perp;
+	t_coord		step;
+	int			hit;
+	int			ns_or_ew;
+
+	int			line_height;
+	int			y_start;
+	int			y_end;
+	int			color;
+
+	double		wall_x;
+	t_coord		tex;
+	int			d;
+	int			id;
+
+	t_complex	floor;
+	double		dist_wall;
+	double		dist_player;
+	double		dist_current;
+	t_complex	current_floor;
+	t_complex	floor_tex;
+	char		*color_str;
+
 }				t_thread;
 
 void			free_and_display_usage(t_env *env);
@@ -263,14 +274,13 @@ int				count_colums(t_map *map, char *file);
 int				check_board(t_map *map);
 int				fill_board(t_map *map, int fd);
 
-void			ray_casting(t_env *env, t_map *map);
-void			set_dda_values(t_map *map);
-void			dda(t_map *map);
-void			set_walls(t_map *map);
+void			set_dda_values(t_thread *t, t_map *map);
+void			dda(t_thread *t, t_map *map);
+void			set_walls(t_thread *t, t_map *map);
 void			display_result(t_env *env, t_map *map);
 
 int				choose_color(int id, int ns_or_ew);
-void			draw_line(t_env *env, t_map *map, int x, int y_start);
+void			draw_line(t_env *env, t_thread *t, int x, int y_start);
 void			put_pixel(t_env *env, int x, int y, int color);
 
 int				key_press(int key, t_env *env);
@@ -292,7 +302,7 @@ void			set_mmap_values(t_map *map, int opt);
 void			draw_minimap(t_env *env, t_map *map);
 
 void			load_textures(t_env *env, t_img *t, char **path);
-void			pick_color(t_env *env, t_map *map, int x, int y_start);
+void			pick_color(t_env *env, t_thread *t, int x, int y_start);
 
 void			draw_sky(t_env *env, t_map *map);
 void			look_up_down(t_map *map);
@@ -319,9 +329,8 @@ void			ft_tabdel(int **tab, int lines);
 void			copy_board(t_map *map);
 
 int				close_program(t_env *env);
-void			set_floor_casting(t_map *map);
 void			set_ceil_casting(t_map *map);
-void			floor_casting(t_env *env, t_map *map, int x);
+void			floor_casting(t_env *env, t_map *map, t_thread *t,  int x);
 void			ceil_casting(t_env *env, t_map *map, int x);
 
 
@@ -334,6 +343,8 @@ int				north(t_map *map, int x);
 int				south(t_map *map, int x);
 int				west(t_map *map, int y);
 int				east(t_map *map, int y);
+
+void			*ray_casting(void *vt);
 
 
 

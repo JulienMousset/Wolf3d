@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:39:45 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/02 16:53:51 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/04 15:31:41 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,47 +47,48 @@ void	put_pixel(t_env *env, int x, int y, int color)
 	}
 }
 
-void	pick_color(t_env *env, t_map *map, int x, int y_start)
+void	pick_color(t_env *env, t_thread *th, int x, int y_start)
 {
 	int		i;
 	int		j;
+	int		d;
 	char	*color_str;
-	if (map->bool_tex == 1)
+	if (env->map->bool_tex == 1)
 	{
-		map->d = y_start - map->h2 + map->line_height / 2;
-		map->tex.y = ((map->d * TS) / map->line_height);
+		d = y_start - env->map->h2 + th->line_height / 2;
+		th->tex.y = ((d * TS) / th->line_height);
 		i = ((x * (env->bpp / 8)) + (y_start * env->s_l));
-		j = ((map->tex.x * (env->t[map->id].bpp / 8)) + (map->tex.y * env->t[map->id].s_l));
-		ft_memcpy(&color_str, &env->t[map->id].data_addr[j], sizeof(int));
-		map->color = (int)color_str;
-		if (map->ns_or_ew == 1)
-			map->color = (map->color >> 1) & 8355711;
+		j = ((th->tex.x * (env->t[th->id].bpp / 8)) + (th->tex.y * env->t[th->id].s_l));
+		ft_memcpy(&color_str, &env->t[th->id].data_addr[j], sizeof(int));
+		th->color = (int)color_str;
+		if (th->ns_or_ew == 1)
+			th->color = (th->color >> 1) & 8355711;
 	}
 	else
-		map->color = choose_color(map->id, map->ns_or_ew);
+		th->color = choose_color(th->id, th->ns_or_ew);
 	//map->color = add_smog(map->color, map->perp);
-	put_pixel(env, x, y_start, map->color);
+	put_pixel(env, x, y_start, th->color);
 	//put_pixel(env, x, y_start, add_smog(map->color, abs(y_start - map->h2) * 0.005));
 }
 
-void	draw_line(t_env *env, t_map *map, int x, int y_start)
+void	draw_line(t_env *env, t_thread *t, int x, int y_start)
 {
-	if (map->bool_tex == 1)
+	if (env->map->bool_tex == 1)
 	{
-		if (map->ns_or_ew == 0)
-			map->wall_x = map->pos.y + map->perp * map->ray_dir.y;
+		if (t->ns_or_ew == 0)
+			t->wall_x = env->map->pos.y + t->perp * t->ray_dir.y;
 		else
-			map->wall_x = map->pos.x + map->perp * map->ray_dir.x;
-		map->wall_x -= floor((map->wall_x));
-		map->tex.x = (int)(map->wall_x * (double)TS);
-		if (map->ns_or_ew == 0 && map->ray_dir.x > 0)
-			map->tex.x = TS - map->tex.x - 1;
-		if (map->ns_or_ew == 1 && map->ray_dir.y < 0)
-			map->tex.x = TS - map->tex.x - 1;
+			t->wall_x = env->map->pos.x + t->perp * t->ray_dir.x;
+		t->wall_x -= floor((t->wall_x));
+		t->tex.x = (int)(t->wall_x * (double)TS);
+		if (t->ns_or_ew == 0 && t->ray_dir.x > 0)
+			t->tex.x = TS - t->tex.x - 1;
+		if (t->ns_or_ew == 1 && t->ray_dir.y < 0)
+			t->tex.x = TS - t->tex.x - 1;
 	}
-	while (y_start <= map->y_end)
+	while (y_start <= t->y_end)
 	{
-		pick_color(env, env->map, x, y_start);
+		pick_color(env, t, x, y_start);
 		y_start++;
 	}
 }

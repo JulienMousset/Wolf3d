@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 15:29:42 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/04 14:39:31 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/04 16:15:45 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,6 @@ int		multiple_events(t_env *env)
 		env->map->camera_w = 0;
 	}
 	env->map->camera_w++;
-	ray_casting(env, env->map);
-	//create_threads(env, env->map);
+	create_threads(env, env->map);
 	return (0);
 }
