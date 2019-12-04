@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 20:32:17 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/04 17:15:59 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/04 19:55:00 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 17:32:10 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -15,26 +15,37 @@
 
 void	load_paths(char **path)
 {
-	path[0] = WALL;
-	path[1] = FLOOR_SHOP;
-	path[2] = FLOOR;
-	path[3] = WALL_SECRET;
-	path[4] = DOOR_CLOSED;
-	path[5] = DOOR_GOLDEN_CLOSED;
-	path[6] = DOOR_OPEN;
-	path[7] = DOOR_GOLDEN_OPEN;
-	path[8] = DOOR_CURSE;
-	path[9] = HEART_RED;
-	path[10] = HEART_RED_HALF;
-	path[11] = COIN;
-	path[12] = KEY;
-	path[13] = TREASURE_MAP;
-	path[14] = HEELS;
-	path[15] = POLYPHEMUS;
+	path[0] = WALL1;
+	path[1] = WALL2;
+	path[2] = WALL3;
+	path[3] = WALL_SHOP;
+
+	path[4] = DOOR_HEART;
+	path[5] = DOOR_CLOSED;
+	path[6] = DOOR_GOLDEN_CLOSED;
+
+	path[7] = DOOR_OPEN;
+	path[8] = DOOR_GOLDEN_OPEN;
+	path[9] = DOOR_CURSE;
+
+	path[10] = HEART_RED;
+	path[11] = HEART_RED_HALF;
+
+	path[12] = COIN;
+	path[13] = KEY;
+
+	path[14] = MAP;
+	path[15] = HEELS;
+	path[15] = CANDLE;
+
+	path[15] = POLY;
 	path[16] = IPECAC;
 	path[17] = GODHEAD;
-	path[18] = COBWEB;
-	path[19] = ROCK;
+	path[15] = AXE;
+	path[16] = MANTLE;
+	path[17] = QUARTER;
+	path[18] = GLASSES;
+	path[19] = DINNER;
 	path[20] = SHOPKEEPER;
 	path[21] = CONTAINER_HEART_RED;
 	path[22] = CONTAINER_HEART_RED_HALF;

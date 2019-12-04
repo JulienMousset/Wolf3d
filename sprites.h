@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:43:56 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/04 17:23:57 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/04 19:54:58 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/04 16:23:49 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/02 18:34:03 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
@@ -49,12 +49,12 @@
 # define FLOOR2 "textures/texture_floor2.XPM"
 # define FLOOR3 "textures/texture_floor3.XPM"
 # define FLOOR_SHOP "textures/texture_floor_shop.XPM"
-# define WALL "textures/texture_wall.XPM"
+# define WALL1 "textures/texture_wall.XPM"
 # define WALL2 "textures/texture_wall2.XPM"
-# define WALL2_SECRET "textures/texture_wall2_secret.XPM"
 # define WALL3 "textures/texture_wall3.XPM"
+# define WALL1_SECRET "textures/texture_wall_secret.XPM"
+# define WALL2_SECRET "textures/texture_wall2_secret.XPM"
 # define WALL3_SECRET "textures/texture_wall3_secret.XPM"
-# define WALL_SECRET "textures/texture_wall_secret.XPM"
 # define WALL_SHOP "textures/texture_wall_shop.XPM"
 
 # define CONTAINER_HEART_EMPTY "textures/container_heart_empty.XPM"
@@ -76,9 +76,9 @@
 # define HEELS "textures/item_heels.XPM"
 # define IPECAC "textures/item_ipecac.XPM"
 # define IPECAC_PRICE_TAG "textures/item_ipecac_price_tag.XPM"
-# define POLYPHEMUS "textures/item_polyphemus.XPM"
+# define POLY "textures/item_polyphemus.XPM"
 # define POLYPHEMUS_PRICE_TAG "textures/item_polyphemus_price_tag.XPM"
-# define TREASURE_MAP "textures/item_treasure_map.XPM"
+# define MAP "textures/item_treasure_map.XPM"
 
 # define BEGGAR "textures/npc_beggar.XPM"
 # define BEGGAR_DEVIL "textures/npc_beggar_devil.XPM"
@@ -136,19 +136,18 @@
 //solid walls
 # define ID_WALL1 1
 # define ID_WALL2 2
-# define ID_FLOOR1 3
-
-//not solid walls
-# define ID_SECRET 4
+# define ID_WALL3 3
+# define ID_WALL_SHOP 4
 
 //solid doors
-# define ID_DOOR_C 5
-# define ID_GDOOR_C 6
+# define ID_DOOR_HEART 5
+# define ID_DOOR_C 6
+# define ID_GDOOR_C 7
 
 //not solid doors
-# define ID_DOOR_O 7
-# define ID_GDOOR_O 8
-# define ID_CDOOR 9
+# define ID_DOOR_O 8
+# define ID_GDOOR_O 9
+# define ID_CDOOR 10
 
 //**end textures**
 
@@ -157,43 +156,71 @@
 //*start not solid sprites*
 
 //free pickables
-# define ID_RHEART 10
-# define ID_RHEART_HALF 11
-# define ID_COIN 12
-# define ID_KEY 13
+# define ID_RHEART 11
+# define ID_RHEART_HALF 12
+
+# define ID_COIN 13
+# define ID_KEY 14
 
 //free items
-# define ID_MAP 14
-# define ID_HEELS 15
+# define ID_MAP 15
+# define ID_HEELS 16
+# define ID_CANDLE 17
 
 //shop items
-# define ID_POLY 16
-# define ID_IPECAC 17
-# define ID_GODHEAD 18
+# define ID_POLY 18
+# define ID_IPECAC 19
+# define ID_GODHEAD 20
+# define ID_AXE 21
+# define ID_MANTLE 22
+# define ID_QUARTER 23
+# define ID_GLASSES 24
+# define ID_DINNER 25
 
 //esthetic spr
-# define ID_WEB 19
-
+# define ID_WEB 26
 
 //*end not solid sprites*
 
 //*start solid sprites*
 
 //esthetic spr
-# define ID_ROCK 20
+# define ID_ROCK1 27
+# define ID_ROCK2 28
+# define ID_ROCK3 29
+# define ID_URN1 30
+# define ID_URN2 31
+# define ID_MUSHROOM1 32
+# define ID_MUSHROOM2 33
+# define ID_SKULL 34
+# define ID_POOP 35
+# define ID_TNT 36
+# define ID_CAMPFIRE 37
+# define ID_DMACHINE 38
+# define ID_FINAL_CHEST 39
+
+
 //interact spr
-# define ID_SHOPKEEPER 21
+# define ID_SHOPKEEPER 40
+# define ID_ERROR 41
+# define ID_GUPPY 42
+# define ID_HANGING 43
+# define ID_BEGGAR_COIN 44
+# define ID_BEGGAR_HEART 45
+# define ID_BEGGAR_KEY 46
+# define ID_BLOOD_MACHINE 47
+
 
 //*end solid sprites*
 
 //**sprites for the gui**
-# define ID_CONTAINER_RED 22
-# define ID_CONTAINER_RED_HALF 23
-# define ID_CONTAINER_EMPTY 24
-# define ID_SHIFT_ON 25
-# define ID_SHIFT_OFF 26
-# define ID_PRICE_TAG_15 27
-# define ID_PRICE_TAG_5 28
+# define ID_CONTAINER_RED 48
+# define ID_CONTAINER_RED_HALF 49
+# define ID_CONTAINER_EMPTY 50
+# define ID_SHIFT_ON 51
+# define ID_SHIFT_OFF 52
+# define ID_PRICE_TAG_15 53
+# define ID_PRICE_TAG_5 54
 
 //**end sprites**
 
