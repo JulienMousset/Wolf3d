@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 16:22:32 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/05 15:32:19 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/05 18:35:58 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	floor_casting(t_env *env, t_map *map, t_thread *t, int x)
 	t->dist_player = 0.0;
 	if (t->y_end < 0)
 		t->y_end = H;
-	y = t->y_end + 1;
+	y = t->y_end;
 	while (y < H)
 	{
 		t->dist_current = H / (2.0 * y - map->h2 * 2.0);
