@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:39:45 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/04 21:16:29 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/05 14:53:36 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ void	pick_color(t_env *env, t_thread *th, int x, int y_start)
 	}
 	else
 		th->color = choose_color(th->id, th->ns_or_ew);
-	//th->color = add_smog(th->color, th->perp);
+	th->color = add_smog(th->color, th->perp);
 	put_pixel(env, x, y_start, th->color);
-	//put_pixel(env, x, y_start, add_smog(th->color, abs(y_start - env->map->h2) * 0.005));
+	put_pixel(env, x, y_start, add_smog(th->color, abs(y_start - env->map->h2) * 0.005));
 }
 
 void	draw_line(t_env *env, t_thread *t, int x, int y_start)

@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:43:56 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/04 21:00:53 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/05 15:53:47 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/04 16:23:49 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/02 18:34:03 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
@@ -61,8 +61,10 @@
 
 # define HEART_RED "textures/pickup_heart_red.XPM"
 # define HEART_RED_HALF "textures/pickup_heart_red_half.XPM"
+# define HEART_RED_PRICE_TAG "textures/pickup_heart_red_price_tag.XPM"
 # define COIN "textures/pickup_coin.XPM"
 # define KEY "textures/pickup_key.XPM"
+# define KEY_PRICE_TAG "textures/pickup_key_price_tag.XPM"
 
 # define QUARTER "textures/item_a_quarter.XPM"
 # define QUARTER_PRICE_TAG "textures/item_a_quarter_price_tag.XPM"
