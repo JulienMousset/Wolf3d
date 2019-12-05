@@ -6,13 +6,13 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 15:23:27 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/05 15:41:37 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/05 19:01:00 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void	double_loop(t_env *env, t_map *map, int y)
+void	double_loop(t_env *env, t_map *map, int y, int i)
 {
 	int		j;
 
@@ -32,8 +32,12 @@ void	double_loop(t_env *env, t_map *map, int y)
 				ft_memcpy(&map->color_str, &env->t[map->id].data_addr[j],
 						sizeof(int));
 				map->color = (int)map->color_str;
+				map->color = add_smog(map->color, map->spr_dist[i] / 15);
 				if (map->color != 0)
+				{
 					put_pixel(env, map->x_start, y, map->color);
+					put_pixel(env, map->x_start, y, add_smog(map->color, abs(y - map->h2) * 0.005));
+				}
 				y++;
 			}
 		}
@@ -87,7 +91,7 @@ void	sprites(t_env *env, t_map *map)
 	while (i < map->nb_sprites)
 	{
 		set_sprite_values(map, i);
-		double_loop(env, env->map, y);
+		double_loop(env, env->map, y, i);
 		i++;
 	}
 }
