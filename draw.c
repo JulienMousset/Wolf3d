@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:39:45 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/06 18:20:38 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/06 18:32:55 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ void	pick_color(t_env *env, t_thread *th, int x, int y_start)
 		j = ((th->tex.x * (env->t[th->id].bpp / 8)) + (th->tex.y * env->t[th->id].s_l));
 		ft_memcpy(&color_str, &env->t[th->id].data_addr[j], sizeof(int));
 		th->color = (int)color_str;
-		if (th->ns_or_ew == 1)
-			th->color = (th->color >> 1) & 8355711;
+		//if (th->ns_or_ew == 1)
+		//	th->color = (th->color >> 1) & 8355711;
 	}
 	else
 		th->color = choose_color(th->id, th->ns_or_ew);
