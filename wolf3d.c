@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 13:57:07 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/06 16:34:08 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/06 18:07:19 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/06 14:50:37 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -17,8 +17,8 @@ void	set_mmap_values(t_map *map, int opt)
 {
 	map->mm_size = per(W, 11) * opt; //size of the mmmap
 	map->mm_margin = (t_coord) {.x = per(W, 7), .y = per(H, 5)};
-	map->mm_vis = 16; // visualization of 40 blocks around
-	map->mm_block_size = (W / 64 / 3) * opt;  //size 4 -> 2x2 block
+	map->mm_vis = 16 * opt; // visualization of 40 blocks around
+	map->mm_block_size = (W / 64 / 3);  //size 4 -> 2x2 block
 	map->mm_start.x = W - map->mm_margin.x - map->mm_size;
 	map->mm_start.y = map->mm_margin.y;
 	map->mm_center.x =  W - map->mm_margin.x - map->mm_size / 2;
