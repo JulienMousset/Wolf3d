@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/04 21:21:13 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/06 14:05:47 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/27 19:34:28 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/27 12:47:03 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
@@ -34,7 +34,7 @@
 # define TS 64
 # define THREADS 4
 
-# define MOVE_SPEED 0.15
+# define MOVE_SPEED 0.125
 # define ROT_SPEED 0.08
 # define SCALE_MS 5
 
