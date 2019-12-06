@@ -6,7 +6,8 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 13:57:07 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/06 18:24:37 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/06 18:35:50 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/06 18:27:33 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/06 14:50:37 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -50,11 +51,14 @@ void	set_values(t_map *map)
 	map->pick_heart = 6;
 	map->pick_coin = 0;
 	map->pick_key = 0;
-	map->item_map = 1;
-	map->item_heels = 1;
+	map->pick_coin = 0;
+	map->pick_key = 0;
+	map->item_map = 0;
+	map->item_heels = 0;
 	map->item_poly = 0;
 	map->item_ipecac = 0;
 	map->item_godhead = 0;
+	map->item_candle = 7;
 	map->s = NULL;
 	map->spr_order = NULL;
 	map->spr_dist = NULL;

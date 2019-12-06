@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 16:22:32 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/05 18:35:58 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/06 18:20:24 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,15 +60,15 @@ void	floor_casting(t_env *env, t_map *map, t_thread *t, int x)
 		ft_memcpy(&t->color_str, &env->t[55].data_addr[j], sizeof(int));
 		t->color = (int)t->color_str;
 		//t->color = (map->color >> 1) & 8355711;
-		t->color = add_smog(t->color, t->dist_current);
+		t->color = add_smog(t->color, t->dist_current, env->map->item_candle);
 		put_pixel(env, x, y, t->color);
-		put_pixel(env, x, y, add_smog(t->color, abs(y - map->h2) * 0.005));
+		put_pixel(env, x, y, add_smog(t->color, abs(y - map->h2) * 0.005, env->map->item_candle));
 		ft_memcpy(&t->color_str, &env->t[58].data_addr[j], sizeof(int));
 		t->color = (int)t->color_str;
 		//t->color = (t->color >> 1) & 8355711;
-		t->color = add_smog(t->color, t->dist_current);
+		t->color = add_smog(t->color, t->dist_current, map->item_candle);
 		put_pixel(env, x, map->h2 * 2 - y, t->color);
-		put_pixel(env, x, map->h2 * 2 - y, add_smog(t->color, abs((map->h2 * 2 - y) - map->h2) * 0.005));
+		put_pixel(env, x, map->h2 * 2 - y, add_smog(t->color, abs((map->h2 * 2 - y) - map->h2) * 0.005, map->item_candle));
 		y++;
 	}
 }

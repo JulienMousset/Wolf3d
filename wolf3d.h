@@ -6,6 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
+/*   Updated: 2019/12/06 18:32:22 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/06 18:11:42 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/06 17:28:46 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/06 14:05:47 by jmousset         ###   ########.fr       */
@@ -160,6 +161,7 @@ typedef struct	s_map
 	int			item_poly;
 	int			item_ipecac;
 	int			item_godhead;
+	int			item_candle;
 
 	t_coord		mouse_pos;
 
@@ -319,7 +321,7 @@ int				mouse_move(int x, int y, t_env *env);
 int				multiple_events(t_env *env);
 void			look_left_right(t_map *map);
 
-unsigned int	add_smog(unsigned int c, double d);
+unsigned int	add_smog(unsigned int c, double d, int candle);
 
 void			sprites(t_env *env, t_map *map);
 void			bubble_sort(int	*order, double *dist, int amount);

@@ -6,13 +6,13 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:39:45 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/05 14:53:36 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/06 18:32:55 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-unsigned int	add_smog(unsigned int c, double d)
+unsigned int	add_smog(unsigned int c, double d, int candle)
 {
 	unsigned char	r;
 	unsigned char	g;
@@ -21,7 +21,7 @@ unsigned int	add_smog(unsigned int c, double d)
 	r = c;
 	g = c >> 8;
 	b = c >> 16;
-	d = 7 / (100 / d);
+	d = candle / (100 / d);
 	if (d > 0.9)
 		d = 0.9;
 	if (r > 0)
@@ -61,14 +61,14 @@ void	pick_color(t_env *env, t_thread *th, int x, int y_start)
 		j = ((th->tex.x * (env->t[th->id].bpp / 8)) + (th->tex.y * env->t[th->id].s_l));
 		ft_memcpy(&color_str, &env->t[th->id].data_addr[j], sizeof(int));
 		th->color = (int)color_str;
-		if (th->ns_or_ew == 1)
-			th->color = (th->color >> 1) & 8355711;
+		//if (th->ns_or_ew == 1)
+		//	th->color = (th->color >> 1) & 8355711;
 	}
 	else
 		th->color = choose_color(th->id, th->ns_or_ew);
-	th->color = add_smog(th->color, th->perp);
+	th->color = add_smog(th->color, th->perp, env->map->item_candle);
 	put_pixel(env, x, y_start, th->color);
-	put_pixel(env, x, y_start, add_smog(th->color, abs(y_start - env->map->h2) * 0.005));
+	put_pixel(env, x, y_start, add_smog(th->color, abs(y_start - env->map->h2) * 0.005, env->map->item_candle));
 }
 
 void	draw_line(t_env *env, t_thread *t, int x, int y_start)
