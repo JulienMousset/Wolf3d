@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 13:57:07 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/04 17:19:54 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/06 15:20:02 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int		wolf3d(char *file)
 	if (!(env = (t_env *)malloc(sizeof(t_env))))
 		return (0);
 	init_structure(env, file);
-	create_threads(env, env->map);
+	image_to_window(env, env->map);
 	mlx_hook(env->win_ptr, 2, (1L << 0), key_press, env);
 	mlx_hook(env->win_ptr, 3, (1L << 1), key_release, env);
 	mlx_hook(env->win_ptr, 6, 0, mouse_move, env);

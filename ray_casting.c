@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:39:07 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/05 16:16:18 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/06 15:22:01 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,4 +106,18 @@ void	*ray_casting(void *vt)
 		x_start++;
 	}
 	return (0);
+}
+
+void	image_to_window(t_env *env, t_map *map)
+{
+	draw_background(env);
+	draw_sky(env, env->map);
+	create_threads(env, 1);
+	if (map->bool_spr == 1)
+		sprites(env, env->map);
+	map->item_map ? draw_minimap(env, env->map) : 0;
+	gui(env, env->map);
+	mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_ptr, 0, 0);
+	text_gui(env);
+	map->bool_menu ? menu(env) : 0;
 }
