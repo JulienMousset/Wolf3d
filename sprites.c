@@ -6,55 +6,56 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 15:23:27 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/06 16:02:21 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/06 16:29:43 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void	*double_loop(void *vt)
+void	vertical_loop(t_thread *t, t_env *env, t_map *map)
 {
-	int			x_start;
-	int			x_end;
-	int			dif;
+	int		y;
+
+	y = map->y_start;
+	while (y < map->y_end)
+	{
+		t->d = y - map->h2 + map->spr.height / 2;
+		t->tex.y = ((t->d * TS) / map->spr.height);
+		t->j = (t->tex.x * 4 + (t->tex.y * env->t[map->id].s_l));
+		ft_memcpy(&t->color_str, &env->t[map->id].data_addr[t->j],
+				sizeof(int));
+		t->color = (int)t->color_str;
+		t->color = add_smog(t->color, map->spr_dist[map->i] / 15);
+		if (t->color != 0)
+		{
+			put_pixel(env, t->x_start, y, t->color);
+			put_pixel(env, t->x_start, y, add_smog(t->color,
+						abs(y - map->h2) * 0.005));
+		}
+		y++;
+	}
+}
+
+void	*horizontal_loop(void *vt)
+{
 	t_thread	*t;
 	t_env		*env;
 	t_map		*map;
-	int			y;
 
 	t = (t_thread *)vt;
 	env = t->env;
 	map = t->env->map;
-	dif = map->x_end - map->x_start;
-	x_start = map->x_start + dif * t->n / THREADS;
-	x_end = map->x_start + dif * (t->n + 1) / THREADS;
-	while (x_start < x_end)
+	t->dif = map->x_end - map->x_start;
+	t->x_start = map->x_start + t->dif * t->n / THREADS;
+	t->x_end = map->x_start + t->dif * (t->n + 1) / THREADS;
+	while (t->x_start < t->x_end)
 	{
-		t->tex.x = (int)(256 * (x_start - (-map->spr.width / 2 +
+		t->tex.x = (int)(256 * (t->x_start - (-map->spr.width / 2 +
 						map->ssx)) * TS / map->spr.width) / 256;
-		if (map->transform.y > 0 && x_start > 0 && x_start < W &&
-				map->transform.y < map->z_buffer[x_start])
-		{
-			y = map->y_start;
-			while (y < map->y_end)
-			{
-				t->d = y - map->h2 + map->spr.height / 2;
-				t->tex.y = ((t->d * TS) / map->spr.height);
-				t->j = (t->tex.x * 4 + (t->tex.y * env->t[map->id].s_l));
-				ft_memcpy(&t->color_str, &env->t[map->id].data_addr[t->j],
-						sizeof(int));
-				t->color = (int)t->color_str;
-				t->color = add_smog(t->color, map->spr_dist[map->i] / 15);
-				if (t->color != 0)
-				{
-					put_pixel(env, x_start, y, t->color);
-					put_pixel(env, x_start, y, add_smog(t->color,
-								abs(y - map->h2) * 0.005));
-				}
-				y++;
-			}
-		}
-		x_start++;
+		if (map->transform.y > 0 && t->x_start > 0 && t->x_start < W &&
+				map->transform.y < map->z_buffer[t->x_start])
+			vertical_loop(t, env, env->map);
+		t->x_start++;
 	}
 	return (0);
 }
@@ -85,28 +86,26 @@ void	set_sprite_values(t_map *map, int i)
 
 void	sprites(t_env *env, t_map *map)
 {
-	int		i;
 	int		y;
 
-	i = 0;
+	map->i = 0;
 	y = 0;
-	while (i < map->nb_sprites)
+	while (map->i < map->nb_sprites)
 	{
-		map->spr_order[i] = i;
-		map->spr_dist[i] = (
-				(map->pos.x - map->s[i].x) *
-				(map->pos.x - map->s[i].x) +
-				(map->pos.y - map->s[i].y) *
-				(map->pos.y - map->s[i].y));
-		i++;
+		map->spr_order[map->i] = map->i;
+		map->spr_dist[map->i] = (
+				(map->pos.x - map->s[map->i].x) *
+				(map->pos.x - map->s[map->i].x) +
+				(map->pos.y - map->s[map->i].y) *
+				(map->pos.y - map->s[map->i].y));
+		map->i++;
 	}
 	bubble_sort(map->spr_order, map->spr_dist, map->nb_sprites);
-	i = 0;
-	while (i < map->nb_sprites)
+	map->i = 0;
+	while (map->i < map->nb_sprites)
 	{
-		set_sprite_values(map, i);
-		map->i = i;
+		set_sprite_values(map, map->i);
 		create_threads(env, 2);
-		i++;
+		map->i++;
 	}
 }

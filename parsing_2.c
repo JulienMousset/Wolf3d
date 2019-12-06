@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 12:29:31 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/04 20:26:34 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/06 12:26:02 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		fill_board(t_map *map, int fd)
 				if (player > 1)
 					end("more than one player");
 				map->board[i][j] = 0;
-				map->pos_cpy = (t_complex) {.x = i, .y = j};
+				map->pos_cpy = (t_complex) {.x = i + 0.1, .y = j + 0.1};
 			}
 			else if (ft_isdigit(map->tmp[j][0]))
 				map->board[i][j] = ft_atoi(map->tmp[j]);

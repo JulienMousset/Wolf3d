@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 20:07:48 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/06 15:59:56 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/06 16:28:39 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	create_threads(t_env *env, int id)
 		if (id == 1)
 			pthread_create(&t[i].t, NULL, ray_casting, &t[i]);
 		else if (id == 2)
-			pthread_create(&t[i].t, NULL, double_loop, &t[i]);
+			pthread_create(&t[i].t, NULL, horizontal_loop, &t[i]);
 		i++;
 	}
 	i = 0;
