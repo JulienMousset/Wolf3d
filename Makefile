@@ -6,7 +6,7 @@
 #    By: jmousset <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 15:35:26 by jmousset          #+#    #+#              #
-#    Updated: 2019/12/04 16:06:21 by pasosa-s         ###   ########.fr        #
+#    Updated: 2019/12/06 17:18:54 by pasosa-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,8 @@ SRCS = main.c\
 	   load_sprites.c\
 	   draw_sky.c\
 	   sprites.c\
-	   create_threads.c
+	   create_threads.c\
+	   items.c
 
 OBJ_DIR = ./obj
 

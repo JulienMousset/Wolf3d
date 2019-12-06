@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 16:21:15 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/19 18:25:23 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/06 18:03:56 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # define NUM_7 26
 # define NUM_8 28
 # define NUM_9 25
+
+# define TAB 48
 
 # define KEY_Q 12
 # define KEY_W 13

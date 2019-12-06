@@ -6,6 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 13:57:07 by pasosa-s          #+#    #+#             */
+/*   Updated: 2019/12/06 18:07:19 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/06 14:50:37 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -16,8 +17,8 @@ void	set_mmap_values(t_map *map, int opt)
 {
 	map->mm_size = per(W, 11) * opt; //size of the mmmap
 	map->mm_margin = (t_coord) {.x = per(W, 7), .y = per(H, 5)};
-	map->mm_vis = 16; // visualization of 40 blocks around
-	map->mm_block_size = (W / 64 / 3) * opt;  //size 4 -> 2x2 block
+	map->mm_vis = 16 * opt; // visualization of 40 blocks around
+	map->mm_block_size = (W / 64 / 3);  //size 4 -> 2x2 block
 	map->mm_start.x = W - map->mm_margin.x - map->mm_size;
 	map->mm_start.y = map->mm_margin.y;
 	map->mm_center.x =  W - map->mm_margin.x - map->mm_size / 2;
@@ -45,10 +46,10 @@ void	set_values(t_map *map)
 	map->bool_spr = 1;
 	map->bool_menu = 0;
 	map->bool_print_price = 0;
-	map->pick_coin = 0;
 	map->container = 3;
 	map->pick_heart = 6;
-	map->pick_key = 0;
+	map->pick_coin = 99;
+	map->pick_key = 99;
 	map->item_map = 1;
 	map->item_heels = 1;
 	map->item_poly = 0;
@@ -112,7 +113,7 @@ int		wolf3d(char *file)
 	if (!(env = (t_env *)malloc(sizeof(t_env))))
 		return (0);
 	init_structure(env, file);
-	create_threads(env, env->map);
+	image_to_window(env, env->map);
 	mlx_hook(env->win_ptr, 2, (1L << 0), key_press, env);
 	mlx_hook(env->win_ptr, 3, (1L << 1), key_release, env);
 	mlx_hook(env->win_ptr, 6, 0, mouse_move, env);

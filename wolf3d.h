@@ -6,7 +6,9 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/06 18:02:45 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/06 18:11:42 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/06 17:28:46 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/06 14:05:47 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/27 19:34:28 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/11/27 12:47:03 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
@@ -131,6 +133,7 @@ typedef struct	s_map
 	t_coord		tex;
 	int			id;
 	int			d;
+	int			i;
 	int			color;
 
 	double		z_buffer[W];
@@ -151,6 +154,7 @@ typedef struct	s_map
 	int			container;
 	int			pick_key;
 
+	t_coord		prev_id;
 	int			item_map;
 	int			item_heels;
 	int			item_poly;
@@ -238,13 +242,17 @@ typedef struct	s_thread
 	int			ns_or_ew;
 
 	int			line_height;
+	int			x_start;
+	int			x_end;
 	int			y_start;
 	int			y_end;
 	int			color;
+	int			dif;
 
 	double		wall_x;
 	t_coord		tex;
 	int			d;
+	int			j;
 	int			id;
 
 	t_complex	floor;
@@ -335,7 +343,7 @@ void			ceil_casting(t_env *env, t_map *map, int x);
 
 
 
-void			create_threads(t_env *env, t_map *map);
+void			create_threads(t_env *env, int id);
 void			print_mini_sprite(t_env *env, t_map *map, int id, t_coord margin);
 
 
@@ -348,7 +356,9 @@ void			*ray_casting(void *vt);
 
 int				ft_ishupper(int i);
 
+void			image_to_window(t_env *env, t_map *map);
 
+void			*horizontal_loop(void *vt);
 
 #endif
 

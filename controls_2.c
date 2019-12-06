@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 19:26:27 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/06 14:06:38 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/06 16:36:22 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	up_or_down(t_map *map, int **board, t_complex dir)
 	t_coord	add;
 	double	move_speed;
 
-	move_speed = (map->run == 1) ? map->move_coef * 1.5 : map->move_coef;
+	move_speed = (map->run == 1) ? map->move_coef * 2.5 : map->move_coef;
 	if (map->up == 1)
 	{
 		add.x = (map->pos.x + dir.x * map->move_coef * SCALE_MS);
