@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 15:23:27 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/06 16:29:43 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/06 18:25:00 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,13 @@ void	vertical_loop(t_thread *t, t_env *env, t_map *map)
 		ft_memcpy(&t->color_str, &env->t[map->id].data_addr[t->j],
 				sizeof(int));
 		t->color = (int)t->color_str;
-		t->color = add_smog(t->color, map->spr_dist[map->i] / 15);
+		t->color = add_smog(t->color, map->spr_dist[map->i] / 15,
+				map->item_candle);
 		if (t->color != 0)
 		{
 			put_pixel(env, t->x_start, y, t->color);
 			put_pixel(env, t->x_start, y, add_smog(t->color,
-						abs(y - map->h2) * 0.005));
+						abs(y - map->h2) * 0.005, map->item_candle));
 		}
 		y++;
 	}

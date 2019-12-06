@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 18:23:25 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/02 19:05:39 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/06 18:30:24 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/02 16:01:21 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -41,6 +41,8 @@ void		gain_item(t_map *map, int id)
 		map->item_map = 1;
 	else if (id == ID_HEELS)
 		map->item_heels = 1;
+	else if (id == ID_CANDLE)
+		map->item_candle = 3;
 	else if (id >= FIRST_SHOP && id <= LAST_SHOP)
 	{
 		map->pick_coin -= 15;
@@ -54,6 +56,8 @@ void		gain_item(t_map *map, int id)
 			map->pick_coin = 99;
 			map->pick_key = 99;
 		}
+		else if (id == ID_QUARTER)
+		map->pick_coin += 25;
 	}
 	if (map->pick_heart > map->container * 2)
 		map->pick_heart = map->container * 2;
