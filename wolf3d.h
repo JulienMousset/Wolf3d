@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/06 18:32:22 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/06 21:44:29 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/06 18:11:42 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/06 17:28:46 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/06 14:05:47 by jmousset         ###   ########.fr       */
@@ -39,7 +39,7 @@
 
 # define MOVE_SPEED 0.125
 # define ROT_SPEED 0.08
-# define SCALE_MS 2
+# define SCALE_MS 5
 
 #define NUM_TEX	59
 
@@ -162,6 +162,11 @@ typedef struct	s_map
 	int			item_ipecac;
 	int			item_godhead;
 	int			item_candle;
+	int			item_quarter;
+	int			item_axe;
+	int			item_mantle;
+	int			item_xray;
+	int			item_dinner;
 
 	t_coord		mouse_pos;
 
@@ -361,6 +366,9 @@ int				ft_ishupper(int i);
 void			image_to_window(t_env *env, t_map *map);
 
 void			*horizontal_loop(void *vt);
+int				randomy(int min, int max);
+int				is_destroyable(t_map *map, int id);
+
 
 #endif
 

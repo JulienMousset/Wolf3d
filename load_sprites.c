@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 18:23:25 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/06 18:33:54 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/06 21:45:06 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/02 16:01:21 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -26,9 +26,38 @@ int			in_array(t_map *map, int x, int y)
 	}
 	return (0);
 }
-
+void		pickup_chance(t_map *map, int id)
+{
+	int		r;
+	if (id == ID_ROCK1 || id == ID_ROCK2 || id == ID_ROCK3 || id == ID_POOP)
+		randomy(0, 2) == 0 ? map->pick_coin++ : 0;
+	else if (id == ID_SKULL)
+		randomy(0, 2) == 0 ? map->pick_key++ : 0;
+	else if (id == ID_URN1 || id ==ID_URN2)
+	{
+		r = randomy(0, 5);
+		if (r == 0)
+			map->pick_coin++;
+		else if (r == 2)
+			map->pick_key++;
+		else if (r == 4)
+			map->pick_heart++;
+	}
+	else if (id == ID_MUSHROOM1 || id ==ID_MUSHROOM2)
+	{
+		r = randomy(0, 5);
+		if (r == 0)
+			map->pick_coin++;
+		else if (r == 2)
+			map->pick_key++;
+		else if (r == 4)
+			map->pick_heart--;
+	}
+}
 void		gain_item(t_map *map, int id)
 {
+	if (is_destroyable(map, id))
+		pickup_chance(map, id);
 	if (id == ID_COIN)
 		map->pick_coin++;
 	else if (id == ID_RHEART)
@@ -57,7 +86,18 @@ void		gain_item(t_map *map, int id)
 			map->pick_key = 99;
 		}
 		else if (id == ID_QUARTER)
-		map->pick_coin += 25;
+			map->pick_coin += 25;
+		else if (id == ID_DINNER)
+		{
+			map->container ++;
+			map->pick_heart += 2;
+		}
+		else if (id == ID_MANTLE)
+			map->item_mantle = 1;
+		else if (id == ID_AXE)
+			map->item_axe = 1;
+		else if (id == ID_XRAY)
+			map->item_xray = 1;
 	}
 	if (map->pick_heart > map->container * 2)
 		map->pick_heart = map->container * 2;

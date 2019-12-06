@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:43:56 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/05 15:53:47 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/06 20:45:30 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/04 16:23:49 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/02 18:34:03 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
@@ -28,6 +28,9 @@
 
 # define FIRST_SHOP 21
 # define LAST_SHOP 28
+
+# define FIRST_SOLID 29
+# define LAST_SOLID 37
 
 # define FIRST_SPR 14
 # define LAST_SPR 50
@@ -157,7 +160,7 @@
 # define ID_AXE 24
 # define ID_MANTLE 25
 # define ID_QUARTER 26
-# define ID_GLASSES 27
+# define ID_XRAY 27
 # define ID_DINNER 28
 
 //esthetic spr

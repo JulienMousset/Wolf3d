@@ -6,11 +6,16 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 14:54:18 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/06 17:18:33 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/06 21:45:07 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+int		randomy(int min, int max)
+{
+	return ((rand() % (max - min + 1)) + min);
+}
 
 void	draw_background(t_env *env)
 {

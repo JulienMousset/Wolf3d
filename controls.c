@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 15:29:42 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/06 18:10:30 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/06 21:43:37 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/06 14:23:12 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -24,6 +24,8 @@ void	more_keys(int key, t_env *env)
 		env->map->opt = env->map->opt == 1 ? 3 : 1;
 		set_mmap_values(env->map, env->map->opt);
 	}
+	if (key == NUM_2)
+		env->map->container++;
 	if (key == NUM_3)
 		env->map->bool_spr = env->map->bool_spr ? 0 : 1;
 	if (key == NUM_4)
