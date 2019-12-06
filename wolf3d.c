@@ -5,9 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/28 13:57:07 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/06 21:04:07 by pasosa-s         ###   ########.fr       */
-/*   Updated: 2019/12/06 14:50:37 by jmousset         ###   ########.fr       */
+/*   Created: 2019/12/06 21:46:17 by pasosa-s          #+#    #+#             */
+/*   Updated: 2019/12/06 21:46:23 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +16,7 @@ void	set_mmap_values(t_map *map, int opt)
 {
 	map->mm_size = per(W, 11) * opt; //size of the mmmap
 	map->mm_margin = (t_coord) {.x = per(W, 7), .y = per(H, 5)};
-	map->mm_vis = 16 * opt; // visualization of 40 blocks around
+	map->mm_vis = 12 * opt; // visualization of 40 blocks around
 	map->mm_block_size = (W / 64 / 3);  //size 4 -> 2x2 block
 	map->mm_start.x = W - map->mm_margin.x - map->mm_size;
 	map->mm_start.y = map->mm_margin.y;
@@ -52,6 +51,12 @@ void	set_values(t_map *map)
 	map->pick_key = 15;
 	map->item_map = 1;
 	map->item_heels = 1;
+	map->pick_coin = 0;
+	map->pick_key = 0;
+	map->pick_coin = 0;
+	map->pick_key = 0;
+	map->item_map = 0;
+	map->item_heels = 0;
 	map->item_poly = 0;
 	map->item_ipecac = 0;
 	map->item_godhead = 0;
