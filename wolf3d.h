@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 16:15:41 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/10 17:58:09 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/10 19:45:53 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@
 # define QUOTE4_1 "ITEMS - 15 COINS"
 # define QUOTE4_2 "CONSUMABLES - 5 COINS"
 # define PRESS "PRESS [G] TO GAMBLE"
+# define DEAD "You are DEAD"
 
 
 typedef struct	s_coord
@@ -212,7 +213,7 @@ typedef struct	s_map
 	int			bool_tex;
 	int			bool_spr;
 	int			bool_menu;
-	int			bool_print_price;
+	int			bool_dead;
 
 	int			esc;
 	int			up;

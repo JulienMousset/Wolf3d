@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 21:46:17 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/07 14:30:00 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/10 18:59:29 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	set_values(t_map *map)
 	map->bool_tex = 1;
 	map->bool_spr = 1;
 	map->bool_menu = 0;
-	map->bool_print_price = 0;
+	map->bool_dead = 0;
 	map->container = 3;
 	map->pick_heart = 6;
 	map->pick_coin = 15;
@@ -128,8 +128,8 @@ int		wolf3d(char *file)
 	mlx_hook(env->win_ptr, 2, (1L << 0), key_press, env);
 	mlx_hook(env->win_ptr, 3, (1L << 1), key_release, env);
 	mlx_hook(env->win_ptr, 6, 0, mouse_move, env);
-	mlx_hook(env->win_ptr, 17, 0, close_program, env);
 	mlx_loop_hook(env->mlx_ptr, multiple_events, env);
+	mlx_hook(env->win_ptr, 17, 0, close_program, env);
 	mlx_loop(env->mlx_ptr);
 	return (1);
 }

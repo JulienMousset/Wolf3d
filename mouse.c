@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 19:23:52 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/30 14:44:15 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/10 19:04:43 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	mouse_move(int x, int y, t_env *env)
 {
+	if (env->map->bool_dead)
+		return (0);
 	t_coord	coord;
 	coord.x = x;
 	coord.y = y;

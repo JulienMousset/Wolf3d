@@ -6,8 +6,9 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:39:07 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/10 17:59:32 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/10 19:47:27 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/10 16:16:34 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/10 19:04:24 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,4 +122,9 @@ void	image_to_window(t_env *env, t_map *map)
 	mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_ptr, 0, 0);
 	text_gui(env, map, map->board);
 	map->bool_menu ? menu(env) : 0;
+	if (map->pick_heart == 0)
+	{
+		map->bool_dead = 1;
+		mlx_string_put(env->mlx_ptr, env->win_ptr, W / 2 - 100, H / 2, M, DEAD);
+	}
 }
