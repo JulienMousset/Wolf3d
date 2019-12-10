@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 15:29:42 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/10 17:46:31 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/10 19:04:01 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/06 18:24:39 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/06 14:23:12 by jmousset         ###   ########.fr       */
 /*                                                                            */
@@ -45,14 +45,16 @@ void	more_keys(int key, t_env *env)
 		env->map->look_up = 1;
 	if (key == ARROW_DOWN)
 		env->map->look_down = 1;
-	if (env->map->pick_heart < 1)
-		env->map->pick_heart = 1;
+	if (env->map->pick_heart < 0)
+		env->map->pick_heart = 0;
 	if (env->map->pick_heart > env->map->container * 2)
 		env->map->pick_heart = env->map->container * 2;
 }
 
 int		key_press(int key, t_env *env)
 {
+	if (env->map->bool_dead && (key != KEY_SPACE && key != KEY_ESC))
+		return (0);
 	if (key == KEY_ESC)
 		close_program(env);
 	if (key == KEY_W)
