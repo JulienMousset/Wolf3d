@@ -6,7 +6,8 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:39:07 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/10 16:58:17 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/10 17:59:32 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/10 16:16:34 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +119,6 @@ void	image_to_window(t_env *env, t_map *map)
 	map->item_map ? draw_minimap(env, env->map) : 0;
 	gui(env, env->map);
 	mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_ptr, 0, 0);
-	text_gui(env);
+	text_gui(env, map, map->board);
 	map->bool_menu ? menu(env) : 0;
 }

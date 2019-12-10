@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 15:29:42 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/06 21:46:32 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/10 17:46:31 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/06 18:24:39 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/06 14:23:12 by jmousset         ###   ########.fr       */
 /*                                                                            */
@@ -39,6 +39,8 @@ void	more_keys(int key, t_env *env)
 		env->map->pick_heart--;
 	if (key == NUM_8)
 		env->map->pick_heart++;
+	if (key == KEY_G)
+		trade(env->map, env->map->board);
 	if (key == ARROW_UP)
 		env->map->look_up = 1;
 	if (key == ARROW_DOWN)
