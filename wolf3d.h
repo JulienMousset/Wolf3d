@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 16:15:41 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/10 19:45:53 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/10 21:04:45 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@
 # define ROT_SPEED 0.08
 # define SCALE_MS 5
 
-#define NUM_TEX	59
+#define NUM_TEX	62
 
 # define ERR_MALLOC "error trying to allocate memory"
 # define ERR_USAGE "Usage: ./wolf3d <filename>"
@@ -73,7 +73,10 @@
 # define QUOTE4_1 "ITEMS - 15 COINS"
 # define QUOTE4_2 "CONSUMABLES - 5 COINS"
 # define PRESS "PRESS [G] TO GAMBLE"
-# define DEAD "You are DEAD"
+
+# define DEAD1 "You are DEAD !"
+# define DEAD2 "press ESC to quit"
+# define DEAD3 "or SPACEBAR to retry"
 
 
 typedef struct	s_coord

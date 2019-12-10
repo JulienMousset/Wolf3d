@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 20:32:17 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/04 21:00:10 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/10 20:41:55 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/11/27 17:32:10 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -87,6 +87,10 @@ void	load_paths(char **path)
 	path[56] = FLOOR2;
 	path[57] = FLOOR3;
 	path[58] = FLOOR_SHOP;
+
+	path[59] = TAG_5;
+	path[60] = TAG_15;
+	path[61] = TAG_99;
 }
 
 void	load_textures(t_env *env, t_img *t, char **path)

@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:39:07 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/10 19:47:27 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/10 21:04:47 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/10 16:16:34 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/10 19:04:24 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
@@ -110,10 +110,21 @@ void	*ray_casting(void *vt)
 	return (0);
 }
 
+void	im_dead(t_env *env, t_map *map)
+{
+	map->bool_dead = 1;
+	ft_bzero(env->data_addr, W * H * 4);
+	mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_ptr, 0, 0);
+	mlx_string_put(env->mlx_ptr, env->win_ptr, W / 2 - 100, H / 2, M, DEAD1);
+	mlx_string_put(env->mlx_ptr, env->win_ptr, W / 2 - 100, H / 2 + 20, M, DEAD2);
+	mlx_string_put(env->mlx_ptr, env->win_ptr, W / 2 - 100, H / 2 + 40, M, DEAD3);
+
+}
+
 void	image_to_window(t_env *env, t_map *map)
 {
 	draw_background(env);
-//	draw_sky(env, env->map);
+	//	draw_sky(env, env->map);
 	create_threads(env, 1);
 	if (map->bool_spr == 1)
 		sprites(env, env->map);
@@ -123,8 +134,5 @@ void	image_to_window(t_env *env, t_map *map)
 	text_gui(env, map, map->board);
 	map->bool_menu ? menu(env) : 0;
 	if (map->pick_heart == 0)
-	{
-		map->bool_dead = 1;
-		mlx_string_put(env->mlx_ptr, env->win_ptr, W / 2 - 100, H / 2, M, DEAD);
-	}
+		im_dead(env, env->map);
 }
