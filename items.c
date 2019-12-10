@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 17:18:14 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/10 15:16:47 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/10 17:58:06 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,22 +54,22 @@ int		is_destroyable(t_map *map, int id)
 
 void	interact_solid(t_map *map, int id)
 {
-	if (id == ID_BLOOD_MACHINE)
+	if (id == ID_BLOOD_MACHINE && map->pick_heart)
 	{
 		map->pick_heart--;
 		map->pick_coin++;
 	}
-	else if (id == ID_BEGGAR_COIN)
+	else if (id == ID_BEGGAR_COIN && map->pick_coin)
 	{
 		map->pick_coin--;
 		randomy(0, 2) == 0 ? map->pick_key++ : 0;
 	}
-	else if (id == ID_BEGGAR_KEY)
+	else if (id == ID_BEGGAR_KEY && map->pick_key)
 	{
 		map->pick_key--;
 		map->pick_coin++;
 	}
-	else if (id == ID_BEGGAR_HEART)
+	else if (id == ID_BEGGAR_HEART && map->pick_heart)
 	{
 		map->pick_heart--;
 		map->i = randomy(0, 2);
@@ -78,6 +78,20 @@ void	interact_solid(t_map *map, int id)
 		else if (map->i == 2)
 			map->pick_coin += 2;
 	}
+}
+
+void	trade(t_map *map, int **board)
+{
+	int		id;
+
+	id = board[(int)(map->pos.x + map->dir.x)][(int)(map->pos.y + map->dir.y)];
+	if (id >= 47 && id <= 50)
+		interact_solid(map, id);
+	if (map->pick_coin > 99)
+		map->pick_coin = 99;
+	if (map->pick_key > 99)
+		map->pick_key = 99;
+
 }
 
 void	curse_door(t_map *map, int id)
@@ -96,7 +110,6 @@ int		is_walkable(t_map *map, int id, int x, int y)
 		realloc_array(map, x, y, id);
 	if (is_door(map, id, x, y))
 		return (1);
-	interact_solid(map, id);
 	curse_door(map, id);
 	return ((is_walk(id)) ? 1 : 0);
 }

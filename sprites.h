@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:43:56 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/10 15:16:42 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/10 17:58:12 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/04 16:23:49 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/02 18:34:03 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
@@ -31,6 +31,9 @@
 
 # define FIRST_SOLID 29
 # define LAST_SOLID 38
+
+# define FIRST_INTER 43
+# define LAST_INTER 50
 
 # define FIRST_SPR 14
 # define LAST_SPR 50

@@ -3,6 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   wolf3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
+/*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/10 16:15:41 by pasosa-s          #+#    #+#             */
+/*   Updated: 2019/12/10 17:58:09 by pasosa-s         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   wolf3d.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
@@ -51,6 +63,17 @@
 # define ERR_EMPTY "No data found."
 # define ERR_NOFILE "File doesn't exit."
 # define ERR_FULL "Map without place for the player."
+
+# define QUOTE1_1 "Did you know that the end of the game"
+# define QUOTE1_2 "is actually 4 tiles behind my back?"
+# define QUOTE2_1 "I miss my owner."
+# define QUOTE2_2 "He still has my left paw."
+# define QUOTE3_1 "The first known account of execution by hanging"
+# define QUOTE3_2 "was in Homer's Odyssey (Book XXII)."
+# define QUOTE4_1 "ITEMS - 15 COINS"
+# define QUOTE4_2 "CONSUMABLES - 5 COINS"
+# define PRESS "PRESS [G] TO GAMBLE"
+
 
 typedef struct	s_coord
 {
@@ -309,7 +332,7 @@ void			draw_background(t_env *env);
 int				*ft_strint(int size);
 void			display_values(t_map *map);
 
-void			text_gui(t_env *env);
+void			text_gui(t_env *env, t_map *map, int **board);
 void			gui(t_env *env, t_map *map);
 void			menu(t_env *env);
 void			set_mmap_values(t_map *map, int opt);
@@ -368,6 +391,7 @@ void			image_to_window(t_env *env, t_map *map);
 void			*horizontal_loop(void *vt);
 int				randomy(int min, int max);
 int				is_destroyable(t_map *map, int id);
+void			trade(t_map *map, int **board);
 
 
 #endif

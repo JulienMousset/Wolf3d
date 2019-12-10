@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/27 16:21:15 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/06 18:03:56 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/10 17:46:18 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
+# define KEY_F 3
+# define KEY_G 5
 
 # define KEY_SHIFT 257
 
