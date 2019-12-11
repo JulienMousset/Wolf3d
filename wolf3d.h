@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 16:15:41 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/10 21:04:45 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 16:01:11 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@
 # define ERR_NOFILE "File doesn't exit."
 # define ERR_FULL "Map without place for the player."
 
+# define POOR "NOT ENOUGH COINS"
+# define FULL_HEALTH "FULL HEALTH"
+
 # define QUOTE1_1 "Did you know that the end of the game"
 # define QUOTE1_2 "is actually 4 tiles behind my back?"
 # define QUOTE2_1 "I miss my owner."
@@ -72,6 +75,7 @@
 # define QUOTE3_2 "was in Homer's Odyssey (Book XXII)."
 # define QUOTE4_1 "ITEMS - 15 COINS"
 # define QUOTE4_2 "CONSUMABLES - 5 COINS"
+
 # define PRESS "PRESS [G] TO GAMBLE"
 
 # define DEAD1 "You are DEAD !"

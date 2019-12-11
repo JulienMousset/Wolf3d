@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:43:56 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/10 20:43:09 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 16:01:13 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/04 16:23:49 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/02 18:34:03 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
@@ -202,6 +202,9 @@
 # define ID_BEGGAR_HEART 48
 # define ID_BEGGAR_KEY 49
 # define ID_BLOOD_MACHINE 50
+
+# define ID_HEART_SHOP 51
+# define ID_KEY_SHOP 52
 
 
 //*end solid sprites*

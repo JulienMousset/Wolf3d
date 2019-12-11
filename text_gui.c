@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:13:50 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/10 19:44:54 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 16:01:10 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,21 @@ void	sprite_interactions(t_env *env, int id)
 
 }
 
+void	print_shop_message(t_env *env, t_map *map, int **board)
+{
+	t_coord		c;
+	int			id;
+
+	c = (t_coord) {.x = W / 2 - 100, .y = H / 2};
+	id = board[(int)map->pos.x][(int)map->pos.y];
+	if ((id >= FIRST_SHOP && id <= LAST_SHOP && map->pick_coin < 15) ||
+			(id >= ID_HEART_SHOP && id <= ID_KEY_SHOP && map->pick_coin < 5))
+		mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y, M, POOR);
+	else if (id == ID_HEART_SHOP && map->pick_heart == map->container * 2)
+		mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y, M, FULL_HEALTH);
+
+}
+
 void	text_gui(t_env *env, t_map *map, int **board)
 {
 	void	*mlx;
@@ -59,6 +74,8 @@ void	text_gui(t_env *env, t_map *map, int **board)
 	map->gui_str = ft_itoa(map->pick_key);
 	mlx_string_put(mlx, win, c.x, c.y += 40, M, map->gui_str);
 	ft_memdel((void **)&(map->gui_str));
+	print_shop_message(env, map, board);
+	/*
 	if (board[(int)map->pos.x][(int)map->pos.y] >= FIRST_SHOP &&
 			board[(int)map->pos.x][(int)map->pos.y] <= LAST_SHOP &&
 			map->pick_coin < 15)
@@ -66,6 +83,7 @@ void	text_gui(t_env *env, t_map *map, int **board)
 		c = (t_coord) {.x = W / 2 - 100, .y = H / 2};
 		mlx_string_put(mlx, win, c.x, c.y, M, "NOT ENOUGH COINS");
 	}
+	*/
 	id = board[(int)(map->pos.x + map->dir.x)][(int)(map->pos.y + map->dir.y)];
 	if (id >= FIRST_INTER && id <= LAST_INTER)
 		sprite_interactions(env, id);

@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 17:18:14 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/10 17:58:06 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 15:35:23 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,16 @@ int		is_pickable(t_map *map, int id)
 int		is_walk(int id)
 {
 	return ((id == 0 || id == ID_SECRET1 || id == ID_SECRET2 ||
-				id == ID_SECRET3 || (id >= FIRST_WALK && id <= LAST_WALK)) ?
+				id == ID_SECRET3 || id == ID_HEART_SHOP || id == ID_KEY_SHOP ||
+				(id >= FIRST_WALK && id <= LAST_WALK)) ?
 			1 : 0);
 }
 
-int		is_shop(int id, int coin)
+int		is_shop(t_map *map, int id, int coin)
 {
-	return ((id >= FIRST_SHOP && id <= LAST_SHOP && coin >= 15) ? 1 : 0);
+	return (((id >= FIRST_SHOP && id <= LAST_SHOP && coin >= 15) ||
+			(((id == ID_HEART_SHOP && map->pick_heart < map->container * 2) 
+			  || id == ID_KEY_SHOP) && coin >= 5)) ? 1 : 0);
 }
 
 int		is_door(t_map *map, int id, int x, int y)
@@ -105,7 +108,7 @@ void	curse_door(t_map *map, int id)
 
 int		is_walkable(t_map *map, int id, int x, int y)
 {
-	if (is_pickable(map, id) || is_shop(id, map->pick_coin) ||
+	if (is_pickable(map, id) || is_shop(map, id, map->pick_coin) ||
 			is_destroyable(map, id))
 		realloc_array(map, x, y, id);
 	if (is_door(map, id, x, y))
