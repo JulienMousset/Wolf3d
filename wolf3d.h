@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 16:15:41 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/11 18:18:15 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 19:44:40 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@
 # define H 960
 # define TS 64
 # define THREADS 4
+# define THREADS2 2
 
 # define MOVE_SPEED 0.15
 # define ROT_SPEED 0.08
@@ -146,6 +147,7 @@ typedef struct	s_map
 	int			nb_lines;
 	int			nb_columns;
 	int			h2;
+	char		*level;
 
 	int			walk;
 
@@ -408,6 +410,7 @@ int				is_destroyable(t_map *map, int id);
 void			trade(t_map *map, int **board);
 
 void			end_game(t_env *env, t_map *map);
+t_coord			size(t_map *map, int id, int n);
 
 #endif
 

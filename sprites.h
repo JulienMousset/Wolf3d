@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:43:56 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/11 17:57:40 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 19:33:41 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/04 16:23:49 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/02 18:34:03 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
@@ -122,6 +122,8 @@
 # define TAG_5 "textures/typo_price_tag_5.XPM"
 # define TAG_15 "textures/typo_price_tag_15.XPM"
 # define TAG_99 "textures/typo_price_tag_99.XPM"
+
+# define CONTROLS "textures/typo_controls.XPM"
 
 //**start textures**
 

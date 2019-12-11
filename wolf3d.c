@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 21:46:17 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/11 18:05:06 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 19:37:43 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,8 @@ int		init_structure(t_env *env, char *file)
 		return (0);
 	if (!(parsing(env->map, file)))
 		free_and_display_usage(env);
+	env->map->level = file;
+	printf("%s\n", env->map->level);
 	set_keys(env->map);
 	set_values(env->map);
 	env->map->board_cpy = ft_tabcpy(env->map->board, env->map->nb_lines,

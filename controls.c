@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 15:29:42 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/11 17:42:08 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 18:42:25 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/06 18:24:39 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/06 14:23:12 by jmousset         ###   ########.fr       */
 /*                                                                            */
@@ -18,6 +18,11 @@ void	more_keys(int key, t_env *env)
 {
 	if (key == KEY_C)
 		env->map->bool_card = env->map->bool_card ? 0 : 1;
+	if (key == KEY_H)
+	{
+		printf("H\n");
+		env->map->bool_menu = env->map->bool_menu ? 0 : 1;
+	}
 	if (key == KEY_M)
 		env->map->open_map = env->map->open_map ? 0 : 1;
 	if (key == NUM_1)
@@ -119,10 +124,6 @@ int		multiple_events(t_env *env)
 	}
 	if (env->map->strafe_left == 1 || env->map->strafe_right == 1)
 		strafe(env->map, env->map->board, env->map->dir);
-	if (env->map->open_map == 1)
-		env->map->bool_menu = 1;
-	else if (env->map->open_map == 0)
-		env->map->bool_menu = 0;
 	if (env->map->look_up == 1 || env->map->look_down == 1)
 		look_up_down(env->map);
 	if (env->map->mouse_left == 1 || env->map->mouse_right == 1)

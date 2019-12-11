@@ -6,11 +6,37 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 16:22:32 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/10 20:40:23 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 19:44:39 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+int		level_id(t_map *map, int id)
+{
+	if (!ft_strcmp(map->level, "maps/level_2"))
+	{
+		if (id == 1)
+			return (ID_FLOOR2 - 1);
+		else
+			return (ID_FLOOR_SHOP - 1);
+	}
+	if (!ft_strcmp(map->level, "maps/level_3"))
+	{
+		if (id == 1)
+			return (ID_FLOOR3 - 1);
+		else
+			return (ID_FLOOR_SHOP - 1);
+	}
+	else
+	{
+		if (id == 1)
+			return (ID_FLOOR1 - 1);
+		else
+			return (ID_FLOOR_SHOP - 1);
+	}
+
+}
 
 void	set_floor_casting(t_thread *t)
 {
@@ -57,13 +83,15 @@ void	floor_casting(t_env *env, t_map *map, t_thread *t, int x)
 		t->floor_tex.x = (int)(t->current_floor.x * TS) % TS;
 		t->floor_tex.y = (int)(t->current_floor.y * TS) % TS;
 		j = ((t->floor_tex.x * (env->t[9].bpp / 8)) + (t->floor_tex.y * env->t[9].s_l));
-		ft_memcpy(&t->color_str, &env->t[55].data_addr[j], sizeof(int));
+		ft_memcpy(&t->color_str, &env->t[level_id(map, 1)].data_addr[j], 
+				sizeof(int));
 		t->color = (int)t->color_str;
 		//t->color = (map->color >> 1) & 8355711;
 		t->color = add_smog(t->color, t->dist_current, env->map->item_candle);
 		put_pixel(env, x, y, t->color);
 		put_pixel(env, x, y, add_smog(t->color, abs(y - map->h2) * 0.005, env->map->item_candle));
-		ft_memcpy(&t->color_str, &env->t[58].data_addr[j], sizeof(int));
+		ft_memcpy(&t->color_str, &env->t[level_id(map, 2)].data_addr[j],
+				sizeof(int));
 		t->color = (int)t->color_str;
 		//t->color = (t->color >> 1) & 8355711;
 		t->color = add_smog(t->color, t->dist_current, map->item_candle);
@@ -74,57 +102,57 @@ void	floor_casting(t_env *env, t_map *map, t_thread *t, int x)
 }
 
 /*
-void	set_ceil_casting(t_map *map)
-{
-	if (map->ns_or_ew == 0 && map->ray_dir.x > 0)
-	{
-		map->floor.x = map->block.x;
-		map->floor.y = map->block.y + map->wall_x;
-	}
-	else if (map->ns_or_ew == 0 && map->ray_dir.x < 0)
-	{
-		map->floor.x = map->block.x + 1.0;
-		map->floor.y = map->block.y + map->wall_x;
-	}
-	else if (map->ns_or_ew == 1 && map->ray_dir.y > 0)
-	{
-		map->floor.x = map->block.x + map->wall_x;
-		map->floor.y = map->block.y;
-	}
-	else
-	{
-		map->floor.x = map->block.x + map->wall_x;
-		map->floor.y = map->block.y + 1.0;
-	}
-}
+   void	set_ceil_casting(t_map *map)
+   {
+   if (map->ns_or_ew == 0 && map->ray_dir.x > 0)
+   {
+   map->floor.x = map->block.x;
+   map->floor.y = map->block.y + map->wall_x;
+   }
+   else if (map->ns_or_ew == 0 && map->ray_dir.x < 0)
+   {
+   map->floor.x = map->block.x + 1.0;
+   map->floor.y = map->block.y + map->wall_x;
+   }
+   else if (map->ns_or_ew == 1 && map->ray_dir.y > 0)
+   {
+   map->floor.x = map->block.x + map->wall_x;
+   map->floor.y = map->block.y;
+   }
+   else
+   {
+   map->floor.x = map->block.x + map->wall_x;
+   map->floor.y = map->block.y + 1.0;
+   }
+   }
 
-void	ceil_casting(t_env *env, t_map *map, int x)
-{
-	int	j;
-	int	y;
-	double	weight;
+   void	ceil_casting(t_env *env, t_map *map, int x)
+   {
+   int	j;
+   int	y;
+   double	weight;
 
-	map->dist_wall = map->perp;
-	map->dist_player = 0.0;
-	if (map->y_start < 0)
-		map->y_start = 0;
-	y = map->y_start;
-	while (y > 0)
-	{
-		map->dist_current = H / (2.0 * y - map->h2 * 2.0);
-		weight = (map->dist_current - map->dist_player) / (map->dist_wall - map->dist_player);
-		map->current_floor.x = weight * map->floor.x + (1.0 - weight) * map->pos.x;
-		map->current_floor.y = weight * map->floor.y + (1.0 - weight) * map->pos.y;
-		map->floor_tex.x = (int)(map->current_floor.x * TS) % TS;
-		map->floor_tex.y = (int)(map->current_floor.y * TS) % TS;
+   map->dist_wall = map->perp;
+   map->dist_player = 0.0;
+   if (map->y_start < 0)
+   map->y_start = 0;
+   y = map->y_start;
+   while (y > 0)
+   {
+   map->dist_current = H / (2.0 * y - map->h2 * 2.0);
+   weight = (map->dist_current - map->dist_player) / (map->dist_wall - map->dist_player);
+   map->current_floor.x = weight * map->floor.x + (1.0 - weight) * map->pos.x;
+   map->current_floor.y = weight * map->floor.y + (1.0 - weight) * map->pos.y;
+   map->floor_tex.x = (int)(map->current_floor.x * TS) % TS;
+   map->floor_tex.y = (int)(map->current_floor.y * TS) % TS;
 
-		j = ((map->floor_tex.x * (env->t[2].bpp / 8)) + (map->floor_tex.y *
-					env->t[2].s_l));
-		ft_memcpy(&map->color_str, &env->t[2].data_addr[j], sizeof(int));
-		map->color = (int)map->color_str;
-		map->color = (map->color >> 1) & 8355711;
-		put_pixel(env, x, y, map->color);
-		y--;
-	}
-}
-*/
+   j = ((map->floor_tex.x * (env->t[2].bpp / 8)) + (map->floor_tex.y *
+   env->t[2].s_l));
+   ft_memcpy(&map->color_str, &env->t[2].data_addr[j], sizeof(int));
+   map->color = (int)map->color_str;
+   map->color = (map->color >> 1) & 8355711;
+   put_pixel(env, x, y, map->color);
+   y--;
+   }
+   }
+   */

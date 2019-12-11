@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 15:23:27 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/06 18:25:00 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 19:20:41 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	*horizontal_loop(void *vt)
 	env = t->env;
 	map = t->env->map;
 	t->dif = map->x_end - map->x_start;
-	t->x_start = map->x_start + t->dif * t->n / THREADS;
-	t->x_end = map->x_start + t->dif * (t->n + 1) / THREADS;
+	t->x_start = map->x_start + t->dif * t->n / THREADS2;
+	t->x_end = map->x_start + t->dif * (t->n + 1) / THREADS2;
 	while (t->x_start < t->x_end)
 	{
 		t->tex.x = (int)(256 * (t->x_start - (-map->spr.width / 2 +

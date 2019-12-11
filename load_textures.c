@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 14:22:49 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/11 14:35:42 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 18:45:44 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	load_paths3(char **path)
 	path[59] = TAG_5;
 	path[60] = TAG_15;
 	path[61] = TAG_99;
+	path[62] = CONTROLS;
 }
 
 void	load_paths2(char **path)
