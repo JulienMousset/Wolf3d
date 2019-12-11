@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 18:00:33 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/11 18:54:48 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 22:21:48 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	draw_sky(t_env *env, t_map *map)
 	while (i < map->h2)
 	{
 		ft_memcpy(&env->data_addr[i * env->s_l],
-				&env->sky.data_addr[(env->sky.bpp / 8) + ((y_start + i) * env->sky.s_l)],
+				&env->sky.data_addr[(env->sky.bpp / 8) + ((y_start + i) *
+					env->sky.s_l)],
 				env->s_l);
 		i++;
 	}

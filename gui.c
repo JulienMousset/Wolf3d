@@ -5,22 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/03 21:13:59 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/11 18:54:50 by pasosa-s         ###   ########.fr       */
+/*   Created: 2019/12/11 19:46:13 by pasosa-s          #+#    #+#             */
+/*   Updated: 2019/12/11 21:50:53 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int		is_large_spr(int id)
+int			is_large_spr(int id)
 {
-	return ((id == ID_CONTAINER_RED - 1 || id == ID_CONTAINER_RED_HALF - 1 ||
+	return ((id == ID_CONTAINER_RED - 1 || id == ID_CONTAINER_HALF - 1 ||
 				id == ID_CONTAINER_EMPTY - 1 || id == ID_SHIFT_ON - 1 ||
-				id == ID_TAG_5 - 1 || id == ID_TAG_15 - 1 || 
-				id == ID_TAG_99 - 1) ? 1 : 0);
+				id == ID_TAG_5 - 1 || id == ID_TAG_15 - 1 ||
+				id == ID_TAG_99 - 1 || id == ID_HANGING - 1 ||
+				id == ID_GUPPY - 1) ? 1 : 0);
 }
 
-void	print_mini_sprite(t_env *env, t_map *map, int id, t_coord margin)
+void		print_mini_sprite(t_env *env, t_map *map, int id, t_coord margin)
 {
 	t_coord		p;
 	t_coord		tex;
@@ -47,86 +48,34 @@ void	print_mini_sprite(t_env *env, t_map *map, int id, t_coord margin)
 	}
 }
 
-t_coord		size(t_map *map, int id, int n)
-{
-	t_coord 	c;
-
-	if (id == 1)
-	{
-		c.x = map->gui_margin.x;
-		c.y = map->gui_margin.y + TS * 0.8 * n;
-	}
-	if (id == 2)
-	{
-		c.x = map->gui_margin.x;
-		c.y = map->gui_margin.y;
-	}
-	if (id == 3)
-	{
-		c = (t_coord) {.x = 10, .y = per(H, 95)};
-	}
-	if (id == 4)
-	{
-		c.x = 20;
-		c.y = per(H, 96);
-	}
-	if (id == 5)
-		c = (t_coord) {.x = W / 2, .y = H - 100};
-
-
-	return (c);
-}
-
-void	print_hearts(t_env *env, t_map *map)
+void		print_hearts(t_env *env, t_map *map)
 {
 	int			i;
 
 	i = -1;
-	map->gui_margin.x = - TS / 2;
-	while (++i <  map->pick_heart / 2)
+	map->gui_margin.x = -TS / 2;
+	while (++i < map->pick_heart / 2)
 	{
 		print_mini_sprite(env, map, ID_CONTAINER_RED - 1, size(map, 2, 0));
 		map->gui_margin.x += TS + 20;
 	}
 	i = -1;
-	while (++i <  map->pick_heart % 2)
+	while (++i < map->pick_heart % 2)
 	{
-		print_mini_sprite(env, map, ID_CONTAINER_RED_HALF - 1, size(map, 2, 20));
+		print_mini_sprite(env, map, ID_CONTAINER_HALF - 1, size(map, 2, 20));
 		map->gui_margin.x += TS + 20;
 	}
 	i = -1;
-	while (++i <  map->container - (map->pick_heart / 2 + map->pick_heart % 2))
+	while (++i < map->container - (map->pick_heart / 2 + map->pick_heart % 2))
 	{
 		print_mini_sprite(env, map, ID_CONTAINER_EMPTY - 1, size(map, 2, 20));
 		map->gui_margin.x += TS + 20;
 	}
-	map->gui_margin.x = - TS / 2;
+	map->gui_margin.x = -TS / 2;
 }
 
-void	print_shop_prices(t_env *env, t_map *map, int **board)
+void		print_items_gui(t_env *env, t_map *map, int n)
 {
-	int		id;
-
-	id = board[(int)(map->pos.x + map->dir.x)][(int)(map->pos.y + map->dir.y)];
-	if (id >= 21 && id <= 23)
-		print_mini_sprite(env, map, ID_TAG_99 - 1, size(map, 5, 0));
-	else if (id >= 24 && id <= 28)
-		print_mini_sprite(env, map, ID_TAG_15 - 1, size(map, 5, 0));
-	else if (id >= 51 && id <= 52)
-		print_mini_sprite(env, map, ID_TAG_5 - 1, size(map, 5, 0));
-}
-
-
-
-void	gui(t_env *env, t_map *map)
-{
-	int		n;
-
-	n = 2;
-	print_hearts(env, env->map);
-	print_mini_sprite(env, map, ID_COIN - 1, size(map, 1, n++));
-	print_mini_sprite(env, map, ID_KEY - 1, size(map, 1, n++));
-	n += 1;
 	if (map->item_map)
 		print_mini_sprite(env, map, ID_MAP - 1, size(map, 1, n++));
 	if (map->item_heels)
@@ -149,12 +98,28 @@ void	gui(t_env *env, t_map *map)
 		print_mini_sprite(env, map, ID_MANTLE - 1, size(map, 1, n++));
 	if (map->item_candle == 5)
 		print_mini_sprite(env, map, ID_CANDLE - 1, size(map, 1, n++));
+}
 
+void		gui(t_env *env, t_map *map, int **board)
+{
+	int		n;
+	int		id;
 
-
+	n = 2;
+	print_hearts(env, env->map);
+	print_mini_sprite(env, map, ID_COIN - 1, size(map, 1, n++));
+	print_mini_sprite(env, map, ID_KEY - 1, size(map, 1, n++));
+	n += 1;
+	print_items_gui(env, map, n);
 	if (map->item_heels && map->run)
 		print_mini_sprite(env, map, ID_SHIFT_ON - 1, size(map, 3, 0));
 	else if (map->item_heels)
 		print_mini_sprite(env, map, ID_SHIFT_OFF - 1, size(map, 4, 0));
-	print_shop_prices(env, env->map, env->map->board);
+	id = board[(int)(map->pos.x + map->dir.x)][(int)(map->pos.y + map->dir.y)];
+	if (id >= 21 && id <= 23)
+		print_mini_sprite(env, map, ID_TAG_99 - 1, size(map, 5, 0));
+	else if (id >= 24 && id <= 28)
+		print_mini_sprite(env, map, ID_TAG_15 - 1, size(map, 5, 0));
+	else if (id >= 51 && id <= 52)
+		print_mini_sprite(env, map, ID_TAG_5 - 1, size(map, 5, 0));
 }

@@ -6,10 +6,39 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 14:42:40 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/11/30 15:14:46 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 21:07:29 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+//map->pos.x -= map->dir.x * MOVE_SPEED;
+
+int		free_board(t_map *map)
+{
+	int		i;
+
+	i = 0;
+	while (i < map->nb_lines)
+	{
+		ft_memdel((void **)&(map->board[i]));
+		i++;
+	}
+	ft_memdel((void **)&(map->board));
+	return (0);
+}
+
+void	free_tmp_board(char **s)
+{
+	int		i;
+
+	i = 0;
+	while (s[i])
+	{
+		ft_memdel((void **)&(s[i]));
+		i++;
+	}
+	ft_memdel((void **)&(s));
+}
 
 int		check_map(char *s)
 {

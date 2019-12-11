@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:13:50 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/11 17:58:59 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 21:54:23 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,28 @@
 
 void	get_quote(t_env *env, int id)
 {
+	void		*mlx;
 	t_coord		c;
 
+	mlx = env->mlx_ptr;
 	c = (t_coord) {.x = W / 2 - 200, .y = H / 2 - 100};
-
 	if (id == ID_ERROR)
 	{
-		mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y, M, QUOTE1_1);
-		mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y += 20, M, QUOTE1_2);
+		mlx_string_put(mlx, env->win_ptr, c.x, c.y, M, QUOTE1_1);
+		mlx_string_put(mlx, env->win_ptr, c.x, c.y += 20, M, QUOTE1_2);
 	}
 	else if (id == ID_GUPPY)
 	{
-		mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y, M, QUOTE2_1);
-		mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y += 20, M, QUOTE2_2);
+		mlx_string_put(mlx, env->win_ptr, c.x, c.y, M, QUOTE2_1);
+		mlx_string_put(mlx, env->win_ptr, c.x, c.y += 20, M, QUOTE2_2);
 	}
 	else if (id == ID_HANGING)
 	{
-		mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y, M, QUOTE3_1);
-		mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y += 20, M, QUOTE3_2);
+		mlx_string_put(mlx, env->win_ptr, c.x, c.y, M, QUOTE3_1);
+		mlx_string_put(mlx, env->win_ptr, c.x, c.y += 20, M, QUOTE3_2);
 	}
 	else if (id >= 47 && id <= 50)
-		mlx_string_put(env->mlx_ptr, env->win_ptr, c.x + 100, c.y + 400, M, PRESS);
+		mlx_string_put(mlx, env->win_ptr, c.x + 100, c.y + 400, M, PRESS);
 }
 
 void	sprite_interactions(t_env *env, int id)
@@ -49,7 +50,6 @@ void	sprite_interactions(t_env *env, int id)
 	}
 	else if (id >= FIRST_INTER && id <= LAST_INTER)
 		get_quote(env, id);
-
 }
 
 void	print_shop_message(t_env *env, t_map *map, int **board)
@@ -64,7 +64,6 @@ void	print_shop_message(t_env *env, t_map *map, int **board)
 		mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y, M, POOR);
 	else if (id == ID_HEART_SHOP && map->pick_heart == map->container * 2)
 		mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y, M, FULL_HEALTH);
-
 }
 
 void	text_gui(t_env *env, t_map *map, int **board)

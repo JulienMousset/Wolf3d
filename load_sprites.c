@@ -5,9 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/29 18:23:25 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/11 17:35:16 by pasosa-s         ###   ########.fr       */
-/*   Updated: 2019/12/02 16:01:21 by jmousset         ###   ########.fr       */
+/*   Created: 2019/12/11 22:11:42 by pasosa-s          #+#    #+#             */
+/*   Updated: 2019/12/11 22:13:39 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +25,16 @@ int			in_array(t_map *map, int x, int y)
 	}
 	return (0);
 }
+
 void		pickup_chance(t_map *map, int id)
 {
 	int		r;
+
 	if (id == ID_ROCK1 || id == ID_ROCK2 || id == ID_ROCK3 || id == ID_POOP)
 		randomy(0, 2) == 0 ? map->pick_coin++ : 0;
 	else if (id == ID_SKULL)
 		randomy(0, 2) == 0 ? map->pick_key++ : 0;
-	else if (id == ID_URN1 || id ==ID_URN2)
+	else if (id == ID_URN1 || id == ID_URN2)
 	{
 		r = randomy(0, 5);
 		if (r == 0)
@@ -43,7 +44,7 @@ void		pickup_chance(t_map *map, int id)
 		else if (r == 4)
 			map->pick_heart++;
 	}
-	else if (id == ID_MUSHROOM1 || id ==ID_MUSHROOM2)
+	else if (id == ID_MUSHROOM1 || id == ID_MUSHROOM2)
 	{
 		r = randomy(0, 5);
 		if (r == 0)
@@ -54,6 +55,7 @@ void		pickup_chance(t_map *map, int id)
 			map->pick_heart--;
 	}
 }
+
 void		gain_item(t_map *map, int id)
 {
 	if (is_destroyable(map, id))
@@ -116,8 +118,6 @@ void		gain_item(t_map *map, int id)
 		map->pick_coin = 99;
 	if (map->pick_key > 99)
 		map->pick_key = 99;
-
-
 }
 
 void		realloc_array(t_map *map, int x, int y, int id)
@@ -130,7 +130,7 @@ void		realloc_array(t_map *map, int x, int y, int id)
 		end(ERR_MALLOC);
 	i = 0;
 	j = 0;
-	while (i <  map->nb_sprites)
+	while (i < map->nb_sprites)
 	{
 		if (map->s[i].x == x + 0.5 && map->s[i].y == y + 0.5)
 		{
@@ -171,7 +171,7 @@ t_sprite	add_sprite(double x, double y, int i)
 	return (new);
 }
 
-int		nb_sprites(t_map *map)
+int			nb_sprites(t_map *map)
 {
 	int		y;
 	int		x;
@@ -193,7 +193,7 @@ int		nb_sprites(t_map *map)
 	return (i);
 }
 
-void	create_sprites_array(t_map *map)
+void		create_sprites_array(t_map *map)
 {
 	int			y;
 	int			x;
@@ -220,4 +220,3 @@ void	create_sprites_array(t_map *map)
 		y++;
 	}
 }
-

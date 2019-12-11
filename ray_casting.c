@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/31 16:39:07 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/11 18:59:56 by pasosa-s         ###   ########.fr       */
-/*   Updated: 2019/12/10 16:16:34 by pasosa-s         ###   ########.fr       */
-/*   Updated: 2019/12/10 19:04:24 by pasosa-s         ###   ########.fr       */
+/*   Created: 2019/12/11 19:45:52 by pasosa-s          #+#    #+#             */
+/*   Updated: 2019/12/11 21:47:47 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void	set_walls(t_thread *t, t_map *map)
+void	set_walls(t_thread *t, t_map *map, int x_start)
 {
 	if (t->ns_or_ew == 0)
 		t->perp = (t->block.x - map->pos.x +
@@ -23,10 +21,12 @@ void	set_walls(t_thread *t, t_map *map)
 		t->perp = (t->block.y - map->pos.y +
 				(1 - t->step.y) / 2) / t->ray_dir.y;
 	t->line_height = (int)(H / t->perp);
-	t->y_start = - t->line_height / 2 + map->h2;
+	t->y_start = -t->line_height / 2 + map->h2;
 	(t->y_start < 0) ? t->y_start = 0 : 0;
 	t->y_end = t->line_height / 2 + map->h2;
 	(t->y_end >= H) ? t->y_end = H - 1 : 0;
+	map->z_buffer[x_start] = t->perp;
+	t->id = map->board[t->block.x][t->block.y] - 1;
 }
 
 void	dda(t_thread *t, t_map *map)
@@ -80,11 +80,9 @@ void	*ray_casting(void *vt)
 	int			x_start;
 	int			x_end;
 	t_thread	*t;
-	t_env		*env;
 	t_map		*map;
 
 	t = (t_thread *)vt;
-	env = t->env;
 	map = t->env->map;
 	x_start = W * t->n / THREADS;
 	x_end = W * (t->n + 1) / THREADS;
@@ -93,72 +91,28 @@ void	*ray_casting(void *vt)
 		t->camera_x = 2 * x_start / (double)W - 1;
 		t->ray_dir.x = map->dir.x + map->plane.x * t->camera_x;
 		t->ray_dir.y = map->dir.y + map->plane.y * t->camera_x;
-		t->block.x = map->pos.x;
-		t->block.y = map->pos.y;
+		t->block = (t_coord) {.x = map->pos.x, .y = map->pos.y};
 		t->delta.x = fabs(1 / t->ray_dir.x);
 		t->delta.y = fabs(1 / t->ray_dir.y);
 		set_dda_values(t, map);
 		dda(t, map);
-		set_walls(t, map);
-		map->z_buffer[x_start] = t->perp;
-		t->id = map->board[t->block.x][t->block.y] - 1;
-		draw_line(env, t, x_start, t->y_start);
-		if (map->bool_tex == 1)
-			floor_casting(env, map, t, x_start);
+		set_walls(t, map, x_start);
+		draw_line(t->env, t, x_start, t->y_start);
+		map->bool_tex ? floor_casting(t->env, map, t, x_start) : 0;
 		x_start++;
 	}
 	return (0);
 }
 
-int		final_score(t_map *map)
-{
-	int		score;
-	int		if_win;
-	int		bonus;
-
-	if_win = 200;
-	bonus = 25;
-	score = map->bool_win ? if_win : 0;
-	score += map->item_counter * 50;
-	score += map->pick_key * 5;
-	score += map->pick_coin;
-	score -= (map->container * 2 - map->pick_heart) * 3;
-	if (map->container * 2 == map->pick_heart)
-		score += bonus;
-	if (map->item_counter >= 3)
-		score += bonus;
-	return (score);
-}
-
-void	end_game(t_env *env, t_map *map)
-{
-	t_coord		c;
-	char		*score;
-	char		*str;
-
-	c = (t_coord) {.x = W / 2 -100, .y = H / 2};
-	score = ft_itoa(final_score(map));
-	str = ft_strjoin("Final score: ", score);
-	ft_bzero(env->data_addr, W * H * 4);
-	mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_ptr, 0, 0);
-	if (map->bool_dead)
-		mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y, M, LOSE);
-	else if (map->bool_win)
-		mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y, M, WIN);
-	mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y += 20, M, str);
-	mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y += 20, M, END1);
-	mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y += 20, M, END2);
-}
-
 void	image_to_window(t_env *env, t_map *map)
 {
 	draw_background(env);
-	//	draw_sky(env, env->map);
+	!map->bool_ceil ? draw_sky(env, env->map) : 0;
 	create_threads(env, 1);
 	if (map->bool_spr == 1)
 		sprites(env, env->map);
 	map->item_map ? draw_minimap(env, env->map) : 0;
-	gui(env, env->map);
+	gui(env, env->map, env->map->board);
 	mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_ptr, 0, 0);
 	text_gui(env, map, map->board);
 	map->bool_menu ? menu(env) : 0;

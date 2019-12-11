@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/11 14:22:49 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/11 18:45:44 by pasosa-s         ###   ########.fr       */
+/*   Created: 2019/12/11 21:51:14 by pasosa-s          #+#    #+#             */
+/*   Updated: 2019/12/11 21:51:20 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ void	load_textures(t_env *env, t_img *t, char **path)
 				&t[i].s_l, &t[i].endian);
 		i++;
 	}
+	ts = 512;
 	env->sky.img_ptr = mlx_xpm_file_to_image(env->mlx_ptr, SKYBOX, &ts, &ts);
 	env->sky.data_addr = mlx_get_data_addr(env->sky.img_ptr, &env->sky.bpp,
 			&env->sky.s_l, &env->sky.endian);

@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 12:29:31 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/11 14:32:22 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 22:14:59 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int		fill_board(t_map *map, int fd)
 			j++;
 		}
 		i++;
-		free_tmp_board(map->tmp);
+		ft_arraydel(map->tmp);
 		ft_memdel((void **)&(map->line));
 	}
 	if (player == 0)

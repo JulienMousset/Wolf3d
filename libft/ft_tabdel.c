@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_tabdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/17 15:32:33 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/11 20:50:57 by pasosa-s         ###   ########.fr       */
+/*   Created: 2019/12/11 20:43:26 by pasosa-s          #+#    #+#             */
+/*   Updated: 2019/12/11 20:45:15 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "libft.h"
 
-void	free_and_display_usage(t_env *env)
+void	ft_tabdel(int **tab, int lines)
 {
-	ft_memdel((void **)&(env->map));
-	ft_memdel((void **)&(env));
-	end(ERR_USAGE);
-}
+	int		i;
 
-int		main(int ac, char **av)
-{
-	if (ac != 2)
-		end(ERR_USAGE);
-	wolf3d(av[1]);
-	exit(EXIT_SUCCESS);
+	i = 0;
+	while (i < lines)
+	{
+		ft_memdel((void **)&(tab[i]));
+		i++;
+	}
+	ft_memdel((void **)&(tab));
 }

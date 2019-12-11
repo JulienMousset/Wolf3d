@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:43:56 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/11 19:33:41 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 21:39:50 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/04 16:23:49 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/02 18:34:03 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
@@ -215,7 +215,7 @@
 
 //**sprites for the gui**
 # define ID_CONTAINER_RED 51
-# define ID_CONTAINER_RED_HALF 52
+# define ID_CONTAINER_HALF 52
 # define ID_CONTAINER_EMPTY 53
 # define ID_SHIFT_ON 54
 # define ID_SHIFT_OFF 55

@@ -6,32 +6,11 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:39:45 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/11 17:31:01 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 22:10:46 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-
-unsigned int	add_smog(unsigned int c, double d, int candle)
-{
-	unsigned char	r;
-	unsigned char	g;
-	unsigned char	b;
-
-	r = c;
-	g = c >> 8;
-	b = c >> 16;
-	d = candle / (100 / d);
-	if (d > 0.9)
-		d = 0.9;
-	if (r > 0)
-		r = r - (r * d);
-	if (g > 0)
-		g = g - (g * d);
-	if (b > 0)
-		b = b - (b * d);
-	return ((r << 16) + (g << 8) + b);
-}
 
 void	put_pixel(t_env *env, int x, int y, int color)
 {
@@ -59,49 +38,33 @@ void	print_cardinal_walls(t_env *env, t_thread *th, int j)
 		ft_memcpy(&th->color_str, &env->t[3].data_addr[j], sizeof(int));
 }
 
-/*
-void	print_cardinal_walls(t_env *env, t_thread *th, int j)
-{
-	if ((th->ns_or_ew == 0 && round(env->map->dir.x) == -1) ||
-			(th->ns_or_ew == 1 && round(env->map->dir.y) == -1))
-		ft_memcpy(&th->color_str, &env->t[0].data_addr[j], sizeof(int));
-	else if ((th->ns_or_ew == 0 && round(env->map->dir.x) == 1) ||
-			(th->ns_or_ew == 0 && round(env->map->dir.y) == 1))
-		ft_memcpy(&th->color_str, &env->t[1].data_addr[j], sizeof(int));
-	else if ((th->ns_or_ew == 0 && round(env->map->dir.x) == -1) ||
-			(th->ns_or_ew == 1 && round(env->map->dir.y) == -1))
-		ft_memcpy(&th->color_str, &env->t[0].data_addr[j], sizeof(int));
-	else if ((th->ns_or_ew == 0 && round(env->map->dir.x) == 1) ||
-			(th->ns_or_ew == 0 && round(env->map->dir.y) == 1))
-		ft_memcpy(&th->color_str, &env->t[1].data_addr[j], sizeof(int));
-}
-*/
-
 void	pick_color(t_env *env, t_thread *th, int x, int y_start)
 {
 	int		i;
 	int		j;
-	int		d;
+
 	if (env->map->bool_tex == 1)
 	{
-		d = y_start - env->map->h2 + th->line_height / 2;
-		th->tex.y = ((d * TS) / th->line_height);
+		th->d = y_start - env->map->h2 + th->line_height / 2;
+		th->tex.y = ((th->d * TS) / th->line_height);
 		i = ((x * (env->bpp / 8)) + (y_start * env->s_l));
 		j = ((th->tex.x * (env->t[th->id].bpp / 8)) +
 				(th->tex.y * env->t[th->id].s_l));
 		if (env->map->bool_card)
 			print_cardinal_walls(env, th, j);
 		else
-			ft_memcpy(&th->color_str, &env->t[th->id].data_addr[j], sizeof(int));
+			ft_memcpy(&th->color_str, &env->t[th->id].data_addr[j],
+					sizeof(int));
 		th->color = (int)th->color_str;
 	}
 	else
 		th->color = choose_color(th->id, th->ns_or_ew);
 	th->color = add_smog(th->color, th->perp, env->map->item_candle);
 	put_pixel(env, x, y_start, th->color);
-	if ((th->id != ID_CDOOR - 1 || env->map->item_mantle == 0) && 
+	if ((th->id != ID_CDOOR - 1 || env->map->item_mantle == 0) &&
 		(th->id != ID_SECRET1 - 1 || env->map->item_xray == 0))
-		put_pixel(env, x, y_start, add_smog(th->color, abs(y_start - env->map->h2) * 0.005, env->map->item_candle));
+		put_pixel(env, x, y_start, add_smog(th->color, abs(y_start -
+						env->map->h2) * 0.005, env->map->item_candle));
 }
 
 void	draw_line(t_env *env, t_thread *t, int x, int y_start)

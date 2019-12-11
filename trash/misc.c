@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 14:54:18 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/11 22:20:58 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 22:19:21 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,11 +113,12 @@ void			bubble_sort(int *order, double *dist, int amount)
 	while (gap > 1 || swapped)
 	{
 		gap = (gap * 10) / 13;
-		(gap == 9 || gap == 10) ? gap = 11 : 0;
+		if (gap == 9 || gap == 10)
+			gap = 11;
 		(gap < 1) ? gap = 1 : 0;
 		swapped = 0;
-		i = -1;
-		while (++i < amount - gap)
+		i = 0;
+		while (i < amount - gap)
 		{
 			j = i + gap;
 			if (dist[i] < dist[j])
@@ -126,6 +127,7 @@ void			bubble_sort(int *order, double *dist, int amount)
 				ft_swap(&order[i], &order[j]);
 				swapped = 1;
 			}
+			i++;
 		}
 	}
 }

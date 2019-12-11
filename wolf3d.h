@@ -5,27 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/10 16:15:41 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/11 19:44:40 by pasosa-s         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   wolf3d.h                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/31 12:23:00 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/10 16:59:38 by jmousset         ###   ########.fr       */
-/*   Updated: 2019/12/06 18:11:42 by jmousset         ###   ########.fr       */
-/*   Updated: 2019/12/06 17:28:46 by pasosa-s         ###   ########.fr       */
-/*   Updated: 2019/12/06 14:05:47 by jmousset         ###   ########.fr       */
-/*   Updated: 2019/11/27 19:34:28 by jmousset         ###   ########.fr       */
-/*   Updated: 2019/11/27 12:47:03 by pasosa-s         ###   ########.fr       */
-/*   Updated: 2019/11/15 10:03:20 by jmousset         ###   ########.fr       */
-/*   Updated: 2019/11/13 21:53:20 by pasosa-s         ###   ########.fr       */
+/*   Created: 2019/12/11 19:45:39 by pasosa-s          #+#    #+#             */
+/*   Updated: 2019/12/11 22:30:51 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +60,10 @@
 
 # define PRESS "PRESS [G] TO GAMBLE"
 
-# define WIN "You WON !"
-# define LOSE "You are DEAD :("
-# define END1 "press ESC to quit"
-# define END2 "or SPACEBAR to retry"
+# define WIN "Dear Diary, today I WON."
+# define LOSE "Dear Diary, today I DIED."
+# define END1 "Press [ESC] to EXIT."
+# define END2 "Press [SPACE] to RESTART."
 
 
 typedef struct	s_coord
@@ -226,11 +207,11 @@ typedef struct	s_map
 	int			bool_tex;
 	int			bool_spr;
 	int			bool_menu;
+	int			bool_ceil;
 	int			bool_card;
 	int			bool_dead;
 	int			bool_win;
 
-	int			esc;
 	int			up;
 	int			down;
 	int			left;
@@ -238,8 +219,6 @@ typedef struct	s_map
 	int			strafe_left;
 	int			strafe_right;
 	int			run_mode;
-	int			open_map;
-	int			respawn;
 	int			look_up;
 	int			look_down;
 	int			mouse_left;
@@ -330,7 +309,7 @@ int				fill_board(t_map *map, int fd);
 
 void			set_dda_values(t_thread *t, t_map *map);
 void			dda(t_thread *t, t_map *map);
-void			set_walls(t_thread *t, t_map *map);
+void			set_walls(t_thread *t, t_map *map, int x_start);
 void			display_result(t_env *env, t_map *map);
 
 int				choose_color(int id, int ns_or_ew);
@@ -349,7 +328,7 @@ int				*ft_strint(int size);
 void			display_values(t_map *map);
 
 void			text_gui(t_env *env, t_map *map, int **board);
-void			gui(t_env *env, t_map *map);
+void			gui(t_env *env, t_map *map, int **board);
 void			menu(t_env *env);
 void			set_mmap_values(t_map *map, int opt);
 
@@ -411,6 +390,16 @@ void			trade(t_map *map, int **board);
 
 void			end_game(t_env *env, t_map *map);
 t_coord			size(t_map *map, int id, int n);
+int				final_score(t_map *map);
+void			set_keys(t_map *map);
+
+void			stop_camera(t_env *env);
+
+int				is_pickable(t_map *map, int id);
+int				is_walk(int id);
+int				is_shop(t_map *map, int id, int coin);
+int				is_door(t_map *map, int id, int x, int y);
+int				is_destroyable(t_map *map, int id);
 
 #endif
 

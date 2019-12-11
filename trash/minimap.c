@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 21:25:20 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/11 21:36:07 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 21:26:35 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ void	draw_mini_background(t_env *env, t_map *map)
 	int			y;
 	int			color;
 
+	y = 0;
 	color = BOI;
 	block = map->mm_block_size;
-	y = -1;
-	while (++y < map->mm_size)
+	while (y < map->mm_size)
 	{
-		x = -1;
-		while (++x < map->mm_size)
+		x = 0;
+		while (x < map->mm_size)
 		{
 			color = BOI;
 			if (y < block)
@@ -37,7 +37,33 @@ void	draw_mini_background(t_env *env, t_map *map)
 			if (x > map->mm_size - block)
 				color = east(env->map, y);
 			put_pixel(env, map->mm_start.x + x, map->mm_start.y + y, color);
+			x++;
 		}
+		y++;
+	}
+}
+
+void	draw_mini_background2(t_env *env, t_map *map)
+{
+	int			block;
+	int			x;
+	int			y;
+
+	y = 0;
+	block = map->mm_block_size;
+	while (y < map->mm_size)
+	{
+		x = 0;
+		while (x < map->mm_size)
+		{
+			if (y < block || y > map->mm_size - block ||
+					x < block || x > map->mm_size - block)
+				put_pixel(env, map->mm_start.x + x, map->mm_start.y + y, 0);
+			else
+				put_pixel(env, map->mm_start.x + x, map->mm_start.y + y, BOI);
+			x++;
+		}
+		y++;
 	}
 }
 
@@ -63,18 +89,21 @@ void	put_n_pixel(t_env *env, int xx, int yy, int id)
 	yy *= map->mm_block_size;
 	coord.x = map->mm_center.x - map->mm_vis / 2 * map->mm_block_size;
 	coord.y = map->mm_center.y - map->mm_vis / 2 * map->mm_block_size;
-	y = -1;
-	while (++y < map->mm_block_size)
+	y = 0;
+	while (y < map->mm_block_size)
 	{
-		x = -1;
-		while (++x < map->mm_block_size)
+		x = 0;
+		while (x < map->mm_block_size)
 		{
-			if (((coord.x + x + xx < map->mm_end.x) && (coord.x + x +
-							xx > map->mm_start.x)) &&
-					((coord.y + y + yy < map->mm_end.y) && (coord.y + y +
-						yy > map->mm_start.y)))
-				put_pixel(env, coord.x + x + xx, coord.y + y + yy, color);
+			if (((coord.x + x + xx < map->mm_end.x) &&
+						(coord.x + x + xx > map->mm_start.x)) &&
+					((coord.y + y + yy < map->mm_end.y) &&
+					 (coord.y + y + yy > map->mm_start.y)))
+				put_pixel(env, coord.x + x + xx, coord.y + y + yy,
+						color);
+			x++;
 		}
+		y++;
 	}
 }
 
@@ -93,7 +122,7 @@ void	draw_minimap(t_env *env, t_map *map)
 		x = 0;
 		while (x < map->mm_vis)
 		{
-			if ((c.x + x >= 0) && (c.x + x < map->nb_columns) &&
+			if((c.x + x >= 0) && (c.x + x < map->nb_columns) &&
 					(c.y + y >= 0) && (c.y + y < map->nb_lines) &&
 					map->board[c.y + y][c.x + x] &&
 					map->board[c.y + y][c.x + x] < 6)

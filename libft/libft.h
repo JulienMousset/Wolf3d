@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 12:33:38 by jmousset          #+#    #+#             */
-/*   Updated: 2019/11/29 15:09:06 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 21:21:32 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,8 @@ int					per(int n, int per);
 int					rgb_to_int(int r, int g, int b);
 void				ft_swap_double(double *a, double *b);
 int					ft_islower(int c);
+
+void				ft_tabdel(int **tab, int lines);
+void				ft_arraydel(char **s);
+
 #endif
