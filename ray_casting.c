@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:39:07 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/10 21:04:47 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 18:18:12 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/10 16:16:34 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/10 19:04:24 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
@@ -110,15 +110,44 @@ void	*ray_casting(void *vt)
 	return (0);
 }
 
-void	im_dead(t_env *env, t_map *map)
+int		final_score(t_map *map)
 {
-	map->bool_dead = 1;
+	int		score;
+	int		if_win;
+	int		bonus;
+
+	if_win = 200;
+	bonus = 25;
+	score = map->bool_win ? if_win : 0;
+	score += map->item_counter * 50;
+	score += map->pick_key * 5;
+	score += map->pick_coin;
+	score -= (map->container * 2 - map->pick_heart) * 3;
+	if (map->container * 2 == map->pick_heart)
+		score += bonus;
+	if (map->item_counter >= 3)
+		score += bonus;
+	return (score);
+}
+
+void	end_game(t_env *env, t_map *map)
+{
+	t_coord		c;
+	char		*score;
+	char		*str;
+
+	c = (t_coord) {.x = W / 2 -100, .y = H / 2};
+	score = ft_itoa(final_score(map));
+	str = ft_strjoin("Final score: ", score);
 	ft_bzero(env->data_addr, W * H * 4);
 	mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_ptr, 0, 0);
-	mlx_string_put(env->mlx_ptr, env->win_ptr, W / 2 - 100, H / 2, M, DEAD1);
-	mlx_string_put(env->mlx_ptr, env->win_ptr, W / 2 - 100, H / 2 + 20, M, DEAD2);
-	mlx_string_put(env->mlx_ptr, env->win_ptr, W / 2 - 100, H / 2 + 40, M, DEAD3);
-
+	if (map->bool_dead)
+		mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y, M, LOSE);
+	else if (map->bool_win)
+		mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y, M, WIN);
+	mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y += 20, M, str);
+	mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y += 20, M, END1);
+	mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y += 20, M, END2);
 }
 
 void	image_to_window(t_env *env, t_map *map)
@@ -133,6 +162,7 @@ void	image_to_window(t_env *env, t_map *map)
 	mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_ptr, 0, 0);
 	text_gui(env, map, map->board);
 	map->bool_menu ? menu(env) : 0;
-	if (map->pick_heart == 0)
-		im_dead(env, env->map);
+	map->bool_dead = map->pick_heart == 0 ? 1 : 0;
+	if (map->bool_dead)
+		end_game(env, env->map);
 }

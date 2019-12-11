@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 16:15:41 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/11 16:01:11 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 18:18:15 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,10 @@
 
 # define PRESS "PRESS [G] TO GAMBLE"
 
-# define DEAD1 "You are DEAD !"
-# define DEAD2 "press ESC to quit"
-# define DEAD3 "or SPACEBAR to retry"
+# define WIN "You WON !"
+# define LOSE "You are DEAD :("
+# define END1 "press ESC to quit"
+# define END2 "or SPACEBAR to retry"
 
 
 typedef struct	s_coord
@@ -198,6 +199,9 @@ typedef struct	s_map
 	int			item_mantle;
 	int			item_xray;
 	int			item_dinner;
+	int			item_counter;
+
+	int			final_score;
 
 	t_coord		mouse_pos;
 
@@ -220,7 +224,9 @@ typedef struct	s_map
 	int			bool_tex;
 	int			bool_spr;
 	int			bool_menu;
+	int			bool_card;
 	int			bool_dead;
+	int			bool_win;
 
 	int			esc;
 	int			up;
@@ -401,6 +407,7 @@ int				randomy(int min, int max);
 int				is_destroyable(t_map *map, int id);
 void			trade(t_map *map, int **board);
 
+void			end_game(t_env *env, t_map *map);
 
 #endif
 

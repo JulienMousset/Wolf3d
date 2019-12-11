@@ -6,14 +6,18 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:13:50 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/11 16:01:10 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 17:58:59 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void	get_quote(t_env *env, int id, t_coord c)
+void	get_quote(t_env *env, int id)
 {
+	t_coord		c;
+
+	c = (t_coord) {.x = W / 2 - 200, .y = H / 2 - 100};
+
 	if (id == ID_ERROR)
 	{
 		mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y, M, QUOTE1_1);
@@ -38,8 +42,13 @@ void	sprite_interactions(t_env *env, int id)
 	t_coord		c;
 
 	c = (t_coord) {.x = W / 2 - 200, .y = H / 2 - 100};
-	if (id >= FIRST_INTER && id <= LAST_INTER)
-		get_quote(env, id, c);
+	if (id == ID_FINAL_CHEST)
+	{
+		env->map->bool_win = 1;
+		end_game(env, env->map);
+	}
+	else if (id >= FIRST_INTER && id <= LAST_INTER)
+		get_quote(env, id);
 
 }
 
@@ -75,15 +84,6 @@ void	text_gui(t_env *env, t_map *map, int **board)
 	mlx_string_put(mlx, win, c.x, c.y += 40, M, map->gui_str);
 	ft_memdel((void **)&(map->gui_str));
 	print_shop_message(env, map, board);
-	/*
-	if (board[(int)map->pos.x][(int)map->pos.y] >= FIRST_SHOP &&
-			board[(int)map->pos.x][(int)map->pos.y] <= LAST_SHOP &&
-			map->pick_coin < 15)
-	{
-		c = (t_coord) {.x = W / 2 - 100, .y = H / 2};
-		mlx_string_put(mlx, win, c.x, c.y, M, "NOT ENOUGH COINS");
-	}
-	*/
 	id = board[(int)(map->pos.x + map->dir.x)][(int)(map->pos.y + map->dir.y)];
 	if (id >= FIRST_INTER && id <= LAST_INTER)
 		sprite_interactions(env, id);

@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 15:29:42 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/10 20:40:20 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 17:42:08 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/06 18:24:39 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/06 14:23:12 by jmousset         ###   ########.fr       */
 /*                                                                            */
@@ -16,6 +16,8 @@
 
 void	more_keys(int key, t_env *env)
 {
+	if (key == KEY_C)
+		env->map->bool_card = env->map->bool_card ? 0 : 1;
 	if (key == KEY_M)
 		env->map->open_map = env->map->open_map ? 0 : 1;
 	if (key == NUM_1)
@@ -53,7 +55,8 @@ void	more_keys(int key, t_env *env)
 
 int		key_press(int key, t_env *env)
 {
-	if (env->map->bool_dead && (key != KEY_SPACE && key != KEY_ESC))
+	if ((env->map->bool_dead || env->map->bool_win) &&
+			(key != KEY_SPACE && key != KEY_ESC))
 		return (0);
 	if (key == KEY_ESC)
 		close_program(env);

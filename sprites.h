@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:43:56 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/11 16:01:13 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 17:57:40 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/04 16:23:49 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/02 18:34:03 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
@@ -26,13 +26,16 @@
 # define FIRST_FREE 16
 # define LAST_FREE 20
 
+# define FIRST_ITEM 18
+# define LAST_ITEM 28
+
 # define FIRST_SHOP 21
 # define LAST_SHOP 28
 
 # define FIRST_SOLID 29
 # define LAST_SOLID 38
 
-# define FIRST_INTER 43
+# define FIRST_INTER 42
 # define LAST_INTER 50
 
 # define FIRST_SPR 14
@@ -190,10 +193,9 @@
 # define ID_TNT 39
 # define ID_CAMPFIRE 40
 # define ID_DMACHINE 41
-# define ID_FINAL_CHEST 42
-
 
 //interact spr
+# define ID_FINAL_CHEST 42
 # define ID_SHOPKEEPER 43
 # define ID_ERROR 44
 # define ID_GUPPY 45
