@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 18:23:25 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/11 15:50:10 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 17:35:16 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/02 16:01:21 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -108,6 +108,8 @@ void		gain_item(t_map *map, int id)
 		map->pick_coin -= 5;
 		id == ID_HEART_SHOP ? map->pick_heart += 2 : map->pick_key++;
 	}
+	if (id >= FIRST_ITEM && id <= LAST_ITEM)
+		map->item_counter++;
 	if (map->pick_heart > map->container * 2)
 		map->pick_heart = map->container * 2;
 	if (map->pick_coin > 99)

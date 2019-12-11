@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:39:45 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/10 15:15:57 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 17:31:01 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,53 @@ void	put_pixel(t_env *env, int x, int y, int color)
 	}
 }
 
+void	print_cardinal_walls(t_env *env, t_thread *th, int j)
+{
+	if ((th->ns_or_ew == 0 && round(env->map->dir.x) == -1) ||
+			(th->ns_or_ew == 1 && round(env->map->dir.y) == -1))
+		ft_memcpy(&th->color_str, &env->t[0].data_addr[j], sizeof(int));
+	else if ((th->ns_or_ew == 0 && round(env->map->dir.x) == 1) ||
+			(th->ns_or_ew == 0 && round(env->map->dir.y) == 1))
+		ft_memcpy(&th->color_str, &env->t[1].data_addr[j], sizeof(int));
+	else
+		ft_memcpy(&th->color_str, &env->t[3].data_addr[j], sizeof(int));
+}
+
+/*
+void	print_cardinal_walls(t_env *env, t_thread *th, int j)
+{
+	if ((th->ns_or_ew == 0 && round(env->map->dir.x) == -1) ||
+			(th->ns_or_ew == 1 && round(env->map->dir.y) == -1))
+		ft_memcpy(&th->color_str, &env->t[0].data_addr[j], sizeof(int));
+	else if ((th->ns_or_ew == 0 && round(env->map->dir.x) == 1) ||
+			(th->ns_or_ew == 0 && round(env->map->dir.y) == 1))
+		ft_memcpy(&th->color_str, &env->t[1].data_addr[j], sizeof(int));
+	else if ((th->ns_or_ew == 0 && round(env->map->dir.x) == -1) ||
+			(th->ns_or_ew == 1 && round(env->map->dir.y) == -1))
+		ft_memcpy(&th->color_str, &env->t[0].data_addr[j], sizeof(int));
+	else if ((th->ns_or_ew == 0 && round(env->map->dir.x) == 1) ||
+			(th->ns_or_ew == 0 && round(env->map->dir.y) == 1))
+		ft_memcpy(&th->color_str, &env->t[1].data_addr[j], sizeof(int));
+}
+*/
+
 void	pick_color(t_env *env, t_thread *th, int x, int y_start)
 {
 	int		i;
 	int		j;
 	int		d;
-	char	*color_str;
 	if (env->map->bool_tex == 1)
 	{
 		d = y_start - env->map->h2 + th->line_height / 2;
 		th->tex.y = ((d * TS) / th->line_height);
 		i = ((x * (env->bpp / 8)) + (y_start * env->s_l));
-		j = ((th->tex.x * (env->t[th->id].bpp / 8)) + (th->tex.y * env->t[th->id].s_l));
-		ft_memcpy(&color_str, &env->t[th->id].data_addr[j], sizeof(int));
-		th->color = (int)color_str;
+		j = ((th->tex.x * (env->t[th->id].bpp / 8)) +
+				(th->tex.y * env->t[th->id].s_l));
+		if (env->map->bool_card)
+			print_cardinal_walls(env, th, j);
+		else
+			ft_memcpy(&th->color_str, &env->t[th->id].data_addr[j], sizeof(int));
+		th->color = (int)th->color_str;
 	}
 	else
 		th->color = choose_color(th->id, th->ns_or_ew);

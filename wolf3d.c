@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 21:46:17 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/10 20:58:12 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 18:05:06 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,9 @@ void	set_values(t_map *map)
 	map->bool_tex = 1;
 	map->bool_spr = 1;
 	map->bool_menu = 0;
+	map->bool_card = 0;
 	map->bool_dead = 0;
+	map->bool_win = 0;
 	map->container = 3;
 	map->pick_heart = 6;
 	map->pick_coin = 15;
@@ -66,6 +68,8 @@ void	set_values(t_map *map)
 	map->item_mantle = 0;
 	map->item_xray = 0;
 	map->item_dinner = 0;
+	map->item_counter = 0;
+	map->final_score = 0;
 	map->s = NULL;
 	map->spr_order = NULL;
 	map->spr_dist = NULL;
