@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:39:07 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/11 18:19:39 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/11 19:33:07 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/10 21:04:47 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/11 18:18:12 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/10 16:16:34 by pasosa-s         ###   ########.fr       */
@@ -129,6 +129,8 @@ int		final_score(t_map *map)
 		score += bonus;
 	if (map->item_counter >= 3)
 		score += bonus;
+	if (score < 0)
+		score = 0;
 	return (score);
 }
 
@@ -138,24 +140,34 @@ void	end_game(t_env *env, t_map *map)
 	char		*score;
 	char		*str;
 
-	c = (t_coord) {.x = W / 2 -100, .y = H / 2};
 	score = ft_itoa(final_score(map));
-	str = ft_strjoin("Final score: ", score);
+	str = ft_strjoin("        SCORE : ", score);
 	ft_bzero(env->data_addr, W * H * 4);
 	mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_ptr, 0, 0);
+	c = (t_coord) {.x = W / 2 - 75, .y = 0};
 	if (map->bool_dead)
-		mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y, M, LOSE);
+	{
+		print_mini_sprite(env, map, ID_HANGING - 1, c);
+		mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_ptr, 0, 0);
+		c = (t_coord) {.x = W / 2 - 125, .y = H / 2};
+		mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y - 160, M, LOSE);
+	}
 	else if (map->bool_win)
-		mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y, M, WIN);
-	mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y += 20, M, str);
-	mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y += 20, M, END1);
-	mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y += 20, M, END2);
+	{
+		print_mini_sprite(env, map, ID_GUPPY - 1, c);
+		mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_ptr, 0, 0);
+		c = (t_coord) {.x = W / 2 - 125, .y = H / 2};
+		mlx_string_put(env->mlx_ptr, env->win_ptr, c.x + 20, c.y - 160, M, WIN);
+	}
+	mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y, M, str);
+	mlx_string_put(env->mlx_ptr, env->win_ptr, c.x - 250, c.y + 160, M, END1);
+	mlx_string_put(env->mlx_ptr, env->win_ptr, c.x + 300, c.y + 160, M, END2);
 }
 
 void	image_to_window(t_env *env, t_map *map)
 {
 	draw_background(env);
-	draw_sky(env, env->map);
+	//draw_sky(env, env->map);
 	create_threads(env, 1);
 	if (map->bool_spr == 1)
 		sprites(env, env->map);

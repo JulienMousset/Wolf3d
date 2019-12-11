@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 16:15:41 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/11 18:19:21 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/11 18:57:02 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/11 16:01:11 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/11 18:18:15 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
@@ -80,10 +80,10 @@
 
 # define PRESS "PRESS [G] TO GAMBLE"
 
-# define WIN "You WON !"
-# define LOSE "You are DEAD :("
-# define END1 "press ESC to quit"
-# define END2 "or SPACEBAR to retry"
+# define WIN "Dear Diary, today I WON."
+# define LOSE "Dear Diary, today I DIED."
+# define END1 "Press [ESC] to EXIT."
+# define END2 "Press [SPACE] to RESTART."
 
 
 typedef struct	s_coord

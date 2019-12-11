@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 21:13:59 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/11 17:43:19 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 19:21:30 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		is_large_spr(int id)
 	return ((id == ID_CONTAINER_RED - 1 || id == ID_CONTAINER_RED_HALF - 1 ||
 				id == ID_CONTAINER_EMPTY - 1 || id == ID_SHIFT_ON - 1 ||
 				id == ID_TAG_5 - 1 || id == ID_TAG_15 - 1 || 
-				id == ID_TAG_99 - 1) ? 1 : 0);
+				id == ID_TAG_99 - 1 || id == ID_HANGING - 1 || id == ID_GUPPY -1) ? 1 : 0);
 }
 
 void	print_mini_sprite(t_env *env, t_map *map, int id, t_coord margin)
