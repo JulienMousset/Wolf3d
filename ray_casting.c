@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:39:07 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/11 16:04:58 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/11 17:09:11 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/10 21:04:47 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/10 16:16:34 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/10 19:04:24 by pasosa-s         ###   ########.fr       */
@@ -125,8 +125,7 @@ void	im_dead(t_env *env, t_map *map)
 void	image_to_window(t_env *env, t_map *map)
 {
 	draw_background(env);
-	//draw_sky(env, env->map);
-	//	draw_sky(env, env->map);
+	draw_sky(env, env->map);
 	create_threads(env, 1);
 	if (map->bool_spr == 1)
 		sprites(env, env->map);

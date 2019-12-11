@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 16:15:41 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/11 16:04:37 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/11 17:10:27 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/11 16:01:11 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -45,8 +45,8 @@
 # include "controls.h"
 # include "sprites.h"
 
-# define W 2560
-# define H 1440
+# define W 1280
+# define H 960
 # define TS 64
 # define THREADS 4
 

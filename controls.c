@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/30 15:29:42 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/10 20:40:20 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 16:26:34 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/06 18:24:39 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/06 14:23:12 by jmousset         ###   ########.fr       */
 /*                                                                            */
@@ -41,9 +41,9 @@ void	more_keys(int key, t_env *env)
 		env->map->pick_heart++;
 	if (key == KEY_G)
 		trade(env->map, env->map->board);
-	if (key == ARROW_UP)
+	if (key == V_RIGHT)
 		env->map->look_up = 1;
-	if (key == ARROW_DOWN)
+	if (key == V_LEFT)
 		env->map->look_down = 1;
 	if (env->map->pick_heart < 0)
 		env->map->pick_heart = 0;
@@ -57,13 +57,13 @@ int		key_press(int key, t_env *env)
 		return (0);
 	if (key == KEY_ESC)
 		close_program(env);
-	if (key == KEY_W)
+	if (key == KEY_W || key == ARROW_UP)
 		env->map->up = 1;
-	if (key == KEY_S)
+	if (key == KEY_S || key == ARROW_DOWN)
 		env->map->down = 1;
-	if (key == KEY_A)
+	if (key == KEY_A || key == ARROW_LEFT)
 		env->map->left = 1;
-	if (key == KEY_D)
+	if (key == KEY_D || key == ARROW_RIGHT)
 		env->map->right = 1;
 	if (key == KEY_Q)
 		env->map->strafe_left = 1;
@@ -83,13 +83,13 @@ int		key_press(int key, t_env *env)
 
 int		key_release(int key, t_env *env)
 {
-	if (key == KEY_W)
+	if (key == KEY_W || key == ARROW_UP)
 		env->map->up = 0;
-	if (key == KEY_S)
+	if (key == KEY_S || key == ARROW_DOWN)
 		env->map->down = 0;
-	if (key == KEY_A)
+	if (key == KEY_A || key == ARROW_LEFT)
 		env->map->left = 0;
-	if (key == KEY_D)
+	if (key == KEY_D || key == ARROW_RIGHT)
 		env->map->right = 0;
 	if (key == KEY_Q)
 		env->map->strafe_left = 0;
@@ -97,9 +97,9 @@ int		key_release(int key, t_env *env)
 		env->map->strafe_right = 0;
 	if (key == KEY_SHIFT)
 		env->map->run = 0;
-	if (key == ARROW_UP)
+	if (key == V_RIGHT)
 		env->map->look_up = 0;
-	if (key == ARROW_DOWN)
+	if (key == V_LEFT)
 		env->map->look_down = 0;
 	return (0);
 }
