@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 12:16:29 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/04 20:48:33 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 14:33:08 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		count_lines(t_map *map, char *file)
 
 int		ft_ishupper(int i)
 {
-	return (((i >= 'A' && i <= 'O') || i == 'X') ? 1 : 0);
+	return (((i >= 'A' && i <= 'Q') || i == 'X') ? 1 : 0);
 }
 
 int		is_valid(char *s, int i)
@@ -123,7 +123,7 @@ int		parsing(t_map *map, char *file)
 	fd = open(file, O_RDONLY);
 	fill_board(map, fd);
 	close(fd);
-	//ft_print_tab(map->board, map->nb_lines, map->nb_columns);
+//	ft_print_tab(map->board, map->nb_lines, map->nb_columns);
 	if (!(check_board(map)))
 		return (free_board(map));
 	return (1);

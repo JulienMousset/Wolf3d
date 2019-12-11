@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 18:23:25 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/10 15:18:02 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 15:50:10 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/02 16:01:21 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -86,11 +86,15 @@ void		gain_item(t_map *map, int id)
 			map->pick_key = 99;
 		}
 		else if (id == ID_QUARTER)
+		{
 			map->pick_coin += 25;
+			map->item_quarter = 1;
+		}
 		else if (id == ID_DINNER)
 		{
-			map->container ++;
+			map->container++;
 			map->pick_heart += 2;
+			map->item_dinner = 1;
 		}
 		else if (id == ID_MANTLE)
 			map->item_mantle = 1;
@@ -98,6 +102,11 @@ void		gain_item(t_map *map, int id)
 			map->item_axe = 1;
 		else if (id == ID_XRAY)
 			map->item_xray = 1;
+	}
+	else if ((id == ID_HEART_SHOP || id == ID_KEY_SHOP) && map->pick_coin >= 5)
+	{
+		map->pick_coin -= 5;
+		id == ID_HEART_SHOP ? map->pick_heart += 2 : map->pick_key++;
 	}
 	if (map->pick_heart > map->container * 2)
 		map->pick_heart = map->container * 2;
@@ -151,7 +160,12 @@ t_sprite	add_sprite(double x, double y, int i)
 
 	new.x = x + 0.5;
 	new.y = y + 0.5;
-	new.i = i - 1;
+	if (i == 51)
+		new.i = 13;
+	else if (i == 52)
+		new.i = 16;
+	else
+		new.i = i - 1;
 	return (new);
 }
 

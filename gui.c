@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 21:13:59 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/10 19:45:46 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 16:01:15 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 int		is_large_spr(int id)
 {
 	return ((id == ID_CONTAINER_RED - 1 || id == ID_CONTAINER_RED_HALF - 1 ||
-				id == ID_CONTAINER_EMPTY - 1 || id == ID_SHIFT_ON - 1) ? 1 : 0);
+				id == ID_CONTAINER_EMPTY - 1 || id == ID_SHIFT_ON - 1 ||
+				id == ID_TAG_5 - 1 || id == ID_TAG_15 - 1 || 
+				id == ID_TAG_99 - 1) ? 1 : 0);
 }
 
 void	print_mini_sprite(t_env *env, t_map *map, int id, t_coord margin)
@@ -61,14 +63,17 @@ t_coord		size(t_map *map, int id, int n)
 	}
 	if (id == 3)
 	{
-		c.x = 10;
-		c.y = per(H, 95);
+		c = (t_coord) {.x = 10, .y = per(H, 95)};
 	}
 	if (id == 4)
 	{
 		c.x = 20;
 		c.y = per(H, 96);
 	}
+	if (id == 5)
+		c = (t_coord) {.x = W / 2, .y = H - 100};
+
+
 	return (c);
 }
 
@@ -98,6 +103,21 @@ void	print_hearts(t_env *env, t_map *map)
 	map->gui_margin.x = - TS / 2;
 }
 
+void	print_shop_prices(t_env *env, t_map *map, int **board)
+{
+	int		id;
+
+	id = board[(int)(map->pos.x + map->dir.x)][(int)(map->pos.y + map->dir.y)];
+	if (id >= 21 && id <= 23)
+		print_mini_sprite(env, map, ID_TAG_99 - 1, size(map, 5, 0));
+	else if (id >= 24 && id <= 28)
+		print_mini_sprite(env, map, ID_TAG_15 - 1, size(map, 5, 0));
+	else if (id >= 51 && id <= 52)
+		print_mini_sprite(env, map, ID_TAG_5 - 1, size(map, 5, 0));
+}
+
+
+
 void	gui(t_env *env, t_map *map)
 {
 	int		n;
@@ -117,18 +137,24 @@ void	gui(t_env *env, t_map *map)
 		print_mini_sprite(env, map, ID_IPECAC - 1, size(map, 1, n++));
 	if (map->item_godhead)
 		print_mini_sprite(env, map, ID_GODHEAD - 1, size(map, 1, n++));
+	if (map->item_quarter)
+		print_mini_sprite(env, map, ID_QUARTER - 1, size(map, 1, n++));
+	if (map->item_dinner)
+		print_mini_sprite(env, map, ID_DINNER - 1, size(map, 1, n++));
+	if (map->item_xray)
+		print_mini_sprite(env, map, ID_XRAY - 1, size(map, 1, n++));
+	if (map->item_axe)
+		print_mini_sprite(env, map, ID_AXE - 1, size(map, 1, n++));
+	if (map->item_mantle)
+		print_mini_sprite(env, map, ID_MANTLE - 1, size(map, 1, n++));
+	if (map->item_candle == 5)
+		print_mini_sprite(env, map, ID_CANDLE - 1, size(map, 1, n++));
+
+
+
 	if (map->item_heels && map->run)
 		print_mini_sprite(env, map, ID_SHIFT_ON - 1, size(map, 3, 0));
 	else if (map->item_heels)
 		print_mini_sprite(env, map, ID_SHIFT_OFF - 1, size(map, 4, 0));
-	/*
-	if (map->board[(int)map->pos.x][(int)map->pos.y] >= FIRST_SHOP &&
-			map->board[(int)map->pos.x][(int)map->pos.y] <= LAST_SHOP &&
-			map->pick_coin < 15)
-	{
-		c.x = W / 2;
-		c.y = H / 2;
-		print_mini_sprite(env, env->map, ID_PRICE_TAG_15 - 1, c);
-	}
-	*/
+	print_shop_prices(env, env->map, env->map->board);
 }

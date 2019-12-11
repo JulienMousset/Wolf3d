@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 16:43:56 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/10 17:58:12 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/11 16:01:13 by pasosa-s         ###   ########.fr       */
 /*   Updated: 2019/12/04 16:23:49 by jmousset         ###   ########.fr       */
 /*   Updated: 2019/12/02 18:34:03 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
@@ -116,6 +116,10 @@
 # define URN1 "textures/urn.XPM"
 # define URN2 "textures/urn2.XPM"
 
+# define TAG_5 "textures/typo_price_tag_5.XPM"
+# define TAG_15 "textures/typo_price_tag_15.XPM"
+# define TAG_99 "textures/typo_price_tag_99.XPM"
+
 //**start textures**
 
 //solid walls
@@ -199,6 +203,9 @@
 # define ID_BEGGAR_KEY 49
 # define ID_BLOOD_MACHINE 50
 
+# define ID_HEART_SHOP 51
+# define ID_KEY_SHOP 52
+
 
 //*end solid sprites*
 
@@ -213,6 +220,10 @@
 # define ID_FLOOR2 57
 # define ID_FLOOR3 58
 # define ID_FLOOR_SHOP 59
+
+# define ID_TAG_5 60
+# define ID_TAG_15 61
+# define ID_TAG_99 62
 
 //**end sprites**
 
