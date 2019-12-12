@@ -6,7 +6,7 @@
 #    By: jmousset <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 15:35:26 by jmousset          #+#    #+#              #
-#    Updated: 2019/12/11 22:29:53 by pasosa-s         ###   ########.fr        #
+#    Updated: 2019/12/12 20:01:25 by jmousset         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,60 +18,58 @@ RESET = \033[0m
 NAME = wolf3d
 
 FLAGS = -Wall -Wextra -Werror
-
 MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
 
 MLX_PATH = ./minilibx/
-
 LIB_PATH = ./libft/
-
 LIB = ./libft/libft.a
 
-HDR = wolf3d.h\
-	  colors.h\
-	  controls.h
+HDR_PATH = ./inc
+HDR_NAME = *.h
+HDR = $(addprefix $(HDR_PATH)/,$(HDR_NAME))
 
-SRCS = main.c\
-	   wolf3d.c\
-	   set_values.c\
-	   parsing.c\
-	   parsing_2.c\
-	   ray_casting.c\
-	   draw.c\
-	   floor_and_ceiling.c\
-	   controls.c\
-	   controls_2.c\
-	   misc.c\
-	   misc2.c\
-	   text_gui.c\
-	   gui.c\
-	   menu.c\
-	   mouse.c\
-	   minimap.c\
-	   compass.c\
-	   load_textures.c\
-	   load_sprites.c\
-	   draw_sky.c\
-	   sprites.c\
-	   create_threads.c\
-	   items.c\
-	   items2.c\
-	   end_game.c
+SRC_PATH = ./src
+SRC_NAME = main.c\
+		   wolf3d.c\
+		   set_values.c\
+		   parsing.c\
+		   parsing_2.c\
+		   ray_casting.c\
+		   draw.c\
+		   floor_and_ceiling.c\
+		   controls.c\
+		   controls_2.c\
+		   misc.c\
+		   misc2.c\
+		   text_gui.c\
+		   gui.c\
+		   menu.c\
+		   mouse.c\
+		   minimap.c\
+		   compass.c\
+		   load_textures.c\
+		   load_sprites.c\
+		   draw_sky.c\
+		   sprites.c\
+		   create_threads.c\
+		   items.c\
+		   items2.c\
+		   end_game.c
+SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
-OBJ_DIR = ./obj
+OBJ_PATH = ./obj
+OBJ_NAME = $(SRC_NAME:.c=.o)
+OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
-OBJS = $(SRCS:.c=.o)
-
-DEPS = $(SRCS:.c=.d)
-
-OBJ = $(addprefix $(OBJ_DIR)/,$(OBJS))
-
-DEP = $(addprefix $(OBJ_DIR)/,$(DEPS))
+DEP_PATH = ./dep
+DEP_NAME = $(SRC_NAME:.c=.d)
+DEP = $(addprefix $(DEP_PATH)/,$(DEP_NAME))
 
 all: mkdir $(NAME)
 
 mkdir:
-	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_PATH)
+	@mkdir -p $(DEP_PATH)
 
 $(NAME): $(LIB) $(OBJ) Makefile $(HDR)
 	@gcc $(FLAGS) $(OBJ) -o $(NAME) $(LIB) -L $(MLX_PATH) $(MLX_FLAGS)
@@ -79,7 +77,7 @@ $(NAME): $(LIB) $(OBJ) Makefile $(HDR)
 
 -include $(DEP)
 
-$(OBJ_DIR)/%.o : ./%.c Makefile $(HDR)
+$(OBJ_PATH)/%.o : $(SRC_PATH)/%.c Makefile $(HDR)
 	@gcc $(FLAGS) -I $(LIB_PATH) -MMD -MP -c $< -o $@
 
 $(LIB) : force
@@ -92,7 +90,8 @@ clean:
 	@echo "$(YELLOW).o        $(RED)deleted 💯 $(RESET)"
 	@rm -f $(DEP)
 	@echo "$(YELLOW).d        $(RED)deleted 💯 $(RESET)"
-	@rm -rf $(OBJ_DIR)
+	@rm -rf $(OBJ_PATH)
+	@rm -rf $(DEP_PATH)
 	@make clean -C $(LIB_PATH)
 
 fclean: clean
