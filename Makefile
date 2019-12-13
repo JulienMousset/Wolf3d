@@ -6,7 +6,7 @@
 #    By: jmousset <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 15:35:26 by jmousset          #+#    #+#              #
-#    Updated: 2019/12/11 22:29:53 by pasosa-s         ###   ########.fr        #
+#    Updated: 2019/12/13 12:58:02 by pasosa-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ SRCS = main.c\
 	   create_threads.c\
 	   items.c\
 	   items2.c\
+	   gain_item.c\
 	   end_game.c
 
 OBJ_DIR = ./obj

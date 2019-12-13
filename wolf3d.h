@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 19:45:39 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/11 22:30:51 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/13 13:22:44 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 # define H 960
 # define TS 64
 # define THREADS 4
-# define THREADS2 2
+# define THREADS2 4
 
 # define MOVE_SPEED 0.15
 # define ROT_SPEED 0.08
@@ -148,9 +148,11 @@ typedef struct	s_map
 	int			y_end;
 	t_coord		tex;
 	int			id;
+	int			color;
+
 	int			d;
 	int			i;
-	int			color;
+	int			r;
 
 	double		z_buffer[W];
 	t_sprite	*s;
@@ -400,6 +402,14 @@ int				is_walk(int id);
 int				is_shop(t_map *map, int id, int coin);
 int				is_door(t_map *map, int id, int x, int y);
 int				is_destroyable(t_map *map, int id);
+
+int				in_array(t_map *map, int x, int y);
+void			pickup_chance(t_map *map, int id);
+void			gain_item(t_map *map, int id);
+
+int				ft_ishupper(int i);
+int				is_valid(char *s, int i);
+
 
 #endif
 

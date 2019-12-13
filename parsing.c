@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 12:16:29 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/11 22:14:35 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/13 13:13:41 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,6 @@ int		count_lines(t_map *map, char *file)
 	}
 	close(fd);
 	return (i);
-}
-
-int		ft_ishupper(int i)
-{
-	return (((i >= 'A' && i <= 'Q') || i == 'X') ? 1 : 0);
-}
-
-int		is_valid(char *s, int i)
-{
-	if (((ft_isdigit(s[i]) || ft_islower(s[i]) || ft_ishupper(s[i])) &&
-				((s[i + 1] == ' ') || s[i + 1] == '\0')) ||
-			((s[i] == ' ') && (ft_isdigit(s[i + 1]) || ft_islower(s[i + 1]) ||
-				ft_ishupper(s[i + 1]))))
-		return (1);
-	return (0);
 }
 
 int		check_map(char *s)
