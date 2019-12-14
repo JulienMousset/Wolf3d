@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 19:26:27 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/13 19:07:27 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/14 11:45:17 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int		close_program(t_env *env)
 void	look_up_down(t_map *map)
 {
 	if (map->look_up == 1 && map->h2 < map->max)
-		map->h2_coef += 25;
+		map->h2_coef += 50;
 	if (map->look_down == 1 && map->h2 > map->min + 25)
-		map->h2_coef -= 25;
+		map->h2_coef -= 50;
 	map->h2 = H / 2 + map->h2_coef;
 	if (map->h2 > map->max)
 		map->h2 = map->max;

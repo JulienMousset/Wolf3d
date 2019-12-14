@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 14:24:48 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/13 15:07:49 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/14 12:28:54 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,6 @@ void	floor_casting(t_env *env, t_map *map, t_thread *t, int x)
 		put_pixel(env, x, y, t->color);
 		put_pixel(env, x, y, add_smog(env, t->color, abs(y - map->h2) * 0.005,
 					env->map->item_candle));
-		ceiling_casting(env, t, x, y);
+		ceiling_casting(env, t, x, y + 1);
 	}
 }
