@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 17:55:59 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/14 18:39:02 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/14 19:40:22 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@
 
 # define FACEBLACK_1 0xfdfe3ee
 # define FACEBLACK_2 0xf7f7f7
-
 
 # define DISCORD_1 0x9aab5
 # define DISCORD_2 0x2c2f33
