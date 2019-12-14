@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:39:45 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/14 15:14:56 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/14 18:39:19 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int		choose_color(t_map *map, int id, int ns_or_ew)
 	(void)ns_or_ew;
 	color = 0;
 	if (id == 1 || id == 2 || id == 3 || id == 11 || id == 12 || id == 13)
-		color = AUTUM_BLUE;
+		color = MARRON_3;
 	else if (id == 3)
 		color = DARK_BLUE;
 	else if (id == 4)

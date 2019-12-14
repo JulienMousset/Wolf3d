@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/25 17:55:59 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/13 18:13:12 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/14 18:39:02 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define BOCA90 0xFFA500
 # define PASION 0xfb2e01
 # define AUTUM_BLUE 0x2F2739
+# define AUTUM_BLUE2 0x4f455c
 # define DARK_BLUE 0x211a29
 # define BOB 0xF1C40F
 # define ACQUA 0x5FDDC1
@@ -29,6 +30,9 @@
 # define BOI 0x636564
 
 # define M 0xD7DCD4
+
+# define HAZE_DARK 0x74728C
+# define HAZE_BRIGHT 0x9190A4
 
 # define SKY 0x87ceeb
 # define GROUND 0x807e78
@@ -88,5 +92,28 @@
 # define PASION3 0x800000
 # define PASION4 0X400000
 # define PASION5 0X000000
+
+# define FACEBLACK_1 0xfdfe3ee
+# define FACEBLACK_2 0xf7f7f7
+
+
+# define DISCORD_1 0x9aab5
+# define DISCORD_2 0x2c2f33
+# define DISCORD_3 0x23272a
+
+# define SPACE_1 0x343d46
+# define SPACE_2 0x4f5b66
+# define SPACE_3 0x65737e
+# define SPACE_4 0x2A2E2F
+# define SPACE_5 0x242527
+
+# define PUR_1 0x8b8589
+# define PUR_2 0x4c516d
+# define PUR_3 0x4f372d
+
+# define MARRON_0 0x8a7f79
+# define MARRON_1 0x726255
+# define MARRON_2 0x372e29
+# define MARRON_3 0x2F241F
 
 #endif

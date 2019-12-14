@@ -6,7 +6,8 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 19:45:39 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/14 18:23:25 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/14 19:37:10 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/14 17:43:28 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +32,6 @@
 # define H_SKY 1080
 # define TS 64
 # define THREADS 4
-# define THREADS2 2
 
 # define MOVE_SPEED 0.15
 # define ROT_SPEED 0.08
@@ -67,6 +67,7 @@
 # define END1 "Press [ESC] to EXIT."
 # define END2 "Press [SPACE] to RESTART."
 
+# define CON_0 "[H]ELP"
 # define CON "CONTROLS"
 # define CON_1 "Move : [WASD] or [ARROW KEYS]"
 # define CON_2 "Strafe : [Q][E]"
@@ -96,22 +97,6 @@ typedef struct		s_complex
 	double			x;
 	double			y;
 }					t_complex;
-
-typedef struct		s_card
-{
-	char			*str;
-	int				x;
-	int				y;
-}					t_card;
-
-typedef struct		s_cards
-{
-	t_card			e;
-	t_card			w;
-	t_card			n;
-	t_card			s;
-
-}					t_cards;
 
 typedef struct		s_img
 {

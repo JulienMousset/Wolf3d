@@ -6,7 +6,8 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 15:23:27 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/14 16:10:49 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/14 19:37:35 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/14 17:02:08 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +82,9 @@ void	set_sprite_values(t_map *map, int i)
 	map->spr.width = abs((int)(H / map->transform.y));
 	map->x_start = -map->spr.width / 2 + map->ssx;
 	(map->x_start < 0) ? map->x_start = 0 : 0;
+	(map->x_start >= W) ? map->x_start = W - 1 : 0;
 	map->x_end = map->spr.width / 2 + map->ssx;
+	(map->x_end < 0) ? map->x_end = 0 : 0;
 	(map->x_end >= W) ? map->x_end = W - 1 : 0;
 }
 
