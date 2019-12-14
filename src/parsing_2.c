@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 14:24:24 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/13 14:24:25 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/14 18:23:27 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	filling(t_map *map, int i, int *j, int *player)
 	{
 		(*player)++;
 		if (*player > 1)
-			end("more than one player");
+			end(ERR_PLAYER);
 		map->board[i][*j] = 0;
 		map->pos_cpy = (t_complex) {.x = i + 0.1, .y = *j + 0.1};
 	}
@@ -90,6 +90,6 @@ int		fill_board(t_map *map, int fd)
 		ft_memdel((void **)&(map->line));
 	}
 	if (player == 0)
-		end("no player placed");
+		end(ERR_NO_PLAYER);
 	return (1);
 }

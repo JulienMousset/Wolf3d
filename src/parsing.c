@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 14:24:13 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/13 19:04:34 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/14 18:20:18 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,10 @@ int		check_file(t_map *map, char *file)
 
 	if ((fd = open(file, O_DIRECTORY)) != -1
 	|| (fd = open(file, O_RDONLY)) == -1)
-		return (0);
+		end(ERR_DIR);
 	fd = open(file, O_RDONLY);
 	if (!(read = get_next_line(fd, &map->line)))
-		return (0);
+		end(ERR_EMPTY);
 	ft_memdel((void **)&(map->line));
 	close(fd);
 	fd = open(file, O_RDONLY);
@@ -99,9 +99,9 @@ int		parsing(t_map *map, char *file)
 	int		fd;
 
 	if (!(check_file(map, file)))
-		return (0);
+		end(ERR_WRONG);
 	if (!(map->nb_lines = count_lines(map, file)))
-		return (0);
+		end("Your map needs to have the same number of lines for each column.");
 	if (!(map->board = (int **)malloc(sizeof(int *) * map->nb_lines)))
 		return (0);
 	fd = open(file, O_RDONLY);
@@ -110,7 +110,7 @@ int		parsing(t_map *map, char *file)
 	if (!(check_board(map)))
 	{
 		ft_tabdel(map->board, map->nb_lines);
-		return (0);
+		end(ERR_BORDER);
 	}
 	return (1);
 }

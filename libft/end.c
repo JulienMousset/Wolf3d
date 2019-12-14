@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 12:14:51 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/09/05 12:15:14 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/14 18:13:14 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	end(char *message)
 {
 		ft_putendl(message);
-			exit(0);
+			exit(EXIT_FAILURE);
 }

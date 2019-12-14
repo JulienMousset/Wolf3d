@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 15:23:27 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/14 15:48:51 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/14 16:10:49 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	*horizontal_loop(void *vt)
 	t->dif = map->x_end - map->x_start;
 	t->x_start = map->x_start + t->dif * t->n / THREADS;
 	t->x_end = map->x_start + t->dif * (t->n + 1) / THREADS;
-	printf("map->x_start : %d && map->y_start : %d\n", map->x_start, map->y_start);
 	while (t->x_start < t->x_end)
 	{
 		t->tex.x = (int)(256 * (t->x_start - (-map->spr.width / 2 +

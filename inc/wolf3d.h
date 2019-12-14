@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 19:45:39 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/14 14:25:10 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/14 18:23:25 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@
 
 # define ERR_MALLOC "error trying to allocate memory"
 # define ERR_USAGE "Usage: ./wolf3d <filename>"
-# define ERR_DIR "Input is a directory"
-# define ERR_WRONG "Wrong input file"
-# define ERR_LENGTH "Found wrong line length. Exiting."
-# define ERR_EMPTY "No data found."
-# define ERR_NOFILE "File doesn't exit."
-# define ERR_FULL "Map without place for the player."
+# define ERR_DIR "You're trying to read a directory or a wrong type of file."
+# define ERR_WRONG "Wrong input. Your map can only contain digits and letters."
+# define ERR_BORDER "The borders of your map can't be an empty space."
+# define ERR_EMPTY "Your map is empty."
+# define ERR_PLAYER "More than one player placed on your map."
+# define ERR_NO_PLAYER "No player placed on your map."
 
 # define POOR "NOT ENOUGH COINS"
 # define FULL_HEALTH "FULL HEALTH"

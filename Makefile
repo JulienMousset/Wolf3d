@@ -6,7 +6,7 @@
 #    By: jmousset <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 15:35:26 by jmousset          #+#    #+#              #
-#    Updated: 2019/12/14 15:57:18 by jmousset         ###   ########.fr        #
+#    Updated: 2019/12/14 18:38:31 by jmousset         ###   ########.fr        #
 #    Updated: 2019/12/12 20:01:25 by jmousset         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
@@ -62,16 +62,12 @@ SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 OBJ_PATH = ./obj
 OBJ_NAME = $(SRC_NAME:.c=.o)
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
-
-DEP_PATH = ./dep
 DEP_NAME = $(SRC_NAME:.c=.d)
-DEP = $(addprefix $(DEP_PATH)/,$(DEP_NAME))
 
 all: mkdir $(NAME)
 
 mkdir:
 	@mkdir -p $(OBJ_PATH)
-	@mkdir -p $(DEP_PATH)
 
 $(NAME): $(LIB) $(OBJ) Makefile $(HDR)
 	@gcc $(FLAGS) $(OBJ) -o $(NAME) $(LIB) -L $(MLX_PATH) $(MLX_FLAGS)
@@ -93,7 +89,6 @@ clean:
 	@rm -f $(DEP)
 	@echo "$(YELLOW).d        $(RED)deleted 💯 $(RESET)"
 	@rm -rf $(OBJ_PATH)
-	@rm -rf $(DEP_PATH)
 	@make clean -C $(LIB_PATH)
 
 fclean: clean
