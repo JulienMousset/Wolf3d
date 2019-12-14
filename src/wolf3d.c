@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 21:46:17 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/14 20:11:59 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/14 20:19:07 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int		init_structure(t_env *env, char *file)
 {
-	if (!(ft_strcmp(file, "/dev/zero")))
-			end(ERR_DIR);
+	if (!ft_strcmp(file, "/dev/zero"))
+		end(ERR_DIR);
 	if (!(env->map = (t_map *)malloc(sizeof(t_map))))
 		return (0);
 	if (!(parsing(env->map, file)))
@@ -24,7 +24,7 @@ int		init_structure(t_env *env, char *file)
 	set_keys(env->map);
 	set_values(env->map);
 	env->map->board_cpy = ft_tabcpy(env->map->board, env->map->nb_lines,
-			env->map->nb_columns);
+	env->map->nb_columns);
 	env->mlx_ptr = mlx_init();
 	env->win_ptr = mlx_new_window(env->mlx_ptr, W, H, "Wolf3D");
 	env->img_ptr = mlx_new_image(env->mlx_ptr, W, H);
