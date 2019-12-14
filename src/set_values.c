@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 15:29:58 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/14 15:42:10 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/14 17:39:04 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	set_values2(t_map *map)
 {
 	map->run = 0;
 	map->opt = 1;
-	map->item_map = 1;
-	map->item_heels = 1;
+	map->item_map = 0;
+	map->item_heels = 0;
 	map->item_poly = 0;
 	map->item_ipecac = 0;
 	map->item_godhead = 0;
@@ -67,15 +67,15 @@ void	set_values(t_map *map)
 	map->bool_tex = 1;
 	map->bool_ceil = 1;
 	map->bool_spr = 1;
-	map->bool_smog = 0;
+	map->bool_smog = 1;
 	map->bool_menu = 0;
 	map->bool_card = 0;
 	map->bool_dead = 0;
 	map->bool_win = 0;
 	map->container = 3;
 	map->pick_heart = 6;
-	map->pick_coin = 15;
-	map->pick_key = 15;
+	map->pick_coin = 0;
+	map->pick_key = 0;
 	set_values2(map);
 	set_mmap_values(map, map->opt);
 }

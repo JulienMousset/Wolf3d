@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:13:50 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/13 18:49:28 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/14 17:44:51 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	text_gui(t_env *env, t_map *map, int **board)
 	map->gui_str = ft_itoa(map->pick_key);
 	mlx_string_put(mlx, win, c.x, c.y += 40, M, map->gui_str);
 	ft_memdel((void **)&(map->gui_str));
+	mlx_string_put(mlx, win, per(W, 92), per(H, 95), M, CON_0);
 	print_shop_message(env, map, board);
 	id = board[(int)(map->pos.x + map->dir.x)][(int)(map->pos.y + map->dir.y)];
 	if (id >= FIRST_INTER && id <= LAST_INTER)

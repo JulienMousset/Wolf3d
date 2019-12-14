@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 12:01:47 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/13 17:55:41 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/14 18:40:11 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		north(t_map *map, int x)
 {
 	int		color;
 
-	color = AUTUM_BLUE;
+	color = MARRON_3;
 	if (round(map->dir.x) == -1 && round(map->dir.y) == 0 &&
 			(x > per(map->mm_size, 33) && x < per(map->mm_size, 66)))
 		color = MARBLE;
@@ -33,7 +33,7 @@ int		south(t_map *map, int x)
 {
 	int		color;
 
-	color = AUTUM_BLUE;
+	color = MARRON_3;
 	if (round(map->dir.x) == 1 && round(map->dir.y) == 0 &&
 			(x > per(map->mm_size, 33) && x < per(map->mm_size, 66)))
 		color = MARBLE;
@@ -50,7 +50,7 @@ int		west(t_map *map, int y)
 {
 	int		color;
 
-	color = AUTUM_BLUE;
+	color = MARRON_3;
 	if (round(map->dir.y) == -1 && round(map->dir.x) == 0 &&
 			(y > per(map->mm_size, 33) && y < per(map->mm_size, 66)))
 		color = MARBLE;
@@ -67,7 +67,7 @@ int		east(t_map *map, int y)
 {
 	int		color;
 
-	color = AUTUM_BLUE;
+	color = MARRON_3;
 	if (round(map->dir.y) == 1 && round(map->dir.x) == 0 &&
 			(y > per(map->mm_size, 33) && y < per(map->mm_size, 66)))
 		color = MARBLE;

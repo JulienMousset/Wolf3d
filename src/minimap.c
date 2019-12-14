@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 21:25:20 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/13 18:04:54 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/14 18:40:45 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	draw_mini_background(t_env *env, t_map *map)
 		x = -1;
 		while (++x < map->mm_size)
 		{
-			color = BOI;
+			color = MARRON_0;
 			if (y < block)
 				color = north(env->map, x);
 			if (y > map->mm_size - block)

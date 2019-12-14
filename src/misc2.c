@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 22:17:03 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/14 15:52:29 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/14 17:39:49 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	admin_mode(t_map *map)
 	map->item_axe = 1;
 	map->item_xray = 1;
 	map->item_mantle = 1;
+	map->item_candle = 5;
 }
 
 int		*ft_arraycpy(int *src, int size)
