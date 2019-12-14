@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 15:29:58 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/13 19:06:47 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/14 15:42:10 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,6 @@ void	set_values2(t_map *map)
 	map->item_dinner = 0;
 	map->item_counter = 0;
 	map->final_score = 0;
-	map->s = NULL;
-	map->spr_order = NULL;
-	map->spr_dist = NULL;
 	map->gui_scale = 2;
 	map->gui_counter = 2;
 	map->gui_size = TS * map->gui_scale;
