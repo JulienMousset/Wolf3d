@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 19:45:39 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/14 11:55:21 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/14 14:25:10 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,24 @@
 # define LOSE "Dear Diary, today I DIED."
 # define END1 "Press [ESC] to EXIT."
 # define END2 "Press [SPACE] to RESTART."
+
+# define CON "CONTROLS"
+# define CON_1 "Move : [WASD] or [ARROW KEYS]"
+# define CON_2 "Strafe : [Q][E]"
+# define CON_3 "Look Up/Down : [<][>]"
+# define CON_4 "Reset Run : [SPACEBAR]"
+# define CON_5 "Run : [SHIFT]"
+# define CON_6 "Open Map : [TAB]"
+# define CON_7 "Gamble : [G]"
+# define CON_8 "Quit : [ESC]"
+# define CON_9 "Cardinal Mode : [C]"
+# define CON_10 "Texture Mode : [1]"
+# define CON_11 "Skybox Mode : [2]"
+# define CON_12 "Sprites Mode : [3]"
+# define CON_13 "Dark Mode : [4]"
+# define CON_14 "Gain Coins/Keys : [5][6]"
+# define CON_15 "Loose/Gain Hearts : [7][8]"
+# define CON_16 "Admin Mode : [9]"
 
 typedef struct		s_coord
 {

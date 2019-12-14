@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 22:17:03 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/13 19:04:30 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/14 14:30:33 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int		randomy(int min, int max)
 
 void	admin_mode(t_map *map)
 {
-	map->pick_coin += 99;
-	map->pick_key += 99;
+	map->pick_coin = 99;
+	map->pick_key = 99;
 	map->container = 10;
 	map->pick_heart = map->container * 2;
 	map->item_map = 1;
