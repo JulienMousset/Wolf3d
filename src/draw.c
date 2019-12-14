@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:39:45 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/13 19:06:12 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/14 15:14:56 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,20 @@ void	put_pixel(t_env *env, int x, int y, int color)
 
 void	print_cardinal_walls(t_env *env, t_thread *th, int j)
 {
-	if ((th->ns_or_ew == 0 && round(env->map->dir.x) == -1) ||
-			(th->ns_or_ew == 1 && round(env->map->dir.y) == -1))
-		ft_memcpy(&th->color_str, &env->t[0].data_addr[j], sizeof(int));
-	else if ((th->ns_or_ew == 0 && round(env->map->dir.x) == 1) ||
-			(th->ns_or_ew == 0 && round(env->map->dir.y) == 1))
-		ft_memcpy(&th->color_str, &env->t[1].data_addr[j], sizeof(int));
-	else
-		ft_memcpy(&th->color_str, &env->t[3].data_addr[j], sizeof(int));
+	if (th->ns_or_ew == 0)
+	{
+		if (th->step.x < 0)
+			ft_memcpy(&th->color_str, &env->t[0].data_addr[j], sizeof(int));
+		else
+			ft_memcpy(&th->color_str, &env->t[1].data_addr[j], sizeof(int));
+	}
+	else if (th->ns_or_ew == 1)
+	{
+		if (th->step.y < 0)
+			ft_memcpy(&th->color_str, &env->t[2].data_addr[j], sizeof(int));
+		else
+			ft_memcpy(&th->color_str, &env->t[3].data_addr[j], sizeof(int));
+	}
 }
 
 void	pick_color(t_env *env, t_thread *th, int x, int y_start)

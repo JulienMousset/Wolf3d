@@ -6,7 +6,7 @@
 #    By: jmousset <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 15:35:26 by jmousset          #+#    #+#              #
-#    Updated: 2019/12/13 13:28:25 by pasosa-s         ###   ########.fr        #
+#    Updated: 2019/12/14 15:57:18 by jmousset         ###   ########.fr        #
 #    Updated: 2019/12/12 20:01:25 by jmousset         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
@@ -25,47 +25,6 @@ MLX_PATH = ./minilibx/
 LIB_PATH = ./libft/
 LIB = ./libft/libft.a
 
-HDR = wolf3d.h\
-	  colors.h\
-	  controls.h
-
-SRCS = main.c\
-	   wolf3d.c\
-	   set_values.c\
-	   parsing.c\
-	   parsing_2.c\
-	   ray_casting.c\
-	   draw.c\
-	   floor_and_ceiling.c\
-	   controls.c\
-	   controls_2.c\
-	   misc.c\
-	   misc2.c\
-	   text_gui.c\
-	   gui.c\
-	   menu.c\
-	   mouse.c\
-	   minimap.c\
-	   compass.c\
-	   load_textures.c\
-	   load_sprites.c\
-	   draw_sky.c\
-	   sprites.c\
-	   create_threads.c\
-	   items.c\
-	   items2.c\
-	   gain_item.c\
-	   end_game.c
-
-OBJ_DIR = ./obj
-
-OBJS = $(SRCS:.c=.o)
-
-DEPS = $(SRCS:.c=.d)
-
-OBJ = $(addprefix $(OBJ_DIR)/,$(OBJS))
-
-DEP = $(addprefix $(OBJ_DIR)/,$(DEPS))
 HDR_PATH = ./inc
 HDR_NAME = *.h
 HDR = $(addprefix $(HDR_PATH)/,$(HDR_NAME))
@@ -98,8 +57,6 @@ SRC_NAME = main.c\
 		   items2.c\
 		   gain_item.c\
 		   end_game.c
-
-
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
 OBJ_PATH = ./obj

@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 14:21:21 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/13 18:53:28 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/14 15:43:12 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,6 @@ void		realloc_array(t_map *map, int x, int y, int id)
 
 void		alloc_arrays(t_map *map)
 {
-	if (map->s != NULL)
-		ft_memdel((void **)&(map->s));
-	if (map->spr_order != NULL)
-		ft_memdel((void **)&(map->spr_order));
-	if (map->spr_dist != NULL)
-		ft_memdel((void **)&(map->spr_dist));
 	if (!(map->s = (t_sprite *)malloc(sizeof(t_sprite) * map->nb_sprites)))
 		end(ERR_MALLOC);
 	if (!(map->spr_order = (int *)malloc(sizeof(int) * map->nb_sprites)))
@@ -61,9 +55,9 @@ t_sprite	add_sprite(double x, double y, int i)
 	new.x = x + 0.5;
 	new.y = y + 0.5;
 	if (i == 51)
-		new.i = 13;
+		new.i = ID_RHEART - 1;
 	else if (i == 52)
-		new.i = 16;
+		new.i = ID_KEY - 1;
 	else
 		new.i = i - 1;
 	return (new);
