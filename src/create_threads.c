@@ -6,36 +6,33 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 20:07:48 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/13 14:45:48 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/14 15:38:27 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/wolf3d.h"
 
-void	free_t(t_thread *t, int threads)
+void	free_t(t_thread *t)
 {
 	int		i;
 
 	i = 0;
-	while (i < threads)
+	while (i < THREADS)
 	{
 		t[i].env = NULL;
 		i++;
 	}
-	free(t);
-	t = NULL;
+	ft_memdel((void **)&(t));
 }
 
 void	create_threads(t_env *env, int id)
 {
 	t_thread	*t;
 	int			i;
-	int			threads;
 
-	threads = THREADS;
-	t = (t_thread *)malloc(sizeof(t_thread) * threads);
+	t = (t_thread *)malloc(sizeof(t_thread) * THREADS);
 	i = 0;
-	while (i < threads)
+	while (i < THREADS)
 	{
 		t[i].n = i;
 		t[i].env = env;
@@ -46,10 +43,10 @@ void	create_threads(t_env *env, int id)
 		i++;
 	}
 	i = 0;
-	while (i < threads)
+	while (i < THREADS)
 	{
 		pthread_join(t[i].t, NULL);
 		i++;
 	}
-	free_t(t, threads);
+	free_t(t);
 }

@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 19:45:52 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/14 12:17:44 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/14 15:52:12 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,8 @@ void	image_to_window(t_env *env, t_map *map)
 	map->item_map ? draw_minimap(env, env->map) : 0;
 	gui(env, env->map, env->map->board);
 	mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_ptr, 0, 0);
-	text_gui(env, map, map->board);
 	map->bool_menu ? menu(env) : 0;
+	text_gui(env, map, map->board);
 	map->bool_dead = map->pick_heart == 0 ? 1 : 0;
 	if (map->bool_dead)
 		end_game(env, env->map);

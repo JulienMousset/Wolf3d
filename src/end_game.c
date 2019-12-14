@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 20:13:42 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/12 17:06:52 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/14 15:30:16 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,6 @@ void	end_game(t_env *env, t_map *map)
 	mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y, M, str);
 	mlx_string_put(env->mlx_ptr, env->win_ptr, c.x - 250, c.y + 160, M, END1);
 	mlx_string_put(env->mlx_ptr, env->win_ptr, c.x + 300, c.y + 160, M, END2);
-	free(score);
-	free(str);
+	ft_memdel((void **)&(score));
+	ft_memdel((void **)&(str));
 }
