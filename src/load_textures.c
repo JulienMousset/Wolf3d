@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 21:51:14 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/13 16:03:16 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/16 16:46:07 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	load_paths3(char **path)
 	path[61] = CEILING1;
 	path[62] = CEILING2;
 	path[63] = CEILING3;
-	path[64] = CONTROLS;
 }
 
 void	load_paths2(char **path)

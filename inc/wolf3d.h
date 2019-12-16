@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 19:40:39 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/16 15:49:33 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/16 18:42:01 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include <stdio.h>
 # include <math.h>
 # include <pthread.h>
 # include "mlx.h"
@@ -36,9 +35,10 @@
 # define ROT_SPEED 0.08
 # define SCALE_MS 5
 
-# define NUM_TEX 65
+# define NUM_TEX 64
 
 # define ERR_USAGE "Usage: ./wolf3d <filename>"
+# define ERR_MALLOC "Error trying to allocate memory."
 # define ERR_DIR "You're trying to read a directory or a wrong type of file."
 # define ERR_WRONG "Wrong input. Your map can only contain digits and letters."
 # define ERR_EMPTY "Your map is empty."
@@ -284,6 +284,7 @@ int					count_colums(t_map *map, char *file);
 
 int					fill_board(t_env *env, int fd);
 void				filling(t_map *map, int i, int *j, int *player);
+int					is_valid(char *s, int i);
 int					is_upper(int i);
 int					check_board(t_map *map);
 
@@ -297,6 +298,30 @@ void				load_paths(char **path);
 void				load_paths2(char **path);
 void				load_paths3(char **path);
 
+void				create_sprites_array(t_map *map);
+int					nb_sprites(t_map *map);
+t_sprite			add_sprite(double x, double y, int i);
+void				alloc_arrays(t_map *map);
+void				realloc_array(t_map *map, int x, int y, int id);
+
+void				gain_item(t_map *map, int id);
+void				pickup_chance(t_map *map, int id);
+void				buy_item(t_map *map, int id);
+void				buy_item_99(t_map *map, int id);
+void				set_limits(t_map *map, int id);
+
+int					is_walkable(t_map *map, int id, int x, int y);
+void				curse_door(t_map *map, int id);
+void				trade(t_map *map, int **board);
+void				interact_solid(t_map *map, int id);
+int					in_array(t_map *map, int x, int y);
+
+int					is_destroyable(t_map *map, int id);
+int					is_door(t_map *map, int id, int x, int y);
+int					is_shop(t_map *map, int id, int coin);
+int					is_walk(int id);
+int					is_pickable(t_map *map, int id);
+
 void				image_to_window(t_env *env, t_map *map);
 void				*ray_casting(void *vt);
 void				set_dda_values(t_thread *t, t_map *map);
@@ -306,12 +331,35 @@ void				set_walls(t_thread *t, t_map *map, int x_start);
 void				create_threads(t_env *env, int id);
 void				free_threads(t_thread *t);
 
+void				draw_line(t_env *env, t_thread *t, int x, int y_start);
+void				pick_color(t_env *env, t_thread *t, int x, int y_start);
+void				print_cardinal_walls(t_env *env, t_thread *th, int j);
+int					choose_color(t_map *map, int id, int ns_or_ew);
+void				put_pixel(t_env *env, int x, int y, int color);
+
+void				floor_casting(t_env *env, t_map *map, t_thread *t, int x);
+void				set_floor_casting(t_thread *t, int *y);
+int					level_id(t_map *map, int id);
+void				ceiling_casting(t_env *env, t_thread *t, int x, int y);
+
+void				sprites(t_env *env, t_map *map);
+void				set_sprite_values(t_map *map, int i);
+void				*horizontal_loop(void *vt);
+void				vertical_loop(t_thread *t, t_env *env, t_map *map);
+
 void				draw_sky(t_env *env, t_map *map);
 void				draw_responsive_sky(t_env *env, t_map *map);
 void				draw_simple_sky(t_env *env, t_map *map);
 
-int					**board_cpy(int **src, int nb_lines, int nb_columns);
-void				draw_background(t_env *env);
+void				draw_minimap(t_env *env, t_map *map);
+void				draw_mini_background(t_env *env, t_map *map);
+void				put_n_pixel(t_env *env, int xx, int yy, int id);
+int					mm_color(t_map *map, int id, int i);
+
+int					north(t_map *map, int x);
+int					south(t_map *map, int x);
+int					west(t_map *map, int y);
+int					east(t_map *map, int y);
 
 void				gui(t_env *env, t_map *map, int **board);
 void				print_hearts(t_env *env, t_map *map);
@@ -334,70 +382,31 @@ void				won_or_lost(t_env *env, t_map *map);
 
 int					multiple_events(t_env *env);
 int					key_press(int key, t_env *env);
-int					key_press2(int key, t_env *env);
-int					key_press3(int key, t_env *env);
+void				key_press2(int key, t_env *env);
+void				key_press3(int key, t_env *env);
 int					key_release(int key, t_env *env);
 int					mouse_move(int x, int y, t_env *env);
 
 int					close_program(t_env *env);
-void				look_up_down(t_map *map);
-void				left_or_right(t_map *map, double rot_coef);
 void				up_or_down(t_map *map, int **board, t_complex dir);
+void				left_or_right(t_map *map, double rot_coef);
 void				strafe(t_map *map, int **board, t_complex dir);
-
-
-
-
+void				look_up_down(t_map *map);
 
 void				display_result(t_env *env, t_map *map);
-int					choose_color(t_map *map, int id, int ns_or_ew);
-void				draw_line(t_env *env, t_thread *t, int x, int y_start);
-void				put_pixel(t_env *env, int x, int y, int color);
-int					close_program(t_env *env);
 int					*ft_strint(int size);
 void				display_values(t_map *map);
 void				set_mmap_values(t_map *map, int opt);
-void				draw_minimap(t_env *env, t_map *map);
-void				pick_color(t_env *env, t_thread *t, int x, int y_start);
-unsigned int		darken(t_env *env, unsigned int c, double d, int candle);
-void				sprites(t_env *env, t_map *map);
-void				bubble_sort(int	*order, double *dist, int amount);
-int					is_walkable(t_map *map, int i, int x, int y);
-void				realloc_array(t_map *map, int x, int y, int id);
-int					in_array(t_map *map, int x, int y);
-void				print_mini_sprite(t_env *env, t_map *map, int id,
-t_coord margin);
-void				create_sprites_array(t_map *map);
-void				ft_tabdel(int **tab, int lines);
-void				reset_game(t_map *map);
-void				set_ceil_casting(t_map *map);
-void				floor_casting(t_env *env, t_map *map, t_thread *t, int x);
-void				ceil_casting(t_env *env, t_map *map, int x);
-void				print_mini_sprite(t_env *env, t_map *map, int id,
-t_coord margin);
-int					north(t_map *map, int x);
-int					south(t_map *map, int x);
-int					west(t_map *map, int y);
-int					east(t_map *map, int y);
-int					is_upper(int i);
-void				*horizontal_loop(void *vt);
-int					randomy(int min, int max);
-int					is_destroyable(t_map *map, int id);
-void				trade(t_map *map, int **board);
-t_coord				size(t_map *map, int id, int n);
-int					final_score(t_map *map);
-void				set_keys(t_map *map);
-void				stop_camera(t_env *env);
-int					is_pickable(t_map *map, int id);
-int					is_walk(int id);
-int					is_shop(t_map *map, int id, int coin);
-int					is_door(t_map *map, int id, int x, int y);
-int					is_destroyable(t_map *map, int id);
 
-int					is_valid(char *s, int i);
-void				gain_item(t_map *map, int id);
-int					in_array(t_map *map, int x, int y);
+void				reset_game(t_map *map);
+int					*array_cpy(int *src, int size);
 void				admin_mode(t_map *map);
-int					level_id(t_map *map, int id);
+int					randomy(int min, int max);
+t_coord				size(t_map *map, int id, int n);
+void				stop_camera(t_env *env);
+unsigned int		darken(t_env *env, unsigned int c, double d, int candle);
+void				bubble_sort(int	*order, double *dist, int amount);
+int					**board_cpy(int **src, int nb_lines, int nb_columns);
+void				draw_background(t_env *env);
 
 #endif

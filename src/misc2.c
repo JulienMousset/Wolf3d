@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 22:17:03 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/16 14:57:55 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/16 16:35:48 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	reset_game(t_map *map)
 	create_sprites_array(map);
 }
 
-int		*ft_arraycpy(int *src, int size)
+int		*array_cpy(int *src, int size)
 {
 	int		*dst;
 	int		i;
@@ -66,7 +66,7 @@ int		**board_cpy(int **src, int nb_lines, int nb_columns)
 	dst = (int **)malloc(sizeof(int *) * nb_lines);
 	while (i < nb_lines)
 	{
-		dst[i] = ft_arraycpy(src[i], nb_columns);
+		dst[i] = array_cpy(src[i], nb_columns);
 		i++;
 	}
 	return (dst);
