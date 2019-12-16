@@ -6,26 +6,11 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 14:24:24 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/14 18:23:27 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/16 13:35:39 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/wolf3d.h"
-
-int		ft_ishupper(int i)
-{
-	return (((i >= 'A' && i <= 'Q') || i == 'X') ? 1 : 0);
-}
-
-int		is_valid(char *s, int i)
-{
-	if (((ft_isdigit(s[i]) || ft_islower(s[i]) || ft_ishupper(s[i])) &&
-				((s[i + 1] == ' ') || s[i + 1] == '\0')) ||
-			((s[i] == ' ') && (ft_isdigit(s[i + 1]) || ft_islower(s[i + 1]) ||
-				ft_ishupper(s[i + 1]))))
-		return (1);
-	return (0);
-}
 
 int		check_board(t_map *map)
 {
@@ -49,6 +34,21 @@ int		check_board(t_map *map)
 	return (1);
 }
 
+int		is_upper(int i)
+{
+	return (((i >= 'A' && i <= 'Q') || i == 'X') ? 1 : 0);
+}
+
+int		is_valid(char *s, int i)
+{
+	if (((ft_isdigit(s[i]) || ft_islower(s[i]) || is_upper(s[i])) &&
+				((s[i + 1] == ' ') || s[i + 1] == '\0')) ||
+			((s[i] == ' ') && (ft_isdigit(s[i + 1]) || ft_islower(s[i + 1]) ||
+				is_upper(s[i + 1]))))
+		return (1);
+	return (0);
+}
+
 void	filling(t_map *map, int i, int *j, int *player)
 {
 	if (!ft_strcmp(map->tmp[*j], "X"))
@@ -63,12 +63,12 @@ void	filling(t_map *map, int i, int *j, int *player)
 		map->board[i][*j] = ft_atoi(map->tmp[*j]);
 	else if (ft_islower(map->tmp[*j][0]))
 		map->board[i][*j] = map->tmp[*j][0] - 87;
-	else if (ft_ishupper(map->tmp[*j][0]))
+	else if (is_upper(map->tmp[*j][0]))
 		map->board[i][*j] = map->tmp[*j][0] - 29;
 	(*j)++;
 }
 
-int		fill_board(t_map *map, int fd)
+int		fill_board(t_env *env, int fd)
 {
 	int		read;
 	int		i;
@@ -77,19 +77,20 @@ int		fill_board(t_map *map, int fd)
 
 	player = 0;
 	i = 0;
-	while ((read = get_next_line(fd, &map->line)))
+	while ((read = get_next_line(fd, &env->map->line)))
 	{
-		map->tmp = ft_strsplit(map->line, ' ');
-		if (!(map->board[i] = (int *)malloc(sizeof(int) * map->nb_columns)))
+		env->map->tmp = ft_strsplit(env->map->line, ' ');
+		if (!(env->map->board[i] = (int *)malloc(sizeof(int) *
+		env->map->nb_columns)))
 			return (0);
 		j = 0;
-		while (map->tmp[j])
-			filling(map, i, &j, &player);
+		while (env->map->tmp[j])
+			filling(env->map, i, &j, &player);
 		i++;
-		ft_arraydel(map->tmp);
-		ft_memdel((void **)&(map->line));
+		ft_arraydel(env->map->tmp);
+		ft_memdel((void **)&(env->map->line));
 	}
 	if (player == 0)
-		end(ERR_NO_PLAYER);
+		free_and_display_usage(env, ERR_NO_PLAYER);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:39:45 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/14 18:39:19 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/16 13:58:25 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,34 @@ void	put_pixel(t_env *env, int x, int y, int color)
 		env->data_addr[++i] = color >> 8;
 		env->data_addr[++i] = color >> 16;
 	}
+}
+
+int		choose_color(t_map *map, int id, int ns_or_ew)
+{
+	int color;
+
+	(void)ns_or_ew;
+	color = 0;
+	if (id == 1 || id == 2 || id == 3 || id == 11 || id == 12 || id == 13)
+		color = MARRON_3;
+	else if (id == 3)
+		color = DARK_BLUE;
+	else if (id == 4)
+		color = BOCA90;
+	else if (id == 5)
+		color = PINK;
+	else if (id == 6)
+		color = M_BROWN;
+	else if (id == 7)
+		color = GY;
+	else if (id == 8 || id == 9)
+		color = GG;
+	else if (id == 10)
+		color = GR;
+	((id == 11 || id == 12 || id == 13) && map->item_xray) ? color = ACQUA : 0;
+	if (ns_or_ew == 1)
+		color = color / 2;
+	return (color);
 }
 
 void	print_cardinal_walls(t_env *env, t_thread *th, int j)
@@ -65,11 +93,11 @@ void	pick_color(t_env *env, t_thread *th, int x, int y_start)
 	}
 	else
 		th->color = choose_color(env->map, th->id + 1, th->ns_or_ew);
-	th->color = add_smog(env, th->color, th->perp, env->map->item_candle);
+	th->color = darken(env, th->color, th->perp, env->map->item_candle);
 	put_pixel(env, x, y_start, th->color);
 	if ((th->id != ID_CDOOR - 1 || env->map->item_mantle == 0) &&
 			(th->id != ID_SECRET1 - 1 || env->map->item_xray == 0))
-		put_pixel(env, x, y_start, add_smog(env, th->color, abs(y_start -
+		put_pixel(env, x, y_start, darken(env, th->color, abs(y_start -
 						env->map->h2) * 0.005, env->map->item_candle));
 }
 
@@ -93,32 +121,4 @@ void	draw_line(t_env *env, t_thread *t, int x, int y_start)
 		pick_color(env, t, x, y_start);
 		y_start++;
 	}
-}
-
-int		choose_color(t_map *map, int id, int ns_or_ew)
-{
-	int color;
-
-	(void)ns_or_ew;
-	color = 0;
-	if (id == 1 || id == 2 || id == 3 || id == 11 || id == 12 || id == 13)
-		color = MARRON_3;
-	else if (id == 3)
-		color = DARK_BLUE;
-	else if (id == 4)
-		color = BOCA90;
-	else if (id == 5)
-		color = PINK;
-	else if (id == 6)
-		color = M_BROWN;
-	else if (id == 7)
-		color = GY;
-	else if (id == 8 || id == 9)
-		color = GG;
-	else if (id == 10)
-		color = GR;
-	((id == 11 || id == 12 || id == 13) && map->item_xray) ? color = ACQUA : 0;
-	if (ns_or_ew == 1)
-		color = color / 2;
-	return (color);
 }

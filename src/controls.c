@@ -6,13 +6,36 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 19:46:03 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/13 18:36:57 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/16 14:13:15 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/wolf3d.h"
 
-void	and_more(int key, t_env *env)
+int		key_release(int key, t_env *env)
+{
+	if (key == KEY_W || key == ARROW_UP)
+		env->map->up = 0;
+	if (key == KEY_S || key == ARROW_DOWN)
+		env->map->down = 0;
+	if (key == KEY_A || key == ARROW_LEFT)
+		env->map->left = 0;
+	if (key == KEY_D || key == ARROW_RIGHT)
+		env->map->right = 0;
+	if (key == KEY_Q)
+		env->map->strafe_left = 0;
+	if (key == KEY_E)
+		env->map->strafe_right = 0;
+	if (key == KEY_SHIFT)
+		env->map->run = 0;
+	if (key == V_RIGHT)
+		env->map->look_up = 0;
+	if (key == V_LEFT)
+		env->map->look_down = 0;
+	return (0);
+}
+
+void	key_press3(int key, t_env *env)
 {
 	if (key == TAB && env->map->item_map)
 	{
@@ -31,7 +54,7 @@ void	and_more(int key, t_env *env)
 		env->map->pick_heart = env->map->container * 2;
 }
 
-void	more_keys(int key, t_env *env)
+void	key_press2(int key, t_env *env)
 {
 	if (key == KEY_SHIFT && env->map->item_heels)
 		env->map->run = 1;
@@ -57,7 +80,7 @@ void	more_keys(int key, t_env *env)
 		env->map->pick_heart++;
 	if (key == NUM_9)
 		admin_mode(env->map);
-	and_more(key, env);
+	key_press3(key, env);
 }
 
 int		key_press(int key, t_env *env)
@@ -81,30 +104,7 @@ int		key_press(int key, t_env *env)
 		env->map->strafe_right = 1;
 	if (key == KEY_SPACE)
 		reset_game(env->map);
-	more_keys(key, env);
-	return (0);
-}
-
-int		key_release(int key, t_env *env)
-{
-	if (key == KEY_W || key == ARROW_UP)
-		env->map->up = 0;
-	if (key == KEY_S || key == ARROW_DOWN)
-		env->map->down = 0;
-	if (key == KEY_A || key == ARROW_LEFT)
-		env->map->left = 0;
-	if (key == KEY_D || key == ARROW_RIGHT)
-		env->map->right = 0;
-	if (key == KEY_Q)
-		env->map->strafe_left = 0;
-	if (key == KEY_E)
-		env->map->strafe_right = 0;
-	if (key == KEY_SHIFT)
-		env->map->run = 0;
-	if (key == V_RIGHT)
-		env->map->look_up = 0;
-	if (key == V_LEFT)
-		env->map->look_down = 0;
+	key_press2(key, env);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 21:46:17 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/14 20:19:07 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/16 13:46:02 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int		init_structure(t_env *env, char *file)
 {
-	if (!ft_strcmp(file, "/dev/zero"))
-		end(ERR_DIR);
 	if (!(env->map = (t_map *)malloc(sizeof(t_map))))
 		return (0);
-	if (!(parsing(env->map, file)))
-		free_and_display_usage(env);
+	if (!ft_strcmp(file, "/dev/zero"))
+		free_and_display_usage(env, ERR_DIR);
+	if (!(parsing(env, file)))
+		free_and_display_usage(env, ERR_USAGE);
 	env->map->level = file;
 	set_keys(env->map);
 	set_values(env->map);

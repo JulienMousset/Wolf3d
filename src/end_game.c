@@ -6,11 +6,32 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 20:13:42 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/14 15:30:16 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/16 14:10:40 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/wolf3d.h"
+
+void	won_or_lost(t_env *env, t_map *map)
+{
+	t_coord		c;
+
+	c = (t_coord) {.x = W / 2 - 75, .y = 0};
+	if (map->bool_dead)
+	{
+		print_mini_sprite(env, map, ID_HANGING - 1, c);
+		mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_ptr, 0, 0);
+		c = (t_coord) {.x = W / 2 - 125, .y = H / 2};
+		mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y - 160, M, LOSE);
+	}
+	else if (map->bool_win)
+	{
+		print_mini_sprite(env, map, ID_GUPPY - 1, c);
+		mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_ptr, 0, 0);
+		c = (t_coord) {.x = W / 2 - 125, .y = H / 2};
+		mlx_string_put(env->mlx_ptr, env->win_ptr, c.x + 20, c.y - 160, M, WIN);
+	}
+}
 
 int		final_score(t_map *map)
 {
@@ -32,27 +53,6 @@ int		final_score(t_map *map)
 	if (score < 0)
 		score = 0;
 	return (score);
-}
-
-void	won_or_lost(t_env *env, t_map *map)
-{
-	t_coord		c;
-
-	c = (t_coord) {.x = W / 2 - 75, .y = 0};
-	if (map->bool_dead)
-	{
-		print_mini_sprite(env, map, ID_HANGING - 1, c);
-		mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_ptr, 0, 0);
-		c = (t_coord) {.x = W / 2 - 125, .y = H / 2};
-		mlx_string_put(env->mlx_ptr, env->win_ptr, c.x, c.y - 160, M, LOSE);
-	}
-	else if (map->bool_win)
-	{
-		print_mini_sprite(env, map, ID_GUPPY - 1, c);
-		mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_ptr, 0, 0);
-		c = (t_coord) {.x = W / 2 - 125, .y = H / 2};
-		mlx_string_put(env->mlx_ptr, env->win_ptr, c.x + 20, c.y - 160, M, WIN);
-	}
 }
 
 void	end_game(t_env *env, t_map *map)

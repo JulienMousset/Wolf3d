@@ -6,20 +6,18 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 14:54:18 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/16 13:54:52 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/11 22:19:21 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/wolf3d.h"
+#include "wolf3d.h"
 
-unsigned int	darken(t_env *env, unsigned int c, double d, int candle)
+unsigned int	add_smog(unsigned int c, double d, int candle)
 {
 	unsigned char	r;
 	unsigned char	g;
 	unsigned char	b;
 
-	if (!env->map->bool_smog)
-		return (c);
 	r = c;
 	g = c >> 8;
 	b = c >> 16;
@@ -50,7 +48,9 @@ t_coord			size(t_map *map, int id, int n)
 		c.y = map->gui_margin.y;
 	}
 	if (id == 3)
+	{
 		c = (t_coord) {.x = 10, .y = per(H, 95)};
+	}
 	if (id == 4)
 	{
 		c.x = 20;
@@ -90,9 +90,13 @@ void			draw_background(t_env *env)
 	while (i < W * H)
 	{
 		if (i < W * env->map->h2)
+		{
 			image[i] = SKY;
+		}
 		else
+		{
 			image[i] = GROUND;
+		}
 		i++;
 	}
 }
@@ -109,11 +113,12 @@ void			bubble_sort(int *order, double *dist, int amount)
 	while (gap > 1 || swapped)
 	{
 		gap = (gap * 10) / 13;
-		(gap == 9 || gap == 10) ? gap = 11 : 0;
+		if (gap == 9 || gap == 10)
+			gap = 11;
 		(gap < 1) ? gap = 1 : 0;
 		swapped = 0;
-		i = -1;
-		while (++i < amount - gap)
+		i = 0;
+		while (i < amount - gap)
 		{
 			j = i + gap;
 			if (dist[i] < dist[j])
@@ -122,6 +127,7 @@ void			bubble_sort(int *order, double *dist, int amount)
 				ft_swap(&order[i], &order[j]);
 				swapped = 1;
 			}
+			i++;
 		}
 	}
 }

@@ -6,17 +6,17 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:32:33 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/14 18:16:28 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/16 13:18:02 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/wolf3d.h"
 
-void	free_and_display_usage(t_env *env)
+void	free_and_display_usage(t_env *env, char *s)
 {
 	ft_memdel((void **)&(env->map));
 	ft_memdel((void **)&(env));
-	end(ERR_USAGE);
+	end(s);
 }
 
 int		main(int ac, char **av)
@@ -25,4 +25,10 @@ int		main(int ac, char **av)
 		end(ERR_USAGE);
 	wolf3d(av[1]);
 	exit(EXIT_SUCCESS);
+}
+
+__attribute__((destructor))
+void end()
+{
+		while (1);
 }

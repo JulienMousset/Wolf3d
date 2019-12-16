@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 19:40:39 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/14 19:40:40 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/16 14:01:10 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@
 # define ERR_EMPTY "Your map is empty."
 # define ERR_PLAYER "More than one player placed on your map."
 # define ERR_NO_PLAYER "No player placed on your map."
+# define ERR_LINE "Your map needs the same number of lines for each column."
 
 # define POOR "NOT ENOUGH COINS"
 # define FULL_HEALTH "FULL HEALTH"
@@ -273,19 +274,19 @@ typedef struct		s_thread
 	char			*color_str;
 }					t_thread;
 
-void				free_and_display_usage(t_env *env);
+void				free_and_display_usage(t_env *env, char *s);
 void				free_tmp_board(char **s);
 int					free_board(t_map *map);
 int					wolf3d(char *file);
 int					init_structure(t_env *env, char *file);
 void				set_values(t_map *map);
-int					parsing(t_map *map, char *file);
-int					check_file(t_map *map, char *file);
+int					parsing(t_env *env, char *file);
+int					check_file(t_env *env, char *file);
 int					check_map(char *s);
 int					count_lines(t_map *map, char *file);
 int					count_colums(t_map *map, char *file);
 int					check_board(t_map *map);
-int					fill_board(t_map *map, int fd);
+int					fill_board(t_env *env, int fd);
 void				set_dda_values(t_thread *t, t_map *map);
 void				dda(t_thread *t, t_map *map);
 void				set_walls(t_thread *t, t_map *map, int x_start);
@@ -314,7 +315,7 @@ void				look_up_down(t_map *map);
 int					mouse_move(int x, int y, t_env *env);
 int					multiple_events(t_env *env);
 void				look_left_right(t_map *map);
-unsigned int		add_smog(t_env *env, unsigned int c, double d, int candle);
+unsigned int		darken(t_env *env, unsigned int c, double d, int candle);
 void				sprites(t_env *env, t_map *map);
 void				bubble_sort(int	*order, double *dist, int amount);
 int					is_walkable(t_map *map, int i, int x, int y);
@@ -338,7 +339,7 @@ int					south(t_map *map, int x);
 int					west(t_map *map, int y);
 int					east(t_map *map, int y);
 void				*ray_casting(void *vt);
-int					ft_ishupper(int i);
+int					is_upper(int i);
 void				image_to_window(t_env *env, t_map *map);
 void				*horizontal_loop(void *vt);
 int					randomy(int min, int max);
@@ -359,5 +360,6 @@ int					is_valid(char *s, int i);
 void				gain_item(t_map *map, int id);
 int					in_array(t_map *map, int x, int y);
 void				admin_mode(t_map *map);
+int					level_id(t_map *map, int id);
 
 #endif

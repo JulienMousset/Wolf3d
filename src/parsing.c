@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 14:24:13 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/14 19:52:56 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/16 13:18:44 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,47 +70,47 @@ int		check_map(char *s)
 	return (1);
 }
 
-int		check_file(t_map *map, char *file)
+int		check_file(t_env *env, char *file)
 {
 	int			read;
 	int			fd;
 
 	if ((fd = open(file, O_DIRECTORY)) != -1
 	|| (fd = open(file, O_RDONLY)) == -1)
-		end(ERR_DIR);
+		free_and_display_usage(env, ERR_DIR);
 	fd = open(file, O_RDONLY);
-	if (!(read = get_next_line(fd, &map->line)))
-		end(ERR_EMPTY);
-	ft_memdel((void **)&(map->line));
+	if (!(read = get_next_line(fd, &env->map->line)))
+		free_and_display_usage(env, ERR_EMPTY);
+	ft_memdel((void **)&(env->map->line));
 	close(fd);
 	fd = open(file, O_RDONLY);
-	while ((read = get_next_line(fd, &map->line)))
+	while ((read = get_next_line(fd, &env->map->line)))
 	{
-		if (map->line[1] == '\n' || !(check_map(map->line)))
+		if (env->map->line[1] == '\n' || !(check_map(env->map->line)))
 			return (0);
-		ft_memdel((void **)&(map->line));
+		ft_memdel((void **)&(env->map->line));
 	}
 	close(fd);
 	return (1);
 }
 
-int		parsing(t_map *map, char *file)
+int		parsing(t_env *env, char *file)
 {
 	int		fd;
 
-	if (!(check_file(map, file)))
-		end(ERR_WRONG);
-	if (!(map->nb_lines = count_lines(map, file)))
-		end("Your map needs to have the same number of lines for each column.");
-	if (!(map->board = (int **)malloc(sizeof(int *) * map->nb_lines)))
+	if (!(check_file(env, file)))
+		free_and_display_usage(env, ERR_WRONG);
+	if (!(env->map->nb_lines = count_lines(env->map, file)))
+		free_and_display_usage(env, ERR_LINE);
+	if (!(env->map->board = (int **)malloc(sizeof(int *) * env->map->nb_lines)))
 		return (0);
 	fd = open(file, O_RDONLY);
-	fill_board(map, fd);
+	fill_board(env, fd);
 	close(fd);
-	if (!(check_board(map)))
+	if (!(check_board(env->map)))
 	{
-		ft_tabdel(map->board, map->nb_lines);
-		end(ERR_BORDER);
+		ft_tabdel(env->map->board, env->map->nb_lines);
+		free_and_display_usage(env, ERR_BORDER);
 	}
 	return (1);
 }

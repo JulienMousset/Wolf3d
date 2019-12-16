@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 19:46:13 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/12 18:50:54 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/16 14:08:17 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,32 +48,6 @@ void		print_mini_sprite(t_env *env, t_map *map, int id, t_coord margin)
 	}
 }
 
-void		print_hearts(t_env *env, t_map *map)
-{
-	int			i;
-
-	i = -1;
-	map->gui_margin.x = -TS / 2;
-	while (++i < map->pick_heart / 2)
-	{
-		print_mini_sprite(env, map, ID_CONTAINER_RED - 1, size(map, 2, 0));
-		map->gui_margin.x += TS + 20;
-	}
-	i = -1;
-	while (++i < map->pick_heart % 2)
-	{
-		print_mini_sprite(env, map, ID_CONTAINER_HALF - 1, size(map, 2, 20));
-		map->gui_margin.x += TS + 20;
-	}
-	i = -1;
-	while (++i < map->container - (map->pick_heart / 2 + map->pick_heart % 2))
-	{
-		print_mini_sprite(env, map, ID_CONTAINER_EMPTY - 1, size(map, 2, 20));
-		map->gui_margin.x += TS + 20;
-	}
-	map->gui_margin.x = -TS / 2;
-}
-
 void		print_items_gui(t_env *env, t_map *map, int n)
 {
 	if (map->item_map)
@@ -98,6 +72,32 @@ void		print_items_gui(t_env *env, t_map *map, int n)
 		print_mini_sprite(env, map, ID_MANTLE - 1, size(map, 1, n++));
 	if (map->item_candle == 5)
 		print_mini_sprite(env, map, ID_CANDLE - 1, size(map, 1, n++));
+}
+
+void		print_hearts(t_env *env, t_map *map)
+{
+	int			i;
+
+	i = -1;
+	map->gui_margin.x = -TS / 2;
+	while (++i < map->pick_heart / 2)
+	{
+		print_mini_sprite(env, map, ID_CONTAINER_RED - 1, size(map, 2, 0));
+		map->gui_margin.x += TS + 20;
+	}
+	i = -1;
+	while (++i < map->pick_heart % 2)
+	{
+		print_mini_sprite(env, map, ID_CONTAINER_HALF - 1, size(map, 2, 20));
+		map->gui_margin.x += TS + 20;
+	}
+	i = -1;
+	while (++i < map->container - (map->pick_heart / 2 + map->pick_heart % 2))
+	{
+		print_mini_sprite(env, map, ID_CONTAINER_EMPTY - 1, size(map, 2, 20));
+		map->gui_margin.x += TS + 20;
+	}
+	map->gui_margin.x = -TS / 2;
 }
 
 void		gui(t_env *env, t_map *map, int **board)
