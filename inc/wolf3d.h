@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 19:40:39 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/16 18:42:01 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/16 19:18:12 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -319,7 +319,7 @@ int					in_array(t_map *map, int x, int y);
 int					is_destroyable(t_map *map, int id);
 int					is_door(t_map *map, int id, int x, int y);
 int					is_shop(t_map *map, int id, int coin);
-int					is_walk(int id);
+int					is_walk(t_map *map, int id);
 int					is_pickable(t_map *map, int id);
 
 void				image_to_window(t_env *env, t_map *map);

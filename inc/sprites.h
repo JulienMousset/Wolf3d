@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/12 18:06:02 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/16 16:46:34 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/16 19:15:16 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 # define FIRST_SHOP 21
 # define LAST_SHOP 28
 
-# define FIRST_SOLID 29
+# define FIRST_SOLID 30
 # define LAST_SOLID 38
 
 # define FIRST_INTER 42
