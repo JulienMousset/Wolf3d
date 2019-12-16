@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 19:40:39 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/16 18:42:01 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/16 19:25:34 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,18 +136,14 @@ typedef struct		s_map
 	int				walk;
 	t_complex		pos;
 	t_complex		pos_cpy;
-	t_complex		old_dir;
 	t_complex		dir;
-	t_complex		old_plane;
 	t_complex		plane;
 	double			move_coef;
 	double			rot_coef;
 	double			run;
 	int				y_start;
 	int				y_end;
-	t_coord			tex;
 	int				id;
-	int				d;
 	int				i;
 	int				r;
 	int				color;
@@ -215,8 +211,6 @@ typedef struct		s_map
 	int				look_down;
 	int				mouse_left;
 	int				mouse_right;
-	int				old_x;
-	double			old_dir_x;
 	int				camera_w;
 	int				camera_h;
 	t_coord			prev;
