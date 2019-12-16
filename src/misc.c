@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/10 14:54:18 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/16 13:54:52 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/16 15:18:26 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ unsigned int	darken(t_env *env, unsigned int c, double d, int candle)
 
 t_coord			size(t_map *map, int id, int n)
 {
-	t_coord		c;
+	t_coord	c;
 
 	if (id == 1)
 	{
@@ -79,24 +79,6 @@ void			stop_camera(t_env *env)
 	env->map->camera_w++;
 }
 
-void			draw_background(t_env *env)
-{
-	int		*image;
-	int		i;
-
-	i = 0;
-	image = (int *)env->data_addr;
-	i = 0;
-	while (i < W * H)
-	{
-		if (i < W * env->map->h2)
-			image[i] = SKY;
-		else
-			image[i] = GROUND;
-		i++;
-	}
-}
-
 void			bubble_sort(int *order, double *dist, int amount)
 {
 	int		i;
@@ -123,5 +105,23 @@ void			bubble_sort(int *order, double *dist, int amount)
 				swapped = 1;
 			}
 		}
+	}
+}
+
+void			draw_background(t_env *env)
+{
+	int		*image;
+	int		i;
+
+	i = 0;
+	image = (int *)env->data_addr;
+	i = 0;
+	while (i < W * H)
+	{
+		if (i < W * env->map->h2)
+			image[i] = SKY;
+		else
+			image[i] = GROUND;
+		i++;
 	}
 }

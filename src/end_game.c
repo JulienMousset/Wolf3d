@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 20:13:42 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/16 14:10:40 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/16 15:11:39 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	won_or_lost(t_env *env, t_map *map)
 {
-	t_coord		c;
+	t_coord	c;
 
 	c = (t_coord) {.x = W / 2 - 75, .y = 0};
 	if (map->bool_dead)
@@ -57,9 +57,9 @@ int		final_score(t_map *map)
 
 void	end_game(t_env *env, t_map *map)
 {
-	t_coord		c;
-	char		*score;
-	char		*str;
+	t_coord	c;
+	char	*score;
+	char	*str;
 
 	score = ft_itoa(final_score(map));
 	str = ft_strjoin("        SCORE : ", score);

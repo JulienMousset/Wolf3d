@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:39:45 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/16 13:58:25 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/16 15:08:57 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	put_pixel(t_env *env, int x, int y, int color)
 
 int		choose_color(t_map *map, int id, int ns_or_ew)
 {
-	int color;
+	int		color;
 
 	(void)ns_or_ew;
 	color = 0;

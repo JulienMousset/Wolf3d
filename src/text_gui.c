@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:13:50 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/14 17:44:51 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/16 15:16:48 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	get_quote(t_env *env, int id)
 {
-	void		*mlx;
-	t_coord		c;
+	void	*mlx;
+	t_coord	c;
 
 	mlx = env->mlx_ptr;
 	c = (t_coord) {.x = W / 2 - 100, .y = H / 2 - 125};
@@ -40,7 +40,7 @@ void	get_quote(t_env *env, int id)
 
 void	sprite_interactions(t_env *env, int id)
 {
-	t_coord		c;
+	t_coord	c;
 
 	c = (t_coord) {.x = W / 2 - 200, .y = H / 2 - 100};
 	if (id == ID_FINAL_CHEST)
@@ -54,8 +54,8 @@ void	sprite_interactions(t_env *env, int id)
 
 void	print_shop_message(t_env *env, t_map *map, int **board)
 {
-	t_coord		c;
-	int			id;
+	t_coord	c;
+	int		id;
 
 	c = (t_coord) {.x = W / 2 - 100, .y = H / 2};
 	id = board[(int)map->pos.x][(int)map->pos.y];

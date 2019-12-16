@@ -6,13 +6,13 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 19:46:13 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/16 14:08:17 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/16 15:41:14 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/wolf3d.h"
 
-int			is_large_spr(int id)
+int		is_large_sprite(int id)
 {
 	return ((id == ID_CONTAINER_RED - 1 || id == ID_CONTAINER_HALF - 1 ||
 				id == ID_CONTAINER_EMPTY - 1 || id == ID_SHIFT_ON - 1 ||
@@ -21,15 +21,15 @@ int			is_large_spr(int id)
 				id == ID_GUPPY - 1) ? 1 : 0);
 }
 
-void		print_mini_sprite(t_env *env, t_map *map, int id, t_coord margin)
+void	print_mini_sprite(t_env *env, t_map *map, int id, t_coord margin)
 {
-	t_coord		p;
-	t_coord		tex;
-	int			i;
-	int			size;
+	t_coord	p;
+	t_coord	tex;
+	int		i;
+	int		size;
 
 	p = (t_coord) {.x = 0, .y = 0};
-	size = is_large_spr(id) ? TS * 3 : TS * 2;
+	size = is_large_sprite(id) ? TS * 3 : TS * 2;
 	while (p.y < size)
 	{
 		tex.y = p.y * TS / size;
@@ -48,7 +48,7 @@ void		print_mini_sprite(t_env *env, t_map *map, int id, t_coord margin)
 	}
 }
 
-void		print_items_gui(t_env *env, t_map *map, int n)
+void	print_items_gui(t_env *env, t_map *map, int n)
 {
 	if (map->item_map)
 		print_mini_sprite(env, map, ID_MAP - 1, size(map, 1, n++));
@@ -74,9 +74,9 @@ void		print_items_gui(t_env *env, t_map *map, int n)
 		print_mini_sprite(env, map, ID_CANDLE - 1, size(map, 1, n++));
 }
 
-void		print_hearts(t_env *env, t_map *map)
+void	print_hearts(t_env *env, t_map *map)
 {
-	int			i;
+	int		i;
 
 	i = -1;
 	map->gui_margin.x = -TS / 2;
@@ -100,7 +100,7 @@ void		print_hearts(t_env *env, t_map *map)
 	map->gui_margin.x = -TS / 2;
 }
 
-void		gui(t_env *env, t_map *map, int **board)
+void	gui(t_env *env, t_map *map, int **board)
 {
 	int		n;
 	int		id;

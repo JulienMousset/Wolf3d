@@ -6,13 +6,13 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 20:07:48 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/14 15:38:27 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/16 15:38:36 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/wolf3d.h"
 
-void	free_t(t_thread *t)
+void	free_threads(t_thread *t)
 {
 	int		i;
 
@@ -48,5 +48,5 @@ void	create_threads(t_env *env, int id)
 		pthread_join(t[i].t, NULL);
 		i++;
 	}
-	free_t(t);
+	free_threads(t);
 }

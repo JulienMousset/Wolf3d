@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 15:32:33 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/16 13:18:02 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/16 14:44:39 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int		main(int ac, char **av)
 	exit(EXIT_SUCCESS);
 }
 
-__attribute__((destructor))
+/*__attribute__((destructor))
 void end()
 {
 		while (1);
-}
+}*/

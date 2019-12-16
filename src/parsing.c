@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 14:24:13 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/16 13:18:44 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/16 15:15:30 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		count_lines(t_map *map, char *file)
 
 int		check_map(char *s)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	while (s[i])
@@ -72,8 +72,8 @@ int		check_map(char *s)
 
 int		check_file(t_env *env, char *file)
 {
-	int			read;
-	int			fd;
+	int		read;
+	int		fd;
 
 	if ((fd = open(file, O_DIRECTORY)) != -1
 	|| (fd = open(file, O_RDONLY)) == -1)

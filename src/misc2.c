@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 22:17:03 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/14 17:39:49 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/16 14:57:55 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,17 @@ void	admin_mode(t_map *map)
 	map->item_candle = 5;
 }
 
+void	reset_game(t_map *map)
+{
+	set_values(map);
+	ft_memdel((void **)&(map->s));
+	ft_memdel((void **)&(map->spr_order));
+	ft_memdel((void **)&(map->spr_dist));
+	ft_tabdel(map->board, map->nb_lines);
+	map->board = board_cpy(map->board_cpy, map->nb_lines, map->nb_columns);
+	create_sprites_array(map);
+}
+
 int		*ft_arraycpy(int *src, int size)
 {
 	int		*dst;
@@ -46,7 +57,7 @@ int		*ft_arraycpy(int *src, int size)
 	return (dst);
 }
 
-int		**ft_tabcpy(int **src, int nb_lines, int nb_columns)
+int		**board_cpy(int **src, int nb_lines, int nb_columns)
 {
 	int		**dst;
 	int		i;
@@ -59,15 +70,4 @@ int		**ft_tabcpy(int **src, int nb_lines, int nb_columns)
 		i++;
 	}
 	return (dst);
-}
-
-void	reset_game(t_map *map)
-{
-	set_values(map);
-	ft_memdel((void **)&(map->s));
-	ft_memdel((void **)&(map->spr_order));
-	ft_memdel((void **)&(map->spr_dist));
-	ft_tabdel(map->board, map->nb_lines);
-	map->board = ft_tabcpy(map->board_cpy, map->nb_lines, map->nb_columns);
-	create_sprites_array(map);
 }

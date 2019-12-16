@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 18:00:33 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/13 19:07:17 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/16 15:11:28 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ void	draw_simple_sky(t_env *env, t_map *map)
 
 void	draw_responsive_sky(t_env *env, t_map *map)
 {
-	t_coord		p;
-	t_coord		tex;
-	int			i;
-	int			j;
-	int			y_start;
+	t_coord	p;
+	t_coord	tex;
+	int		i;
+	int		j;
+	int		y_start;
 
 	y_start = H_SKY - (H_SKY / 2 + map->h2_coef / 2);
 	if (y_start < 0)

@@ -6,13 +6,13 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 12:55:50 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/14 17:42:26 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/16 15:09:46 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/wolf3d.h"
 
-void		set_limits(t_map *map, int id)
+void	set_limits(t_map *map, int id)
 {
 	if (id >= FIRST_ITEM && id <= LAST_ITEM)
 		map->item_counter++;
@@ -24,7 +24,7 @@ void		set_limits(t_map *map, int id)
 		map->pick_key = 99;
 }
 
-void		buy_item_99(t_map *map, int id)
+void	buy_item_99(t_map *map, int id)
 {
 	if (map->pick_coin >= 99)
 	{
@@ -38,7 +38,7 @@ void		buy_item_99(t_map *map, int id)
 	}
 }
 
-void		buy_item(t_map *map, int id)
+void	buy_item(t_map *map, int id)
 {
 	buy_item_99(map, id);
 	if (map->pick_coin >= 15)
@@ -64,7 +64,7 @@ void		buy_item(t_map *map, int id)
 	}
 }
 
-void		pickup_chance(t_map *map, int id)
+void	pickup_chance(t_map *map, int id)
 {
 	if (id == ID_ROCK1 || id == ID_ROCK2 || id == ID_ROCK3 || id == ID_POOP)
 		randomy(0, 2) == 0 ? map->pick_coin++ : 0;
@@ -92,7 +92,7 @@ void		pickup_chance(t_map *map, int id)
 	}
 }
 
-void		gain_item(t_map *map, int id)
+void	gain_item(t_map *map, int id)
 {
 	if (is_destroyable(map, id))
 		pickup_chance(map, id);

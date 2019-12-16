@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/14 19:40:39 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/16 14:01:10 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/16 15:49:33 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,34 +38,18 @@
 
 # define NUM_TEX 65
 
-# define ERR_MALLOC "error trying to allocate memory"
 # define ERR_USAGE "Usage: ./wolf3d <filename>"
 # define ERR_DIR "You're trying to read a directory or a wrong type of file."
 # define ERR_WRONG "Wrong input. Your map can only contain digits and letters."
-# define ERR_BORDER "The borders of your map can't be an empty space."
 # define ERR_EMPTY "Your map is empty."
-# define ERR_PLAYER "More than one player placed on your map."
+# define ERR_BORDER "The borders of your map can't be an empty space."
 # define ERR_NO_PLAYER "No player placed on your map."
+# define ERR_PLAYER "More than one player placed on your map."
 # define ERR_LINE "Your map needs the same number of lines for each column."
 
 # define POOR "NOT ENOUGH COINS"
 # define FULL_HEALTH "FULL HEALTH"
-
-# define QUOTE1_1 "Did you know that the end of the game"
-# define QUOTE1_2 "is actually 4 tiles behind my back?"
-# define QUOTE2_1 "I miss my owner."
-# define QUOTE2_2 "He still has my left paw."
-# define QUOTE3_1 "The first known account of execution by hanging"
-# define QUOTE3_2 "was in Homer's Odyssey (Book XXII)."
-# define QUOTE4_1 "ITEMS - 15 COINS"
-# define QUOTE4_2 "CONSUMABLES - 5 COINS"
-
 # define PRESS "PRESS [G] TO GAMBLE"
-
-# define WIN "Dear Diary, today I WON."
-# define LOSE "Dear Diary, today I DIED."
-# define END1 "Press [ESC] to EXIT."
-# define END2 "Press [SPACE] to RESTART."
 
 # define CON_0 "[H]ELP"
 # define CON "CONTROLS"
@@ -85,6 +69,20 @@
 # define CON_14 "Gain Coins/Keys : [5][6]"
 # define CON_15 "Loose/Gain Hearts : [7][8]"
 # define CON_16 "Admin Mode : [9]"
+
+# define QUOTE1_1 "Did you know that the end of the game"
+# define QUOTE1_2 "is actually 4 tiles behind my back?"
+# define QUOTE2_1 "I miss my owner."
+# define QUOTE2_2 "He still has my left paw."
+# define QUOTE3_1 "The first known account of execution by hanging"
+# define QUOTE3_2 "was in Homer's Odyssey (Book XXII)."
+# define QUOTE4_1 "ITEMS - 15 COINS"
+# define QUOTE4_2 "CONSUMABLES - 5 COINS"
+
+# define WIN "Dear Diary, today I WON."
+# define LOSE "Dear Diary, today I DIED."
+# define END1 "Press [ESC] to EXIT."
+# define END2 "Press [SPACE] to RESTART."
 
 typedef struct		s_coord
 {
@@ -274,47 +272,93 @@ typedef struct		s_thread
 	char			*color_str;
 }					t_thread;
 
-void				free_and_display_usage(t_env *env, char *s);
-void				free_tmp_board(char **s);
-int					free_board(t_map *map);
 int					wolf3d(char *file);
 int					init_structure(t_env *env, char *file);
-void				set_values(t_map *map);
+void				free_and_display_usage(t_env *env, char *s);
+
 int					parsing(t_env *env, char *file);
 int					check_file(t_env *env, char *file);
 int					check_map(char *s);
 int					count_lines(t_map *map, char *file);
 int					count_colums(t_map *map, char *file);
-int					check_board(t_map *map);
+
 int					fill_board(t_env *env, int fd);
+void				filling(t_map *map, int i, int *j, int *player);
+int					is_upper(int i);
+int					check_board(t_map *map);
+
+void				set_keys(t_map *map);
+void				set_values(t_map *map);
+void				set_values2(t_map *map);
+void				set_mmap_values(t_map *map, int opt);
+
+void				load_textures(t_env *env, t_img *t, char **path);
+void				load_paths(char **path);
+void				load_paths2(char **path);
+void				load_paths3(char **path);
+
+void				image_to_window(t_env *env, t_map *map);
+void				*ray_casting(void *vt);
 void				set_dda_values(t_thread *t, t_map *map);
 void				dda(t_thread *t, t_map *map);
 void				set_walls(t_thread *t, t_map *map, int x_start);
+
+void				create_threads(t_env *env, int id);
+void				free_threads(t_thread *t);
+
+void				draw_sky(t_env *env, t_map *map);
+void				draw_responsive_sky(t_env *env, t_map *map);
+void				draw_simple_sky(t_env *env, t_map *map);
+
+int					**board_cpy(int **src, int nb_lines, int nb_columns);
+void				draw_background(t_env *env);
+
+void				gui(t_env *env, t_map *map, int **board);
+void				print_hearts(t_env *env, t_map *map);
+void				print_items_gui(t_env *env, t_map *map, int n);
+void				print_mini_sprite(t_env *env, t_map *map, int id,
+t_coord margin);
+int					is_large_sprite(int id);
+
+void				menu(t_env *env);
+void				menu_text(t_env *env, int pw, int ph);
+
+void				text_gui(t_env *env, t_map *map, int **board);
+void				print_shop_message(t_env *env, t_map *map, int **board);
+void				sprite_interactions(t_env *env, int id);
+void				get_quote(t_env *env, int id);
+
+void				end_game(t_env *env, t_map *map);
+int					final_score(t_map *map);
+void				won_or_lost(t_env *env, t_map *map);
+
+int					multiple_events(t_env *env);
+int					key_press(int key, t_env *env);
+int					key_press2(int key, t_env *env);
+int					key_press3(int key, t_env *env);
+int					key_release(int key, t_env *env);
+int					mouse_move(int x, int y, t_env *env);
+
+int					close_program(t_env *env);
+void				look_up_down(t_map *map);
+void				left_or_right(t_map *map, double rot_coef);
+void				up_or_down(t_map *map, int **board, t_complex dir);
+void				strafe(t_map *map, int **board, t_complex dir);
+
+
+
+
+
 void				display_result(t_env *env, t_map *map);
 int					choose_color(t_map *map, int id, int ns_or_ew);
 void				draw_line(t_env *env, t_thread *t, int x, int y_start);
 void				put_pixel(t_env *env, int x, int y, int color);
-int					key_press(int key, t_env *env);
-int					key_release(int key, t_env *env);
 int					close_program(t_env *env);
-void				up_or_down(t_map *map, int **board, t_complex dir);
-void				left_or_right(t_map *map, double rot_coef);
-void				strafe(t_map *map, int **board, t_complex dir);
-void				draw_background(t_env *env);
 int					*ft_strint(int size);
 void				display_values(t_map *map);
-void				text_gui(t_env *env, t_map *map, int **board);
-void				gui(t_env *env, t_map *map, int **board);
-void				menu(t_env *env);
 void				set_mmap_values(t_map *map, int opt);
 void				draw_minimap(t_env *env, t_map *map);
-void				load_textures(t_env *env, t_img *t, char **path);
 void				pick_color(t_env *env, t_thread *t, int x, int y_start);
-void				draw_sky(t_env *env, t_map *map);
-void				look_up_down(t_map *map);
-int					mouse_move(int x, int y, t_env *env);
-int					multiple_events(t_env *env);
-void				look_left_right(t_map *map);
 unsigned int		darken(t_env *env, unsigned int c, double d, int candle);
 void				sprites(t_env *env, t_map *map);
 void				bubble_sort(int	*order, double *dist, int amount);
@@ -324,28 +368,22 @@ int					in_array(t_map *map, int x, int y);
 void				print_mini_sprite(t_env *env, t_map *map, int id,
 t_coord margin);
 void				create_sprites_array(t_map *map);
-int					**ft_tabcpy(int **src, int nb_lines, int nb_columns);
 void				ft_tabdel(int **tab, int lines);
 void				reset_game(t_map *map);
-int					close_program(t_env *env);
 void				set_ceil_casting(t_map *map);
 void				floor_casting(t_env *env, t_map *map, t_thread *t, int x);
 void				ceil_casting(t_env *env, t_map *map, int x);
-void				create_threads(t_env *env, int id);
 void				print_mini_sprite(t_env *env, t_map *map, int id,
 t_coord margin);
 int					north(t_map *map, int x);
 int					south(t_map *map, int x);
 int					west(t_map *map, int y);
 int					east(t_map *map, int y);
-void				*ray_casting(void *vt);
 int					is_upper(int i);
-void				image_to_window(t_env *env, t_map *map);
 void				*horizontal_loop(void *vt);
 int					randomy(int min, int max);
 int					is_destroyable(t_map *map, int id);
 void				trade(t_map *map, int **board);
-void				end_game(t_env *env, t_map *map);
 t_coord				size(t_map *map, int id, int n);
 int					final_score(t_map *map);
 void				set_keys(t_map *map);

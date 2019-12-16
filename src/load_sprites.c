@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 14:21:21 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/14 15:43:12 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/16 15:18:57 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,9 @@ int			nb_sprites(t_map *map)
 
 void		create_sprites_array(t_map *map)
 {
-	int			y;
-	int			x;
-	int			i;
+	int		y;
+	int		x;
+	int		i;
 
 	map->nb_sprites = nb_sprites(map);
 	alloc_arrays(map);
