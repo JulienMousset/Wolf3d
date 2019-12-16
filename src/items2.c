@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 22:27:17 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/13 14:16:50 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/16 19:17:47 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int		is_pickable(t_map *map, int id)
 					map->pick_heart < map->container * 2)) ? 1 : 0);
 }
 
-int		is_walk(int id)
+int		is_walk(t_map *map, int id)
 {
-	return ((id == 0 || id == ID_SECRET1 || id == ID_SECRET2 ||
-				id == ID_SECRET3 || id == ID_HEART_SHOP || id == ID_KEY_SHOP ||
-				(id >= FIRST_WALK && id <= LAST_WALK)) ?
+	return ((id == 0 || id == ID_HEART_SHOP || id == ID_KEY_SHOP ||
+				(id >= FIRST_WALK && id <= LAST_WALK) ||
+				(map->bool_spr == 0 && id >= FIRST_WALK)) ?
 			1 : 0);
 }
 

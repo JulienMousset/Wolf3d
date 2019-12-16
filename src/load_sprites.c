@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 14:21:21 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/16 15:18:57 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/16 19:13:04 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void		realloc_array(t_map *map, int x, int y, int id)
 		end(ERR_MALLOC);
 	i = 0;
 	j = 0;
-	while (i < map->nb_sprites)
+	while (i + j < map->nb_sprites)
 	{
 		if (map->s[i].x == x + 0.5 && map->s[i].y == y + 0.5)
 		{

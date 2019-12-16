@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 19:46:13 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/16 15:41:14 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/16 19:17:20 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,10 +116,10 @@ void	gui(t_env *env, t_map *map, int **board)
 	else if (map->item_heels)
 		print_mini_sprite(env, map, ID_SHIFT_OFF - 1, size(map, 4, 0));
 	id = board[(int)(map->pos.x + map->dir.x)][(int)(map->pos.y + map->dir.y)];
-	if (id >= 21 && id <= 23)
+	if (id >= 21 && id <= 23 && map->bool_spr)
 		print_mini_sprite(env, map, ID_TAG_99 - 1, size(map, 5, 0));
-	else if (id >= 24 && id <= 28)
+	else if (id >= 24 && id <= 28 && map->bool_spr)
 		print_mini_sprite(env, map, ID_TAG_15 - 1, size(map, 5, 0));
-	else if (id >= 51 && id <= 52)
+	else if (id >= 51 && id <= 52 && map->bool_spr)
 		print_mini_sprite(env, map, ID_TAG_5 - 1, size(map, 5, 0));
 }

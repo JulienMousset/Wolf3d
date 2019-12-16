@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 17:18:14 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/13 14:24:01 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/16 19:19:16 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,5 @@ int		is_walkable(t_map *map, int id, int x, int y)
 	if (is_door(map, id, x, y))
 		return (1);
 	curse_door(map, id);
-	return ((is_walk(id)) ? 1 : 0);
+	return ((is_walk(map, id)) ? 1 : 0);
 }
