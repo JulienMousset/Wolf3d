@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 22:17:03 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/16 16:35:48 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/17 16:36:13 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	reset_game(t_map *map)
 	ft_memdel((void **)&(map->spr_order));
 	ft_memdel((void **)&(map->spr_dist));
 	ft_tabdel(map->board, map->nb_lines);
-	map->board = board_cpy(map->board_cpy, map->nb_lines, map->nb_columns);
+	if (!(map->board = board_cpy(map->board_cpy, map->nb_lines, map->nb_columns)))
+		end(ERR_MALLOC);
 	create_sprites_array(map);
 }
 
@@ -47,7 +48,8 @@ int		*array_cpy(int *src, int size)
 	int		*dst;
 	int		i;
 
-	dst = (int *)malloc(sizeof(int) * size);
+	if (!(dst = (int *)malloc(sizeof(int) * size)))
+		return (NULL);
 	i = 0;
 	while (i < size)
 	{
@@ -63,10 +65,12 @@ int		**board_cpy(int **src, int nb_lines, int nb_columns)
 	int		i;
 
 	i = 0;
-	dst = (int **)malloc(sizeof(int *) * nb_lines);
+	if (!(dst = (int **)malloc(sizeof(int *) * nb_lines)))
+		return (NULL);
 	while (i < nb_lines)
 	{
-		dst[i] = array_cpy(src[i], nb_columns);
+		if (!(dst[i] = array_cpy(src[i], nb_columns)))
+			return (NULL);
 		i++;
 	}
 	return (dst);

@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 13:04:33 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/17 13:04:35 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/17 18:06:35 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@
 # define ERR_MALLOC "Error trying to allocate memory."
 # define ERR_DIR "You're trying to read a directory or a wrong type of file."
 # define ERR_WRONG "Wrong input. Your map can only contain digits and letters."
-# define ERR_EMPTY "Your map is empty."
 # define ERR_BORDER "The borders of your map can't be an empty space."
 # define ERR_NO_PLAYER "No player placed on your map."
 # define ERR_PLAYER "More than one player placed on your map."

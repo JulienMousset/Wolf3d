@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/06 21:46:17 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/16 14:57:08 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/17 18:06:30 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		init_structure(t_env *env, char *file)
 {
 	if (!(env->map = (t_map *)malloc(sizeof(t_map))))
-		return (0);
+		end(ERR_MALLOC);
 	if (!ft_strcmp(file, "/dev/zero"))
 		free_and_display_usage(env, ERR_DIR);
 	if (!(parsing(env, file)))
@@ -41,7 +41,7 @@ int		wolf3d(char *file)
 	t_env	*env;
 
 	if (!(env = (t_env *)malloc(sizeof(t_env))))
-		return (0);
+		end(ERR_MALLOC);
 	init_structure(env, file);
 	image_to_window(env, env->map);
 	mlx_hook(env->win_ptr, 2, (1L << 0), key_press, env);

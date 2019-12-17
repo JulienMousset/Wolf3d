@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 20:13:42 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/16 19:27:45 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/17 16:37:34 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,10 @@ void	end_game(t_env *env, t_map *map)
 	char	*score;
 	char	*str;
 
-	score = ft_itoa(final_score(map));
-	str = ft_strjoin("        SCORE : ", score);
+	if (!(score = ft_itoa(final_score(map))))
+		end(ERR_MALLOC);
+	if (!(str = ft_strjoin("        SCORE : ", score)))
+		end(ERR_MALLOC);
 	ft_bzero(env->data_addr, W * H * 4);
 	mlx_put_image_to_window(env->mlx_ptr, env->win_ptr, env->img_ptr, 0, 0);
 	won_or_lost(env, map);

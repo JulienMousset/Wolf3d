@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 14:24:13 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/16 15:15:30 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/17 16:16:36 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,10 @@ int		count_lines(t_map *map, char *file)
 	{
 		map->nb_columns = count_columns(map->line);
 		if ((previous != -1 && previous != map->nb_columns))
+		{
+			ft_memdel((void **)&(map->line));
 			return (0);
+		}
 		previous = map->nb_columns;
 		i++;
 		ft_memdel((void **)&(map->line));
@@ -79,15 +82,15 @@ int		check_file(t_env *env, char *file)
 	|| (fd = open(file, O_RDONLY)) == -1)
 		free_and_display_usage(env, ERR_DIR);
 	fd = open(file, O_RDONLY);
-	if (!(read = get_next_line(fd, &env->map->line)))
-		free_and_display_usage(env, ERR_EMPTY);
-	ft_memdel((void **)&(env->map->line));
 	close(fd);
 	fd = open(file, O_RDONLY);
 	while ((read = get_next_line(fd, &env->map->line)))
 	{
-		if (env->map->line[1] == '\n' || !(check_map(env->map->line)))
+		if (!(check_map(env->map->line)))
+		{
+			ft_memdel((void **)&(env->map->line));
 			return (0);
+		}
 		ft_memdel((void **)&(env->map->line));
 	}
 	close(fd);
@@ -108,9 +111,6 @@ int		parsing(t_env *env, char *file)
 	fill_board(env, fd);
 	close(fd);
 	if (!(check_board(env->map)))
-	{
-		ft_tabdel(env->map->board, env->map->nb_lines);
 		free_and_display_usage(env, ERR_BORDER);
-	}
 	return (1);
 }

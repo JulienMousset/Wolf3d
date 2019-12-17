@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:13:50 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/16 19:16:31 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/17 16:39:47 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,12 @@ void	text_gui(t_env *env, t_map *map, int **board)
 	mlx = env->mlx_ptr;
 	win = env->win_ptr;
 	c = (t_coord) {.x = TS - 5, .y = TS + 47};
-	map->gui_str = ft_itoa(map->pick_coin);
+	if (!(map->gui_str = ft_itoa(map->pick_coin)))
+		end(ERR_MALLOC);
 	mlx_string_put(mlx, win, c.x, c.y, M, map->gui_str);
 	ft_memdel((void **)&(map->gui_str));
-	map->gui_str = ft_itoa(map->pick_key);
+	if (!(map->gui_str = ft_itoa(map->pick_key)))
+		end(ERR_MALLOC);
 	mlx_string_put(mlx, win, c.x, c.y += 40, M, map->gui_str);
 	ft_memdel((void **)&(map->gui_str));
 	mlx_string_put(mlx, win, per(W, 92), per(H, 95), M, CON_0);

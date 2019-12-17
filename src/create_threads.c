@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 20:07:48 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/16 15:38:36 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/17 16:24:04 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ void	create_threads(t_env *env, int id)
 	t_thread	*t;
 	int			i;
 
-	t = (t_thread *)malloc(sizeof(t_thread) * THREADS);
+	if (!(t = (t_thread *)malloc(sizeof(t_thread) * THREADS)))
+		end(ERR_MALLOC);
 	i = 0;
 	while (i < THREADS)
 	{
