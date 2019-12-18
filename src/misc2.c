@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 22:17:03 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/17 16:36:13 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2019/12/18 11:22:45 by jmousset         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	reset_game(t_map *map)
 	ft_memdel((void **)&(map->spr_order));
 	ft_memdel((void **)&(map->spr_dist));
 	ft_tabdel(map->board, map->nb_lines);
-	if (!(map->board = board_cpy(map->board_cpy, map->nb_lines, map->nb_columns)))
+	if (!(map->board = board_cpy(map->board_cpy, map->nb_lines,
+	map->nb_columns)))
 		end(ERR_MALLOC);
 	create_sprites_array(map);
 }
@@ -70,7 +71,10 @@ int		**board_cpy(int **src, int nb_lines, int nb_columns)
 	while (i < nb_lines)
 	{
 		if (!(dst[i] = array_cpy(src[i], nb_columns)))
+		{
+			ft_tabdel(dst, nb_lines);
 			return (NULL);
+		}
 		i++;
 	}
 	return (dst);

@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/13 14:24:24 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/17 15:36:45 by jmousset         ###   ########.fr       */
+/*   Updated: 2019/12/18 13:13:09 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		check_board(t_map *map)
 		{
 			if ((i == 0 || j == 0 || i == map->nb_lines - 1 ||
 			j == map->nb_columns - 1) && ((map->board[i][j] == 0) ||
-							map->board[i][j] > 9))
+							map->board[i][j] > 4))
 				return (0);
 			j++;
 		}

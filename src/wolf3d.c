@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wolf3d.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/06 21:46:17 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/17 18:06:30 by pasosa-s         ###   ########.fr       */
+/*   Created: 2019/12/18 11:21:46 by jmousset          #+#    #+#             */
+/*   Updated: 2019/12/18 13:12:45 by pasosa-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,9 @@ int		init_structure(t_env *env, char *file)
 	env->map->level = file;
 	set_keys(env->map);
 	set_values(env->map);
-	env->map->board_cpy = board_cpy(env->map->board, env->map->nb_lines,
-	env->map->nb_columns);
+	if (!(env->map->board_cpy = board_cpy(env->map->board, env->map->nb_lines,
+	env->map->nb_columns)))
+		end(ERR_MALLOC);
 	if (!(env->mlx_ptr = mlx_init()) ||
 	!(env->win_ptr = mlx_new_window(env->mlx_ptr, W, H, "Wolf3D")) ||
 	!(env->img_ptr = mlx_new_image(env->mlx_ptr, W, H)))
