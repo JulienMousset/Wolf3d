@@ -1,7 +1,8 @@
 # Wolf3d
 
 Wolf3d is a project inspired by the world-famous eponymous 90's game, which was the first FPS ever. The project's goal is to explore ray-casting by making a dynamic view inside a maze.
-This project was realised with @pasosa-s.
+
+This project was realised with [@pasosa-s](https://github.com/pasosa-s).
 
 ## Our project
 
