@@ -1,8 +1,10 @@
-This project is  It will enable you to explore ray-casting. Your goal will be to make a dynamic view inside a maze, in which you'll have to find your way.
-
 # Wolf3d
 
-Wolf3d is a project inspired by the world-famous eponymous 90's game, which was the first FPS ever. The project's goal is to discover the mathematical notion of complex numbers and to take a peek at the concept of optimization in computer graphics (multi-threading) by modelizing some fractals.
+Wolf3d is a project inspired by the world-famous eponymous 90's game, which was the first FPS ever. The project's goal is to explore ray-casting by making a dynamic view inside a maze.
+
+## Our project
+
+
 
 ## How to use
 
@@ -13,11 +15,11 @@ Wolf3d is a project inspired by the world-famous eponymous 90's game, which was 
 
 ## Executing
 
-Execute the program with the fractal name of your choice like this : `./fractol mandelbrot`
+Execute the program with the map of your choice like this : `./wolf3d maps/level_1`
 
-The fractals available are : `julia`, `mandelbrot`, `burning_ship`, `tricorn`, `celtic_mandelbar`, `celtic_mandelbrot`, `buffalo`, `celtic_heart`.
+You can create your own map or play one of our own three levels.
 
-Press `TAB` to print the menu inside the program.
+Press `H` to print the controls inside the program.
 
 ## Screenshots
 
