@@ -1,10 +1,11 @@
 # Wolf3d
 
 Wolf3d is a project inspired by the world-famous eponymous 90's game, which was the first FPS ever. The project's goal is to explore ray-casting by making a dynamic view inside a maze.
+This project was realised with @pasosa-s.
 
 ## Our project
 
-
+Instead of Wolf3d, our program could be called TheBindingOfIsaac3d. By using sprites from the original game and re-drawing some from scratch that we couldn't use because of the change of perspective between the original game (top-down) and ours (first person), we tried to imagine what BOI would look like in 3d. Despite that, our game is not a copy of BOI since there is no animation, so no shooting or enemies. Therefore, we just kept the original spirit of the game and tried to make a little puzzle game with what we had.
 
 ## How to use
 
@@ -17,7 +18,7 @@ Wolf3d is a project inspired by the world-famous eponymous 90's game, which was 
 
 Execute the program with the map of your choice like this : `./wolf3d maps/level_1`
 
-You can create your own map or play one of our own three levels.
+You can create your own map or play with one of our own three levels that are in the `maps` folder.
 
 Press `H` to print the controls inside the program.
 
