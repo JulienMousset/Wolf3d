@@ -6,7 +6,7 @@
 #    By: jmousset <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/04 16:43:26 by jmousset          #+#    #+#              #
-#    Updated: 2019/12/11 21:21:27 by pasosa-s         ###   ########.fr        #
+#    Updated: 2020/07/09 15:12:48 by julien           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -98,7 +98,7 @@ DEPS = $(SRCS:c=.d)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@gcc $(FLAGS) -c $(SRCS) -I $(HDR)
+	@gcc $(FLAGS) -c $(SRCS) -L $(HDR)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
 

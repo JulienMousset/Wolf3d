@@ -6,7 +6,7 @@
 /*   By: pasosa-s <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:39:45 by pasosa-s          #+#    #+#             */
-/*   Updated: 2019/12/16 15:08:57 by jmousset         ###   ########.fr       */
+/*   Updated: 2020/07/09 15:18:45 by julien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,19 +75,17 @@ void	print_cardinal_walls(t_env *env, t_thread *th, int j)
 void	pick_color(t_env *env, t_thread *th, int x, int y_start)
 {
 	int		i;
-	int		j;
 
 	if (env->map->bool_tex == 1)
 	{
 		th->d = y_start - env->map->h2 + th->line_height / 2;
 		th->tex.y = ((th->d * TS) / th->line_height);
-		i = ((x * (env->bpp / 8)) + (y_start * env->s_l));
-		j = ((th->tex.x * (env->t[th->id].bpp / 8)) +
+		i = ((th->tex.x * (env->t[th->id].bpp / 8)) +
 				(th->tex.y * env->t[th->id].s_l));
 		if (env->map->bool_card)
-			print_cardinal_walls(env, th, j);
+			print_cardinal_walls(env, th, i);
 		else
-			ft_memcpy(&th->color_str, &env->t[th->id].data_addr[j],
+			ft_memcpy(&th->color_str, &env->t[th->id].data_addr[i],
 					sizeof(int));
 		th->color = (int)th->color_str;
 	}

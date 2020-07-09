@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/17 13:04:33 by jmousset          #+#    #+#             */
-/*   Updated: 2019/12/18 13:12:59 by pasosa-s         ###   ########.fr       */
+/*   Updated: 2020/07/09 15:14:46 by julien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <fcntl.h>
 # include <math.h>
 # include <pthread.h>
-# include "mlx.h"
+# include "../minilibx/mlx.h"
 # include "../libft/libft.h"
 # include "colors.h"
 # include "controls.h"

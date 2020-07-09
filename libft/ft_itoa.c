@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 13:56:39 by jmousset          #+#    #+#             */
-/*   Updated: 2019/04/26 18:34:29 by jmousset         ###   ########.fr       */
+/*   Updated: 2020/07/09 15:13:00 by julien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,12 @@
 static int		ft_intlen(int n)
 {
 	int				len;
-	unsigned int	ncpy;
 
 	len = 0;
 	if (n == 0)
 		return (1);
 	if (n < 0)
-	{
 		len++;
-		ncpy = -n;
-	}
-	else
-		ncpy = n;
 	while (n)
 	{
 		len++;

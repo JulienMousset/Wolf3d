@@ -6,7 +6,7 @@
 /*   By: jmousset <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 13:52:30 by jmousset          #+#    #+#             */
-/*   Updated: 2019/04/22 14:32:17 by jmousset         ###   ########.fr       */
+/*   Updated: 2020/07/09 15:13:10 by julien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 int		ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	int		i;
-
-	i = 0;
 	if (s1 == NULL && s2 == NULL)
 		return (1);
 	if (s1 == NULL || s2 == NULL)
