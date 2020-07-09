@@ -25,4 +25,4 @@ Press `H` to print the controls inside the program.
 
 ## Warning
 
-This program is using the minilibx, a Mac OS graphic library developped at 42 school which we are using in our first graphic programming projects. Therefore, it won't compile if you are on a Linux OS.
+This program is using the minilibx, a Mac OS graphic library developped at 42 school which we are using in our first graphic programming projects. Therefore, it won't compile if you are on a Linux OS. **If you are interested in this project, I suggest checking the final and more complete version (using SDL2 and Linux compatible) at this link : **[@Doom-Nukem](https://github.com/JulienMousset/Doom-Nukem).
