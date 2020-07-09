@@ -1,8 +1,6 @@
-# [UNDER CONSTRUCTION]
-
 # Wolf3d
 
-Wolf3d is a project inspired by the world-famous eponymous 90's game, which was the first FPS ever. The project's goal is to explore ray-casting by making a dynamic view inside a maze.
+Wolf3d is a project inspired by the world-famous eponymous 90's game, which was one of the first FPS ever. The project's goal is to explore ray-casting by making a dynamic view inside a maze.
 
 This project was realised with [@pasosa-s](https://github.com/pasosa-s).
 
@@ -25,15 +23,6 @@ You can create your own map or play with one of our own three levels that are in
 
 Press `H` to print the controls inside the program.
 
-## Screenshots
+## Warning
 
-<p align="center">
-  <img width="800" height="600" src="Screenshots/fractol.gif">
-</p>
-
-![](Screenshots/fractol1.png)
-![](Screenshots/fractol2.png)
-![](Screenshots/fractol3.png)
-![](Screenshots/fractol4.png)
-![](Screenshots/fractol5.png)
-![](Screenshots/fractol6.png)
+This program is using the minilibx, a Mac OS graphic library developped at 42 school which we are using in our first graphic programming projects. Therefore, it won't compile if you are on a Linux OS.
