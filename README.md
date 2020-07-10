@@ -6,7 +6,7 @@ This project was realised with [@pasosa-s](https://github.com/pasosa-s).
 
 ## Our project
 
-Instead of Wolf3d, our program could be called TheBindingOfIsaac3d. By using sprites from *The Binding of Isaac: Rebirth* and re-drawing some from scratch that we couldn't use because of the change of perspective between the original game (top-down) and ours (first person), we tried to imagine what BOI would look like in 3d. Despite that, our game is not a copy of BOI since there is no animation, so no shooting or enemies. Therefore, we just kept the original spirit of the game and tried to make a little puzzle game with what we had.
+Instead of Wolf3d, our program could be called TheBindingOfIsaac3d. By using some sprites from *The Binding of Isaac: Rebirth* game and re-drawing some other ones from scratch, we tried to envision what this top-down game, using two-dimensional sprites, would look like in 3d. Since we don't have an animation system yet, you won't have shooting and face enemies like you would in the original game. That's why we decided to just stick to the spirit of the game and ended up making a short puzzle game out of it.
 
 ## How to use
 
@@ -25,4 +25,4 @@ Press `H` to print the controls inside the program.
 
 ## Warning
 
-This program is using the minilibx, a Mac OS graphic library developped at 42 school which we are using in our first graphic programming projects. Therefore, it won't compile if you are on a Linux OS. **If you are interested in this project, I suggest checking the final and more complete version (using SDL2 and Linux compatible) here :** [Doom-Nukem](https://github.com/JulienMousset/Doom-Nukem).
+This program is using the minilibx, a Mac OS graphic library developped at 42 school which we are using in our first graphic programming projects. Therefore, it won't compile if you are on a Linux OS. **No screenshot for this one. If you are interested in this project and want to see more, I suggest checking the final and more complete version (using SDL2 and Linux compatible) here :** [Doom-Nukem](https://github.com/JulienMousset/Doom-Nukem).
